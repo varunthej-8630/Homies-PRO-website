@@ -2,27 +2,39 @@ import NextHead from 'next/head';
 import { NextSeo } from 'next-seo';
 import PropTypes from 'prop-types';
 
-const SITE_URL = 'https://giats.me';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://homies-agency.vercel.app';
 const OG_IMAGE = `${SITE_URL}/og.png`;
 
 const getSchema = () => ({
-  '@context': 'http://schema.org',
-  '@type': 'Organization',
-  name: 'HOMIES STUDIO',
-  jobTitle: 'Creative Web Studio',
-  url: SITE_URL,
-  image: OG_IMAGE,
-  email: 'mailto:info.homiesstudio@gmail.com',
-  sameAs: ['https://www.linkedin.com/in/giats/', 'https://github.com/Giats2498', 'https://twitter.com/Giats_', 'https://www.instagram.com/giats_/'],
-  alumniOf: [
-    { '@type': 'Organization', name: 'Company 1' },
-    { '@type': 'Organization', name: 'Company 2' },
-    { '@type': 'Organization', name: 'Company 3' },
-    { '@type': 'Organization', name: 'Company 4' },
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'HOMIES STUDIO',
+      url: SITE_URL,
+      logo: `${SITE_URL}/homies/homies-logo.png`,
+      email: 'info.homiesstudio@gmail.com',
+      description: 'The premier technical ecosystem for students, creators, colleges, and startups to build, showcase, and monetize engineering projects.',
+      sameAs: ['https://github.com/varunthej-8630/Homies-PRO-website', 'https://wa.me/917416636417'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'HOMIES STUDIO',
+      publisher: {
+        '@id': `${SITE_URL}/#organization`,
+      },
+      description: 'Verified Engineering Projects, Digital Deliverables & Custom Technical Development.',
+    },
   ],
 });
 
 function CustomHead({ title = '', description, keywords }) {
+  const metaTitle = title ? `${title} | HOMIES STUDIO` : 'HOMIES STUDIO — Technical Project Marketplace & Creator Ecosystem';
+  const metaDesc = description || 'Homies Studio connects students, creators, developers, colleges, and businesses to build, showcase, discover, and turn technical ideas into real opportunities.';
+
   return (
     <>
       <NextHead>
@@ -35,22 +47,24 @@ function CustomHead({ title = '', description, keywords }) {
         <meta name="author" content="HOMIES STUDIO" />
         <meta name="referrer" content="no-referrer" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="geo.region" content="US" />
+        <meta name="geo.region" content="IN" />
 
         {/* Canonical and Title */}
         <link rel="canonical" href={SITE_URL} />
-        <title>{title}</title>
+        <title>{title || 'HOMIES STUDIO — Technical Project Marketplace & Creator Ecosystem'}</title>
 
         {/* OpenGraph Meta Tags */}
         <meta property="og:image" content={OG_IMAGE} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDesc} />
         <meta property="og:url" content={SITE_URL} />
+        <meta property="og:site_name" content="HOMIES STUDIO" />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content={description} />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDesc} />
         <meta name="twitter:image" content={OG_IMAGE} />
 
         {/* Favicons */}
@@ -63,7 +77,7 @@ function CustomHead({ title = '', description, keywords }) {
         <meta name="msapplication-TileColor" content="#f0f4f1" />
         <meta name="theme-color" content="#f0f4f1" />
 
-        {/* Schema */}
+        {/* Structured Data */}
         {/* eslint-disable-next-line react/no-danger */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }} />
       </NextHead>

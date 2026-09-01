@@ -1,7 +1,7 @@
 {
-  "name": "HOMIES STUDIO - Portfolio",
+  "name": "HOMIES STUDIO - Technical Project Marketplace",
   "short_name": "HOMIES STUDIO",
-  "description": "Creative studio crafting sleek and efficient web, desktop, and mobile apps. Combining creativity and technical skill to deliver innovative user-centric solutions.",
+  "description": "The premier ecosystem connecting students, creators, colleges, and businesses to build, showcase, and monetize technical engineering projects.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -19,7 +19,7 @@
   "theme_color": "#28282b",
   "background_color": "#f0f4f1",
   "start_url": "/",
-  "scope": ".",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait"
 }

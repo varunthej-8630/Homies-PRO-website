@@ -1,9 +1,18 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /creator/dashboard
+Disallow: /creator/submit
+Disallow: /buyer/dashboard
+Disallow: /checkout
+Disallow: /checkout/*
+Disallow: /api/*
+Disallow: /supabase-test
 
 # Host
-Host: https://giats.me/
+Host: https://homies-agency.vercel.app
 
 # Sitemaps
-Sitemap: https://giats.me/sitemap.xml
+Sitemap: https://homies-agency.vercel.app/sitemap.xml

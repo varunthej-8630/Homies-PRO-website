@@ -1,19 +1,19 @@
 const footerLinks = [
   {
     title: 'Github',
-    href: 'https://github.com/Giats2498',
+    href: 'https://github.com/varunthej-8630/Homies-PRO-website',
   },
   {
-    title: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/giats',
+    title: 'WhatsApp',
+    href: 'https://wa.me/917416636417',
   },
   {
-    title: 'Instagram',
-    href: 'https://www.instagram.com/giats_/',
+    title: 'Creator Studio',
+    href: '/become-a-creator',
   },
   {
-    title: 'Twitter',
-    href: 'https://twitter.com/Giats_',
+    title: 'Marketplace',
+    href: '/projects',
   },
 ];
 export default footerLinks;

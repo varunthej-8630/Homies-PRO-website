@@ -6,21 +6,19 @@ import Process from '@src/pages/about/components/process/Process';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'HOMIES STUDIO - About',
-  description: 'Learn about our journey, values, and commitment to quality web and app solutions.',
+  title: 'About Homies Studio — Technical Ecosystem & Creator Platform',
+  description: 'Learn about Homies Studio: bridging the gap between student innovation, creator monetization, academic institutions, and enterprise engineering solutions.',
   keywords: [
     'HOMIES STUDIO',
     'About Homies Studio',
-    'About me',
-    'Frontend Developer Journey',
-    'Web Developer Story',
-    'Professional Web Development',
-    'Frontend Development Expertise',
-    'Web Design Skills',
-    'Web Development Services',
-    'Web Design Expertise',
-    'Developer Profile',
-    'Quality Web Solutions',
+    'Technical Project Marketplace',
+    'Student Innovation',
+    'Engineering Ecosystem',
+    'Creator Monetization',
+    'Academic Projects',
+    'College Solutions',
+    'EdTech Partnerships',
+    'Turn Ideas into Opportunities',
   ],
 };
 function Page() {
