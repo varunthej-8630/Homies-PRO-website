@@ -1,0 +1,325 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: calc(var(--layout-columns-gap) * 2);
+  flex-wrap: wrap;
+  gap: var(--layout-columns-gap);
+
+  .headerLeft {
+    .dashboardTitle {
+      font-weight: 750;
+      line-height: 115%;
+      margin-bottom: 0.4vw;
+    }
+
+    .creatorProfilePill {
+      display: flex;
+      align-items: center;
+      gap: 0.6vw;
+      color: rgba(40, 40, 43, 0.7);
+    }
+  }
+
+  .headerRight {
+    display: flex;
+    gap: 0.8vw;
+    align-items: center;
+
+    .newProjectButton {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      padding: 0.8vw 1.6vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.9vw;
+      font-weight: 650;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      @include mobile {
+        font-size: 3.2vw;
+        padding: 2.5vw 5vw;
+      }
+
+      &:hover {
+        background: transparent;
+        color: var(--black);
+      }
+    }
+  }
+}
+
+// Stats Cards Grid
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--layout-columns-gap);
+  margin-bottom: calc(var(--layout-columns-gap) * 2.5);
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statCard {
+    background: #ffffff;
+    border: 1px solid rgba(40, 40, 43, 0.12);
+    border-radius: 12px;
+    padding: 1.4vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vw;
+
+    @include mobile {
+      padding: 4vw;
+    }
+
+    .statTitle {
+      font-size: 0.8vw;
+      color: rgba(40, 40, 43, 0.6);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+
+      @include mobile {
+        font-size: 2.8vw;
+      }
+    }
+
+    .statNumber {
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .statSubtitle {
+      font-size: 0.75vw;
+      color: #10b981;
+      font-weight: 600;
+
+      @include mobile {
+        font-size: 2.5vw;
+      }
+    }
+  }
+}
+
+// Dashboard Tabs & Layout
+.dashboardLayout {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1.5);
+
+  .tabNavigation {
+    display: flex;
+    gap: 0.8vw;
+    border-bottom: 1px solid rgba(40, 40, 43, 0.12);
+    padding-bottom: 0.6vw;
+    overflow-x: auto;
+
+    @include mobile {
+      gap: 3vw;
+      padding-bottom: 2vw;
+    }
+
+    .tabBtn {
+      background: transparent;
+      border: none;
+      padding: 0.6vw 1.2vw;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.9vw;
+      font-weight: 650;
+      color: rgba(40, 40, 43, 0.6);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      @include mobile {
+        font-size: 3.2vw;
+        padding: 2vw 3.5vw;
+      }
+
+      &.activeTabBtn {
+        background: rgba(40, 40, 43, 0.08);
+        color: var(--black);
+      }
+    }
+  }
+}
+
+// Project List Table / Cards
+.projectsTableCard {
+  background: #ffffff;
+  border: 1px solid rgba(40, 40, 43, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 1vw;
+
+  .projectItemRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw 1.2vw;
+    border-bottom: 1px solid rgba(40, 40, 43, 0.06);
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2vw;
+      padding: 3.5vw;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .projectItemInfo {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+
+      .projectItemThumb {
+        width: 4.5vw;
+        height: 3vw;
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+        background: #eee;
+
+        @include mobile {
+          width: 20vw;
+          height: 14vw;
+        }
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .projectItemText {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2vw;
+
+        .projectItemTitle {
+          font-weight: 700;
+          color: var(--black);
+          text-decoration: none;
+        }
+
+        .projectItemMeta {
+          font-size: 0.8vw;
+          color: rgba(40, 40, 43, 0.6);
+
+          @include mobile {
+            font-size: 2.8vw;
+          }
+        }
+      }
+    }
+
+    .projectItemStats {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+
+      @include mobile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .statusPill {
+        padding: 0.2vw 0.8vw;
+        border-radius: 9999px;
+        font-size: 0.75vw;
+        font-weight: 700;
+
+        @include mobile {
+          font-size: 2.8vw;
+          padding: 1vw 3vw;
+        }
+
+        &.statusPublished {
+          background: #dcfce7;
+          color: #15803d;
+        }
+
+        &.statusPending {
+          background: #fef9c3;
+          color: #854d0e;
+        }
+      }
+
+      .priceTag {
+        font-weight: 750;
+      }
+    }
+  }
+}
+
+// Wallet Card & Withdrawals
+.walletCard {
+  background: #ffffff;
+  border: 1px solid rgba(40, 40, 43, 0.12);
+  border-radius: 14px;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+
+  .walletHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .walletBalance {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2vw;
+    }
+
+    .withdrawBtn {
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 0.8vw 1.6vw;
+      border-radius: 9999px;
+      font-weight: 650;
+      cursor: pointer;
+
+      @include mobile {
+        padding: 2.5vw 5vw;
+        font-size: 3.2vw;
+      }
+    }
+  }
+
+  .withdrawalsTable {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vw;
+
+    .wthRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8vw 1vw;
+      background: #fafafa;
+      border-radius: 8px;
+
+      @include mobile {
+        padding: 2.5vw 3.5vw;
+      }
+    }
+  }
+}

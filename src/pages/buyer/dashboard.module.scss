@@ -1,0 +1,204 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+}
+
+.header {
+  margin-bottom: calc(var(--layout-columns-gap) * 2);
+
+  .title {
+    font-weight: 750;
+    line-height: 115%;
+    margin-bottom: 0.4vw;
+  }
+
+  .subtitle {
+    color: rgba(40, 40, 43, 0.7);
+  }
+}
+
+.tabNavigation {
+  display: flex;
+  gap: 0.8vw;
+  border-bottom: 1px solid rgba(40, 40, 43, 0.12);
+  padding-bottom: 0.6vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+  overflow-x: auto;
+
+  @include mobile {
+    gap: 3vw;
+    padding-bottom: 2vw;
+  }
+
+  .tabBtn {
+    background: transparent;
+    border: none;
+    padding: 0.6vw 1.2vw;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 0.9vw;
+    font-weight: 650;
+    color: rgba(40, 40, 43, 0.6);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    @include mobile {
+      font-size: 3.2vw;
+      padding: 2vw 3.5vw;
+    }
+
+    &.activeTabBtn {
+      background: rgba(40, 40, 43, 0.08);
+      color: var(--black);
+    }
+  }
+}
+
+// Download Cards
+.downloadsList {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1.2);
+
+  .downloadCard {
+    background: #ffffff;
+    border: 1px solid rgba(40, 40, 43, 0.15);
+    border-radius: 14px;
+    padding: 1.8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    box-shadow: 0 8px 24px rgba(40, 40, 43, 0.04);
+
+    @include mobile {
+      padding: 4.5vw;
+      gap: 3vw;
+    }
+
+    .downloadHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1vw;
+
+      .projectTitle {
+        font-weight: 750;
+        color: var(--black);
+        margin-bottom: 0.2vw;
+      }
+
+      .tokenBadge {
+        background: #f0fdf4;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+        padding: 0.3vw 0.8vw;
+        border-radius: 9999px;
+        font-size: 0.8vw;
+        font-weight: 600;
+
+        @include mobile {
+          font-size: 2.8vw;
+          padding: 1vw 3vw;
+        }
+      }
+    }
+
+    .filesGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8vw;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: 2vw;
+      }
+
+      .fileDownloadRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8vw 1vw;
+        background: #f8faf8;
+        border: 1px solid rgba(40, 40, 43, 0.08);
+        border-radius: 8px;
+
+        @include mobile {
+          padding: 3vw;
+        }
+
+        .fileMeta {
+          display: flex;
+          align-items: center;
+          gap: 0.6vw;
+          font-weight: 600;
+        }
+
+        .downloadActionBtn {
+          background: var(--black);
+          color: var(--white);
+          border: none;
+          padding: 0.4vw 0.9vw;
+          border-radius: 6px;
+          font-size: 0.8vw;
+          font-weight: 600;
+          cursor: pointer;
+
+          @include mobile {
+            font-size: 2.8vw;
+            padding: 1.5vw 3vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Orders Table
+.ordersCard {
+  background: #ffffff;
+  border: 1px solid rgba(40, 40, 43, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+
+  .orderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2vw 1.6vw;
+    border-bottom: 1px solid rgba(40, 40, 43, 0.08);
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2vw;
+      padding: 4vw;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .orderInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2vw;
+    }
+
+    .orderMeta {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+
+      @include mobile {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+}

@@ -1,0 +1,677 @@
+@import '@src/styles/functions';
+
+.root {
+  padding-top: calc(var(--layout-columns-gap) * 2.8);
+  padding-bottom: calc(var(--layout-columns-gap) * 3);
+  padding-left: 0px;
+  padding-right: calc(var(--layout-columns-gap) * 1.5);
+  background-color: var(--white);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  box-shadow: 0 0 0 var(--layout-columns-gap) var(--white);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--black) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 4px;
+    opacity: 0.4;
+  }
+
+  @include mobile {
+    height: auto;
+    overflow-y: visible;
+    padding-top: calc(var(--layout-columns-gap) * 2);
+    padding-bottom: calc(var(--layout-columns-gap) * 2);
+    padding-right: 0px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-bottom: 0.8vw;
+  flex-wrap: wrap;
+
+  @include mobile {
+    gap: 2.5vw;
+    margin-bottom: 2vw;
+  }
+}
+
+.categoryBadge {
+  background: var(--black);
+  color: var(--white);
+  padding: 0.35vw 0.9vw;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  @include mobile {
+    padding: 1vw 3vw;
+  }
+}
+
+.ratingBadge {
+  background: rgba(40, 40, 43, 0.08);
+  color: var(--black);
+  padding: 0.3vw 0.8vw;
+  border-radius: 999px;
+  font-weight: 650;
+}
+
+.salesBadge {
+  color: rgba(40, 40, 43, 0.6);
+  font-weight: 550;
+}
+
+.title {
+  font-weight: 750;
+  line-height: 110%;
+  margin-bottom: 0.6vw;
+  color: var(--black);
+
+  @include mobile {
+    margin-bottom: 2vw;
+  }
+}
+
+.tagline {
+  font-weight: 550;
+  opacity: 0.85;
+  line-height: 135%;
+  margin-bottom: 0.8vw;
+
+  @include mobile {
+    margin-bottom: 2.5vw;
+  }
+}
+
+.handwritingNoteWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vw;
+  padding: 0.5vw 1vw;
+  margin-bottom: 1.2vw;
+  border-left: 2.5px solid var(--black);
+  background: color-mix(in srgb, var(--fillColor) 45%, transparent);
+  border-radius: 0 8px 8px 0;
+
+  @include mobile {
+    gap: 1.5vw;
+    padding: 2vw 3vw;
+    margin-bottom: 4vw;
+  }
+}
+
+.handwritingSparkle {
+  font-size: 1.2vw;
+  color: var(--menuColor, var(--black));
+
+  @include mobile {
+    font-size: 3.5vw;
+  }
+}
+
+.handwritingNote {
+  color: var(--black);
+  font-style: italic;
+}
+
+.scrollableContent {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1.2);
+  padding-bottom: 2vw;
+
+  @include mobile {
+    gap: calc(var(--layout-columns-gap) * 1.8);
+    padding-bottom: 6vw;
+  }
+}
+
+// Marketplace Pricing Box
+.pricingBox {
+  background: #ffffff;
+  border: 1.5px solid var(--black);
+  border-radius: 14px;
+  padding: 1.4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  box-shadow: 0 8px 24px rgba(40, 40, 43, 0.06);
+
+  @include mobile {
+    padding: 4vw;
+    gap: 3vw;
+  }
+
+  .priceHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .priceDisplay {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8vw;
+
+      .currentPrice {
+        font-weight: 800;
+        color: var(--black);
+      }
+
+      .originalPrice {
+        text-decoration: line-through;
+        color: rgba(40, 40, 43, 0.45);
+        font-weight: 500;
+      }
+    }
+
+    .discountBadge {
+      background: var(--fillColor);
+      color: var(--black);
+      font-weight: 700;
+      padding: 0.2vw 0.7vw;
+      border-radius: 9999px;
+    }
+  }
+
+  .licenseNote {
+    color: rgba(40, 40, 43, 0.75);
+    line-height: 135%;
+  }
+
+  .primaryActionButtons {
+    display: flex;
+    gap: 0.8vw;
+    flex-wrap: wrap;
+
+    .buyButton {
+      flex: 1;
+      min-width: 180px;
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      padding: 0.9vw 1.6vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.95vw;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.25s ease;
+
+      @include mobile {
+        font-size: 3.5vw;
+        padding: 3vw 6vw;
+      }
+
+      &:hover {
+        background: transparent;
+        color: var(--black);
+        transform: translateY(-2px);
+      }
+    }
+
+    .talkCreatorButton {
+      background: transparent;
+      color: var(--black);
+      border: 1px solid rgba(40, 40, 43, 0.3);
+      padding: 0.9vw 1.4vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.9vw;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      @include mobile {
+        font-size: 3.2vw;
+        padding: 2.8vw 5vw;
+        width: 100%;
+      }
+
+      &:hover {
+        border-color: var(--black);
+        background: rgba(40, 40, 43, 0.05);
+      }
+    }
+
+    .demoLinkButton {
+      background: rgba(40, 40, 43, 0.06);
+      color: var(--black);
+      border: 1px solid rgba(40, 40, 43, 0.2);
+      padding: 0.9vw 1.4vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.9vw;
+      font-weight: 650;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+
+      @include mobile {
+        font-size: 3.2vw;
+        padding: 2.8vw 5vw;
+        width: 100%;
+      }
+
+      &:hover {
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .guaranteeRow {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6vw;
+    border-top: 1px solid rgba(40, 40, 43, 0.08);
+    font-size: 0.8vw;
+    color: rgba(40, 40, 43, 0.65);
+
+    @include mobile {
+      flex-direction: column;
+      gap: 1vw;
+      font-size: 2.8vw;
+    }
+  }
+}
+
+// Creator Info Box
+.creatorBox {
+  background: color-mix(in srgb, var(--white) 80%, #f7f9f7);
+  border: 1px solid rgba(40, 40, 43, 0.12);
+  border-radius: 12px;
+  padding: 1.2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vw;
+
+  @include mobile {
+    padding: 3.5vw;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .creatorLeft {
+    display: flex;
+    align-items: center;
+    gap: 0.9vw;
+
+    @include mobile {
+      gap: 3vw;
+    }
+
+    .creatorAvatar {
+      width: 2.8vw;
+      height: 2.8vw;
+      border-radius: 50%;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 750;
+      overflow: hidden;
+
+      @include mobile {
+        width: 10vw;
+        height: 10vw;
+      }
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .creatorMeta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2vw;
+
+      .creatorNameRow {
+        display: flex;
+        align-items: center;
+        gap: 0.4vw;
+        font-weight: 700;
+        color: var(--black);
+
+        .verifiedTick {
+          color: #2563eb;
+          font-size: 0.9vw;
+          @include mobile {
+            font-size: 3.2vw;
+          }
+        }
+      }
+
+      .creatorRole {
+        color: rgba(40, 40, 43, 0.65);
+      }
+    }
+  }
+
+  .creatorStats {
+    display: flex;
+    gap: 1.2vw;
+    text-align: right;
+
+    @include mobile {
+      text-align: left;
+      width: 100%;
+      justify-content: space-between;
+      border-top: 1px solid rgba(40, 40, 43, 0.08);
+      padding-top: 2vw;
+    }
+
+    .creatorStatItem {
+      display: flex;
+      flex-direction: column;
+
+      .statVal {
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .statLabel {
+        font-size: 0.75vw;
+        color: rgba(40, 40, 43, 0.6);
+        @include mobile {
+          font-size: 2.6vw;
+        }
+      }
+    }
+  }
+}
+
+.descSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+
+  p {
+    line-height: 145%;
+    opacity: 0.85;
+  }
+
+  @include mobile {
+    gap: 2vw;
+  }
+}
+
+.cardBox {
+  padding: 1.2vw 1.4vw;
+  border: 1px solid color-mix(in srgb, var(--black) 18%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--fillColor) 25%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+
+  @include mobile {
+    padding: 4vw;
+    gap: 2.5vw;
+    border-radius: 10px;
+  }
+}
+
+.specialBox {
+  background: color-mix(in srgb, var(--accentColor) 30%, transparent);
+  border-color: color-mix(in srgb, var(--black) 22%, transparent);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardLabel {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--menuColor, currentColor);
+  text-underline-offset: 4px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vw;
+
+  @include mobile {
+    gap: 2vw;
+  }
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7vw;
+  line-height: 140%;
+
+  @include mobile {
+    gap: 2vw;
+  }
+
+  span:last-child {
+    opacity: 0.9;
+  }
+}
+
+.bullet {
+  color: var(--menuColor, var(--black));
+  font-weight: bold;
+  font-size: 1.1vw;
+  line-height: 120%;
+
+  @include mobile {
+    font-size: 3vw;
+  }
+}
+
+.checkIcon {
+  color: #10b981;
+  font-weight: 800;
+  font-size: 1.1vw;
+  line-height: 120%;
+
+  @include mobile {
+    font-size: 3vw;
+  }
+}
+
+.deliverablesSection,
+.techStackSection,
+.requirementsSection,
+.reviewsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vw;
+
+  @include mobile {
+    gap: 2vw;
+  }
+}
+
+.sectionSubtitle {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--black);
+}
+
+.deliverableFilesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vw;
+
+  @include mobile {
+    gap: 1.5vw;
+  }
+
+  .fileRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6vw 1vw;
+    background: #ffffff;
+    border: 1px solid rgba(40, 40, 43, 0.1);
+    border-radius: 8px;
+
+    @include mobile {
+      padding: 2.5vw 3.5vw;
+    }
+
+    .fileNameWithIcon {
+      display: flex;
+      align-items: center;
+      gap: 0.6vw;
+      font-weight: 600;
+    }
+
+    .fileSizeBadge {
+      color: rgba(40, 40, 43, 0.55);
+    }
+  }
+}
+
+.requirementsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8vw;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 2vw;
+  }
+
+  .reqCard {
+    background: color-mix(in srgb, var(--white) 85%, #f2f2f2);
+    border: 1px solid rgba(40, 40, 43, 0.1);
+    border-radius: 8px;
+    padding: 0.8vw 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vw;
+
+    @include mobile {
+      padding: 3vw;
+    }
+
+    .reqLabel {
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .reqValue {
+      color: rgba(40, 40, 43, 0.75);
+    }
+  }
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+
+  .reviewCard {
+    background: #ffffff;
+    border: 1px solid rgba(40, 40, 43, 0.1);
+    border-radius: 10px;
+    padding: 1vw 1.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vw;
+
+    @include mobile {
+      padding: 3.5vw;
+      gap: 1.5vw;
+    }
+
+    .reviewHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .reviewerInfo {
+        display: flex;
+        align-items: center;
+        gap: 0.5vw;
+        font-weight: 650;
+
+        .verifiedBuyerBadge {
+          background: #dcfce7;
+          color: #166534;
+          padding: 0.15vw 0.5vw;
+          border-radius: 9999px;
+          font-size: 0.7vw;
+          @include mobile {
+            font-size: 2.4vw;
+          }
+        }
+      }
+
+      .reviewDate {
+        color: rgba(40, 40, 43, 0.45);
+      }
+    }
+
+    .reviewStars {
+      color: #f59e0b;
+      font-weight: 700;
+    }
+
+    .reviewComment {
+      color: rgba(40, 40, 43, 0.85);
+      line-height: 140%;
+    }
+  }
+}
+
+.chipsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5vw;
+
+  @include mobile {
+    gap: 1.8vw;
+  }
+}
+
+.chip {
+  padding: 0.3vw 0.8vw;
+  border: 1px solid color-mix(in srgb, var(--black) 25%, transparent);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--black);
+  font-weight: 550;
+
+  @include mobile {
+    padding: 1vw 2.5vw;
+  }
+}

@@ -1,0 +1,55 @@
+@import '@src/styles/functions';
+
+.root {
+  position: relative;
+  padding-top: calc(var(--layout-columns-gap) * 6);
+  background-color: var(--white);
+  box-shadow: 0 0 0 calc(var(--layout-columns-gap) * 0.5) var(--white);
+
+  @include mobile {
+    padding-top: calc(var(--layout-columns-gap) * 4);
+  }
+
+  .nameContainer {
+    position: relative;
+    display: flex;
+
+    flex-direction: column;
+
+    > span {
+      color: var(--white);
+    }
+  }
+
+  .container {
+    margin-top: calc(var(--layout-columns-gap) * 2);
+
+    align-items: center;
+
+    .descWrapper {
+      position: relative;
+      font-style: italic;
+
+      grid-column: 1 / 8;
+
+      @include mobile {
+        margin-top: calc(var(--layout-columns-gap) * 1);
+        grid-column: 1 / 7;
+      }
+    }
+
+    .descWrapperBottom {
+      grid-column: 9 / 17;
+
+      @include mobile {
+        grid-column: 1 / 7;
+        margin-top: calc(var(--layout-columns-gap) * 2);
+      }
+
+      .buttonContainer {
+        margin-top: var(--layout-columns-gap);
+        width: max-content;
+      }
+    }
+  }
+}

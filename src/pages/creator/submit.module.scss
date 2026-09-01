@@ -1,0 +1,386 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+}
+
+.header {
+  margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+
+  .pageTitle {
+    font-weight: 750;
+    line-height: 115%;
+    margin-bottom: 0.4vw;
+  }
+
+  .pageSubtitle {
+    color: rgba(40, 40, 43, 0.7);
+  }
+}
+
+// Stepper Progress Bar
+.stepperContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: calc(var(--layout-columns-gap) * 2);
+  position: relative;
+  overflow-x: auto;
+  padding-bottom: 0.8vw;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1.2vw;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(40, 40, 43, 0.15);
+    z-index: 1;
+
+    @include mobile {
+      top: 4.5vw;
+    }
+  }
+
+  .stepItem {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4vw;
+    cursor: pointer;
+    background: var(--white);
+    padding: 0 0.8vw;
+    white-space: nowrap;
+    border: none;
+
+    .stepBadge,
+    .stepCircle {
+      width: 2.4vw;
+      height: 2.4vw;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid rgba(40, 40, 43, 0.25);
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 750;
+      font-size: 0.9vw;
+      transition: all 0.25s ease;
+
+      @include mobile {
+        width: 8vw;
+        height: 8vw;
+        font-size: 3vw;
+      }
+    }
+
+    .stepLabel {
+      font-size: 0.8vw;
+      font-weight: 600;
+      color: rgba(40, 40, 43, 0.6);
+
+      @include mobile {
+        font-size: 2.6vw;
+      }
+    }
+
+    &.stepItemActive,
+    &.activeStep {
+      .stepBadge,
+      .stepCircle {
+        background: var(--black);
+        border-color: var(--black);
+        color: var(--white);
+      }
+
+      .stepLabel {
+        color: var(--black);
+        font-weight: 750;
+      }
+    }
+
+    &.stepItemCompleted,
+    &.completedStep {
+      .stepBadge,
+      .stepCircle {
+        background: #166534;
+        border-color: #166534;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// Wizard Card
+.wizardCard,
+.formCard {
+  background: #ffffff;
+  border: 1px solid rgba(40, 40, 43, 0.15);
+  border-radius: 16px;
+  padding: 2.4vw;
+  box-shadow: 0 10px 30px rgba(40, 40, 43, 0.05);
+  margin-bottom: calc(var(--layout-columns-gap) * 2);
+
+  @include mobile {
+    padding: 5vw;
+  }
+
+  .stepHeading {
+    font-weight: 750;
+    margin-bottom: 0.4vw;
+  }
+
+  .stepInstructions {
+    color: rgba(40, 40, 43, 0.7);
+    margin-bottom: 2vw;
+
+    @include mobile {
+      margin-bottom: 5vw;
+    }
+  }
+
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4vw;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 4vw;
+    }
+
+    .fullWidth {
+      grid-column: 1 / -1;
+    }
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4vw;
+
+      label {
+        font-weight: 650;
+        font-size: 0.9vw;
+        color: var(--black);
+
+        @include mobile {
+          font-size: 3.2vw;
+        }
+
+        .requiredStar {
+          color: #dc2626;
+        }
+      }
+
+      .inputField,
+      .selectField,
+      .textareaField {
+        width: 100%;
+        background: #fafafa;
+        border: 1px solid rgba(40, 40, 43, 0.2);
+        border-radius: 8px;
+        padding: 0.8vw 1vw;
+        font-family: var(--font-primary), sans-serif;
+        font-size: 0.95vw;
+        color: var(--black);
+        outline: none;
+        box-sizing: border-box;
+        transition: all 0.2s ease;
+
+        @include mobile {
+          font-size: 3.5vw;
+          padding: 2.5vw 3.5vw;
+        }
+
+        &:focus {
+          border-color: var(--black);
+          background: #ffffff;
+          box-shadow: 0 0 0 2px rgba(40, 40, 43, 0.1);
+        }
+      }
+
+      .textareaField {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .inputHelper {
+        font-size: 0.75vw;
+        color: rgba(40, 40, 43, 0.55);
+
+        @include mobile {
+          font-size: 2.6vw;
+        }
+      }
+    }
+  }
+
+  // Upload Box
+  .fileUploadBox {
+    border: 2px dashed rgba(40, 40, 43, 0.25);
+    border-radius: 12px;
+    padding: 2vw;
+    text-align: center;
+    background: #fafafa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--black);
+      background: #f4f7f4;
+    }
+
+    .uploadIcon {
+      font-size: 2vw;
+      margin-bottom: 0.6vw;
+      @include mobile {
+        font-size: 7vw;
+      }
+    }
+  }
+
+  // Pricing Calculation Box
+  .pricingBreakdownBox {
+    background: rgba(40, 40, 43, 0.04);
+    border: 1px solid rgba(40, 40, 43, 0.15);
+    border-radius: 12px;
+    padding: 1.4vw;
+    margin-top: 1.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vw;
+
+    @include mobile {
+      padding: 4vw;
+      gap: 2vw;
+    }
+
+    .pricingRow,
+    .breakdownRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88vw;
+      color: rgba(40, 40, 43, 0.85);
+
+      @include mobile {
+        font-size: 3vw;
+      }
+    }
+
+    .creatorShareRow,
+    .earningsRow {
+      border-top: 1px solid rgba(40, 40, 43, 0.15);
+      padding-top: 0.6vw;
+      margin-top: 0.2vw;
+      font-weight: 800;
+      color: #166534;
+      font-size: 1vw;
+
+      @include mobile {
+        font-size: 3.4vw;
+      }
+    }
+  }
+}
+
+// Wizard Footer Controls
+.wizardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    gap: 3vw;
+  }
+
+  .backButton {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid rgba(40, 40, 43, 0.3);
+    padding: 0.8vw 1.6vw;
+    border-radius: 9999px;
+    font-family: var(--font-primary), sans-serif;
+    font-size: 0.9vw;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    @include mobile {
+      width: 100%;
+      padding: 2.8vw;
+      font-size: 3.2vw;
+    }
+
+    &:hover {
+      border-color: var(--black);
+      background: rgba(40, 40, 43, 0.05);
+    }
+  }
+
+  .rightButtons {
+    display: flex;
+    gap: 0.8vw;
+
+    @include mobile {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .draftButton {
+      background: transparent;
+      color: var(--black);
+      border: 1px solid var(--black);
+      padding: 0.8vw 1.6vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.9vw;
+      font-weight: 600;
+      cursor: pointer;
+
+      @include mobile {
+        width: 100%;
+        padding: 2.8vw;
+        font-size: 3.2vw;
+      }
+    }
+
+    .nextButton,
+    .submitButton {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      padding: 0.8vw 2vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 0.95vw;
+      font-weight: 650;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      @include mobile {
+        width: 100%;
+        padding: 3vw;
+        font-size: 3.5vw;
+      }
+
+      &:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+    }
+  }
+}

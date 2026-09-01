@@ -1,0 +1,299 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1);
+  margin-bottom: calc(var(--layout-columns-gap) * 3);
+
+  .taglineBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.4vw 1.2vw;
+    border-radius: 9999px;
+    font-weight: 600;
+    width: max-content;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      padding: 1.5vw 4vw;
+    }
+  }
+
+  .heroTitle {
+    font-weight: 750;
+    line-height: 115%;
+    max-width: 80vw;
+  }
+
+  .heroSubtitle {
+    color: rgba(40, 40, 43, 0.75);
+    max-width: 55vw;
+    line-height: 145%;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+
+  .ctaRow {
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1vw;
+
+    @include mobile {
+      gap: 3vw;
+    }
+
+    .primaryButton {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      padding: 0.9vw 2vw;
+      border-radius: 9999px;
+      font-family: var(--font-primary), sans-serif;
+      font-size: 1vw;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+      @include mobile {
+        font-size: 3.5vw;
+        padding: 3vw 6vw;
+        width: 100%;
+        text-align: center;
+      }
+
+      &:hover {
+        background: transparent;
+        color: var(--black);
+        transform: translateY(-2px);
+      }
+    }
+
+    .secondaryLink {
+      color: var(--black);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+// 6-step Process Timeline
+.stepsSection {
+  margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+  .sectionTitle {
+    margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+  }
+
+  .stepsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--layout-columns-gap) * 1.2);
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: var(--layout-columns-gap);
+    }
+
+    .stepCard {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(40, 40, 43, 0.12);
+      border-radius: calc(var(--layout-columns-gap) * 0.75);
+      padding: 1.6vw;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8vw;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+
+      @include mobile {
+        padding: 4vw;
+        gap: 2vw;
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        border-color: var(--black);
+      }
+
+      .stepNumber {
+        font-family: var(--font-primary), sans-serif;
+        font-weight: 800;
+        font-size: 2.5vw;
+        color: var(--black);
+        opacity: 0.25;
+
+        @include mobile {
+          font-size: 8vw;
+        }
+      }
+
+      .stepTitle {
+        font-weight: 700;
+        color: var(--black);
+      }
+
+      .stepDesc {
+        color: rgba(40, 40, 43, 0.75);
+        line-height: 140%;
+      }
+    }
+  }
+}
+
+// Earnings Calculator
+.calculatorSection {
+  background: color-mix(in srgb, var(--fillColor) 30%, transparent);
+  border: 1.5px solid rgba(40, 40, 43, 0.15);
+  border-radius: calc(var(--layout-columns-gap) * 1);
+  padding: calc(var(--layout-columns-gap) * 2);
+  margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+  @include mobile {
+    padding: 5vw;
+  }
+
+  .calcGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: calc(var(--layout-columns-gap) * 2);
+    align-items: center;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: calc(var(--layout-columns-gap) * 1.5);
+    }
+
+    .calcControls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2vw;
+
+      @include mobile {
+        gap: 4vw;
+      }
+
+      .sliderContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6vw;
+
+        .sliderHeader {
+          display: flex;
+          justify-content: space-between;
+          font-weight: 650;
+        }
+
+        .sliderInput {
+          width: 100%;
+          accent-color: var(--black);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .calcDisplayCard {
+      background: #ffffff;
+      border: 1px solid var(--black);
+      border-radius: 14px;
+      padding: 1.8vw;
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+      box-shadow: 0 12px 30px rgba(40, 40, 43, 0.08);
+
+      @include mobile {
+        padding: 4.5vw;
+        gap: 3vw;
+      }
+
+      .calcRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.6vw;
+        border-bottom: 1px solid rgba(40, 40, 43, 0.08);
+
+        .calcVal {
+          font-weight: 700;
+        }
+      }
+
+      .highlightRow {
+        border-bottom: none;
+        background: color-mix(in srgb, var(--fillColor) 45%, transparent);
+        padding: 0.8vw;
+        border-radius: 8px;
+
+        .calcTotal {
+          font-weight: 800;
+          color: var(--black);
+        }
+      }
+    }
+  }
+}
+
+// Perks Grid
+.perksSection {
+  margin-bottom: calc(var(--layout-columns-gap) * 4);
+
+  .perksGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--layout-columns-gap);
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .perkCard {
+      background: var(--white);
+      border: 1px solid rgba(40, 40, 43, 0.12);
+      border-radius: 12px;
+      padding: 1.4vw;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6vw;
+
+      @include mobile {
+        padding: 4vw;
+      }
+
+      .perkIcon {
+        font-size: 1.8vw;
+        @include mobile {
+          font-size: 6vw;
+        }
+      }
+
+      .perkTitle {
+        font-weight: 700;
+      }
+
+      .perkDesc {
+        color: rgba(40, 40, 43, 0.7);
+        line-height: 140%;
+      }
+    }
+  }
+}
