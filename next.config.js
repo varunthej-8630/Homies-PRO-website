@@ -1,21 +1,27 @@
 /** @type {import('next').NextConfig} */
+let customSupabaseHost = 'qzbmctgbyinwyqxemzod.supabase.co';
+try {
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    customSupabaseHost = new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname;
+  }
+} catch {
+  // fallback if URL is empty during build
+}
+
 const nextConfig = {
   pageExtensions: ['page.jsx', 'page.js'],
-  experimental: {
-    // optimizeCss: true,
-    // nextScriptWorkers: true,
+  reactStrictMode: false,
+
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
   },
-  // uncomment the following snippet if using styled components
-  // compiler: {
-  //   styledComponents: true,
-  // },
-  reactStrictMode: false, // Recommended for the `pages` directory, default in `app`.
 
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'qzbmctgbyinwyqxemzod.supabase.co',
+        hostname: customSupabaseHost,
         pathname: '/storage/v1/object/public/**',
       },
       {
@@ -30,17 +36,9 @@ const nextConfig = {
     ],
   },
   webpack(config, { isServer }) {
-    // config.resolve.alias = {
-    //   ...config.resolve.alias,
-    //   '@': path.resolve(__dirname),
-    //   '@src/': path.resolve(__dirname, 'src'),
-    //   '@app/': path.resolve(__dirname, 'app'),
-    // };
     if (!isServer) {
-      // We're in the browser build, so we can safely exclude the sharp module
       config.externals.push('sharp');
     }
-    // shader support
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
       exclude: /node_modules/,
