@@ -11,7 +11,7 @@ export async function getServerSideProps() {
 
   if (!isUrlConfigured || !isKeyConfigured) {
     queryError = {
-      message: 'NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY is not defined in .env.local',
+      message: 'NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not configured.',
     };
   } else {
     try {
@@ -82,7 +82,7 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
             </div>
 
             <div style={{ background: '#202028', padding: '0.8rem 1rem', borderRadius: '8px' }}>
-              <div style={{ fontSize: '0.75rem', color: '#888' }}>NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</div>
+              <div style={{ fontSize: '0.75rem', color: '#888' }}>NEXT_PUBLIC_SUPABASE_ANON_KEY</div>
               <div style={{ fontWeight: 700, marginTop: '0.2rem', color: isKeyConfigured ? '#4ade80' : '#f87171' }}>{isKeyConfigured ? '✓ Configured' : '✕ Missing'}</div>
             </div>
 
