@@ -1,17 +1,42 @@
+import { useEffect, useState } from 'react';
 import CustomHead from '@src/components/dom/CustomHead';
-import { supabase } from '@src/lib/supabase/client';
+import { isSupabaseConfigured, supabase } from '@src/lib/supabase/client';
 import { createServerSupabaseClient } from '@src/lib/supabase/server';
 
 export async function getServerSideProps() {
-  const isUrlConfigured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL);
-  const isKeyConfigured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+  const rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
+
+  const cleanUrl = rawUrl.trim().replace(/^['"]|['"]$/g, '');
+  const cleanKey = rawKey.trim().replace(/^['"]|['"]$/g, '');
+
+  let parsedHostname = 'Not configured';
+  let isUrlValid = false;
+
+  try {
+    if (cleanUrl) {
+      const urlObj = new URL(cleanUrl);
+      parsedHostname = urlObj.hostname;
+      isUrlValid = Boolean(urlObj.protocol.startsWith('http'));
+    }
+  } catch {
+    isUrlValid = false;
+  }
+
+  const serverDiagnostics = {
+    urlPresent: Boolean(cleanUrl),
+    keyPresent: Boolean(cleanKey),
+    urlValid: isUrlValid,
+    hostname: parsedHostname,
+    keyLength: cleanKey.length,
+  };
 
   let initialCategories = [];
   let queryError = null;
 
-  if (!isUrlConfigured || !isKeyConfigured) {
+  if (!serverDiagnostics.urlPresent || !serverDiagnostics.keyPresent) {
     queryError = {
-      message: 'NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not configured.',
+      message: 'NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not configured in environment variables.',
     };
   } else {
     try {
@@ -32,16 +57,30 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      isUrlConfigured,
-      isKeyConfigured,
+      serverDiagnostics,
       initialCategories,
       queryError,
     },
   };
 }
 
-export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, initialCategories, queryError }) {
-  const isClientReady = Boolean(supabase);
+export default function SupabaseTestPage({ serverDiagnostics, initialCategories, queryError }) {
+  const [clientDiagnostics, setClientDiagnostics] = useState({
+    urlPresent: false,
+    keyPresent: false,
+    clientInitialized: false,
+  });
+
+  useEffect(() => {
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+    const rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '';
+
+    setClientDiagnostics({
+      urlPresent: Boolean(rawUrl.trim()),
+      keyPresent: Boolean(rawKey.trim()),
+      clientInitialized: Boolean(supabase && isSupabaseConfigured),
+    });
+  }, []);
 
   return (
     <>
@@ -58,13 +97,13 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
         }}
       >
         <div style={{ borderBottom: '1px solid #333', paddingBottom: '1.5rem', marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>Supabase Database Verification</h1>
+          <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>Supabase Production Verification</h1>
           <p style={{ color: '#aaa', fontSize: '0.95rem' }}>
-            Browser → Next.js → Supabase Client → Supabase API → PostgreSQL (<code>categories</code> table)
+            Diagnostic: Browser Client ➔ Server Client ➔ Supabase Auth/PostgreSQL (<code>categories</code> table)
           </p>
         </div>
 
-        {/* Environment Configuration Check */}
+        {/* Server & Client Diagnostic Status */}
         <div
           style={{
             background: '#16161c',
@@ -74,21 +113,26 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
             marginBottom: '1.5rem',
           }}
         >
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>1. Environment & Client Status</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>1. Environment & Client Verification</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
             <div style={{ background: '#202028', padding: '0.8rem 1rem', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: '#888' }}>NEXT_PUBLIC_SUPABASE_URL</div>
-              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: isUrlConfigured ? '#4ade80' : '#f87171' }}>{isUrlConfigured ? '✓ Configured' : '✕ Missing'}</div>
+              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: serverDiagnostics.urlPresent ? '#4ade80' : '#f87171' }}>{serverDiagnostics.urlPresent ? '✓ Configured' : '✕ Missing'}</div>
+              <div style={{ fontSize: '0.7rem', color: '#777', marginTop: '0.2rem' }}>Host: {serverDiagnostics.hostname}</div>
             </div>
 
             <div style={{ background: '#202028', padding: '0.8rem 1rem', borderRadius: '8px' }}>
               <div style={{ fontSize: '0.75rem', color: '#888' }}>NEXT_PUBLIC_SUPABASE_ANON_KEY</div>
-              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: isKeyConfigured ? '#4ade80' : '#f87171' }}>{isKeyConfigured ? '✓ Configured' : '✕ Missing'}</div>
+              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: serverDiagnostics.keyPresent ? '#4ade80' : '#f87171' }}>
+                {serverDiagnostics.keyPresent ? `✓ Configured (${serverDiagnostics.keyLength} chars)` : '✕ Missing'}
+              </div>
             </div>
 
             <div style={{ background: '#202028', padding: '0.8rem 1rem', borderRadius: '8px' }}>
-              <div style={{ fontSize: '0.75rem', color: '#888' }}>Supabase Client Instance</div>
-              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: isClientReady ? '#4ade80' : '#f87171' }}>{isClientReady ? '✓ Initialized' : '✕ Not Initialized'}</div>
+              <div style={{ fontSize: '0.75rem', color: '#888' }}>Client Browser Instance</div>
+              <div style={{ fontWeight: 700, marginTop: '0.2rem', color: clientDiagnostics.clientInitialized ? '#4ade80' : '#f87171' }}>
+                {clientDiagnostics.clientInitialized ? '✓ Initialized' : '✕ Not Initialized'}
+              </div>
             </div>
           </div>
         </div>
@@ -104,7 +148,7 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
           }}
         >
           <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>
-            2. PostgreSQL Query Status (<code>SELECT * FROM public.categories</code>)
+            2. PostgreSQL Database Query (<code>SELECT * FROM public.categories</code>)
           </h3>
 
           {queryError ? (
@@ -117,7 +161,7 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
                 color: '#fca5a5',
               }}
             >
-              <div style={{ fontWeight: 700, marginBottom: '0.4rem', color: '#ef4444' }}>✕ Database Query Status / Error:</div>
+              <div style={{ fontWeight: 700, marginBottom: '0.4rem', color: '#ef4444' }}>✕ Query Error:</div>
               <div style={{ fontFamily: 'monospace', fontSize: '0.9rem', whiteSpace: 'pre-wrap' }}>{JSON.stringify(queryError, null, 2)}</div>
             </div>
           ) : (
@@ -146,7 +190,7 @@ export default function SupabaseTestPage({ isUrlConfigured, isKeyConfigured, ini
               padding: '1.5rem',
             }}
           >
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>3. Returned Records from Database ({initialCategories.length})</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>3. Live Categories ({initialCategories.length})</h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               {initialCategories.map((cat) => (
