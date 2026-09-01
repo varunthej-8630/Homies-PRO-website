@@ -8,18 +8,18 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: calc(var(--layout-columns-gap) + 3.1vw) var(--layout-margin) calc(var(--layout-columns-gap) * 2);
+  padding: calc(var(--layout-columns-gap) + clamp(40px, 3.1vw, 56px)) var(--layout-margin) calc(var(--layout-columns-gap) * 2);
 
   box-shadow:
-    inset 0 calc(var(--layout-columns-gap) + 3.2vw) 0 0 var(--white),
+    inset 0 calc(var(--layout-columns-gap) + clamp(40px, 3.2vw, 58px)) 0 0 var(--white),
     inset calc(var(--layout-margin) * -1.05) 0 0 0 var(--white),
     inset 0 calc(var(--layout-columns-gap) * -1.0065 * 2) 0 0 var(--white),
     inset calc(var(--layout-margin) * 1.05) 0 0 0 var(--white);
 
   @include mobile {
-    padding: calc(var(--layout-columns-gap) + 6.5vw) var(--layout-margin) calc(var(--layout-columns-gap) * 2);
+    padding: calc(var(--layout-columns-gap) + clamp(38px, 6.5vw, 50px)) var(--layout-margin) calc(var(--layout-columns-gap) * 2);
     box-shadow:
-      inset 0 calc(var(--layout-columns-gap) + 6.6vw) 0 0 var(--white),
+      inset 0 calc(var(--layout-columns-gap) + clamp(38px, 6.6vw, 52px)) 0 0 var(--white),
       inset calc(var(--layout-margin) * -1.1001) 0 0 0 var(--white),
       inset 0 calc(var(--layout-columns-gap) * -1.04 * 2) 0 0 var(--white),
       inset calc(var(--layout-margin) * 1.1001) 0 0 0 var(--white);
