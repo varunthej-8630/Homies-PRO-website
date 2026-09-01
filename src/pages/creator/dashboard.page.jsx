@@ -303,9 +303,7 @@ function CreatorDashboardPage() {
                         {p.cover_image_url && (p.cover_image_url.startsWith('http') || p.cover_image_url.startsWith('/')) ? (
                           <Image src={p.cover_image_url} fill sizes="80px" style={{ objectFit: 'cover' }} alt={p.title} />
                         ) : (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>
-                            📦
-                          </div>
+                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>📦</div>
                         )}
                       </div>
                       <div className={styles.projectItemText}>

@@ -401,9 +401,7 @@ function AdminDashboardPage() {
                         {item.cover_image_url && (item.cover_image_url.startsWith('http') || item.cover_image_url.startsWith('/')) ? (
                           <Image src={item.cover_image_url} fill sizes="80px" style={{ objectFit: 'cover' }} alt={item.title} />
                         ) : (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>
-                            📦
-                          </div>
+                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>📦</div>
                         )}
                       </div>
                       <div className={styles.projectItemText}>
@@ -496,14 +494,8 @@ function AdminDashboardPage() {
                           <span className="p" style={{ fontWeight: 750 }}>
                             {enq.name}
                           </span>
-                          <span style={{ fontSize: '0.78rem', background: '#f3f4f6', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontWeight: 650 }}>
-                            Sector: {enq.sector}
-                          </span>
-                          {enq.reference_id && (
-                            <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>
-                              Ref: {enq.reference_id}
-                            </span>
-                          )}
+                          <span style={{ fontSize: '0.78rem', background: '#f3f4f6', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontWeight: 650 }}>Sector: {enq.sector}</span>
+                          {enq.reference_id && <span style={{ fontSize: '0.75rem', color: '#666', fontWeight: 600 }}>Ref: {enq.reference_id}</span>}
                         </div>
                         <div className="p-xs" style={{ color: '#555', marginTop: '0.3rem' }}>
                           Email: <strong>{enq.email}</strong> • Phone: <strong>{enq.phone || 'N/A'}</strong>

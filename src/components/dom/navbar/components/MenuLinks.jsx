@@ -211,11 +211,7 @@ function MenuLinks() {
                 </div>
               )}
 
-              <div
-                role="presentation"
-                className={styles.menuListItem}
-                style={{ marginTop: '0.4rem' }}
-              >
+              <div role="presentation" className={styles.menuListItem} style={{ marginTop: '0.4rem' }}>
                 <button
                   type="button"
                   style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0, textAlign: 'left' }}
@@ -236,10 +232,7 @@ function MenuLinks() {
             </>
           ) : (
             <>
-              <div
-                role="presentation"
-                className={styles.menuListItem}
-              >
+              <div role="presentation" className={styles.menuListItem}>
                 <button
                   type="button"
                   style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0, textAlign: 'left' }}

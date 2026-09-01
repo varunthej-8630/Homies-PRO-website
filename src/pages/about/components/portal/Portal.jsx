@@ -9,19 +9,15 @@ function Portal({ children, fadeIn, container }) {
   const [isVisible, setIsVisible] = useState(true);
   const fadeTimerRef = useRef(null);
 
-  const handleVisibility = () => {
+  useEffect(() => {
     if (fadeIn) {
       clearTimeout(fadeTimerRef.current);
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     } else {
       fadeTimerRef.current = setTimeout(() => {
         setIsVisible(false);
       }, FADE_OUT_DURATION);
     }
-  };
-
-  useEffect(() => {
-    handleVisibility();
 
     return () => clearTimeout(fadeTimerRef.current);
   }, [fadeIn]);

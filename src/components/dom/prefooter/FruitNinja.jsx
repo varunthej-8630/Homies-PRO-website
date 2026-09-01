@@ -31,9 +31,10 @@ function Lighting() {
 function useFruitSpawner(viewport, textures, slicedTextures, isMobile) {
   const [fruits, setFruits] = useState([]);
 
-  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+  useEffect(() => {
+    const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const intervalSec = isMobile ? 5 : 3;
 
-  const spawnFruitInterval = (interval = 1.5) => {
     const intervalTimer = setInterval(() => {
       const width = viewport.width / 2 - 1;
 
@@ -47,17 +48,12 @@ function useFruitSpawner(viewport, textures, slicedTextures, isMobile) {
 
         return [...prevFruits, ...newFruits];
       });
-    }, interval * 1000);
+    }, intervalSec * 1000);
 
-    return intervalTimer;
-  };
-
-  useEffect(() => {
-    const spawnInterval = spawnFruitInterval(isMobile ? 5 : 3);
     return () => {
-      clearInterval(spawnInterval);
+      clearInterval(intervalTimer);
     };
-  }, [isMobile]);
+  }, [viewport.width, textures, slicedTextures, isMobile]);
 
   return fruits;
 }

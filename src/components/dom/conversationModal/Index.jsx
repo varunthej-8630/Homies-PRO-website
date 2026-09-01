@@ -365,9 +365,7 @@ function ConversationModal() {
             <p className={clsx(styles.successText, 'p')}>
               Reference ID: <strong>{referenceId}</strong>
             </p>
-            <p className={clsx(styles.successSubtitle, 'p-xs')}>
-              Your enquiry has been logged into Homies Studio engineering records. You can now chat directly with our technical team on WhatsApp.
-            </p>
+            <p className={clsx(styles.successSubtitle, 'p-xs')}>Your enquiry has been logged into Homies Studio engineering records. You can now chat directly with our technical team on WhatsApp.</p>
 
             <div className={styles.successActions}>
               <a href={generatedWhatsAppUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappPrimaryBtn}>
@@ -385,12 +383,7 @@ function ConversationModal() {
               <span className={styles.sectionLabel}>What can we help you with? (Select Sector)</span>
               <div className={styles.sectorGrid}>
                 {SECTORS.map((s) => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => handleSectorSelect(s.id)}
-                    className={clsx(styles.sectorCard, sector === s.id && styles.sectorCardActive)}
-                  >
+                  <button key={s.id} type="button" onClick={() => handleSectorSelect(s.id)} className={clsx(styles.sectorCard, sector === s.id && styles.sectorCardActive)}>
                     <span className={styles.sectorCardTitle}>{s.label}</span>
                     <span className={styles.sectorCardBadge}>{s.badge}</span>
                   </button>

@@ -235,8 +235,8 @@ function SubmitProjectPage() {
                 Array.isArray(existingProject.requirements?.deliverables) && existingProject.requirements.deliverables.length > 0
                   ? existingProject.requirements.deliverables
                   : Array.isArray(existingProject.deliverables) && existingProject.deliverables.length > 0
-                  ? existingProject.deliverables
-                  : ['Source Code (.ZIP)', 'Step-by-Step Installation & Setup Guide'],
+                    ? existingProject.deliverables
+                    : ['Source Code (.ZIP)', 'Step-by-Step Installation & Setup Guide'],
               sourceCodeFile: srcFile,
               thesisFile: thFile,
               diagramFile: diagFile,
@@ -248,7 +248,8 @@ function SubmitProjectPage() {
               software: existingProject.requirements?.software || 'Python 3.10+, VS Code, Git',
               hardware: existingProject.requirements?.hardware || '8 GB RAM minimum, 2 GB disk space',
               dependencies: existingProject.requirements?.dependencies || 'Listed in requirements.txt',
-              installInstructions: existingProject.requirements?.installationSteps?.join('\n') || '1. Extract ZIP archive\n2. Install dependencies via pip or npm\n3. Set environment variables\n4. Run startup script',
+              installInstructions:
+                existingProject.requirements?.installationSteps?.join('\n') || '1. Extract ZIP archive\n2. Install dependencies via pip or npm\n3. Set environment variables\n4. Run startup script',
               agreeTerms: true,
             });
           }
@@ -850,9 +851,7 @@ function SubmitProjectPage() {
                             {img.url && (img.url.startsWith('http') || img.url.startsWith('/')) ? (
                               <Image src={img.url} fill sizes="130px" style={{ objectFit: 'cover' }} alt={img.name || 'Screenshot'} />
                             ) : (
-                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.2rem' }}>
-                                🖼️
-                              </div>
+                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.2rem' }}>🖼️</div>
                             )}
                             <button
                               type="button"
@@ -1284,7 +1283,10 @@ function SubmitProjectPage() {
                     <strong style={{ fontSize: '0.85rem' }}>Included Deliverables:</strong>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginTop: '0.3rem' }}>
                       {formData.deliverables?.map((d) => (
-                        <span key={d} style={{ background: '#f0fdf4', color: '#166534', border: '1px solid #86efac', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 600 }}>
+                        <span
+                          key={d}
+                          style={{ background: '#f0fdf4', color: '#166534', border: '1px solid #86efac', padding: '0.2rem 0.6rem', borderRadius: '9999px', fontSize: '0.75rem', fontWeight: 600 }}
+                        >
                           ✓ {d}
                         </span>
                       ))}

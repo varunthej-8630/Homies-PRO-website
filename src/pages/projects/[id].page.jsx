@@ -76,7 +76,7 @@ function Page({ id }) {
       });
       setFluidColor('#d7d7d4');
     };
-  }, [currentProject]);
+  }, [currentProject, setFluidColor]);
 
   const seo = useMemo(
     () => ({

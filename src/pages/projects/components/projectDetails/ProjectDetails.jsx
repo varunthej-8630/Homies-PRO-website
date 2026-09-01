@@ -77,23 +77,13 @@ function ProjectDetails({ project }) {
             )}
 
             {(project.liveDemoUrl || project.liveLink) && (
-              <a
-                href={project.liveDemoUrl || project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.demoLinkButton}
-              >
+              <a href={project.liveDemoUrl || project.liveLink} target="_blank" rel="noopener noreferrer" className={styles.demoLinkButton}>
                 <span>🌐 LIVE DEMO ↗</span>
               </a>
             )}
 
             {project.demoVideoUrl && (
-              <a
-                href={project.demoVideoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.demoLinkButton}
-              >
+              <a href={project.demoVideoUrl} target="_blank" rel="noopener noreferrer" className={styles.demoLinkButton}>
                 <span>▶ DEMO VIDEO ↗</span>
               </a>
             )}

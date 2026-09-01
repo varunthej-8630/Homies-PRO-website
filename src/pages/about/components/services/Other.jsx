@@ -129,73 +129,78 @@ const Other = memo(({ setPortals }) => {
     };
   }, [isMobile, isLoading, windowSize.width]);
 
-  const handleMouseEnter = useCallback((index, optionIndex, option) => {
-    if (typeof window !== 'undefined') {
+  const handleMouseEnter = useCallback(
+    (index, optionIndex, option) => {
+      if (typeof window !== 'undefined') {
+        gsap.to(optionTitlesRef.current[index][optionIndex], {
+          color: '#28282b',
+          duration: 0.35,
+          ease: 'none',
+        });
+
+        const element = document.querySelector('main');
+        element?.classList.toggle('color-change');
+        const mainContainer = document.getElementById('mainContainer');
+        const fourthSection = mainContainer?.querySelectorAll('section')[3];
+        const thirdSection = mainContainer?.querySelectorAll('section')[2];
+        thirdSection?.classList.toggle('fill-change');
+        fourthSection?.classList.toggle('fill-change');
+        setPortals((prevPortals) => {
+          const existingPortal = prevPortals.findIndex((portal) => portal.title === option.title);
+          if (existingPortal !== -1) {
+            const newPortals = [...prevPortals];
+            newPortals[existingPortal] = {
+              ...newPortals[existingPortal],
+              fadeIn: true,
+            };
+            return newPortals;
+          }
+
+          const newPortal = {
+            title: option.title,
+            desc: option.desc,
+            fadeIn: true,
+          };
+          return [...prevPortals, newPortal];
+        });
+      }
+    },
+    [setPortals],
+  );
+
+  const handleMouseLeave = useCallback(
+    (index, optionIndex, option) => {
       gsap.to(optionTitlesRef.current[index][optionIndex], {
-        color: '#28282b',
+        color: 'unset',
         duration: 0.35,
         ease: 'none',
       });
 
-      const element = document.querySelector('main');
-      element?.classList.toggle('color-change');
+      const element = document?.querySelector('main');
+
+      element.classList.remove('color-change');
+
       const mainContainer = document.getElementById('mainContainer');
-      const fourthSection = mainContainer?.querySelectorAll('section')[3];
-      const thirdSection = mainContainer?.querySelectorAll('section')[2];
-      thirdSection?.classList.toggle('fill-change');
-      fourthSection?.classList.toggle('fill-change');
+
+      const fourthSection = mainContainer.querySelectorAll('section')[3];
+      const thirdSection = mainContainer.querySelectorAll('section')[2];
+      thirdSection.classList.remove('fill-change');
+      fourthSection.classList.remove('fill-change');
       setPortals((prevPortals) => {
         const existingPortal = prevPortals.findIndex((portal) => portal.title === option.title);
-        if (existingPortal !== -1) {
-          const newPortals = [...prevPortals];
-          newPortals[existingPortal] = {
-            ...newPortals[existingPortal],
-            fadeIn: true,
-          };
-          return newPortals;
+        if (existingPortal === -1) {
+          return prevPortals;
         }
-
-        const newPortal = {
-          title: option.title,
-          desc: option.desc,
-          fadeIn: true,
+        const newPortals = [...prevPortals];
+        newPortals[existingPortal] = {
+          ...newPortals[existingPortal],
+          fadeIn: false,
         };
-        return [...prevPortals, newPortal];
+        return newPortals;
       });
-    }
-  }, []);
-
-  const handleMouseLeave = useCallback((index, optionIndex, option) => {
-    gsap.to(optionTitlesRef.current[index][optionIndex], {
-      color: 'unset',
-      duration: 0.35,
-      ease: 'none',
-    });
-
-    const element = document?.querySelector('main');
-
-    element.classList.remove('color-change');
-
-    const mainContainer = document.getElementById('mainContainer');
-
-    const fourthSection = mainContainer.querySelectorAll('section')[3];
-    const thirdSection = mainContainer.querySelectorAll('section')[2];
-    thirdSection.classList.remove('fill-change');
-    fourthSection.classList.remove('fill-change');
-    setPortals((prevPortals) => {
-      const existingPortal = prevPortals.findIndex((portal) => portal.title === option.title);
-      if (existingPortal === -1) {
-        return prevPortals;
-      }
-      const newPortals = [...prevPortals];
-      newPortals[existingPortal] = {
-        ...newPortals[existingPortal],
-        fadeIn: false,
-      };
-      return newPortals;
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    },
+    [setPortals],
+  );
 
   return (
     <section ref={rootRef} className={clsx(styles.root, 'layout-block-inner')}>

@@ -25,7 +25,9 @@
     background-color: var(--white);
     padding: calc(var(--layout-columns-gap) * 0.4) 0;
 
-    h6, span, div {
+    h6,
+    span,
+    div {
       font-size: 3.8vw;
       font-weight: 700;
       letter-spacing: 0.04em;

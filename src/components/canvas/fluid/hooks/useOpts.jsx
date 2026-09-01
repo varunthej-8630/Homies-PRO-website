@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 const useOpts = () => {
-  const isMobile = window.innerWidth < 812;
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 812 : false;
   const OPTS = useMemo(
     () => ({
       intensity: 5,
@@ -22,7 +22,7 @@ const useOpts = () => {
       dyeRes: isMobile ? 64 : 256,
       simRes: isMobile ? 16 : 50,
     }),
-    [],
+    [isMobile],
   );
   return OPTS;
 };
