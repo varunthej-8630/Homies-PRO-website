@@ -50,7 +50,9 @@ export default function LoginPage() {
       await signIn({ email, password });
       // Successful login will trigger user useEffect redirect above
     } catch (err) {
-      if (err.message?.includes('Invalid login credentials')) {
+      if (err.message?.includes('Supabase client is not configured') || err.message?.includes('not configured')) {
+        setErrorMsg('Supabase client is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel Project Settings → Environment Variables and redeploy.');
+      } else if (err.message?.includes('Invalid login credentials')) {
         setErrorMsg('Invalid email or password. Please check your credentials and try again.');
       } else if (err.message?.includes('Email not confirmed')) {
         setErrorMsg('Please check your inbox and verify your email address before signing in.');

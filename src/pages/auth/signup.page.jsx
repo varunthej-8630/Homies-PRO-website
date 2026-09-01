@@ -61,7 +61,9 @@ export default function SignupPage() {
 
       setSuccessData(data);
     } catch (err) {
-      if (err.message?.includes('User already registered')) {
+      if (err.message?.includes('Supabase client is not configured') || err.message?.includes('not configured')) {
+        setErrorMsg('Supabase client is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel Project Settings → Environment Variables and redeploy.');
+      } else if (err.message?.includes('User already registered')) {
         setErrorMsg('An account with this email already exists. Please sign in instead.');
       } else if (err.message?.includes('email rate limit exceeded')) {
         setErrorMsg(
