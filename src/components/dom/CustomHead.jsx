@@ -53,8 +53,13 @@ function CustomHead({ title = '', description, keywords }) {
         <link rel="canonical" href={SITE_URL} />
         <title>{title || 'HOMIES STUDIO — Technical Project Marketplace & Creator Ecosystem'}</title>
 
-        {/* OpenGraph Meta Tags */}
+        {/* OpenGraph / WhatsApp Meta Tags */}
         <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:secure_url" content={OG_IMAGE} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="HOMIES STUDIO — Technical Project Marketplace" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={metaDesc} />
@@ -73,7 +78,6 @@ function CustomHead({ title = '', description, keywords }) {
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333" />
         <meta name="msapplication-TileColor" content="#f0f4f1" />
         <meta name="theme-color" content="#f0f4f1" />
 
