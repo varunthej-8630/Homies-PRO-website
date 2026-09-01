@@ -80,18 +80,10 @@ function Page({ id }) {
 
   const seo = useMemo(
     () => ({
-      title: `HOMIES STUDIO - ${currentProject.title} Project`,
-      description: `Check out our work on the ${currentProject.title} project, collaborating with ${currentProject.company}, where we enhanced frontend development with responsive design and optimized user interactions.`,
-      keywords: [
-        `${currentProject.title} project`,
-        `${currentProject.title} development`,
-        `${currentProject.company} collaboration`,
-        `HOMIES STUDIO ${currentProject.title}`,
-        `Homies Studio ${currentProject.title}`,
-        `Frontend development ${currentProject.title}`,
-        `Responsive design ${currentProject.title}`,
-        `User interactions ${currentProject.title}`,
-      ],
+      title: `${currentProject.title} — Homies Studio Project`,
+      description: currentProject.description || `Explore technical engineering details, interactive models, and deliverables for ${currentProject.title}, crafted by Homies Studio.`,
+      keywords: [`${currentProject.title}`, 'HOMIES STUDIO Project', 'Engineering Deliverable', 'Full Stack Architecture', 'Homies Studio'],
+      canonical: `/projects/${currentProject.id || currentProject.slug}`,
     }),
     [currentProject],
   );

@@ -589,7 +589,7 @@ function SubmitProjectPage() {
 
   return (
     <RouteGuard allowedRoles={['CREATOR', 'ADMIN']}>
-      <CustomHead title="Submit Project Deliverables | HOMIES STUDIO" />
+      <CustomHead title="Submit Project" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         <div className={styles.header}>
           <h1 className={clsx(styles.pageTitle, 'h2')}>Project Submission Wizard</h1>

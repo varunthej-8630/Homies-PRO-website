@@ -11,9 +11,10 @@ import { useRouter } from 'next/router';
 import styles from './become-a-creator.module.scss';
 
 const seo = {
-  title: 'Become a Creator — Turn Your Projects Into Opportunities | HOMIES STUDIO',
-  description: 'Monetize your code, AI models, VLSI designs, and hardware projects. Join Homies Studio Creator Ecosystem and earn with transparent 80% payouts.',
-  keywords: ['Become a Creator', 'Sell Code Projects', 'Monetize Engineering Projects', 'Sell ML Models', 'Creator Economy', 'Developer Marketplace', 'Homies Studio Creators'],
+  title: 'Join as a Creator — Build & Launch with Homies Studio',
+  description: 'Collaborate with Homies Studio to build, showcase, and monetize high-impact digital products, software tools, and engineering projects.',
+  keywords: ['Become a Creator', 'Homies Studio Creators', 'Digital Product Studio', 'Build and Launch', 'Engineering Collaboration', 'Developer Ecosystem'],
+  canonical: '/become-a-creator',
 };
 
 function getBottomCtaText(role) {

@@ -81,7 +81,7 @@ export default function SignupPage() {
 
   return (
     <>
-      <CustomHead title="Create an Account — Homies Studio Marketplace" />
+      <CustomHead title="Create Account" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         <div className={styles.authCard}>
           <div className={styles.authHeader}>

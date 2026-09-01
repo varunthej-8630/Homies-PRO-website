@@ -17,21 +17,10 @@ import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
 const seo = {
-  title: 'HOMIES STUDIO - Project Marketplace & Discovery',
-  description: 'Explore verified, ready-to-build digital projects, machine learning models, full-stack web applications, IoT systems, and VLSI silicon designs crafted by expert creators.',
-  keywords: [
-    'HOMIES STUDIO Marketplace',
-    'Buy Code Projects',
-    'AI ML Ready Projects',
-    'Full Stack Web Projects',
-    'IoT Hardware Prototypes',
-    'VLSI Verilog Projects',
-    'Python Projects with Source Code',
-    'Final Year Projects',
-    'Engineering Solutions',
-    'Creator Economy',
-    'HOMIES STUDIO',
-  ],
+  title: 'Projects & Solutions — Homies Studio',
+  description: 'Explore featured digital products, full-stack applications, and engineering projects crafted by Homies Studio creators and engineers.',
+  keywords: ['HOMIES STUDIO Projects', 'Engineering Projects', 'Digital Deliverables', 'AI ML Engineering', 'Full Stack Applications', 'Hardware IoT Prototypes', 'Homies Studio Solutions'],
+  canonical: '/projects',
 };
 
 function Page() {

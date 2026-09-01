@@ -1,8 +1,8 @@
-# 🌐 Homies Studio — Project Marketplace & Creator Ecosystem
+# 🌐 Homies Studio — Build, Launch & Grow Digital Products
 
-> **"Build Something. Sell Something. Find Something. Where Projects Become Possibilities."**
+> **"Build Something. Launch Something. Grow Something. Where Ideas Become Possibilities."**
 
-**Homies Studio** is a digital project marketplace and technology ecosystem designed to connect ideas, creators, institutions, students, developers, and businesses through ready-to-build projects, technical solutions, custom development, and digital services.
+**Homies Studio** is a premier digital product and engineering studio empowering students, creators, startups, and businesses to build, launch, and scale exceptional digital products and engineering solutions.
 
 The platform provides a unified hub where technical creators can package, monetize, and distribute production-grade software and engineering projects, while educational institutions, startups, individual students, and enterprises can discover verified solutions or submit custom requirements via an interactive multi-sector consultation pipeline.
 

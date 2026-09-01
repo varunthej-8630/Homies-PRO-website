@@ -30,7 +30,7 @@ function BuyerDashboardPage() {
 
   return (
     <RouteGuard allowedRoles={['BUYER', 'CREATOR', 'ADMIN']}>
-      <CustomHead title="Buyer Portal & Downloads | HOMIES STUDIO" />
+      <CustomHead title="Buyer Portal & Downloads | HOMIES STUDIO" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         <div className={styles.header}>
           <h1 className={clsx(styles.title, 'h2')}>Buyer Portal</h1>

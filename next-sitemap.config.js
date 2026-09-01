@@ -8,11 +8,14 @@ module.exports = {
   exclude: [
     '/admin',
     '/admin/*',
-    '/creator/dashboard',
-    '/creator/submit',
-    '/buyer/dashboard',
+    '/creator',
+    '/creator/*',
+    '/buyer',
+    '/buyer/*',
     '/checkout',
     '/checkout/*',
+    '/auth',
+    '/auth/*',
     '/api/*',
     '/supabase-test',
     '/404',
@@ -25,11 +28,14 @@ module.exports = {
         disallow: [
           '/admin',
           '/admin/*',
-          '/creator/dashboard',
-          '/creator/submit',
-          '/buyer/dashboard',
+          '/creator',
+          '/creator/*',
+          '/buyer',
+          '/buyer/*',
           '/checkout',
           '/checkout/*',
+          '/auth',
+          '/auth/*',
           '/api/*',
           '/supabase-test',
         ],
@@ -62,18 +68,6 @@ module.exports = {
         priority: 0.85,
         lastmod: new Date().toISOString(),
       },
-      {
-        loc: '/auth/signup',
-        changefreq: 'monthly',
-        priority: 0.6,
-        lastmod: new Date().toISOString(),
-      },
-      {
-        loc: '/auth/login',
-        changefreq: 'monthly',
-        priority: 0.6,
-        lastmod: new Date().toISOString(),
-      },
     ];
 
     return customEntries.map((entry) => ({
@@ -82,8 +76,7 @@ module.exports = {
     }));
   },
   transform: async (config, path) => {
-    // If it's already one of the custom defined paths, let it format consistently
-    let priority = 0.7;
+    let priority = 0.8;
     let changefreq = 'weekly';
 
     if (path === '/') {
@@ -101,9 +94,6 @@ module.exports = {
     } else if (path === '/become-a-creator') {
       priority = 0.85;
       changefreq = 'weekly';
-    } else if (path.startsWith('/auth/')) {
-      priority = 0.6;
-      changefreq = 'monthly';
     }
 
     return {

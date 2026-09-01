@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 import defaultProjects from '@src/constants/projects';
+import RouteGuard from '@src/components/auth/RouteGuard';
 import { useRouter } from 'next/router';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
@@ -62,8 +63,8 @@ function CheckoutPage() {
   if (!project) return null;
 
   return (
-    <>
-      <CustomHead title={`Checkout — ${project.title} | HOMIES STUDIO`} />
+    <RouteGuard allowedRoles={['BUYER', 'CREATOR', 'ADMIN']}>
+      <CustomHead title={`Checkout — ${project.title}`} noindex />
       <div className={clsx(styles.root, 'layout-block-inner')} style={{ minHeight: '100svh' }}>
         <div className={styles.header}>
           <h1 className={clsx(styles.pageTitle, 'h2')}>Secure Checkout</h1>
@@ -314,7 +315,7 @@ function CheckoutPage() {
           </div>
         )}
       </div>
-    </>
+    </RouteGuard>
   );
 }
 

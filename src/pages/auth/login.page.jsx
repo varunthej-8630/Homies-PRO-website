@@ -66,7 +66,7 @@ export default function LoginPage() {
 
   return (
     <>
-      <CustomHead title="Sign In — Homies Studio Marketplace" />
+      <CustomHead title="Sign In" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         <div className={styles.authCard}>
           <div className={styles.authHeader}>

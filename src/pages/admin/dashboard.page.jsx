@@ -215,7 +215,7 @@ function AdminDashboardPage() {
 
   return (
     <RouteGuard allowedRoles={['ADMIN']}>
-      <CustomHead title="Admin Moderation & Platform Console | HOMIES STUDIO" />
+      <CustomHead title="Admin Console" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         <div className={styles.dashboardHeader}>
           <div className={styles.headerLeft}>

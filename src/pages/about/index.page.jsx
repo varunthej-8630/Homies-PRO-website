@@ -6,21 +6,21 @@ import Process from '@src/pages/about/components/process/Process';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'About Homies Studio — Technical Ecosystem & Creator Platform',
-  description: 'Learn about Homies Studio: bridging the gap between student innovation, creator monetization, academic institutions, and enterprise engineering solutions.',
+  title: 'About Homies Studio — Digital Product & Engineering Studio',
+  description: 'Discover how Homies Studio empowers creators, students, and businesses by delivering end-to-end digital product development, engineering deliverables, and technical innovation.',
   keywords: [
-    'HOMIES STUDIO',
-    'About Homies Studio',
-    'Technical Project Marketplace',
+    'About HOMIES STUDIO',
+    'Homies Studio Agency',
+    'Digital Product Studio',
+    'Engineering Services',
     'Student Innovation',
-    'Engineering Ecosystem',
-    'Creator Monetization',
-    'Academic Projects',
-    'College Solutions',
-    'EdTech Partnerships',
-    'Turn Ideas into Opportunities',
+    'Technical Solutions',
+    'Next.js Development',
+    'Full Stack Engineering',
   ],
+  canonical: '/about',
 };
+
 function Page() {
   return (
     <>

@@ -203,7 +203,7 @@ function CreatorDashboardPage() {
 
   return (
     <RouteGuard allowedRoles={['CREATOR', 'ADMIN']}>
-      <CustomHead title="Creator Studio & Earnings | HOMIES STUDIO" />
+      <CustomHead title="Creator Studio" noindex />
       <div className={clsx(styles.root, 'layout-block-inner')}>
         {/* Dashboard Top Header */}
         <div className={styles.dashboardHeader}>

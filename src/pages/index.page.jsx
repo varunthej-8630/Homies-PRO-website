@@ -7,27 +7,24 @@ import Clients from '@src/pages/components/clients/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'HOMIES STUDIO — Where Projects Become Possibilities',
-  description: 'Digital project marketplace and creator ecosystem. Discover ready-to-build projects, showcase your technical work, sell your creations, and turn ideas into real opportunities.',
+  title: 'HOMIES STUDIO — Build, Launch & Grow Digital Products',
+  description:
+    'Homies Studio is a premier digital product and engineering studio empowering students, creators, startups, and businesses to build, launch, and scale exceptional digital products and engineering solutions.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',
-    'Project Marketplace',
+    'Digital Product Studio',
+    'Engineering Projects',
     'Creator Ecosystem',
-    'Buy Code Projects',
-    'Sell Digital Projects',
-    'AI ML Projects',
     'Full Stack Web Applications',
-    'IoT Hardware Prototypes',
+    'AI ML Engineering',
+    'IoT Prototypes',
     'Embedded Systems',
-    'VLSI Projects',
-    'College Projects',
-    'IEEE Projects',
-    'Engineering Solutions',
+    'Startup Development',
     'Next.js',
     'React',
-    'Python',
   ],
+  canonical: '/',
 };
 
 function Page() {

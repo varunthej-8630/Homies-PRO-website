@@ -84,7 +84,7 @@ export default function SupabaseTestPage({ serverDiagnostics, initialCategories,
 
   return (
     <>
-      <CustomHead title="Supabase Database Connection Test | HOMIES STUDIO" />
+      <CustomHead title="Supabase Database Connection Test" noindex />
       <div
         style={{
           minHeight: '100vh',
