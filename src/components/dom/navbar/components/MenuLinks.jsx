@@ -85,8 +85,11 @@ function MenuLinks() {
       tl.play();
     } else {
       tl.reverse();
+      if (lenis) {
+        lenis.start();
+      }
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, lenis]);
 
   const goToBottom = () => {
     setIsMenuOpen(false);
