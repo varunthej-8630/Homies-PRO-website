@@ -58,8 +58,8 @@ function MyApp({ Component, pageProps, router }) {
   useIsomorphicLayoutEffect(() => {
     const lenisInstance = new Lenis({
       smoothWheel: true,
-      smoothTouch: false,
-      syncTouch: false,
+      syncTouch: true,
+      touchMultiplier: 1.5,
       wrapper: mainRef.current || undefined,
       content: mainContainerRef.current || undefined,
     });
