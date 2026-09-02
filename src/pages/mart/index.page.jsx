@@ -19,8 +19,7 @@ import CategoryIcon from '@src/components/ui/CategoryIcon';
 
 const seo = {
   title: 'Homies Mart — Verified Digital Projects & Engineering Builds',
-  description:
-    'Explore the Homies Mart marketplace for verified digital products, machine learning models, embedded hardware blueprints, and full-stack software crafted by engineers.',
+  description: 'Explore the Homies Mart marketplace for verified digital products, machine learning models, embedded hardware blueprints, and full-stack software crafted by engineers.',
   keywords: [
     'Homies Mart',
     'HOMIES STUDIO Mart',
@@ -40,9 +39,7 @@ export default function HomiesMartPage() {
   const windowSize = useWindowSize();
   const rootRef = useRef();
   const projectRefs = useRef([]);
-  const [lenis, isLoading, creatorProjects] = useStore(
-    useShallow((state) => [state.lenis, state.isLoading, state.creatorProjects]),
-  );
+  const [lenis, isLoading, creatorProjects] = useStore(useShallow((state) => [state.lenis, state.isLoading, state.creatorProjects]));
 
   const allProjects = creatorProjects && creatorProjects.length > 0 ? creatorProjects : defaultProjects;
 
@@ -58,11 +55,7 @@ export default function HomiesMartPage() {
       if (cat.slug === 'all') return;
       counts[cat.slug] = allProjects.filter(
         (p) =>
-          p.categorySlug === cat.slug ||
-          p.category?.toLowerCase() === cat.name.toLowerCase() ||
-          p.category?.toLowerCase().includes(cat.slug) ||
-          p.category_id === cat.id ||
-          p.category_id === cat.slug,
+          p.categorySlug === cat.slug || p.category?.toLowerCase() === cat.name.toLowerCase() || p.category?.toLowerCase().includes(cat.slug) || p.category_id === cat.id || p.category_id === cat.slug,
       ).length;
     });
     return counts;
@@ -90,11 +83,7 @@ export default function HomiesMartPage() {
       const q = searchQuery.toLowerCase().trim();
       result = result.filter((p) => {
         const titleMatch = p.title?.toLowerCase().includes(q);
-        const descMatch = Array.isArray(p.desc)
-          ? p.desc.some((d) => d.toLowerCase().includes(q))
-          : typeof p.desc === 'string'
-            ? p.desc.toLowerCase().includes(q)
-            : false;
+        const descMatch = Array.isArray(p.desc) ? p.desc.some((d) => d.toLowerCase().includes(q)) : typeof p.desc === 'string' ? p.desc.toLowerCase().includes(q) : false;
         const taglineMatch = p.tagline?.toLowerCase().includes(q);
         const categoryMatch = p.category?.toLowerCase().includes(q);
         const techMatch = p.techStack?.some((t) => t.toLowerCase().includes(q));
@@ -202,12 +191,7 @@ export default function HomiesMartPage() {
             </div>
 
             <div className={styles.sortAndToggle}>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className={styles.sortSelect}
-                aria-label="Sort projects"
-              >
+              <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} className={styles.sortSelect} aria-label="Sort projects">
                 <option value="trending">Trending & Popular</option>
                 <option value="rating">Highest Rated</option>
                 <option value="sales">Most Purchased</option>
@@ -215,12 +199,7 @@ export default function HomiesMartPage() {
                 <option value="price-high">Price: High to Low</option>
               </select>
 
-              <button
-                type="button"
-                onClick={() => setViewMode(viewMode === 'grid' ? 'stack' : 'grid')}
-                className={styles.viewToggleButton}
-                aria-label="Toggle View Mode"
-              >
+              <button type="button" onClick={() => setViewMode(viewMode === 'grid' ? 'stack' : 'grid')} className={styles.viewToggleButton} aria-label="Toggle View Mode">
                 {viewMode === 'grid' ? '☰ Cinematic View' : '⊞ Grid View'}
               </button>
             </div>
@@ -287,9 +266,7 @@ export default function HomiesMartPage() {
                   </div>
 
                   <h4 className={clsx(styles.gridCardTitle, 'h5')}>{project.title}</h4>
-                  <p className={clsx(styles.gridCardTagline, 'p-xs')}>
-                    {project.tagline || (Array.isArray(project.desc) ? project.desc[0] : project.desc)}
-                  </p>
+                  <p className={clsx(styles.gridCardTagline, 'p-xs')}>{project.tagline || (Array.isArray(project.desc) ? project.desc[0] : project.desc)}</p>
 
                   {project.techStack && (
                     <div className={styles.gridTechChips}>
@@ -316,14 +293,7 @@ export default function HomiesMartPage() {
           /* Cinematic / Stack View with Image Placeholders */
           <div className={styles.innerContainer}>
             {filteredProjects.map((project, index) => (
-              <Link
-                aria-label={`Go ${project.title}`}
-                id={project.id}
-                key={project.id}
-                scroll={false}
-                href={project.link || `/projects/${project.id}`}
-                className={clsx(styles.card)}
-              >
+              <Link aria-label={`Go ${project.title}`} id={project.id} key={project.id} scroll={false} href={project.link || `/projects/${project.id}`} className={clsx(styles.card)}>
                 <div
                   style={
                     !isMobile

@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   // If already logged in, redirect to intended page or role dashboard
   useEffect(() => {
-    if (user) {
+    if (user && router.isReady) {
       const targetRedirect = router.query.redirect;
       if (targetRedirect && typeof targetRedirect === 'string' && targetRedirect.startsWith('/')) {
         router.push(targetRedirect);
@@ -34,7 +34,8 @@ export default function LoginPage() {
         router.push('/buyer/dashboard');
       }
     }
-  }, [user, role, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, role, router.isReady]);
 
   const handleLogin = async (e) => {
     e.preventDefault();

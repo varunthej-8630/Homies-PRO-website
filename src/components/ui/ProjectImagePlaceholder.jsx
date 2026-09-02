@@ -3,15 +3,7 @@ import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
-export default function ProjectImagePlaceholder({
-  aspectRatio = '16/9',
-  label = 'Project Image',
-  sublabel = 'Add Image',
-  className = '',
-  style = {},
-  iconSize = 28,
-  compact = false,
-}) {
+export default function ProjectImagePlaceholder({ aspectRatio = '16/9', label = 'Project Image', sublabel = 'Add Image', className = '', style = {}, iconSize = 28, compact = false }) {
   return (
     <div
       className={clsx('project-image-placeholder', className)}
@@ -46,17 +38,7 @@ export default function ProjectImagePlaceholder({
           textAlign: 'center',
         }}
       >
-        <svg
-          width={iconSize}
-          height={iconSize}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ opacity: 0.75 }}
-        >
+        <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.75 }}>
           <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
           <circle cx="8.5" cy="8.5" r="1.5" />
           <path d="m21 15-5-5L5 21" />

@@ -10,28 +10,33 @@ function Scrollbar() {
   const progressBar = useRef();
   const scrollbarRef = useRef();
   const [isLoading, isMenuOpen, introOut] = useStore(useShallow((state) => [state.isLoading, state.isMenuOpen, state.introOut]));
-  let fadeTimeout;
+  const fadeTimeoutRef = useRef(null);
 
   const updateScrollbar = (scroll, limit) => {
-    const progress = scroll / limit;
+    if (!progressBar.current || !limit) return;
+    const progress = Math.max(0, Math.min(1, scroll / limit));
     const maxTopValueInVh = 80 - 6;
-    const newTopValueInVh = Math.min(maxTopValueInVh, progress * maxTopValueInVh);
+    const newTopValueInVh = progress * maxTopValueInVh;
 
     gsap.to(progressBar.current, {
-      top: `${newTopValueInVh}svh`,
-      duration: 0.3,
+      y: `${newTopValueInVh}svh`,
+      duration: 0.15,
+      ease: 'none',
+      overwrite: 'auto',
     });
   };
 
   useScroll(({ scroll, limit }) => {
-    if (!isLoading && !isMenuOpen) {
-      gsap.to(scrollbarRef.current, { opacity: 1, duration: 0.3 });
+    if (!isLoading && !isMenuOpen && scrollbarRef.current) {
+      gsap.to(scrollbarRef.current, { opacity: 1, duration: 0.2, overwrite: 'auto' });
       updateScrollbar(scroll, limit);
 
-      clearTimeout(fadeTimeout);
-      fadeTimeout = setTimeout(() => {
-        if (scrollbarRef?.current) {
-          gsap.to(scrollbarRef.current, { opacity: 0, duration: 0.5 });
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current);
+      }
+      fadeTimeoutRef.current = setTimeout(() => {
+        if (scrollbarRef.current) {
+          gsap.to(scrollbarRef.current, { opacity: 0, duration: 0.5, overwrite: 'auto' });
         }
       }, 1500);
     }
@@ -39,9 +44,11 @@ function Scrollbar() {
 
   useEffect(
     () => () => {
-      clearTimeout(fadeTimeout);
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current);
+      }
     },
-    [fadeTimeout],
+    [],
   );
 
   if (isLoading && introOut) {

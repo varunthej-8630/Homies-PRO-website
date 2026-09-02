@@ -12,12 +12,20 @@ import useScroll from '@src/hooks/useScroll';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
+// Module-level pre-allocated scratch objects
+const _impulse = { x: 0, y: 0, z: 0 };
+const _ang = new THREE.Vector3();
+const _rot = new THREE.Vector3();
+const _newAngvel = { x: 0, y: 0, z: 0 };
+
 export default function Badge({ name }) {
   const el = useRef();
 
   const intersection = useIntersection(el, {
-    threshold: 0.7,
+    threshold: 0.1,
   });
+
+  const isVisible = intersection?.isIntersecting ?? false;
 
   return (
     <View
@@ -35,8 +43,8 @@ export default function Badge({ name }) {
     >
       <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={25} />
       <ambientLight intensity={Math.PI} />
-      <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-        <Band name={name} intersected={intersection?.isIntersecting} />
+      <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60} paused={!isVisible}>
+        <Band name={name} intersected={isVisible} />
       </Physics>
       <ambientLight intensity={1.3} />
 
@@ -67,8 +75,6 @@ function Band({ maxSpeed = 50, minSpeed = 10, name, intersected }) {
   const j2 = useRef();
   const j3 = useRef();
   const card = useRef();
-  const ang = new THREE.Vector3();
-  const rot = new THREE.Vector3();
   const segmentProps = {
     type: 'dynamic',
     canSleep: true,
@@ -102,25 +108,39 @@ function Band({ maxSpeed = 50, minSpeed = 10, name, intersected }) {
   });
 
   useFrame((state, delta) => {
-    if (isScrolling.current && intersected) {
+    if (!intersected) return;
+
+    if (isScrolling.current && card.current) {
       const moveDistance = Math.abs(speed.current) * 0.005;
       const directionVector = scrollDirection.current === 1 ? 1 : -1;
-      card.current.applyImpulse({ x: directionVector * moveDistance, y: 0, z: 0 }, true);
+      _impulse.x = directionVector * moveDistance;
+      _impulse.y = 0;
+      _impulse.z = 0;
+      card.current.applyImpulse(_impulse, true);
     }
-    if (fixed.current) {
-      [j1, j2].forEach((ref) => {
-        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation());
-        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())));
-        ref.current.lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)));
-      });
+    if (fixed.current && j1.current && j2.current && j3.current && card.current && band.current) {
+      const refs = [j1, j2];
+      for (let i = 0; i < 2; i++) {
+        const ref = refs[i];
+        const translation = ref.current.translation();
+        if (!ref.current.lerped) {
+          ref.current.lerped = new THREE.Vector3(translation.x, translation.y, translation.z);
+        }
+        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(translation)));
+        ref.current.lerped.lerp(translation, delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)));
+      }
+
       curve.points[0].copy(j3.current.translation());
       curve.points[1].copy(j2.current.lerped);
       curve.points[2].copy(j1.current.lerped);
       curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      band.current.geometry.setPoints(curve.getPoints(24));
+      _ang.copy(card.current.angvel());
+      _rot.copy(card.current.rotation());
+      _newAngvel.x = _ang.x;
+      _newAngvel.y = _ang.y - _rot.y * 0.25;
+      _newAngvel.z = _ang.z;
+      card.current.setAngvel(_newAngvel);
     }
   });
 

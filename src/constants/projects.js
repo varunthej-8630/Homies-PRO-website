@@ -769,14 +769,8 @@ const projects = [
       'Full-featured cross-platform mobile application codebase built using React Native and Flutter with real-time cloud synchronization.',
       'Includes user onboarding, biometric authentication, push notifications, offline caching with WatermelonDB / Hive, and in-app purchases.',
     ],
-    whyHomies: [
-      'Production-tested architecture ready for instant App Store and Google Play deployment.',
-      'Comprehensive clean architecture separating UI, domain logic, and API networking layers.',
-    ],
-    whatMakesUsSpecial: [
-      '100% full source code ownership with comprehensive CI/CD Fastlane build scripts.',
-      'Modular screen templates and atomic design design token system.',
-    ],
+    whyHomies: ['Production-tested architecture ready for instant App Store and Google Play deployment.', 'Comprehensive clean architecture separating UI, domain logic, and API networking layers.'],
+    whatMakesUsSpecial: ['100% full source code ownership with comprehensive CI/CD Fastlane build scripts.', 'Modular screen templates and atomic design design token system.'],
     deliverables: [
       'React Native & Flutter Source Code with Full TypeScript & Dart Types',
       'Configured Firebase Auth, Firestore & Cloud Storage Handlers',
@@ -792,11 +786,7 @@ const projects = [
       software: 'Node.js 18+, Flutter SDK 3.x / React Native CLI, VS Code / Android Studio / Xcode',
       hardware: '8 GB RAM minimum, 10 GB disk space',
       dependencies: 'React Native 0.73+, Flutter 3.19+, Expo, Tailwind/NativeWind, Supabase Client',
-      installationSteps: [
-        'Extract source archive and run npm install or flutter pub get',
-        'Configure your Firebase / Supabase credentials in .env',
-        'Run npx react-native run-android or flutter run',
-      ],
+      installationSteps: ['Extract source archive and run npm install or flutter pub get', 'Configure your Firebase / Supabase credentials in .env', 'Run npx react-native run-android or flutter run'],
     },
     reviews: [
       {
@@ -864,14 +854,8 @@ const projects = [
       'Comprehensive cloud threat detection and zero-trust security monitoring engine with automated behavioral analysis.',
       'Includes real-time packet parsing, anomaly detection ML models, Wazuh / Snort SIEM integration, and Grafana security dashboard.',
     ],
-    whyHomies: [
-      'Battle-tested detection rules mapped directly to MITRE ATT&CK frameworks.',
-      'Zero external proprietary dependencies — 100% open-source security stack with complete source code.',
-    ],
-    whatMakesUsSpecial: [
-      'Automated Terraform blueprints for one-command AWS / GCP / Azure deployment.',
-      'Complete IEEE paper formatting and testbed simulation logs for academic defense.',
-    ],
+    whyHomies: ['Battle-tested detection rules mapped directly to MITRE ATT&CK frameworks.', 'Zero external proprietary dependencies — 100% open-source security stack with complete source code.'],
+    whatMakesUsSpecial: ['Automated Terraform blueprints for one-command AWS / GCP / Azure deployment.', 'Complete IEEE paper formatting and testbed simulation logs for academic defense.'],
     deliverables: [
       'Intrusion Detection Core Engine (Python & Go Source Code)',
       'Terraform Infrastructure as Code (AWS / GCP / Proxmox)',

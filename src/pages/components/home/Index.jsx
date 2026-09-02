@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 import FloatingMeshes from '@src/pages/components/home/components/floatingMeshes/Index';
 import InfiniteText from '@src/components/animationComponents/infiniteText/Index';
@@ -81,7 +81,7 @@ const performMoves = (rectangles, gridWidth, gridHeight) => {
 
 function Home() {
   const isMobile = useIsMobile();
-  const [timeline, setTimeline] = useState(null);
+  const timelineRef = useRef(null);
   const rootRef = useRef();
   const rectRefs = useRef([]);
   const svgRef = useRef();
@@ -124,7 +124,7 @@ function Home() {
       const tl = gsap.timeline({
         onComplete: () => {
           const newMovements = performMoves(initialPositions, gridWidth, gridHeight);
-          setTimeline(animateRectangles(newMovements));
+          timelineRef.current = animateRectangles(newMovements);
         },
       });
 
@@ -174,21 +174,20 @@ function Home() {
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      if (timeline) {
-        timeline.kill();
+      if (timelineRef.current) {
+        timelineRef.current.kill();
       }
 
-      const newTimeline = animateRectangles(performMoves(initialPositions, gridWidth, gridHeight));
-      setTimeline(newTimeline);
+      timelineRef.current = animateRectangles(performMoves(initialPositions, gridWidth, gridHeight));
     });
 
     return () => {
       ctx.kill();
-      if (timeline) {
-        timeline.kill();
+      if (timelineRef.current) {
+        timelineRef.current.kill();
       }
     };
-  }, [animateRectangles]);
+  }, [animateRectangles, gridHeight, gridWidth, initialPositions]);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {

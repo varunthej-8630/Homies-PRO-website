@@ -298,9 +298,7 @@ function SubmitProjectPage() {
     let selectedCategoryId = formData.categoryId;
 
     if (!selectedCategoryId || !UUID_REGEX.test(selectedCategoryId)) {
-      const match =
-        categories.find((c) => c.slug === selectedCategoryId || c.id === selectedCategoryId) ||
-        DEFAULT_DOMAIN_CATEGORIES.find((c) => c.slug === selectedCategoryId);
+      const match = categories.find((c) => c.slug === selectedCategoryId || c.id === selectedCategoryId) || DEFAULT_DOMAIN_CATEGORIES.find((c) => c.slug === selectedCategoryId);
       selectedCategoryId = match?.id && UUID_REGEX.test(match.id) ? match.id : categories[0]?.id || DEFAULT_DOMAIN_CATEGORIES[0].id;
     }
 

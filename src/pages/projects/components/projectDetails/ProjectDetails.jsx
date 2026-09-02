@@ -27,8 +27,9 @@ function ProjectDetails({ project }) {
   };
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-lenis-prevent="true">
       {/* Header Badges */}
+
       <div className={styles.header}>
         {project.category && <span className={clsx(styles.categoryBadge, 'p-xs')}>{project.category}</span>}
         {project.rating && (

@@ -27,7 +27,6 @@ import styles from '@src/pages/app.module.scss';
 import useFoucFix from '@src/hooks/useFoucFix';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
-import useScroll from '@src/hooks/useScroll';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 
@@ -55,7 +54,6 @@ function MyApp({ Component, pageProps, router }) {
   const layoutRef = useRef();
 
   useFoucFix();
-  useScroll(() => ScrollTrigger.update());
 
   useIsomorphicLayoutEffect(() => {
     const lenisInstance = new Lenis({
@@ -68,16 +66,17 @@ function MyApp({ Component, pageProps, router }) {
 
     setLenis(lenisInstance);
 
-    const removeScrollTriggerListener = () => {
-      lenisInstance.on('scroll', ScrollTrigger.update);
+    const onScroll = () => {
+      ScrollTrigger.update();
     };
-    removeScrollTriggerListener();
+    lenisInstance.on('scroll', onScroll);
 
     const removeTicker = Tempus?.add((time) => {
       lenisInstance.raf(time);
     }, 0);
 
     return () => {
+      lenisInstance.off('scroll', onScroll);
       removeTicker?.();
       lenisInstance.destroy();
       setLenis(null);

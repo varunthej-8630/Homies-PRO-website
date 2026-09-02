@@ -12,12 +12,7 @@ import { useRouter } from 'next/router';
 import { useStore } from '@src/store';
 
 function MenuLinks() {
-  const timeline = useRef(
-    gsap.timeline({
-      paused: true,
-      defaults: { duration: 0.92, ease: 'expo.inOut' },
-    }),
-  );
+  const timelineRef = useRef(null);
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen, lenis, isLoading, setIsConversationOpen] = useStore((state) => [state.isMenuOpen, state.setIsMenuOpen, state.lenis, state.isLoading, state.setIsConversationOpen]);
   const { user, profile, role, signOut } = useAuth();
@@ -25,19 +20,37 @@ function MenuLinks() {
   const menuLinksItemsRef = useRef([]);
   const router = useRouter();
 
-  const setupMenuAnimation = (gsapTimeline, refs) => {
+  const setupMenuAnimation = () => {
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+    }
+
     const fluidCanvas = document?.getElementById('fluidCanvas');
     const layout = document?.getElementById('layout');
     const scrollbar = document?.getElementById('scrollbar');
     const header = document?.querySelector('header');
 
-    gsap.set(refs.menuRef.current, { pointerEvents: 'none', autoAlpha: 0 });
-    gsap.set(refs.menuLinksItemsRef.current, { x: '-100%' });
+    if (menuRef.current) {
+      gsap.set(menuRef.current, { pointerEvents: 'none', autoAlpha: 0 });
+    }
+    if (menuLinksItemsRef.current) {
+      gsap.set(menuLinksItemsRef.current, { x: '-100%' });
+    }
 
-    gsapTimeline
-      .to(refs.menuRef.current, { autoAlpha: 1, stagger: 0.01, pointerEvents: 'auto' }, 0)
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { duration: 0.8, ease: 'power3.inOut' },
+      onReverseComplete: () => {
+        if (lenis) lenis.start();
+        gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,left,pointerEvents' });
+        if (header) gsap.set(header, { clearProps: 'left,top,scale,autoAlpha' });
+        if (layout) gsap.set(layout, { clearProps: 'opacity,height' });
+      },
+    });
+
+    tl.to(menuRef.current, { autoAlpha: 1, stagger: 0.01, pointerEvents: 'auto' }, 0)
       .to(fluidCanvas, { duration: 0, opacity: 0 }, 0)
-      .to(refs.menuLinksItemsRef.current, { x: 0, stagger: 0.016, pointerEvents: 'auto' }, 0)
+      .to(menuLinksItemsRef.current, { x: 0, stagger: 0.016, pointerEvents: 'auto' }, 0)
       .to(
         'main',
         {
@@ -62,31 +75,50 @@ function MenuLinks() {
         },
         0,
       );
+
+    timelineRef.current = tl;
+    return tl;
   };
 
   useEffect(() => {
-    const tl = timeline.current;
-    const refs = { menuRef, menuLinksItemsRef };
     const ctx = gsap.context(() => {
-      setupMenuAnimation(tl, refs, isMobile);
+      setupMenuAnimation();
     });
 
     return () => {
-      if (tl) {
-        tl.kill();
-      }
       ctx.kill();
     };
-  }, [isLoading, isMobile]);
+  }, [isMobile]);
 
   useEffect(() => {
-    const tl = timeline.current;
+    const tl = timelineRef.current;
+    if (!tl) return;
     if (isMenuOpen) {
       tl.play();
     } else {
       tl.reverse();
     }
   }, [isMenuOpen]);
+
+  // Ensure menu is fully closed and layout restored on route change
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+    const tl = timelineRef.current;
+    if (tl) {
+      tl.progress(0).pause();
+    }
+    const header = document?.querySelector('header');
+    const layout = document?.getElementById('layout');
+    gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,left,pointerEvents' });
+    if (header) gsap.set(header, { clearProps: 'left,top,scale,autoAlpha' });
+    if (layout) gsap.set(layout, { clearProps: 'opacity,height' });
+    if (menuRef.current) {
+      gsap.set(menuRef.current, { autoAlpha: 0, pointerEvents: 'none' });
+    }
+    if (lenis) lenis.start();
+  }, [router.asPath]);
 
   const goToBottom = () => {
     setIsMenuOpen(false);
@@ -164,6 +196,9 @@ function MenuLinks() {
   return (
     <nav id="menu" ref={menuRef} className={styles.menu}>
       <div className={clsx(styles.menuWrapper, 'layout-block-inner')}>
+        <button type="button" className={styles.menuClose} onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+          <p>✕</p>
+        </button>
         <div
           ref={(el) => {
             menuLinksItemsRef.current[0] = el;

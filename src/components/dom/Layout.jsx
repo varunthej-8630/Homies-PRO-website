@@ -29,6 +29,11 @@ function Layout({ children, mainRef, router }) {
     ScrollTrigger.refresh();
 
     if (mainRef?.current) {
+      gsap.set(mainRef.current, {
+        clearProps: 'left,scale,border,borderRadius',
+        pointerEvents: 'auto',
+      });
+
       const tl = gsap.timeline({
         onComplete: () => {
           if (lenis) {

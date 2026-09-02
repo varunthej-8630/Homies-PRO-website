@@ -42,18 +42,23 @@ function Background() {
       uOffsetY: { value: 0.0 },
       uLinesAmount: { value: 5.0 },
       uPlaneRes: {
-        value: new THREE.Vector2(windowSize.width, windowSize.height),
+        value: new THREE.Vector2(windowSize.width || 1920, windowSize.height || 1080),
       },
       uMouse2D: { value: new THREE.Vector2(1.0, 1.0) },
       uBackgroundScale: { value: 3.0 },
     }),
-    [windowSize],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   useFrame((state, delta) => {
     if (ref.current && ref.current.material && ref.current.material.uniforms) {
       const materialUniforms = ref.current.material.uniforms;
       materialUniforms.uTime.value += delta * 0.001;
+
+      if (windowSize.width && windowSize.height) {
+        materialUniforms.uPlaneRes.value.set(windowSize.width, windowSize.height);
+      }
 
       updateOffset(materialUniforms.uOffsetX, isOffsetXIncreasing, OFFSET_STEP, OFFSET_MIN, OFFSET_MAX);
       updateOffset(materialUniforms.uOffsetY, isOffsetYIncreasing, OFFSET_STEP, OFFSET_MIN, OFFSET_MAX);

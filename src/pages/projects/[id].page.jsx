@@ -20,7 +20,7 @@ function Page({ id }) {
   const isMobile = useIsMobile();
   const rightContainerRef = useRef();
   const leftContainerRef = useRef();
-  const [isLoading, setFluidColor] = useStore(useShallow((state) => [state.isLoading, state.setFluidColor]));
+  const [isLoading, setFluidColor, lenis] = useStore(useShallow((state) => [state.isLoading, state.setFluidColor, state.lenis]));
   const windowSize = useWindowSize();
 
   const projectIndex = useMemo(() => projects.findIndex((project) => project.id === id), [id]);
@@ -39,7 +39,7 @@ function Page({ id }) {
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      if (!isLoading && !isMobile) {
+      if (!isLoading && !isMobile && rightContainerRef.current && leftContainerRef.current) {
         ScrollTrigger.create({
           id: 'project',
           trigger: rightContainerRef.current,
@@ -51,6 +51,11 @@ function Page({ id }) {
           invalidateOnRefresh: true,
           pinSpacing: false,
         });
+
+        if (lenis) {
+          lenis.resize();
+        }
+        ScrollTrigger.refresh();
       }
     });
 
@@ -58,7 +63,7 @@ function Page({ id }) {
       ctx.kill();
       ScrollTrigger.getById('project')?.kill();
     };
-  }, [isMobile, isLoading, windowSize.width]);
+  }, [isMobile, isLoading, windowSize.width, lenis]);
 
   useEffect(() => {
     if (currentProject) {

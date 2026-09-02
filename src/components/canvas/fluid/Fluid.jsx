@@ -1,6 +1,5 @@
 /* eslint-disable @react-three/no-new-in-loop */
-
-import { Camera, Scene, Texture, Vector2, Vector3 } from 'three';
+import { Camera, Scene, Texture } from 'three';
 import { createPortal, useFrame, useThree } from '@react-three/fiber';
 import { useCallback, useRef } from 'react';
 
@@ -28,7 +27,6 @@ function Fluid({ mainRef, fluidColor }) {
     (name) => {
       if (!meshRef.current) return;
       meshRef.current.material = materials[name];
-      meshRef.current.material.needsUpdate = true;
     },
     [materials],
   );
@@ -60,6 +58,26 @@ function Fluid({ mainRef, fluidColor }) {
     [materials],
   );
 
+  const setUniformVector2 = useCallback(
+    (material, uniform, x, y) => {
+      const mat = materials[material];
+      if (mat && mat.uniforms[uniform]) {
+        mat.uniforms[uniform].value.set(x, y);
+      }
+    },
+    [materials],
+  );
+
+  const setUniformVector3 = useCallback(
+    (material, uniform, x, y, z) => {
+      const mat = materials[material];
+      if (mat && mat.uniforms[uniform]) {
+        mat.uniforms[uniform].value.set(x, y, z);
+      }
+    },
+    [materials],
+  );
+
   useFrame(() => {
     if (!meshRef.current || !postRef.current) return;
 
@@ -68,8 +86,8 @@ function Fluid({ mainRef, fluidColor }) {
 
       setShaderMaterial('splat');
       setUniforms('splat', 'uTarget', FBOs.velocity.read.texture);
-      setUniforms('splat', 'uPointer', new Vector2(mouseX, mouseY));
-      setUniforms('splat', 'uColor', new Vector3(velocityX, velocityY, 10.0));
+      setUniformVector2('splat', 'uPointer', mouseX, mouseY);
+      setUniformVector3('splat', 'uColor', velocityX, velocityY, 10.0);
       setUniforms('splat', 'uRadius', radius / 100.0);
       setRenderTarget('velocity');
       setUniforms('splat', 'uTarget', FBOs.density.read.texture);

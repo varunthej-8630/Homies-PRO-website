@@ -21,7 +21,7 @@ export default function SignupPage() {
 
   // If already logged in, redirect
   useEffect(() => {
-    if (user && !successData) {
+    if (user && !successData && router.isReady) {
       if (role === 'CREATOR') {
         router.push('/creator/dashboard');
       } else if (role === 'ADMIN') {
@@ -30,7 +30,8 @@ export default function SignupPage() {
         router.push('/buyer/dashboard');
       }
     }
-  }, [user, role, router, successData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, role, router.isReady, successData]);
 
   const handleSignup = async (e) => {
     e.preventDefault();

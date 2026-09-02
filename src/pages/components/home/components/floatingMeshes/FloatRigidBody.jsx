@@ -1,9 +1,8 @@
-import * as THREE from 'three';
-
 /* eslint-disable no-plusplus */
 /* eslint-disable @react-three/no-new-in-loop */
 /* eslint-disable no-shadow */
 import { useEffect, useMemo, useRef, useState } from 'react';
+import * as THREE from 'three';
 
 import { InstancedRigidBodies } from '@react-three/rapier';
 import { MeshTransmissionMaterial } from '@react-three/drei';
@@ -12,8 +11,16 @@ import { useFrame } from '@react-three/fiber';
 import useIsMobile from '@src/hooks/useIsMobile';
 
 const accents = ['#8A2BE2', '#FF1493', '#FFFF00', '#DC143C'];
-
 const r = THREE.MathUtils.randFloatSpread;
+
+// Pre-allocated scratch objects to eliminate GC pressure in useFrame
+const scratchTargetPosition = new THREE.Vector3();
+const scratchCurrentPosition = new THREE.Vector3();
+const scratchDirection = new THREE.Vector3();
+const scratchForce = new THREE.Vector3();
+const scratchNewColor = new THREE.Color();
+const scratchCurrentColor = new THREE.Color();
+const scratchTempColorArray = [0, 0, 0];
 
 export default function FloatRigidBody({ totalCount, transparentCount }) {
   const apiNormal = useRef(null);
@@ -82,33 +89,35 @@ export default function FloatRigidBody({ totalCount, transparentCount }) {
 
   useFrame((state) => {
     if (apiNormal.current) {
+      const elapsedTime = state.clock.elapsedTime * 0.25;
       apiNormal.current.forEach((body, i) => {
-        if (apiNormal.current && body) {
-          const t = factors[i] + state.clock.elapsedTime * 0.25;
+        if (body) {
+          const t = factors[i] + elapsedTime;
 
-          const targetPosition = new THREE.Vector3(
+          scratchTargetPosition.set(
             Math.cos(t) + Math.sin(t * 1) / 10 + xFactors[i] + Math.cos((t / 10) * factors[i]) + (Math.sin(t * 1) * factors[i]) / 10,
             Math.sin(t) + Math.cos(t * 2) / 10 + yFactors[i] + Math.sin((t / 10) * factors[i]) + (Math.cos(t * 2) * factors[i]) / 10,
             Math.sin(t) + Math.cos(t * 2) / 10 + zFactors[i] + Math.cos((t / 10) * factors[i]) + (Math.sin(t * 3) * factors[i]) / 4,
           );
 
           const apiTranslation = body.translation();
-          const currentPosition = new THREE.Vector3(apiTranslation.x, apiTranslation.y, apiTranslation.z);
+          scratchCurrentPosition.set(apiTranslation.x, apiTranslation.y, apiTranslation.z);
 
-          const direction = new THREE.Vector3().subVectors(targetPosition, currentPosition);
+          scratchDirection.subVectors(scratchTargetPosition, scratchCurrentPosition);
+          scratchForce.copy(scratchDirection).normalize().multiplyScalar(0.5);
 
-          const forceMagnitude = 0.5;
-          const force = direction.normalize().multiplyScalar(forceMagnitude);
-
-          body.applyImpulse(force, true);
+          body.applyImpulse(scratchForce, true);
         }
       });
 
-      const newColor = new THREE.Color(accents[currentAccentIndex]);
+      scratchNewColor.set(accents[currentAccentIndex]);
       for (let i = !isMobile ? 7 : 4; i < normalCount; i++) {
-        const currentColor = new THREE.Color().fromArray(colors.slice(i * 3, (i + 1) * 3));
-        easing.dampC(currentColor, newColor, 0.1, state.delta);
-        colors.set(currentColor.toArray(), i * 3);
+        scratchCurrentColor.fromArray(colors, i * 3);
+        easing.dampC(scratchCurrentColor, scratchNewColor, 0.1, state.delta);
+        scratchTempColorArray[0] = scratchCurrentColor.r;
+        scratchTempColorArray[1] = scratchCurrentColor.g;
+        scratchTempColorArray[2] = scratchCurrentColor.b;
+        colors.set(scratchTempColorArray, i * 3);
       }
 
       if (sphereRef.current && sphereRef.current.geometry.attributes.color) {
@@ -117,25 +126,25 @@ export default function FloatRigidBody({ totalCount, transparentCount }) {
     }
 
     if (apiTransparent.current) {
+      const elapsedTime = state.clock.elapsedTime * 0.25;
       apiTransparent.current.forEach((body, i) => {
-        if (apiTransparent.current && body) {
-          const t = factors[normalCount + i] + state.clock.elapsedTime * 0.25;
+        if (body) {
+          const factorIndex = normalCount + i;
+          const t = factors[factorIndex] + elapsedTime;
 
-          const targetPosition = new THREE.Vector3(
-            Math.cos(t) + Math.sin(t * 1) / 10 + xFactors[normalCount + i] + Math.cos((t / 10) * factors[normalCount + i]) + (Math.sin(t * 1) * factors[normalCount + i]) / 10,
-            Math.sin(t) + Math.cos(t * 2) / 10 + yFactors[normalCount + i] + Math.sin((t / 10) * factors[normalCount + i]) + (Math.cos(t * 2) * factors[normalCount + i]) / 10,
-            Math.sin(t) + Math.cos(t * 2) / 10 + zFactors[normalCount + i] + Math.cos((t / 10) * factors[normalCount + i]) + (Math.sin(t * 3) * factors[normalCount + i]) / 4,
+          scratchTargetPosition.set(
+            Math.cos(t) + Math.sin(t * 1) / 10 + xFactors[factorIndex] + Math.cos((t / 10) * factors[factorIndex]) + (Math.sin(t * 1) * factors[factorIndex]) / 10,
+            Math.sin(t) + Math.cos(t * 2) / 10 + yFactors[factorIndex] + Math.sin((t / 10) * factors[factorIndex]) + (Math.cos(t * 2) * factors[factorIndex]) / 10,
+            Math.sin(t) + Math.cos(t * 2) / 10 + zFactors[factorIndex] + Math.cos((t / 10) * factors[factorIndex]) + (Math.sin(t * 3) * factors[factorIndex]) / 4,
           );
 
           const apiTranslation = body.translation();
-          const currentPosition = new THREE.Vector3(apiTranslation.x, apiTranslation.y, apiTranslation.z);
+          scratchCurrentPosition.set(apiTranslation.x, apiTranslation.y, apiTranslation.z);
 
-          const direction = new THREE.Vector3().subVectors(targetPosition, currentPosition);
+          scratchDirection.subVectors(scratchTargetPosition, scratchCurrentPosition);
+          scratchForce.copy(scratchDirection).normalize().multiplyScalar(0.5);
 
-          const forceMagnitude = 0.5;
-          const force = direction.normalize().multiplyScalar(forceMagnitude);
-
-          body.applyImpulse(force, true);
+          body.applyImpulse(scratchForce, true);
         }
       });
     }
@@ -155,7 +164,8 @@ export default function FloatRigidBody({ totalCount, transparentCount }) {
         <instancedMesh dispose={null} castShadow receiveShadow args={[null, null, transparentCount]}>
           <sphereGeometry />
           <MeshTransmissionMaterial
-            samples={10}
+            samples={6}
+            resolution={isMobile ? 256 : 512}
             transmission={1.0}
             roughness={0}
             thickness={4}
@@ -164,7 +174,7 @@ export default function FloatRigidBody({ totalCount, transparentCount }) {
             anisotropy={0.2}
             distortion={0}
             displacementScale={0.3}
-            temporalDistortion={0.5}
+            temporalDistortion={0.2}
             clearcoat={1}
             attenuationDistance={0.5}
           />

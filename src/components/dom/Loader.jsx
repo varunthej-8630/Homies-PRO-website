@@ -1,6 +1,5 @@
 /* eslint-disable */
-
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -11,13 +10,16 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 
 function Loader() {
-  const [lenis, introOut, setIntroOut, setIsLoading, setIsAbout] = useStore(
-    useShallow((state) => [state.lenis, state.introOut, state.setIntroOut, state.setIsLoading, state.setIsAbout]),
-  );
+  const [lenis, introOut, setIntroOut, setIsLoading, setIsAbout] = useStore(useShallow((state) => [state.lenis, state.introOut, state.setIntroOut, state.setIsLoading, state.setIsAbout]));
 
   const root = useRef(null);
   const logoContainerRef = useRef(null);
   const router = useRouter();
+  const lenisRef = useRef(lenis);
+
+  useEffect(() => {
+    lenisRef.current = lenis;
+  }, [lenis]);
 
   useIsomorphicLayoutEffect(() => {
     let ctx;
@@ -50,9 +52,9 @@ function Loader() {
           onComplete: () => {
             setIntroOut(true);
             setIsLoading(false);
-            if (lenis) {
-              lenis.start();
-              lenis.resize();
+            if (lenisRef.current) {
+              lenisRef.current.start();
+              lenisRef.current.resize();
             }
             ScrollTrigger.refresh();
             if (root.current) {
@@ -107,7 +109,6 @@ function Loader() {
             '-=0.2',
           )
           .set('main', {
-            height: 'auto',
             pointerEvents: 'auto',
           });
       });
@@ -123,7 +124,7 @@ function Loader() {
         ctx.kill();
       }
     };
-  }, [lenis, introOut]);
+  }, [introOut, router.asPath, setIsAbout, setIsLoading, setIntroOut]);
 
   return (
     <div id="loader" ref={root} className={styles.root}>

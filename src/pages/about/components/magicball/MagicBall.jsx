@@ -4,7 +4,8 @@ import * as THREE from 'three';
 
 import { Environment, Sphere, Text, View, useTexture } from '@react-three/drei';
 import { createPortal, extend, useFrame } from '@react-three/fiber';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
 
 import PropTypes from 'prop-types';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
@@ -23,15 +24,22 @@ function useRenderTargetTexture() {
   const [scene, target] = useMemo(() => {
     if (typeof window !== 'undefined') {
       const scene = new THREE.Scene();
-      const target = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+      const target = new THREE.WebGLRenderTarget(512, 512);
       return [scene, target];
     }
     return [null, null];
   }, []);
 
+  useEffect(
+    () => () => {
+      target?.dispose();
+    },
+    [target],
+  );
+
   useFrame(({ clock, gl }) => {
     const time = clock.getElapsedTime();
-    if (camera.current && mesh.current) {
+    if (camera.current && mesh.current && target && scene) {
       mesh.current.rotation.y = time;
 
       gl.setRenderTarget(target);
