@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps, router }) {
     });
 
     setLenis(lenis);
-    lenis.start();
+    lenis.stop();
 
     return () => {
       lenis.destroy();
