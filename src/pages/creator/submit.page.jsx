@@ -6,8 +6,15 @@ import RouteGuard from '@src/components/auth/RouteGuard';
 import clsx from 'clsx';
 import { supabase } from '@src/lib/supabase/client';
 import { useAuth } from '@src/context/AuthContext';
+import { MARKETPLACE_CATEGORIES } from '@src/constants/marketplace';
 import { useRouter } from 'next/router';
 import styles from './submit.module.scss';
+
+const DEFAULT_DOMAIN_CATEGORIES = MARKETPLACE_CATEGORIES.filter((c) => c.slug !== 'all').map((c) => ({
+  id: c.id,
+  name: c.name,
+  slug: c.slug,
+}));
 
 const STEPS = [
   { id: 1, label: '01 Details' },
@@ -30,12 +37,12 @@ const AVAILABLE_DELIVERABLES = [
 ];
 
 function generateSlug(text) {
-  return (text || 'project')
+  return text
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 80);
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 function isValidUrl(string) {
@@ -52,7 +59,7 @@ function SubmitProjectPage() {
   const router = useRouter();
   const { user, profile } = useAuth();
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(DEFAULT_DOMAIN_CATEGORIES);
   const [projectId, setProjectId] = useState(null);
   const [creatorProfileId, setCreatorProfileId] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
@@ -83,7 +90,7 @@ function SubmitProjectPage() {
     title: '',
     tagline: '',
     desc: '',
-    categoryId: '',
+    categoryId: DEFAULT_DOMAIN_CATEGORIES[0]?.id || 'ai-ml',
     projectType: 'Full-Stack Application',
     difficulty: 'Intermediate',
     platform: 'Web & Cloud Server',
@@ -136,15 +143,18 @@ function SubmitProjectPage() {
       try {
         setLoadingInitial(true);
 
-        // Fetch Categories
+        // Fetch Categories from Database
         const { data: catData } = await supabase.from('categories').select('id, name, slug').order('sort_order', { ascending: true });
 
         if (catData && catData.length > 0) {
           setCategories(catData);
-          setFormData((prev) => ({
-            ...prev,
-            categoryId: prev.categoryId || catData[0].id,
-          }));
+          setFormData((prev) => {
+            const matched = catData.find((c) => c.id === prev.categoryId || c.slug === prev.categoryId);
+            return {
+              ...prev,
+              categoryId: matched ? matched.id : catData[0].id,
+            };
+          });
         }
 
         // Fetch or Create Creator Profile
@@ -220,7 +230,7 @@ function SubmitProjectPage() {
               title: existingProject.title || '',
               tagline: existingProject.tagline || '',
               desc: descText,
-              categoryId: existingProject.category_id || (catData && catData[0]?.id) || '',
+              categoryId: existingProject.category_id || (catData && catData[0]?.id) || DEFAULT_DOMAIN_CATEGORIES[0].id,
               projectType: existingProject.project_type || 'Full-Stack Application',
               difficulty: existingProject.difficulty || 'Intermediate',
               platform: existingProject.platform || 'Web & Cloud Server',
@@ -283,10 +293,21 @@ function SubmitProjectPage() {
       ? formData.desc.split('\n\n').filter(Boolean)
       : ['Comprehensive engineering solution engineered from concept through architecture to production validation.'];
 
+    // Ensure category_id is a valid UUID (lookup from loaded categories or default domain UUIDs if a slug string was passed)
+    const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    let selectedCategoryId = formData.categoryId;
+
+    if (!selectedCategoryId || !UUID_REGEX.test(selectedCategoryId)) {
+      const match =
+        categories.find((c) => c.slug === selectedCategoryId || c.id === selectedCategoryId) ||
+        DEFAULT_DOMAIN_CATEGORIES.find((c) => c.slug === selectedCategoryId);
+      selectedCategoryId = match?.id && UUID_REGEX.test(match.id) ? match.id : categories[0]?.id || DEFAULT_DOMAIN_CATEGORIES[0].id;
+    }
+
     const projectPayload = {
       id: targetId,
       creator_id: creatorProfileId,
-      category_id: formData.categoryId || categories[0]?.id,
+      category_id: selectedCategoryId,
       title: formData.title.trim() || (projectStatus === 'DRAFT' ? 'Untitled Draft Project' : 'New Creator Project'),
       slug: finalSlug,
       tagline: formData.tagline.trim() || 'Custom built digital solution crafted with excellence.',

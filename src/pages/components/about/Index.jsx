@@ -72,7 +72,7 @@ function About() {
             </AppearTitle>
           )}
           <div className={clsx(styles.buttonContainer)}>
-            <ButtonLink href="/projects" label="EXPLORE MARKETPLACE" />
+            <ButtonLink href="/mart" label="EXPLORE HOMIES MART" />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import AppearByWords from '@src/components/animationComponents/appearByWords/Index';
-import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
+import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder';
 import styles from '@src/pages/projects/components/nextProject/styles/nextProject.module.scss';
 
 function NextProject({ nextProject }) {
@@ -18,18 +18,18 @@ function NextProject({ nextProject }) {
             <div className={styles.projectsWrap}>
               <div className={clsx(styles.container, 'layout-grid-inner')}>
                 <div className={styles.projectsDetails}>
-                  <h6 className={clsx(styles.text, 'h6')}>{nextProject.date}</h6>
+                  <h6 className={clsx(styles.text, 'h6')}>{nextProject.category || nextProject.date}</h6>
 
                   <h3 className={clsx(styles.text, 'h3')}>{nextProject.title}</h3>
                 </div>
                 <div className={styles.imageContainer}>
-                  <Image priority sizes="100%" src={nextProject.img} fill alt={nextProject.title} />
+                  <ProjectImagePlaceholder aspectRatio="16/9" label="Project Image" sublabel="Add Image" />
                 </div>
               </div>
             </div>
 
             <div className={styles.canvas}>
-              <Image priority sizes="100%" src={nextProject.img} fill alt={nextProject.title} />
+              <ProjectImagePlaceholder aspectRatio="fill" label="Project Image" sublabel="Add Image" style={{ width: '100%', height: '100%', borderRadius: 0 }} />
             </div>
           </Link>
         </div>

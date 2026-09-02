@@ -2,10 +2,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useMemo, useState } from 'react';
 import CustomHead from '@src/components/dom/CustomHead';
-import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 import defaultProjects from '@src/constants/projects';
+import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder';
 import RouteGuard from '@src/components/auth/RouteGuard';
 import { useRouter } from 'next/router';
 import { useShallow } from 'zustand/react/shallow';
@@ -130,7 +130,7 @@ function CheckoutPage() {
                 }}
               >
                 <div style={{ width: '90px', height: '65px', position: 'relative', borderRadius: '8px', overflow: 'hidden', flexShrink: 0 }}>
-                  <Image src={project.img || '/project1/project1.webp'} fill alt={project.title} style={{ objectFit: 'cover' }} />
+                  <ProjectImagePlaceholder aspectRatio="fill" compact label="Image" sublabel="" iconSize={18} />
                 </div>
                 <div>
                   <h4 className="h5" style={{ fontWeight: 750, marginBottom: '0.2rem' }}>

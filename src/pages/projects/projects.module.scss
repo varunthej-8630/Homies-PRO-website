@@ -161,10 +161,13 @@
       }
 
       .categoryTab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55vw;
         background: rgba(40, 40, 43, 0.05);
-        border: 1px solid rgba(40, 40, 43, 0.1);
+        border: 1px solid rgba(40, 40, 43, 0.12);
         border-radius: 9999px;
-        padding: 0.5vw 1.2vw;
+        padding: 0.55vw 1.25vw;
         font-family: var(--font-primary), sans-serif;
         font-size: 0.85vw;
         font-weight: 550;
@@ -174,12 +177,35 @@
         transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
         @include mobile {
-          font-size: 3vw;
-          padding: 1.8vw 3.8vw;
+          font-size: 3.2vw;
+          padding: 2vw 4vw;
+          gap: 1.8vw;
+        }
+
+        .tabIcon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 0.95vw;
+          height: 0.95vw;
+          color: currentColor;
+          flex-shrink: 0;
+
+          @include mobile {
+            width: 3.6vw;
+            height: 3.6vw;
+          }
+
+          svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+          }
         }
 
         &:hover {
-          background: rgba(40, 40, 43, 0.12);
+          background: rgba(40, 40, 43, 0.1);
+          border-color: rgba(40, 40, 43, 0.25);
         }
 
         &.activeCategoryTab {
@@ -207,7 +233,7 @@
   padding-bottom: 0px;
   display: block;
   width: 100%;
-  contain: paint;
+  overflow: visible;
 
   @include mobile {
     box-shadow:

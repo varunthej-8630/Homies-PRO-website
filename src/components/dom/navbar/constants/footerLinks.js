@@ -12,8 +12,8 @@ const footerLinks = [
     href: '/become-a-creator',
   },
   {
-    title: 'Marketplace',
-    href: '/projects',
+    title: 'Homies Mart',
+    href: '/mart',
   },
 ];
 export default footerLinks;

@@ -239,8 +239,8 @@ function BecomeACreatorPage() {
                 Submit New Project →
               </Link>
             ) : (
-              <Link href="/projects" className={clsx(styles.secondaryLink, 'p')}>
-                Browse Marketplace Projects →
+              <Link href="/mart" className={clsx(styles.secondaryLink, 'p')}>
+                Browse Homies Mart Projects →
               </Link>
             )}
           </div>

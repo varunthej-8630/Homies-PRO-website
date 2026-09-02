@@ -123,7 +123,7 @@ function MenuLinks() {
 
   const dynamicLinks = [
     { title: 'Home', href: '/' },
-    { title: 'Explore Projects', href: '/projects' },
+    { title: 'Homies Mart', href: '/mart' },
     roleSpecificLink,
     ...(role === 'BUYER' ? [{ title: 'Buyer Portal', href: '/buyer/dashboard' }] : []),
     { title: 'About Homies', href: '/about' },

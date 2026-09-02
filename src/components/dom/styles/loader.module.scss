@@ -3,78 +3,63 @@
 .root {
   position: fixed;
   top: 0;
-  z-index: 5;
+  left: 0;
+  z-index: 9999;
   width: 100vw;
   height: 100vh;
   height: calc(100 * var(--svh, 1vh));
   height: 100svh;
   color: #28282b;
   background-color: #f0f4f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  overflow: hidden;
+
   .innerContainer {
     position: relative;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .fullNameContainer {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      .fullName {
-        text-align: center;
-        display: inline-block;
-        overflow: hidden;
-        color: #020002;
-        > span {
-          position: relative;
-          top: 0px;
-        }
-      }
-    }
-    .shortNameContainer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    gap: clamp(12px, 1.2vw, 20px);
+    text-align: center;
+    padding: 2vw;
+    will-change: transform, opacity;
 
-      .shortName {
-        text-align: center;
-        display: inline-block;
-        overflow: hidden;
-        opacity: 0;
-        color: #020002;
-        > span {
-          position: relative;
-          top: 12vw;
-        }
-      }
+    @include mobile {
+      gap: 3.5vw;
+      padding: 6vw;
     }
-  }
-  .progressContainer {
-    bottom: 2svh;
-    right: 0;
-    position: absolute;
-    .progress {
-      text-align: center;
-      display: inline-block;
-      overflow: hidden;
+
+    .brandTitle {
+      font-family: var(--font-primary), sans-serif;
+      font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+      font-weight: 850;
+      letter-spacing: -0.025em;
       color: #020002;
-      > span {
-        position: relative;
-        top: 0px;
+      line-height: 1;
+      margin: 0;
+
+      @include mobile {
+        font-size: 9.5vw;
+      }
+    }
+
+    .brandSubtitle {
+      font-family: var(--font-primary), sans-serif;
+      font-size: clamp(0.85rem, 1.1vw, 1.3rem);
+      font-weight: 650;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(40, 40, 43, 0.7);
+      margin: 0;
+
+      @include mobile {
+        font-size: 3.2vw;
+        letter-spacing: 0.12em;
       }
     }
   }
-}
-.other {
-  display: none;
 }

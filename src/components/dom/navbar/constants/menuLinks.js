@@ -4,8 +4,8 @@ const menuLinks = [
     href: '/',
   },
   {
-    title: 'Explore Projects',
-    href: '/projects',
+    title: 'Homies Mart',
+    href: '/mart',
   },
   {
     title: 'Become a Creator',

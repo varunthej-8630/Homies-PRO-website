@@ -56,8 +56,8 @@ function BuyerDashboardPage() {
             {purchasedProjects.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '4rem 0', color: '#666' }}>
                 <p className="p">No purchased projects found yet.</p>
-                <Link href="/projects" style={{ marginTop: '1rem', display: 'inline-block', textDecoration: 'underline' }}>
-                  Explore Project Marketplace →
+                <Link href="/mart" style={{ marginTop: '1rem', display: 'inline-block', textDecoration: 'underline' }}>
+                  Explore Homies Mart →
                 </Link>
               </div>
             ) : (
@@ -156,8 +156,8 @@ function BuyerDashboardPage() {
             {wishlistedProjects.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '4rem 0', color: '#666' }}>
                 <p className="p">Your saved wishlist is empty.</p>
-                <Link href="/projects" style={{ marginTop: '1rem', display: 'inline-block', textDecoration: 'underline' }}>
-                  Discover Projects →
+                <Link href="/mart" style={{ marginTop: '1rem', display: 'inline-block', textDecoration: 'underline' }}>
+                  Discover Projects on Homies Mart →
                 </Link>
               </div>
             ) : (
