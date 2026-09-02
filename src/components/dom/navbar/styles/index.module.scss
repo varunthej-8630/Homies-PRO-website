@@ -2,14 +2,16 @@
 
 .root {
   position: fixed;
-  z-index: 2;
-  opacity: 0;
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
   top: 0;
   left: 0;
   padding: var(--layout-columns-gap) var(--layout-margin) 0px var(--layout-margin);
   width: 100%;
   pointer-events: none;
   scale: 1;
+
   .innerHeader {
     height: clamp(40px, 3.1vw, 56px);
     @include mobile {
@@ -23,13 +25,15 @@
     width: 100%;
 
     > a {
-      pointer-events: all;
+      pointer-events: auto;
     }
+
     .logoLink {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       cursor: pointer;
+      pointer-events: auto;
       transition: opacity 0.25s ease;
 
       &:hover {
@@ -37,8 +41,9 @@
       }
 
       .logoText {
-        color: var(--black);
-        font-size: clamp(1.1rem, 1.4vw, 1.45rem);
+        color: #020002;
+        font-weight: 800;
+        font-size: clamp(1.15rem, 1.45vw, 1.5rem);
         letter-spacing: -0.02em;
         line-height: 1;
         margin: 0;
@@ -47,13 +52,13 @@
         transition: color 0.35s ease;
 
         @include mobile {
-          font-size: clamp(1rem, 4.8vw, 1.35rem);
+          font-size: clamp(1.1rem, 5vw, 1.4rem);
         }
       }
     }
-    .rightContainer {
-      pointer-events: all;
 
+    .rightContainer {
+      pointer-events: auto;
       display: flex;
       gap: var(--layout-columns-gap);
       align-items: center;

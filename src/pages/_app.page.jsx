@@ -25,7 +25,7 @@ import { View } from '@react-three/drei';
 import { gsap } from 'gsap';
 import styles from '@src/pages/app.module.scss';
 import useFoucFix from '@src/hooks/useFoucFix';
-import { useFrame } from '@darkroom.engineering/hamo';
+import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import useScroll from '@src/hooks/useScroll';
 import { useShallow } from 'zustand/react/shallow';
@@ -48,6 +48,7 @@ if (typeof window !== 'undefined') {
 
 function MyApp({ Component, pageProps, router }) {
   const [lenis, setLenis, fluidColor, isAbout] = useStore(useShallow((state) => [state.lenis, state.setLenis, state.fluidColor, state.isAbout]));
+  const isMobile = useIsMobile();
 
   const mainRef = useRef();
   const mainContainerRef = useRef();
@@ -57,20 +58,28 @@ function MyApp({ Component, pageProps, router }) {
   useScroll(() => ScrollTrigger.update());
 
   useIsomorphicLayoutEffect(() => {
-    // eslint-disable-next-line no-shadow
-    const lenis = new Lenis({
+    const lenisInstance = new Lenis({
       smoothWheel: true,
-      smoothTouch: true,
-      syncTouch: true,
+      smoothTouch: false,
+      syncTouch: false,
       wrapper: mainRef.current || undefined,
       content: mainContainerRef.current || undefined,
     });
 
-    setLenis(lenis);
-    lenis.stop();
+    setLenis(lenisInstance);
+
+    const removeScrollTriggerListener = () => {
+      lenisInstance.on('scroll', ScrollTrigger.update);
+    };
+    removeScrollTriggerListener();
+
+    const removeTicker = Tempus?.add((time) => {
+      lenisInstance.raf(time);
+    }, 0);
 
     return () => {
-      lenis.destroy();
+      removeTicker?.();
+      lenisInstance.destroy();
       setLenis(null);
     };
   }, []);
@@ -80,12 +89,6 @@ function MyApp({ Component, pageProps, router }) {
       ScrollTrigger.refresh();
     }
   }, [lenis]);
-
-  useFrame((time) => {
-    if (lenis) {
-      lenis.raf(time);
-    }
-  }, 0);
 
   const domElements = useMemo(
     () => (
@@ -127,25 +130,27 @@ function MyApp({ Component, pageProps, router }) {
         {domElements}
         <div ref={layoutRef} id="layout" className={styles.layout}>
           {canvasElements}
-          <Canvas
-            id="fluidCanvas"
-            flat
-            gl={{
-              antialias: false,
-              stencil: false,
-              depth: false,
-              pixelRatio: 0.1,
-            }}
-            style={{ mixBlendMode: 'difference', background: 'black' }}
-            linear
-            className={styles.canvasContainer}
-            eventSource={mainRef.current}
-            dpr={[0.1, 0.5]}
-          >
-            <EffectComposer>
-              <Fluid fluidColor={fluidColor} mainRef={mainRef} />
-            </EffectComposer>
-          </Canvas>
+          {!isMobile && (
+            <Canvas
+              id="fluidCanvas"
+              flat
+              gl={{
+                antialias: false,
+                stencil: false,
+                depth: false,
+                pixelRatio: 0.1,
+              }}
+              style={{ mixBlendMode: 'difference', background: 'black' }}
+              linear
+              className={styles.canvasContainer}
+              eventSource={mainRef.current}
+              dpr={[0.1, 0.5]}
+            >
+              <EffectComposer>
+                <Fluid fluidColor={fluidColor} mainRef={mainRef} />
+              </EffectComposer>
+            </Canvas>
+          )}
           <main ref={mainRef} className={styles.main}>
             <div ref={mainContainerRef} id="mainContainer" className={styles.mainContainer}>
               <Layout layoutRef={layoutRef} mainRef={mainRef} router={router}>

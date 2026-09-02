@@ -111,8 +111,11 @@ function Loader() {
             pointerEvents: 'auto',
           });
       });
-    } else if (ctx) {
-      ctx.kill();
+    } else {
+      gsap.set('header', { autoAlpha: 1 });
+      if (root.current) {
+        gsap.set(root.current, { autoAlpha: 0, pointerEvents: 'none' });
+      }
     }
 
     return () => {
