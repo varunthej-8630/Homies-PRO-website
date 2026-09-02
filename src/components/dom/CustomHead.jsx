@@ -20,7 +20,7 @@ const getSchema = () => ({
       logo: `${SITE_URL}/homies/homies-logo.png`,
       email: 'info.homiesstudio@gmail.com',
       description: DEFAULT_DESCRIPTION,
-      sameAs: ['https://github.com/varunthej-8630/Homies-PRO-website', 'https://wa.me/917416636417'],
+      sameAs: ['https://github.com/Homies-Studio', 'https://www.linkedin.com/company/homies-studio/', 'https://wa.me/917416636417'],
     },
     {
       '@type': 'WebSite',

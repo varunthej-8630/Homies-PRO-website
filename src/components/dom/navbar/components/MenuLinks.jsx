@@ -273,7 +273,7 @@ function MenuLinks() {
               key={link.title}
               className={styles.menuListItem}
             >
-              <a aria-label={`Go ${link.title}`} target="_blank" rel="noopener noreferrer" href={link.url}>
+              <a aria-label={`Go ${link.title}`} target="_blank" rel="noopener noreferrer" href={link.href || link.url}>
                 <span>{link.title}</span>
               </a>
             </div>

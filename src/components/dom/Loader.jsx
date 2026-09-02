@@ -16,7 +16,7 @@ function Loader() {
   );
 
   const root = useRef(null);
-  const textContainerRef = useRef(null);
+  const logoContainerRef = useRef(null);
   const router = useRouter();
 
   useIsomorphicLayoutEffect(() => {
@@ -26,7 +26,7 @@ function Loader() {
 
       ctx = gsap.context(() => {
         // Initial setup
-        gsap.set(textContainerRef.current, {
+        gsap.set(logoContainerRef.current, {
           opacity: 0,
           scale: 0.94,
           filter: 'blur(6px)',
@@ -61,8 +61,8 @@ function Loader() {
           },
         });
 
-        // 1. Text Flash In (smooth emergence)
-        tl.to(textContainerRef.current, {
+        // 1. Logo Flash In (smooth emergence)
+        tl.to(logoContainerRef.current, {
           opacity: 1,
           scale: 1,
           filter: 'blur(0px)',
@@ -71,7 +71,7 @@ function Loader() {
         })
           // 2. Brief Hold
           .to(
-            textContainerRef.current,
+            logoContainerRef.current,
             {
               scale: 1.02,
               duration: 0.25,
@@ -80,7 +80,7 @@ function Loader() {
             '+=0.08',
           )
           // 3. Clean Flash Out & Immediate Transition to Website
-          .to(textContainerRef.current, {
+          .to(logoContainerRef.current, {
             opacity: 0,
             scale: 1.06,
             y: -10,
@@ -124,7 +124,7 @@ function Loader() {
 
   return (
     <div id="loader" ref={root} className={styles.root}>
-      <div ref={textContainerRef} className={styles.innerContainer}>
+      <div ref={logoContainerRef} className={styles.innerContainer}>
         <h1 className={styles.brandTitle}>HOMIES STUDIO</h1>
         <p className={styles.brandSubtitle}>Digital Product & Engineering Studio</p>
       </div>
