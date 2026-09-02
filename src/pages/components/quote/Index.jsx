@@ -13,7 +13,7 @@ function Quote() {
 
   return (
     <section ref={rootRef} className={clsx(styles.root, 'layout-block-inner')}>
-      <h3 ref={textRef} className={clsx(styles.text, 'h3')}>
+      <h3 ref={textRef} className={styles.text}>
         {!isLoading && (
           <TextOpacity textRef={textRef.current} trigger={rootRef.current}>
             Why Homies? ONE ECOSYSTEM. INFINITE POSSIBILITIES. We bring builders and learners together. Whether you are discovering a ready-made project, monetizing your reusable engineering work, or
