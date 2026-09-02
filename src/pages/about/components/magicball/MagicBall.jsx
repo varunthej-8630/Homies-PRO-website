@@ -6,7 +6,6 @@ import { Environment, Sphere, Text, View, useTexture } from '@react-three/drei';
 import { createPortal, extend, useFrame } from '@react-three/fiber';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-
 import PropTypes from 'prop-types';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 

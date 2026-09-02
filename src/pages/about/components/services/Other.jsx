@@ -177,15 +177,14 @@ const Other = memo(({ setPortals }) => {
       });
 
       const element = document?.querySelector('main');
-
-      element.classList.remove('color-change');
+      element?.classList.remove('color-change');
 
       const mainContainer = document.getElementById('mainContainer');
+      const fourthSection = mainContainer?.querySelectorAll('section')?.[3];
+      const thirdSection = mainContainer?.querySelectorAll('section')?.[2];
+      thirdSection?.classList.remove('fill-change');
+      fourthSection?.classList.remove('fill-change');
 
-      const fourthSection = mainContainer.querySelectorAll('section')[3];
-      const thirdSection = mainContainer.querySelectorAll('section')[2];
-      thirdSection.classList.remove('fill-change');
-      fourthSection.classList.remove('fill-change');
       setPortals((prevPortals) => {
         const existingPortal = prevPortals.findIndex((portal) => portal.title === option.title);
         if (existingPortal === -1) {
