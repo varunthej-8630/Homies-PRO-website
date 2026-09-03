@@ -18,18 +18,19 @@ import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder'
 import CategoryIcon from '@src/components/ui/CategoryIcon';
 
 const seo = {
-  title: 'Homies Mart — Verified Digital Projects & Engineering Builds',
-  description: 'Explore the Homies Mart marketplace for verified digital products, machine learning models, embedded hardware blueprints, and full-stack software crafted by engineers.',
+  title: 'Homies Mart – Buy & Sell Final Year Engineering Projects | Homies Studio',
+  description: 'Browse and purchase ready-made final year projects in IoT, Robotics, AI/ML, and more. Creators can sell their engineering projects on Homies Mart.',
   keywords: [
     'Homies Mart',
     'HOMIES STUDIO Mart',
-    'Engineering Marketplace',
+    'Engineering Projects Marketplace',
+    'Buy Final Year Projects',
+    'Sell Engineering Projects',
+    'IoT Projects Store',
+    'Robotics Project Blueprints',
     'AI ML Engineering Builds',
-    'Full Stack Applications',
-    'IoT Hardware Blueprints',
-    'VLSI Embedded Projects',
-    'Mobile Applications',
-    'Cybersecurity Projects',
+    'Embedded Systems Code',
+    'B.Tech Final Year Projects',
   ],
   canonical: '/mart',
 };

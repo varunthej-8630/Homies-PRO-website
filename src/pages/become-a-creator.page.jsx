@@ -11,9 +11,17 @@ import { useRouter } from 'next/router';
 import styles from './become-a-creator.module.scss';
 
 const seo = {
-  title: 'Join as a Creator — Build & Launch with Homies Studio',
-  description: 'Collaborate with Homies Studio to build, showcase, and monetize high-impact digital products, software tools, and engineering projects.',
-  keywords: ['Become a Creator', 'Homies Studio Creators', 'Digital Product Studio', 'Build and Launch', 'Engineering Collaboration', 'Developer Ecosystem'],
+  title: 'Become a Creator – Sell Your Engineering Projects | Homies Studio',
+  description: 'Publish and monetize your technical projects on Homies Mart. Join Homies Studio as a creator and turn your B.Tech or M.Tech projects into income.',
+  keywords: [
+    'Become a Creator',
+    'Sell Engineering Projects',
+    'Monetize Final Year Projects',
+    'Homies Studio Creators',
+    'Earn from B.Tech Projects',
+    'Student Developer Marketplace',
+    'Developer Ecosystem',
+  ],
   canonical: '/become-a-creator',
 };
 

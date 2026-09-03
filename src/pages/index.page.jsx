@@ -5,22 +5,27 @@ import Quote from '@src/pages/components/quote/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'HOMIES STUDIO — Build, Launch & Grow Digital Products',
+  title: 'Final Year Projects, IoT, AI/ML & Robotics | Homies Studio – Hyderabad, India',
   description:
-    'Homies Studio is a premier digital product and engineering studio empowering students, creators, startups, and businesses to build, launch, and scale exceptional digital products and engineering solutions.',
+    'Homies Studio helps B.Tech & M.Tech students complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. Also builds AI agents, web apps & SaaS for startups. Based in Hyderabad, India.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',
-    'Digital Product Studio',
-    'Engineering Projects',
-    'Creator Ecosystem',
-    'Full Stack Web Applications',
-    'AI ML Engineering',
-    'IoT Prototypes',
+    'Final Year Projects',
+    'FYP Guidance',
+    'IoT Projects',
+    'Robotics Projects',
+    'AI ML Projects',
     'Embedded Systems',
-    'Startup Development',
-    'Next.js',
-    'React',
+    'Engineering Projects Hyderabad',
+    'B.Tech Projects India',
+    'Final Year Project Help',
+    'AI Agent Development',
+    'SaaS Development India',
+    'Startup Solutions',
+    'Digital Product Studio',
+    'Hyderabad Tech Studio',
+    'Ongole',
   ],
   canonical: '/',
 };

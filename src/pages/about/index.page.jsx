@@ -6,17 +6,17 @@ import Process from '@src/pages/about/components/process/Process';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'About Homies Studio — Digital Product & Engineering Studio',
-  description: 'Discover how Homies Studio empowers creators, students, and businesses by delivering end-to-end digital product development, engineering deliverables, and technical innovation.',
+  title: 'About Homies Studio – Tech Studio for Students & Startups | Hyderabad',
+  description: 'Learn about Homies Studio — a Hyderabad-based tech studio connecting engineering students, startups, and colleges through project-based work and AI solutions.',
   keywords: [
-    'About HOMIES STUDIO',
-    'Homies Studio Agency',
-    'Digital Product Studio',
-    'Engineering Services',
-    'Student Innovation',
-    'Technical Solutions',
-    'Next.js Development',
-    'Full Stack Engineering',
+    'About Homies Studio',
+    'HOMIES STUDIO Hyderabad',
+    'Tech Studio for Students',
+    'Final Year Project Mentorship',
+    'Startup AI Solutions',
+    'Engineering Services Hyderabad',
+    'Student Innovation India',
+    'B.Tech Projects Hyderabad',
   ],
   canonical: '/about',
 };

@@ -231,13 +231,16 @@ function Home() {
     <section ref={rootRef} className={clsx(styles.root)}>
       <div className={clsx(styles.topContainer, 'layout-grid-inner')}>
         <div className={styles.leftContainer}>
-          <h2 className="h2">Building Ideas Into</h2>
-          <h2 className={clsx('h2', 'bold')}>Reality</h2>
+          <h1 className="h2">Final Year Projects &amp;</h1>
+          <h1 className={clsx('h2', 'bold')}>AI Solutions</h1>
+          <h2 className="p-s" style={{ margin: '0.4rem 0 0', opacity: 0.85, fontWeight: 500, letterSpacing: '0.04em' }}>
+            IoT · Robotics · AI/ML · Embedded Systems · Web Apps
+          </h2>
         </div>
         {!isMobile && (
           <h6 className={clsx('h6', styles.rightContainer)}>
-            Discover ready-to-build projects, showcase your technical work, sell your creations, and turn engineering ideas into real opportunities — all in one ecosystem. Homies Studio brings
-            creators, students, developers, and businesses together.
+            Homies Studio is a Hyderabad-based tech studio helping B.Tech and M.Tech engineering students complete final year projects — and helping startups launch AI-powered products. Discover
+            projects, find guidance, and build real things. All in one ecosystem.
           </h6>
         )}
       </div>
@@ -258,8 +261,8 @@ function Home() {
       {isMobile && (
         <div className={styles.rightContainerMobile}>
           <h6 className="h6">
-            Discover ready-to-build projects, showcase your technical work, sell your creations, and turn engineering ideas into real opportunities — all in one ecosystem. Homies Studio brings
-            creators, students, developers, and businesses together.
+            Homies Studio is a Hyderabad-based tech studio helping B.Tech and M.Tech engineering students complete final year projects — and helping startups launch AI-powered products. Discover
+            projects, find guidance, and build real things. All in one ecosystem.
           </h6>
         </div>
       )}
