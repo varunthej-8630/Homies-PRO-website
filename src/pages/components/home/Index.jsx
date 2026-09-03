@@ -239,8 +239,8 @@ function Home() {
         </div>
         {!isMobile && (
           <h6 className={clsx('h6', styles.rightContainer)}>
-            Homies Studio is a Hyderabad-based tech studio helping B.Tech and M.Tech engineering students complete final year projects — and helping startups launch AI-powered products. Discover
-            projects, find guidance, and build real things. All in one ecosystem.
+            Homies Studio is a premier tech studio helping B.Tech and M.Tech engineering students across India (Bangalore, Hyderabad, Andhra Pradesh, and nationwide) complete final year projects — and
+            helping startups launch AI-powered products. Discover projects, find guidance, and build real things. All in one ecosystem.
           </h6>
         )}
       </div>
@@ -261,8 +261,8 @@ function Home() {
       {isMobile && (
         <div className={styles.rightContainerMobile}>
           <h6 className="h6">
-            Homies Studio is a Hyderabad-based tech studio helping B.Tech and M.Tech engineering students complete final year projects — and helping startups launch AI-powered products. Discover
-            projects, find guidance, and build real things. All in one ecosystem.
+            Homies Studio is a premier tech studio helping B.Tech and M.Tech engineering students across India (Bangalore, Hyderabad, Andhra Pradesh, and nationwide) complete final year projects — and
+            helping startups launch AI-powered products. Discover projects, find guidance, and build real things. All in one ecosystem.
           </h6>
         </div>
       )}

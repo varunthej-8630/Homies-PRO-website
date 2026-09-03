@@ -5,29 +5,32 @@ import PropTypes from 'prop-types';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://www.homiesstudio.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og.png`;
 export const SITE_NAME = 'Homies Studio';
-export const DEFAULT_TITLE = 'Final Year Projects, IoT, AI/ML & Robotics | Homies Studio – Hyderabad, India';
+export const DEFAULT_TITLE = 'Final Year Projects, IoT, AI/ML & Robotics | Homies Studio – India';
 export const DEFAULT_DESCRIPTION =
-  'Homies Studio helps B.Tech & M.Tech students complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. Also builds AI agents, web apps & SaaS for startups. Based in Hyderabad, India.';
+  'Homies Studio helps B.Tech & M.Tech students across India (Bangalore, Hyderabad, Andhra Pradesh & nationwide) complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. Also builds AI agents, web apps & SaaS for startups.';
 
 export const DEFAULT_KEYWORDS = [
   'HOMIES STUDIO',
   'Homies Studio',
   'Final Year Projects',
-  'FYP Guidance',
-  'IoT Projects',
-  'Robotics Projects',
+  'FYP Guidance India',
+  'IoT Projects India',
+  'Robotics Projects India',
   'AI ML Projects',
   'Embedded Systems',
+  'Engineering Projects Bangalore',
   'Engineering Projects Hyderabad',
+  'Engineering Projects Andhra Pradesh',
   'B.Tech Projects India',
   'Final Year Project Help',
   'AI Agent Development',
   'SaaS Development India',
   'Startup Solutions',
-  'Digital Product Studio',
+  'Digital Product Studio India',
   'Hyderabad Tech Studio',
+  'Bangalore Tech Studio',
   'Ongole',
-  'banglore',
+  'Pan India Engineering Projects',
 ];
 
 const getSchema = () => ({
@@ -40,12 +43,12 @@ const getSchema = () => ({
       logo: 'https://www.homiesstudio.com/logo.png',
       email: 'info.homiesstudio@gmail.com',
       telephone: '+917416636417',
-      foundingLocation: 'Hyderabad, India',
+      foundingLocation: 'India',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+91-74166-36417',
         contactType: 'customer service',
-        availableLanguage: ['English', 'Telugu'],
+        availableLanguage: ['English', 'Telugu', 'Hindi'],
       },
       sameAs: ['https://www.linkedin.com/company/homies-studio/', 'https://github.com/Homies-Studio', 'https://wa.me/917416636417'],
     },
@@ -53,18 +56,18 @@ const getSchema = () => ({
       '@type': 'LocalBusiness',
       name: 'Homies Studio',
       description:
-        'Homies Studio is a India based tech studio that helps B.Tech and M.Tech engineering students complete final year projects in IoT, Robotics, Embedded Systems, and AI/ML. It also provides B2B AI solutions including AI agents, web apps, and SaaS products for startups and enterprises.',
+        'Homies Studio is a premier India-based tech studio that helps B.Tech and M.Tech engineering students across India (including Bangalore, Hyderabad, Andhra Pradesh, and nationwide) complete final year projects in IoT, Robotics, Embedded Systems, and AI/ML. It also provides B2B AI solutions including AI agents, web apps, and SaaS products for startups and enterprises.',
       url: 'https://www.homiesstudio.com',
       telephone: '+917416636417',
       email: 'info.homiesstudio@gmail.com',
       priceRange: '₹₹',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Ongole',
-        addressRegion: 'Andhra Pradesh',
+        addressLocality: 'Hyderabad',
+        addressRegion: 'Telangana',
         addressCountry: 'IN',
       },
-      areaServed: ['Hyderabad', 'Ongole', 'Andhra Pradesh', 'Telangana', 'India'],
+      areaServed: ['India', 'Bangalore', 'Hyderabad', 'Andhra Pradesh', 'Telangana', 'Karnataka', 'Maharashtra', 'Tamil Nadu', 'Delhi NCR', 'Ongole'],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Homies Studio Services',
@@ -136,7 +139,7 @@ const getSchema = () => ({
           name: 'Where is Homies Studio located?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Homies Studio is based in Hyderabad, Telangana, India. It serves students and startups across Hyderabad, Ongole, Andhra Pradesh, and pan-India remotely.',
+            text: 'Homies Studio serves engineering students and startups pan-India — including Bangalore, Hyderabad, Andhra Pradesh, Telangana, Karnataka, and nationwide remotely with complete hardware and software support.',
           },
         },
         {
@@ -144,7 +147,7 @@ const getSchema = () => ({
           name: 'Does Homies Studio build AI solutions for startups?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: "Yes. Homies Studio's B2B wing builds AI agents, SaaS products, web applications, and automation solutions for startups, colleges, and enterprises.",
+            text: "Yes. Homies Studio's B2B wing builds AI agents, SaaS products, web applications, and automation solutions for startups, colleges, and enterprises across India and globally.",
           },
         },
         {
@@ -207,8 +210,8 @@ function CustomHead({ title, description, keywords, canonical, ogImage, noindex 
         <meta name="author" content="Homies Studio" />
         <meta name="referrer" content="origin-when-cross-origin" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="geo.region" content="IN-TG" />
-        <meta name="geo.placename" content="Hyderabad" />
+        <meta name="geo.region" content="IN" />
+        <meta name="geo.placename" content="India" />
 
         {/* Canonical & Document Title */}
         <link rel="canonical" href={canonicalUrl} />
