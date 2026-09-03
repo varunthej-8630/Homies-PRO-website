@@ -113,7 +113,7 @@ export default function ForCollegesPage() {
             India.
           </p>
           <div className={styles.ctaRow}>
-            <a href="mailto:info.homiesstudio@gmail.com?subject=College%20Partnership%20Inquiry%20-%20Homies%20Studio" className={styles.primaryBtn}>
+            <a href="mailto:info@homiesstudio.com?subject=College%20Partnership%20Inquiry%20-%20Homies%20Studio" className={styles.primaryBtn}>
               ✉️ Email Partnership Team
             </a>
             <a

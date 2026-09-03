@@ -38,7 +38,7 @@ const contactSchema = {
         '@type': 'Organization',
         name: 'Homies Studio',
         telephone: '+917416636417',
-        email: 'info.homiesstudio@gmail.com',
+        email: 'info@homiesstudio.com',
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: '+91-74166-36417',
@@ -81,8 +81,8 @@ export default function ContactPage() {
           <div className={styles.contactCard}>
             <span className={styles.cardIcon}>✉️</span>
             <h3 className={clsx('h4', styles.cardTitle)}>Official Email</h3>
-            <a href="mailto:info.homiesstudio@gmail.com" className={styles.cardValue}>
-              info.homiesstudio@gmail.com
+            <a href="mailto:info@homiesstudio.com" className={styles.cardValue}>
+              info@homiesstudio.com
             </a>
             <span className={styles.cardNote}>Response within 24 hours guaranteed</span>
           </div>
@@ -103,7 +103,7 @@ export default function ContactPage() {
             <a href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className={styles.whatsappCta}>
               💬 Message on WhatsApp Now
             </a>
-            <a href="mailto:info.homiesstudio@gmail.com" className={styles.emailCta}>
+            <a href="mailto:info@homiesstudio.com" className={styles.emailCta}>
               ✉️ Send Email Inquiry
             </a>
           </div>

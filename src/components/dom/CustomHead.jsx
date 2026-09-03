@@ -54,7 +54,7 @@ const getGlobalSchema = () => ({
       image: 'https://www.homiesstudio.com/og.png',
       description:
         'Homies Studio is an India-wide tech studio helping B.Tech and M.Tech engineering students complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. It also builds AI agents, SaaS products, and web applications for startups and EdTech companies across India.',
-      email: 'info.homiesstudio@gmail.com',
+      email: 'info@homiesstudio.com',
       telephone: '+917416636417',
       address: {
         '@type': 'PostalAddress',
@@ -75,7 +75,7 @@ const getGlobalSchema = () => ({
         {
           '@type': 'ContactPoint',
           contactType: 'sales',
-          email: 'info.homiesstudio@gmail.com',
+          email: 'info@homiesstudio.com',
           areaServed: 'IN',
         },
       ],
@@ -95,7 +95,7 @@ const getGlobalSchema = () => ({
       url: 'https://www.homiesstudio.com',
       logo: 'https://www.homiesstudio.com/logo.png',
       telephone: '+917416636417',
-      email: 'info.homiesstudio@gmail.com',
+      email: 'info@homiesstudio.com',
       priceRange: '₹₹',
       currenciesAccepted: 'INR',
       paymentAccepted: 'UPI, Bank Transfer',
@@ -274,7 +274,7 @@ const getGlobalSchema = () => ({
           name: 'How can I contact Homies Studio?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'You can contact Homies Studio via WhatsApp at +91 74166 36417, by email at info.homiesstudio@gmail.com, or through the contact form at homiesstudio.com. The team responds to all India-wide project inquiries.',
+            text: 'You can contact Homies Studio via WhatsApp at +91 74166 36417, by email at info@homiesstudio.com, or through the contact form at homiesstudio.com. The team responds to all India-wide project inquiries.',
           },
         },
       ],

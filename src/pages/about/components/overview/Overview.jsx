@@ -77,8 +77,8 @@ function Overview() {
 
           <h6 className={clsx(styles.paddingTop, 'h6')}>
             Email:{' '}
-            <a href="mailto:info.homiesstudio@gmail.com" style={{ textDecoration: 'underline' }}>
-              info.homiesstudio@gmail.com
+            <a href="mailto:info@homiesstudio.com" style={{ textDecoration: 'underline' }}>
+              info@homiesstudio.com
             </a>{' '}
             | WhatsApp:{' '}
             <a href="https://wa.me/917416636417" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
