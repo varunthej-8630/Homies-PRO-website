@@ -2,7 +2,7 @@ import NextHead from 'next/head';
 import { NextSeo } from 'next-seo';
 import PropTypes from 'prop-types';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://homies-agency.vercel.app';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://www.homiesstudio.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og.png`;
 export const SITE_NAME = 'HOMIES STUDIO';
 export const DEFAULT_TITLE = 'HOMIES STUDIO — Build, Launch & Grow Digital Products';
