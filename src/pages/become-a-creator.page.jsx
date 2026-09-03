@@ -11,15 +11,16 @@ import { useRouter } from 'next/router';
 import styles from './become-a-creator.module.scss';
 
 const seo = {
-  title: 'Become a Creator – Sell Your Engineering Projects | Homies Studio',
-  description: 'Publish and monetize your technical projects on Homies Mart. Join Homies Studio as a creator and turn your B.Tech or M.Tech projects into income.',
+  title: 'Apply as a Homies Creator – Publish & Sell Engineering Projects | Homies Studio',
+  description: 'Become a Homies Creator and sell your B.Tech or M.Tech engineering projects on Homies Mart. Publish your IoT, AI/ML, Robotics, or Web projects and earn from students across India.',
   keywords: [
+    'Apply as a Homies Creator',
     'Become a Creator',
     'Sell Engineering Projects',
     'Monetize Final Year Projects',
     'Homies Studio Creators',
     'Earn from B.Tech Projects',
-    'Student Developer Marketplace',
+    'Student Developer Marketplace India',
     'Developer Ecosystem',
   ],
   canonical: '/become-a-creator',

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://www.homiesstudio.com';
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og.png`;
 export const SITE_NAME = 'Homies Studio';
-export const DEFAULT_TITLE = 'Final Year Projects, IoT, AI/ML & Robotics | Homies Studio – India';
+export const DEFAULT_TITLE = 'Final Year Projects & AI Solutions for Students & Startups | Homies Studio India';
 export const DEFAULT_DESCRIPTION =
-  'Homies Studio helps B.Tech & M.Tech students across India (Bangalore, Hyderabad, Andhra Pradesh & nationwide) complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. Also builds AI agents, web apps & SaaS for startups.';
+  'Homies Studio helps B.Tech & M.Tech engineering students across India complete final year projects in IoT, Robotics, AI/ML & Embedded Systems. Also builds AI agents, SaaS & web apps for startups. Pan-India, 100% remote.';
 
 export const DEFAULT_KEYWORDS = [
   'HOMIES STUDIO',
@@ -18,56 +18,106 @@ export const DEFAULT_KEYWORDS = [
   'Robotics Projects India',
   'AI ML Projects',
   'Embedded Systems',
+  'Computer Vision Projects',
+  'Deep Learning FYP',
   'Engineering Projects Bangalore',
   'Engineering Projects Hyderabad',
   'Engineering Projects Andhra Pradesh',
   'B.Tech Projects India',
+  'M.Tech Projects India',
   'Final Year Project Help',
   'AI Agent Development',
   'SaaS Development India',
   'Startup Solutions',
   'Digital Product Studio India',
-  'Hyderabad Tech Studio',
-  'Bangalore Tech Studio',
-  'Ongole',
+  'Homies Mart',
+  'Homies Creator',
+  'College Partnership Program',
   'Pan India Engineering Projects',
 ];
 
-const getSchema = () => ({
+const getGlobalSchema = () => ({
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
       name: 'Homies Studio',
+      alternateName: ['Homies Studio India', 'Homies', 'HOMIES STUDIO'],
       url: 'https://www.homiesstudio.com',
-      logo: 'https://www.homiesstudio.com/logo.png',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.homiesstudio.com/logo.png',
+        width: 512,
+        height: 512,
+        caption: 'Homies Studio Logo',
+      },
+      image: 'https://www.homiesstudio.com/og.png',
+      description:
+        'Homies Studio is an India-wide tech studio helping B.Tech and M.Tech engineering students complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. It also builds AI agents, SaaS products, and web applications for startups and EdTech companies across India.',
       email: 'info.homiesstudio@gmail.com',
       telephone: '+917416636417',
-      foundingLocation: 'India',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: '+91-74166-36417',
-        contactType: 'customer service',
-        availableLanguage: ['English', 'Telugu', 'Hindi'],
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'IN',
       },
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+91-74166-36417',
+          contactType: 'customer service',
+          areaServed: 'IN',
+          availableLanguage: ['English', 'Telugu', 'Hindi'],
+        },
+        {
+          '@type': 'ContactPoint',
+          contactType: 'sales',
+          email: 'info.homiesstudio@gmail.com',
+          areaServed: 'IN',
+        },
+      ],
       sameAs: ['https://www.linkedin.com/company/homies-studio/', 'https://github.com/Homies-Studio', 'https://wa.me/917416636417'],
+      foundingDate: '2024',
+      foundingLocation: {
+        '@type': 'Place',
+        name: 'India',
+      },
+      knowsAbout: ['Final Year Projects', 'IoT Projects', 'AI/ML Projects', 'Robotics', 'Embedded Systems', 'Engineering Education', 'AI Agent Development', 'SaaS Development', 'EdTech Solutions'],
     },
     {
-      '@type': 'LocalBusiness',
+      '@type': 'ProfessionalService',
       name: 'Homies Studio',
       description:
-        'Homies Studio is a premier India-based tech studio that helps B.Tech and M.Tech engineering students across India (including Bangalore, Hyderabad, Andhra Pradesh, and nationwide) complete final year projects in IoT, Robotics, Embedded Systems, and AI/ML. It also provides B2B AI solutions including AI agents, web apps, and SaaS products for startups and enterprises.',
+        "India's tech studio for engineering final year projects and AI product development. Homies Studio guides B.Tech and M.Tech students through FYP in IoT, Robotics, AI/ML, and Embedded Systems, and builds AI solutions for startups pan-India.",
       url: 'https://www.homiesstudio.com',
+      logo: 'https://www.homiesstudio.com/logo.png',
       telephone: '+917416636417',
       email: 'info.homiesstudio@gmail.com',
       priceRange: '₹₹',
+      currenciesAccepted: 'INR',
+      paymentAccepted: 'UPI, Bank Transfer',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Hyderabad',
-        addressRegion: 'Telangana',
         addressCountry: 'IN',
       },
-      areaServed: ['India', 'Bangalore', 'Hyderabad', 'Andhra Pradesh', 'Telangana', 'Karnataka', 'Maharashtra', 'Tamil Nadu', 'Delhi NCR', 'Ongole'],
+      areaServed: [
+        { '@type': 'Country', name: 'India' },
+        { '@type': 'State', name: 'Andhra Pradesh' },
+        { '@type': 'State', name: 'Telangana' },
+        { '@type': 'State', name: 'Tamil Nadu' },
+        { '@type': 'State', name: 'Karnataka' },
+        { '@type': 'State', name: 'Maharashtra' },
+        { '@type': 'State', name: 'Kerala' },
+        { '@type': 'State', name: 'West Bengal' },
+        { '@type': 'State', name: 'Uttar Pradesh' },
+        { '@type': 'State', name: 'Rajasthan' },
+        { '@type': 'State', name: 'Gujarat' },
+        { '@type': 'State', name: 'Punjab' },
+        { '@type': 'State', name: 'Delhi' },
+      ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Homies Studio Services',
@@ -77,7 +127,7 @@ const getSchema = () => ({
             itemOffered: {
               '@type': 'Service',
               name: 'Final Year Project Guidance – IoT',
-              description: 'End-to-end guidance for B.Tech and M.Tech students building IoT-based final year projects.',
+              description: 'End-to-end guidance for B.Tech and M.Tech students building IoT-based final year projects across India.',
             },
           },
           {
@@ -85,7 +135,7 @@ const getSchema = () => ({
             itemOffered: {
               '@type': 'Service',
               name: 'Final Year Project Guidance – AI/ML',
-              description: 'Mentorship and development support for AI and Machine Learning final year projects.',
+              description: 'Mentorship and development support for AI and Machine Learning final year projects for engineering students across India.',
             },
           },
           {
@@ -93,7 +143,39 @@ const getSchema = () => ({
             itemOffered: {
               '@type': 'Service',
               name: 'Final Year Project Guidance – Robotics & Embedded Systems',
-              description: 'Hardware and software guidance for Robotics and Embedded Systems FYP projects.',
+              description: 'Hardware and software guidance for Robotics and Embedded Systems FYP for ECE and EEE students.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Final Year Project Guidance – Computer Vision & Deep Learning',
+              description: 'Project guidance for computer vision, deep learning, and image processing final year projects for CSE students.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Engineering Project Marketplace – Homies Mart',
+              description: 'Buy and sell ready-made verified engineering projects across IoT, AI/ML, Robotics, and Web domains on Homies Mart.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Become a Homies Creator',
+              description: 'Engineering students and developers can become creators on Homies Studio, publish their projects, and earn by selling to students across India.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'College Partnership Program',
+              description: 'Structured final year project mentorship and support programs for engineering colleges across India.',
             },
           },
           {
@@ -101,7 +183,7 @@ const getSchema = () => ({
             itemOffered: {
               '@type': 'Service',
               name: 'B2B AI Agent Development',
-              description: 'Custom AI agents and automation solutions for startups and enterprises.',
+              description: 'Custom AI agents and intelligent automation solutions for startups and enterprises across India.',
             },
           },
           {
@@ -109,10 +191,23 @@ const getSchema = () => ({
             itemOffered: {
               '@type': 'Service',
               name: 'SaaS & Web App Development',
-              description: 'Full-stack SaaS product and web application development for startups.',
+              description: 'Full-stack SaaS product and web application development for Indian startups and global clients.',
             },
           },
         ],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      name: 'Homies Studio',
+      url: 'https://www.homiesstudio.com',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://www.homiesstudio.com/mart?search={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
       },
     },
     {
@@ -120,26 +215,50 @@ const getSchema = () => ({
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Does Homies Studio help with final year engineering projects?',
+          name: 'What is Homies Studio?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes. Homies Studio specializes in guiding B.Tech and M.Tech engineering students through final year projects in IoT, Robotics, Embedded Systems, and AI/ML — from ideation and design to development and final submission.',
+            text: 'Homies Studio is an India-wide tech studio that helps B.Tech and M.Tech engineering students complete final year projects in IoT, Robotics, AI/ML, Embedded Systems, and Computer Vision. It also builds AI agents, SaaS products, and web applications for startups across India. Homies Studio also operates Homies Mart, an engineering project marketplace.',
           },
         },
         {
           '@type': 'Question',
-          name: 'What domains does Homies Studio cover for final year projects (FYP)?',
+          name: 'Does Homies Studio help with final year engineering projects across India?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Homies Studio covers IoT, Robotics, Embedded Systems, AI/ML, Computer Vision, Full Stack Web Apps, and Python-based projects for CSE, ECE, and EEE engineering students.',
+            text: 'Yes. Homies Studio provides final year project guidance to engineering students pan-India remotely. Students from CSE, ECE, and EEE branches across all Indian states can get end-to-end FYP support from ideation to submission.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Where is Homies Studio located?',
+          name: 'What domains does Homies Studio cover for final year projects?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Homies Studio serves engineering students and startups pan-India — including Bangalore, Hyderabad, Andhra Pradesh, Telangana, Karnataka, and nationwide remotely with complete hardware and software support.',
+            text: 'Homies Studio covers IoT, Robotics, Embedded Systems, AI/ML, Computer Vision, Deep Learning, Full Stack Web Development, Python projects, IEEE-standard projects, mini projects, and major projects for B.Tech and M.Tech students across CSE, ECE, and EEE branches.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is Homies Mart?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Homies Mart is an engineering project marketplace by Homies Studio where students and developers can buy ready-made verified projects or sell their own technical builds across domains like IoT, AI/ML, Robotics, and Web Development.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How can I become a Homies Creator?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Engineering students and developers can apply to become a Homies Creator at homiesstudio.com/become-a-creator. Creators can publish and sell their technical projects on Homies Mart and earn from students across India.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does Homies Studio work with engineering colleges?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Homies Studio partners with engineering colleges across India to provide structured final year project mentorship programs, domain expertise, and student project management support.',
           },
         },
         {
@@ -147,7 +266,7 @@ const getSchema = () => ({
           name: 'Does Homies Studio build AI solutions for startups?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: "Yes. Homies Studio's B2B wing builds AI agents, SaaS products, web applications, and automation solutions for startups, colleges, and enterprises across India and globally.",
+            text: "Yes. Homies Studio's B2B wing builds custom AI agents, SaaS products, web applications, and automation solutions for startups, EdTech companies, and enterprises across India.",
           },
         },
         {
@@ -155,10 +274,47 @@ const getSchema = () => ({
           name: 'How can I contact Homies Studio?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'You can reach Homies Studio via WhatsApp at +91 74166 36417, email at info.homiesstudio@gmail.com, or through the contact form on homiesstudio.com.',
+            text: 'You can contact Homies Studio via WhatsApp at +91 74166 36417, by email at info.homiesstudio@gmail.com, or through the contact form at homiesstudio.com. The team responds to all India-wide project inquiries.',
           },
         },
       ],
+    },
+    {
+      '@type': 'EducationalOrganization',
+      name: 'Homies Studio',
+      description: 'Homies Studio provides project-based learning support and final year project guidance for engineering students across India in IoT, AI/ML, Robotics, and Embedded Systems.',
+      url: 'https://www.homiesstudio.com',
+      areaServed: { '@type': 'Country', name: 'India' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Engineering Project Guidance Programs',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Course',
+              name: 'IoT Final Year Project Guidance',
+              description: 'Guided project development for IoT-based B.Tech and M.Tech final year projects pan-India.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Course',
+              name: 'AI/ML Final Year Project Guidance',
+              description: 'End-to-end support for Artificial Intelligence and Machine Learning FYP projects.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Course',
+              name: 'Robotics & Embedded Systems FYP',
+              description: 'Hardware-software integrated project guidance for Robotics and Embedded Systems students.',
+            },
+          },
+        ],
+      },
     },
   ],
 });
@@ -183,7 +339,7 @@ function getRobotsDirective(noindex) {
   return 'index,follow';
 }
 
-function CustomHead({ title, description, keywords, canonical, ogImage, noindex }) {
+function CustomHead({ title, description, keywords, canonical, ogImage, noindex, pageSchema }) {
   let metaTitle = title;
   if (!metaTitle) {
     metaTitle = DEFAULT_TITLE;
@@ -246,15 +402,22 @@ function CustomHead({ title, description, keywords, canonical, ogImage, noindex 
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
 
-        {/* Structured Data JSON-LD */}
+        {/* Global Structured Data JSON-LD */}
         {/* eslint-disable-next-line react/no-danger */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGlobalSchema()) }} />
+
+        {/* Page Specific Structured Data JSON-LD (if provided) */}
+        {pageSchema && (
+          /* eslint-disable-next-line react/no-danger */
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
+        )}
       </NextHead>
       <NextSeo title={metaTitle} description={metaDesc} noindex={noindex} />
     </>
   );
 }
 
+// eslint-disable-next-line react/forbid-prop-types
 CustomHead.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
@@ -262,6 +425,7 @@ CustomHead.propTypes = {
   canonical: PropTypes.string,
   ogImage: PropTypes.string,
   noindex: PropTypes.bool,
+  pageSchema: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 CustomHead.defaultProps = {
@@ -271,6 +435,7 @@ CustomHead.defaultProps = {
   canonical: '',
   ogImage: '',
   noindex: false,
+  pageSchema: null,
 };
 
 export default CustomHead;

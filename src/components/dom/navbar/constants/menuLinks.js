@@ -8,24 +8,33 @@ const menuLinks = [
     href: '/mart',
   },
   {
+    title: 'Final Year Projects',
+    href: '/final-year-projects',
+  },
+  {
     title: 'Become a Creator',
     href: '/become-a-creator',
   },
   {
-    title: 'Creator Studio',
-    href: '/creator/dashboard',
+    title: 'For Colleges',
+    href: '/for-colleges',
   },
   {
-    title: 'Buyer Portal',
-    href: '/buyer/dashboard',
+    title: 'AI Solutions',
+    href: '/ai-solutions',
   },
   {
     title: 'About Homies',
     href: '/about',
   },
   {
+    title: 'Blog',
+    href: '/blog',
+  },
+  {
     title: 'Contact',
-    href: undefined,
+    href: '/contact',
   },
 ];
+
 export default menuLinks;

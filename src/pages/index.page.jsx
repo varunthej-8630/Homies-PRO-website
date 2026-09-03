@@ -5,9 +5,9 @@ import Quote from '@src/pages/components/quote/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'Final Year Projects, IoT, AI/ML & Robotics | Homies Studio – India',
+  title: 'Final Year Projects & AI Solutions for Students & Startups | Homies Studio India',
   description:
-    'Homies Studio helps B.Tech & M.Tech students across India (Bangalore, Hyderabad, Andhra Pradesh & nationwide) complete final year projects in IoT, Robotics, AI/ML, and Embedded Systems. Also builds AI agents, web apps & SaaS for startups.',
+    'Homies Studio helps B.Tech & M.Tech engineering students across India complete final year projects in IoT, Robotics, AI/ML & Embedded Systems. Also builds AI agents, SaaS & web apps for startups. Pan-India, 100% remote.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',

@@ -156,10 +156,14 @@ function MenuLinks() {
   const dynamicLinks = [
     { title: 'Home', href: '/' },
     { title: 'Homies Mart', href: '/mart' },
+    { title: 'Final Year Projects', href: '/final-year-projects' },
     roleSpecificLink,
+    { title: 'For Colleges', href: '/for-colleges' },
+    { title: 'AI Solutions', href: '/ai-solutions' },
     ...(role === 'BUYER' ? [{ title: 'Buyer Portal', href: '/buyer/dashboard' }] : []),
     { title: 'About Homies', href: '/about' },
-    { title: 'Contact', href: undefined },
+    { title: 'Blog', href: '/blog' },
+    { title: 'Contact', href: '/contact' },
   ];
 
   const renderMenuLinks = (links, refs, pathname) =>

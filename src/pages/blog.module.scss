@@ -1,0 +1,121 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1);
+  margin-bottom: calc(var(--layout-columns-gap) * 3);
+
+  .taglineBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.4vw 1.2vw;
+    border-radius: 9999px;
+    font-weight: 600;
+    width: max-content;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      padding: 1.5vw 4vw;
+    }
+  }
+
+  .heroTitle {
+    font-weight: 750;
+    line-height: 115%;
+    max-width: 85vw;
+  }
+
+  .heroSubtitle {
+    color: rgba(40, 40, 43, 0.75);
+    max-width: 65vw;
+    line-height: 145%;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+  }
+
+  .blogCard {
+    background: rgba(240, 244, 241, 0.6);
+    border: 1px solid rgba(40, 40, 43, 0.1);
+    border-radius: 1vw;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.2vw;
+    transition: all 0.3s ease;
+
+    @include mobile {
+      border-radius: 3vw;
+      padding: 5vw;
+      gap: 3vw;
+    }
+
+    &:hover {
+      border-color: rgba(40, 40, 43, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .cardHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .categoryBadge {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #c5a359;
+        letter-spacing: 0.05em;
+      }
+
+      .comingSoonBadge {
+        background: #000;
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+        text-transform: uppercase;
+      }
+    }
+
+    .cardTitle {
+      font-weight: 750;
+      line-height: 130%;
+    }
+
+    .cardFooter {
+      color: rgba(40, 40, 43, 0.5);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(40, 40, 43, 0.08);
+      padding-top: 0.8vw;
+    }
+  }
+}

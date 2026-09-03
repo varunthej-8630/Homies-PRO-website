@@ -75,7 +75,7 @@ function Footer() {
       <div style={{ gridColumn: isMobile ? '1 / 3' : '1 / 5' }} className={styles.linksContainer}>
         <AppearTitle isFooter>
           <h6 className={clsx(styles.title, 'h6')}>Sitemap</h6>
-          {menuLinks.slice(0, -1).map((link) => (
+          {menuLinks.map((link) => (
             <div key={link.title} className={styles.linkTextContainer}>
               <LinkText className={styles.linkText} title={link.title} href={link.href}>
                 <span className="footer">{link.title}</span>

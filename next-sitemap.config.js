@@ -5,73 +5,32 @@ module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: [
-    '/admin',
-    '/admin/*',
-    '/creator',
-    '/creator/*',
-    '/buyer',
-    '/buyer/*',
-    '/checkout',
-    '/checkout/*',
-    '/auth',
-    '/auth/*',
-    '/api/*',
-    '/supabase-test',
-    '/404',
-  ],
+  exclude: ['/admin', '/admin/*', '/creator', '/creator/*', '/buyer', '/buyer/*', '/checkout', '/checkout/*', '/auth', '/auth/*', '/api/*', '/supabase-test', '/404'],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/admin',
-          '/admin/*',
-          '/creator',
-          '/creator/*',
-          '/buyer',
-          '/buyer/*',
-          '/checkout',
-          '/checkout/*',
-          '/auth',
-          '/auth/*',
-          '/api/*',
-          '/supabase-test',
-        ],
+        disallow: ['/auth/', '/creator/dashboard', '/buyer/dashboard', '/admin', '/admin/*', '/creator/*', '/buyer/*', '/checkout', '/checkout/*', '/api/*', '/supabase-test'],
       },
     ],
   },
   additionalPaths: async (config) => {
     const customEntries = [
-      {
-        loc: '/',
-        changefreq: 'daily',
-        priority: 1.0,
-        lastmod: new Date().toISOString(),
-      },
-      {
-        loc: '/about',
-        changefreq: 'weekly',
-        priority: 0.9,
-        lastmod: new Date().toISOString(),
-      },
-      {
-        loc: '/projects',
-        changefreq: 'daily',
-        priority: 0.9,
-        lastmod: new Date().toISOString(),
-      },
-      {
-        loc: '/become-a-creator',
-        changefreq: 'weekly',
-        priority: 0.85,
-        lastmod: new Date().toISOString(),
-      },
+      { loc: '/', changefreq: 'weekly', priority: 1.0 },
+      { loc: '/mart', changefreq: 'daily', priority: 0.95 },
+      { loc: '/final-year-projects', changefreq: 'weekly', priority: 0.95 },
+      { loc: '/become-a-creator', changefreq: 'monthly', priority: 0.9 },
+      { loc: '/for-colleges', changefreq: 'weekly', priority: 0.9 },
+      { loc: '/ai-solutions', changefreq: 'weekly', priority: 0.9 },
+      { loc: '/contact', changefreq: 'monthly', priority: 0.85 },
+      { loc: '/blog', changefreq: 'weekly', priority: 0.85 },
+      { loc: '/about', changefreq: 'monthly', priority: 0.75 },
     ];
 
     return customEntries.map((entry) => ({
       ...entry,
+      lastmod: new Date().toISOString(),
       alternateRefs: config.alternateRefs ?? [],
     }));
   },
@@ -81,19 +40,31 @@ module.exports = {
 
     if (path === '/') {
       priority = 1.0;
-      changefreq = 'daily';
-    } else if (path === '/about') {
-      priority = 0.9;
       changefreq = 'weekly';
-    } else if (path === '/projects') {
-      priority = 0.9;
+    } else if (path === '/mart') {
+      priority = 0.95;
       changefreq = 'daily';
-    } else if (path.startsWith('/projects/')) {
-      priority = 0.8;
+    } else if (path === '/final-year-projects') {
+      priority = 0.95;
       changefreq = 'weekly';
     } else if (path === '/become-a-creator') {
+      priority = 0.9;
+      changefreq = 'monthly';
+    } else if (path === '/for-colleges') {
+      priority = 0.9;
+      changefreq = 'weekly';
+    } else if (path === '/ai-solutions') {
+      priority = 0.9;
+      changefreq = 'weekly';
+    } else if (path === '/contact') {
+      priority = 0.85;
+      changefreq = 'monthly';
+    } else if (path === '/blog') {
       priority = 0.85;
       changefreq = 'weekly';
+    } else if (path === '/about') {
+      priority = 0.75;
+      changefreq = 'monthly';
     }
 
     return {

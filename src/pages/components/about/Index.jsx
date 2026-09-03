@@ -51,9 +51,9 @@ function About() {
       <div className={clsx(styles.container, 'layout-grid-inner')}>
         <div className={clsx(styles.descWrapper)} ref={animatedImageRef}>
           <AppearTitle>
-            <div className="p-l">“Your partner for Final Year Projects, AI Solutions &amp; Digital Products.</div>
-            <div className="p-l">From the first idea to the final submission —</div>
-            <div className="p-l">we build real things.”</div>
+            <div className="p-l">“Your partner for Final Year Projects, AI Solutions &amp; Digital Products —</div>
+            <div className="p-l">serving students, colleges, and startups across India.</div>
+            <div className="p-l">From the first idea to final submission, we build real things.”</div>
           </AppearTitle>
         </div>
         <div className={clsx(styles.descWrapperBottom)}>

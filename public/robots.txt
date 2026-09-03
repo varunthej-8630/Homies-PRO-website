@@ -1,16 +1,15 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /auth/
+Disallow: /creator/dashboard
+Disallow: /buyer/dashboard
 Disallow: /admin
 Disallow: /admin/*
-Disallow: /creator
 Disallow: /creator/*
-Disallow: /buyer
 Disallow: /buyer/*
 Disallow: /checkout
 Disallow: /checkout/*
-Disallow: /auth
-Disallow: /auth/*
 Disallow: /api/*
 Disallow: /supabase-test
 
