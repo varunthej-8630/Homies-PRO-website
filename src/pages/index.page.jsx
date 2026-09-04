@@ -6,8 +6,7 @@ import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
   title: 'HOMIES STUDIO | Final Year Projects & AI Solutions',
-  description:
-    'Homies Studio helps B.Tech & M.Tech engineering students across India complete final year projects in IoT, Robotics, AI/ML & Embedded Systems. Also builds AI agents, SaaS & web apps for startups. Pan-India, 100% remote.',
+  description: 'Homies Studio transforms engineering concepts into real-world solutions, combining IoT, Robotics, AI/ML, and Embedded Systems with practical, end-to-end project development.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',
