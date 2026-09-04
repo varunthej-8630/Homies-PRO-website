@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import styles from './contact.module.scss';
 
 const seo = {
-  title: 'Contact Homies Studio – Final Year Projects & AI Solutions | India',
-  description: 'Contact Homies Studio for final year project guidance, college partnerships, or AI solution development. Reach us on WhatsApp, email, or through our contact form. Serving pan-India.',
+  title: 'Contact Homies Studio — WhatsApp, Email & Project Inquiries | India',
+  description: 'Get in touch with Homies Studio for final year project guidance, college partnerships, or AI product development. Direct WhatsApp and email support available daily.',
   keywords: ['Contact Homies Studio', 'Homies Studio WhatsApp', 'Homies Studio Email', 'Final Year Project Support Contact', 'AI Solutions Inquiry', 'Engineering College Partnership Contact'],
   canonical: '/contact',
 };
@@ -15,6 +15,7 @@ const contactSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
+      '@id': 'https://www.homiesstudio.com/contact#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -32,20 +33,12 @@ const contactSchema = {
     },
     {
       '@type': 'ContactPage',
-      name: 'Contact Homies Studio',
+      '@id': 'https://www.homiesstudio.com/contact#page',
       url: 'https://www.homiesstudio.com/contact',
+      name: 'Contact Homies Studio',
+      description: 'Official contact channels for Homies Studio final year project guidance, college partnerships, and AI product development.',
       mainEntity: {
-        '@type': 'Organization',
-        name: 'Homies Studio',
-        telephone: '+917416636417',
-        email: 'info@homiesstudio.com',
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: '+91-74166-36417',
-          contactType: 'customer service',
-          areaServed: 'IN',
-          availableLanguage: ['English', 'Telugu', 'Hindi'],
-        },
+        '@id': 'https://www.homiesstudio.com/#organization',
       },
     },
   ],
@@ -61,10 +54,10 @@ export default function ContactPage() {
         <section className={styles.heroSection}>
           <div className={styles.taglineBadge}>📍 Pan-India Remote Service · Fast Response</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Get In Touch With Homies Studio</h1>
-          <h2 className={clsx('p-l', styles.heroSubtitle)}>
-            We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product — let&apos;s
+          <p className={clsx('p-l', styles.heroSubtitle)}>
+            We&apos;re here for students, colleges &amp; startups across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product — let&apos;s
             talk.
-          </h2>
+          </p>
         </section>
 
         {/* Contact Channels Grid */}
@@ -97,7 +90,7 @@ export default function ContactPage() {
 
         {/* Action Box */}
         <section className={styles.formBox}>
-          <h3 className={clsx('h2', styles.formTitle)}>Ready to Start Your Project?</h3>
+          <h2 className={clsx('h2', styles.formTitle)}>Ready to Start Your Project?</h2>
           <p className={clsx('p-m', styles.formSubtitle)}>Tell us about your requirements on WhatsApp or send us an email. Our technical team is ready to assist you right away.</p>
           <div className={styles.directCtaRow}>
             <a href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className={styles.whatsappCta}>

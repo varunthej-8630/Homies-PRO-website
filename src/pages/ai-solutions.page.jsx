@@ -5,8 +5,8 @@ import { useStore } from '@src/store';
 import styles from './ai-solutions.module.scss';
 
 const seo = {
-  title: 'AI Agents, SaaS & Web App Development for Startups | Homies Studio India',
-  description: 'Homies Studio builds custom AI agents, SaaS platforms, web apps and automation tools for startups and EdTech companies across India. End-to-end tech product development.',
+  title: 'Custom AI Agents, SaaS & Full-Stack Web Development | Homies Studio',
+  description: 'Homies Studio engineers autonomous AI agents, SaaS platforms, and full-stack web applications for startups and EdTech companies across India. Fast MVP delivery.',
   keywords: [
     'AI Solutions India',
     'AI Agent Development',
@@ -14,8 +14,7 @@ const seo = {
     'Startup Web App Development',
     'Intelligent Automation',
     'EdTech Platform Development',
-    'Custom AI Development Bangalore',
-    'AI Studio Hyderabad',
+    'Custom AI Development',
     'B2B AI Solutions',
   ],
   canonical: '/ai-solutions',
@@ -26,6 +25,7 @@ const aiSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
+      '@id': 'https://www.homiesstudio.com/ai-solutions#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -42,7 +42,22 @@ const aiSchema = {
       ],
     },
     {
+      '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/ai-solutions#service',
+      name: 'AI Agent & SaaS Product Development',
+      provider: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      serviceType: 'Custom AI & Software Engineering',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      description: 'End-to-end engineering of custom autonomous AI agents, SaaS platforms, and full-stack web applications for startups and EdTech ventures.',
+    },
+    {
       '@type': 'FAQPage',
+      '@id': 'https://www.homiesstudio.com/ai-solutions#faq',
       mainEntity: [
         {
           '@type': 'Question',
@@ -158,9 +173,9 @@ export default function AISolutionsPage() {
             <p className={styles.sectionDesc}>Learn more about our product development workflows, pricing models, and tech stack.</p>
           </div>
           <div className={styles.faqList}>
-            {aiSchema['@graph'][1].mainEntity.map((faq) => (
+            {aiSchema['@graph'][2].mainEntity.map((faq) => (
               <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
+                <h3 className={styles.faqQuestion}>{faq.name}</h3>
                 <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}

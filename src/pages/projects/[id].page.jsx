@@ -93,9 +93,52 @@ function Page({ id }) {
     [currentProject],
   );
 
+  const projectSchema = useMemo(
+    () => ({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          '@id': `https://www.homiesstudio.com/projects/${currentProject.id}#breadcrumb`,
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://www.homiesstudio.com',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Projects',
+              item: 'https://www.homiesstudio.com/mart',
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: currentProject.title,
+              item: `https://www.homiesstudio.com/projects/${currentProject.id}`,
+            },
+          ],
+        },
+        {
+          '@type': 'CreativeWork',
+          '@id': `https://www.homiesstudio.com/projects/${currentProject.id}#work`,
+          name: currentProject.title,
+          description: currentProject.description || `Engineering build and interactive deliverables for ${currentProject.title}.`,
+          creator: {
+            '@id': 'https://www.homiesstudio.com/#organization',
+          },
+          url: `https://www.homiesstudio.com/projects/${currentProject.id}`,
+        },
+      ],
+    }),
+    [currentProject],
+  );
+
   return (
     <>
-      <CustomHead {...seo} />
+      <CustomHead {...seo} pageSchema={projectSchema} />
       <section className={clsx(styles.root, 'layout-grid-inner')}>
         <div ref={leftContainerRef} className={styles.leftContainer}>
           <ProjectDetails project={currentProject} />

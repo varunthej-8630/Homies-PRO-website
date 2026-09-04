@@ -23,6 +23,7 @@ const blogSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
+      '@id': 'https://www.homiesstudio.com/blog#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -37,6 +38,16 @@ const blogSchema = {
           item: 'https://www.homiesstudio.com/blog',
         },
       ],
+    },
+    {
+      '@type': 'Blog',
+      '@id': 'https://www.homiesstudio.com/blog#blog',
+      name: 'Homies Studio Engineering & FYP Insights',
+      description: 'Engineering project guides, FYP topic selection frameworks, IoT tutorials, and AI agent architectures from Homies Studio.',
+      publisher: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      url: 'https://www.homiesstudio.com/blog',
     },
   ],
 };

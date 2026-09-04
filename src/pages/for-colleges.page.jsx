@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './for-colleges.module.scss';
 
 const seo = {
-  title: 'Engineering College Partnership – Final Year Project Support Program | Homies Studio',
+  title: 'Engineering College Project Partnerships & FYP Mentorship | Homies Studio',
   description: 'Homies Studio partners with engineering colleges across India for structured FYP mentorship, domain expertise and student project management. IoT, AI/ML, Robotics and more.',
   keywords: [
     'College Partnership Program',
@@ -24,6 +24,7 @@ const collegeSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
+      '@id': 'https://www.homiesstudio.com/for-colleges#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -40,7 +41,22 @@ const collegeSchema = {
       ],
     },
     {
+      '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/for-colleges#service',
+      name: 'Engineering College Project Partnership Program',
+      provider: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      serviceType: 'Institutional Mentorship & Project Management',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      description: 'Structured final year project supervision, department milestones, hardware kits, and evaluation support for engineering colleges across India.',
+    },
+    {
       '@type': 'FAQPage',
+      '@id': 'https://www.homiesstudio.com/for-colleges#faq',
       mainEntity: [
         {
           '@type': 'Question',
@@ -148,9 +164,9 @@ export default function ForCollegesPage() {
             <p className={styles.sectionDesc}>Common questions about institutional collaborations and department partnerships.</p>
           </div>
           <div className={styles.faqList}>
-            {collegeSchema['@graph'][1].mainEntity.map((faq) => (
+            {collegeSchema['@graph'][2].mainEntity.map((faq) => (
               <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
+                <h3 className={styles.faqQuestion}>{faq.name}</h3>
                 <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}

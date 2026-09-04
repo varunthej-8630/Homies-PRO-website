@@ -7,7 +7,7 @@ function Hero() {
     <section className={clsx(styles.root, 'layout-block-inner')}>
       <header className={styles.titleContainer}>
         <AppearTitle>
-          <h2 className={clsx(styles.title, 'h2')}>Building ideas, academic requirements, and real-world problems into working technology.</h2>
+          <h1 className={clsx(styles.title, 'h2')}>Building ideas, academic requirements, and real-world problems into working technology.</h1>
         </AppearTitle>
       </header>
     </section>
