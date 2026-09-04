@@ -12,6 +12,7 @@ import { AuthProvider } from '@src/context/AuthContext';
 import Background from '@src/components/canvas/background/Index';
 import { Canvas } from '@react-three/fiber';
 import ConversationModal from '@src/components/dom/conversationModal/Index';
+import GoldSparkles from '@src/components/dom/goldSparkles/Index';
 import { EffectComposer } from '@react-three/postprocessing';
 import Fluid from '@src/components/canvas/fluid/Fluid';
 import Layout from '@src/components/dom/Layout';
@@ -99,6 +100,7 @@ function MyApp({ Component, pageProps, router }) {
         <Scrollbar />
         <Navbar />
         <ConversationModal />
+        <GoldSparkles />
         <Analytics />
       </>
     ),

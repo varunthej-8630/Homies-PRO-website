@@ -136,13 +136,17 @@ function Footer() {
         }}
       >
         <AppearTitle isFooter>
-          <div className="p-x">© 2026 · HOMIES STUDIO</div>
+          <div className="p-x">
+            © 2026 · H<span className={styles.goldText}>OM</span>IES STUDIO
+          </div>
           <div className={clsx('p-x', styles.middleText)}>All Rights Reserved</div>
         </AppearTitle>
       </div>
 
       <div className={styles.brandTitle}>
-        <span>HOMIES</span>
+        <span>
+          H<span className={styles.goldText}>OM</span>IES
+        </span>
       </div>
       <div className={styles.goToTop}>
         <GoTop />

@@ -3,22 +3,26 @@
 .btnPosnawr {
   position: relative;
   overflow: hidden;
-  height: clamp(36px, 2.5vw, 48px);
-  padding: 0 clamp(16px, 1.25vw, 24px);
-  border-radius: 9vw;
+  height: clamp(42px, 3vw, 52px);
+  padding: 0 clamp(20px, 1.6vw, 32px);
+  border-radius: 9999px;
   text-decoration: none;
   background-color: var(--accentColor);
-  display: flex;
+  display: inline-flex;
   gap: calc(var(--layout-columns-gap) / 2);
   align-items: center;
   justify-content: center;
   box-shadow:
     0 0.32vw 0.52vw #0000000a,
     0 0.12vw 0.22vw #0000000a;
+  cursor: pointer;
+  border: none;
+
   @include mobile {
-    height: clamp(38px, 9vw, 48px);
-    padding: 0 clamp(16px, 4vw, 24px);
+    height: clamp(42px, 11vw, 50px);
+    padding: 0 clamp(20px, 5.5vw, 30px);
   }
+
   &:hover {
     .ball {
       width: 25vw;
@@ -50,16 +54,24 @@
   .labelClassic {
     color: var(--black);
     z-index: 2;
-    line-height: 46%;
+    font-size: clamp(0.85rem, 0.95vw, 1.05rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 100%;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.1, 1);
+
     @include mobile {
+      font-size: clamp(0.82rem, 3.4vw, 0.95rem);
+      font-weight: 700;
       line-height: 100%;
     }
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.1, 1);
   }
 
   .arrowClassic {
-    width: 0.6vw;
-    height: 0.6vw;
+    width: clamp(8px, 0.7vw, 12px);
+    height: clamp(8px, 0.7vw, 12px);
     fill: var(--black);
     stroke: var(--black);
     transform: rotate(-90deg);
@@ -67,9 +79,10 @@
     position: absolute;
     right: calc(var(--layout-columns-gap) * -0.8);
     z-index: 2;
+
     @include mobile {
-      width: 2vw;
-      height: 2vw;
+      width: 2.5vw;
+      height: 2.5vw;
     }
   }
 

@@ -67,6 +67,11 @@ const nextConfig = {
       destination: '/',
       permanent: true,
     },
+    {
+      source: '/404',
+      destination: '/',
+      permanent: true,
+    },
   ],
 };
 

@@ -6,6 +6,8 @@
   padding-top: calc(var(--layout-columns-gap) * 3.5);
   padding-bottom: calc(var(--layout-columns-gap) * 4);
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .heroSection {
@@ -18,17 +20,25 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #000;
-    color: #fff;
+    background: var(--black, #000);
+    color: var(--white, #fff);
     padding: 0.4vw 1.2vw;
     border-radius: 9999px;
     font-weight: 600;
     width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 
     @include mobile {
-      padding: 1.5vw 4vw;
+      width: auto;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.35;
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+      padding: 2vw 4.5vw;
     }
   }
 
@@ -36,6 +46,11 @@
     font-weight: 750;
     line-height: 115%;
     max-width: 85vw;
+
+    @include mobile {
+      max-width: 100%;
+      word-break: break-word;
+    }
   }
 
   .heroSubtitle {
@@ -45,6 +60,7 @@
 
     @include mobile {
       max-width: 100%;
+      word-break: break-word;
     }
   }
 }

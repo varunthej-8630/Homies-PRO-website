@@ -50,12 +50,12 @@ function ButtonLink({ href, label, target = false, onClick, type = 'button', cla
       disabled={disabled}
       aria-label={label}
       ref={buttonRef}
-      className={clsx('p-xs', styles.btnPosnawr, className)}
+      className={clsx(styles.btnPosnawr, className)}
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <span className={clsx('p-x', styles.labelClassic)}>{label}</span>
+      <span className={styles.labelClassic}>{label}</span>
       <Arrow className={styles.arrowClassic} />
       <span className={styles.ball} ref={spanRef} />
     </button>

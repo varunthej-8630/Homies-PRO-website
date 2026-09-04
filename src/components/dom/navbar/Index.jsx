@@ -89,7 +89,7 @@ function Navbar() {
         <div className={styles.innerHeader}>
           <Link onClick={goToTop} aria-label="Go home" scroll={false} href="/" className={styles.logoLink}>
             <h4 ref={logoTextRef} className={clsx('bold', 'h4', styles.logoText)}>
-              HOMIES STUDIO
+              H<span className={styles.goldText}>OM</span>IES STUDIO
             </h4>
           </Link>
 

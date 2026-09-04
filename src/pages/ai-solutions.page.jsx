@@ -5,8 +5,8 @@ import { useStore } from '@src/store';
 import styles from './ai-solutions.module.scss';
 
 const seo = {
-  title: 'Custom AI Agents, SaaS & Full-Stack Web Development | Homies Studio',
-  description: 'Homies Studio engineers autonomous AI agents, SaaS platforms, and full-stack web applications for startups and EdTech companies across India. Fast MVP delivery.',
+  title: 'AI Agents, SaaS & Web App Development for Startups | Homies Studio India',
+  description: 'Homies Studio builds custom AI agents, SaaS platforms, web apps and automation tools for startups and EdTech companies across India. End-to-end tech product development.',
   keywords: [
     'AI Solutions India',
     'AI Agent Development',
@@ -14,7 +14,8 @@ const seo = {
     'Startup Web App Development',
     'Intelligent Automation',
     'EdTech Platform Development',
-    'Custom AI Development',
+    'Custom AI Development Bangalore',
+    'AI Studio Hyderabad',
     'B2B AI Solutions',
   ],
   canonical: '/ai-solutions',
@@ -25,7 +26,6 @@ const aiSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.homiesstudio.com/ai-solutions#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -42,22 +42,7 @@ const aiSchema = {
       ],
     },
     {
-      '@type': 'Service',
-      '@id': 'https://www.homiesstudio.com/ai-solutions#service',
-      name: 'AI Agent & SaaS Product Development',
-      provider: {
-        '@id': 'https://www.homiesstudio.com/#organization',
-      },
-      serviceType: 'Custom AI & Software Engineering',
-      areaServed: {
-        '@type': 'Country',
-        name: 'India',
-      },
-      description: 'End-to-end engineering of custom autonomous AI agents, SaaS platforms, and full-stack web applications for startups and EdTech ventures.',
-    },
-    {
       '@type': 'FAQPage',
-      '@id': 'https://www.homiesstudio.com/ai-solutions#faq',
       mainEntity: [
         {
           '@type': 'Question',
@@ -128,9 +113,9 @@ export default function AISolutionsPage() {
     <>
       <CustomHead {...seo} pageSchema={aiSchema} />
 
-      <div className={clsx(styles.root, 'layout-block-inner')}>
+      <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
-        <section className={styles.heroSection}>
+        <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>⚡ B2B AI &amp; Product Engineering · Pan-India</div>
           <h1 className={clsx('h1', styles.heroTitle)}>AI Solutions &amp; Product Development for Indian Startups</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
@@ -149,13 +134,13 @@ export default function AISolutionsPage() {
               💬 WhatsApp Tech Leads
             </a>
           </div>
-        </section>
+        </div>
 
         {/* What We Build */}
-        <section className={styles.sectionHeader}>
+        <div className={styles.sectionHeader}>
           <h2 className={clsx('h2', styles.sectionTitle)}>What We Build</h2>
           <p className={styles.sectionDesc}>Tailored engineering capabilities that power modern digital businesses, startups, and EdTech ventures.</p>
-        </section>
+        </div>
         <div className={styles.gridCards}>
           {services.map((item) => (
             <div key={item.title} className={styles.serviceCard}>
@@ -167,21 +152,21 @@ export default function AISolutionsPage() {
         </div>
 
         {/* FAQs */}
-        <section className={styles.faqSection}>
+        <div className={styles.faqSection}>
           <div className={styles.sectionHeader}>
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Learn more about our product development workflows, pricing models, and tech stack.</p>
           </div>
           <div className={styles.faqList}>
-            {aiSchema['@graph'][2].mainEntity.map((faq) => (
+            {aiSchema['@graph'][1].mainEntity.map((faq) => (
               <div key={faq.name} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.name}</h3>
+                <h4 className={styles.faqQuestion}>{faq.name}</h4>
                 <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

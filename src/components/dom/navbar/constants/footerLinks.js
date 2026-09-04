@@ -20,19 +20,9 @@ const footerLinks = [
     url: '/become-a-creator',
   },
   {
-    title: 'Privacy Policy',
-    href: '/privacy-policy',
-    url: '/privacy-policy',
-  },
-  {
-    title: 'Terms of Service',
-    href: '/terms-of-service',
-    url: '/terms-of-service',
-  },
-  {
-    title: 'Refund Policy',
-    href: '/refund-policy',
-    url: '/refund-policy',
+    title: 'Homies Mart',
+    href: '/mart',
+    url: '/mart',
   },
 ];
 

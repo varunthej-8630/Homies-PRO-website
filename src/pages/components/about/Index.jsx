@@ -43,8 +43,8 @@ function About() {
     <section ref={rootRef} className={styles.root}>
       <div className={clsx(styles.nameContainer, 'layout-block-inner')}>
         <AppearTitle>
-          <h2 className={clsx('h1', 'medium')}>Hey, We&apos;re</h2>
-          <h2 className={clsx('h1', 'medium')}>Homies Studio!</h2>
+          <h1 className={clsx('h1', 'medium')}>Hey, We&apos;re</h1>
+          <h1 className={clsx('h1', 'medium')}>Homies Studio!</h1>
         </AppearTitle>
       </div>
 
@@ -59,16 +59,16 @@ function About() {
         <div className={clsx(styles.descWrapperBottom)}>
           {!isMobile ? (
             <AppearTitle key="desktop-descWrapperBottom">
-              <p className="h6">Homies Studio is a project marketplace and creator ecosystem built around three pillars:</p>
-              <p className="h6">Creation. Marketplace. Solutions.</p>
-              <p className="h6">We empower creators to publish and monetize their technical builds, help students</p>
-              <p className="h6">and developers discover verified, ready-made projects across domains, and build</p>
-              <p className="h6">bespoke digital solutions for startups and enterprises globally.</p>
+              <h6 className="h6">Homies Studio is a project marketplace and creator ecosystem built around three pillars:</h6>
+              <h6 className="h6">Creation. Marketplace. Solutions.</h6>
+              <h6 className="h6">We empower creators to publish and monetize their technical builds, help students</h6>
+              <h6 className="h6">and developers discover verified, ready-made projects across domains, and build</h6>
+              <h6 className="h6">bespoke digital solutions for startups and enterprises globally.</h6>
             </AppearTitle>
           ) : (
             <AppearTitle key="mobile-descWrapperBottom">
-              <p className="h6">Homies Studio is a project marketplace and creator ecosystem built around three pillars: Creation. Marketplace. Solutions.</p>
-              <p className="h6">We empower creators to monetize their builds, help developers discover ready-made projects, and engineer custom digital solutions.</p>
+              <h6 className="h6">Homies Studio is a project marketplace and creator ecosystem built around three pillars: Creation. Marketplace. Solutions.</h6>
+              <h6 className="h6">We empower creators to monetize their builds, help developers discover ready-made projects, and engineer custom digital solutions.</h6>
             </AppearTitle>
           )}
           <div className={clsx(styles.buttonContainer)}>

@@ -23,7 +23,6 @@ const blogSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.homiesstudio.com/blog#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -38,16 +37,6 @@ const blogSchema = {
           item: 'https://www.homiesstudio.com/blog',
         },
       ],
-    },
-    {
-      '@type': 'Blog',
-      '@id': 'https://www.homiesstudio.com/blog#blog',
-      name: 'Homies Studio Engineering & FYP Insights',
-      description: 'Engineering project guides, FYP topic selection frameworks, IoT tutorials, and AI agent architectures from Homies Studio.',
-      publisher: {
-        '@id': 'https://www.homiesstudio.com/#organization',
-      },
-      url: 'https://www.homiesstudio.com/blog',
     },
   ],
 };
@@ -90,15 +79,15 @@ export default function BlogPage() {
     <>
       <CustomHead {...seo} pageSchema={blogSchema} />
 
-      <div className={clsx(styles.root, 'layout-block-inner')}>
+      <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
-        <section className={styles.heroSection}>
+        <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>📚 Engineering Insights &amp; FYP Guides</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Engineering Project Ideas, FYP Tips &amp; AI Insights</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
             Curated project blueprints, domain roadmaps, and technical tutorials crafted by the Homies Studio engineering team for students and startups across India.
           </p>
-        </section>
+        </div>
 
         {/* Articles Grid */}
         <div className={styles.blogGrid}>
@@ -115,7 +104,7 @@ export default function BlogPage() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }

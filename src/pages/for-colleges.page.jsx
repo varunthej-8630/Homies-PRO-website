@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './for-colleges.module.scss';
 
 const seo = {
-  title: 'Engineering College Project Partnerships & FYP Mentorship | Homies Studio',
+  title: 'Engineering College Partnership – Final Year Project Support Program | Homies Studio',
   description: 'Homies Studio partners with engineering colleges across India for structured FYP mentorship, domain expertise and student project management. IoT, AI/ML, Robotics and more.',
   keywords: [
     'College Partnership Program',
@@ -24,7 +24,6 @@ const collegeSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.homiesstudio.com/for-colleges#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -41,22 +40,7 @@ const collegeSchema = {
       ],
     },
     {
-      '@type': 'Service',
-      '@id': 'https://www.homiesstudio.com/for-colleges#service',
-      name: 'Engineering College Project Partnership Program',
-      provider: {
-        '@id': 'https://www.homiesstudio.com/#organization',
-      },
-      serviceType: 'Institutional Mentorship & Project Management',
-      areaServed: {
-        '@type': 'Country',
-        name: 'India',
-      },
-      description: 'Structured final year project supervision, department milestones, hardware kits, and evaluation support for engineering colleges across India.',
-    },
-    {
       '@type': 'FAQPage',
-      '@id': 'https://www.homiesstudio.com/for-colleges#faq',
       mainEntity: [
         {
           '@type': 'Question',
@@ -119,9 +103,9 @@ export default function ForCollegesPage() {
     <>
       <CustomHead {...seo} pageSchema={collegeSchema} />
 
-      <div className={clsx(styles.root, 'layout-block-inner')}>
+      <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
-        <section className={styles.heroSection}>
+        <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>🏛️ Institutional Partnership Program · Pan-India</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Partner With Homies Studio — Final Year Project Support for Your College</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
@@ -141,13 +125,13 @@ export default function ForCollegesPage() {
               💬 Connect on WhatsApp (+91 74166 36417)
             </a>
           </div>
-        </section>
+        </div>
 
         {/* What We Offer */}
-        <section className={styles.sectionHeader}>
+        <div className={styles.sectionHeader}>
           <h2 className={clsx('h2', styles.sectionTitle)}>What We Offer Colleges &amp; Departments</h2>
           <p className={styles.sectionDesc}>A plug-and-play engineering project support framework that elevates student outcome metrics and project quality.</p>
-        </section>
+        </div>
         <div className={styles.gridCards}>
           {collegeOfferings.map((item) => (
             <div key={item.title} className={styles.featureCard}>
@@ -158,21 +142,21 @@ export default function ForCollegesPage() {
         </div>
 
         {/* FAQs */}
-        <section className={styles.faqSection}>
+        <div className={styles.faqSection}>
           <div className={styles.sectionHeader}>
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Common questions about institutional collaborations and department partnerships.</p>
           </div>
           <div className={styles.faqList}>
-            {collegeSchema['@graph'][2].mainEntity.map((faq) => (
+            {collegeSchema['@graph'][1].mainEntity.map((faq) => (
               <div key={faq.name} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.name}</h3>
+                <h4 className={styles.faqQuestion}>{faq.name}</h4>
                 <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -5,7 +5,7 @@ module.exports = {
   siteUrl,
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/admin', '/admin/*', '/creator', '/creator/*', '/buyer', '/buyer/*', '/checkout', '/checkout/*', '/auth', '/auth/*', '/api/*', '/supabase-test', '/404', '/projects'],
+  exclude: ['/admin', '/admin/*', '/creator', '/creator/*', '/buyer', '/buyer/*', '/checkout', '/checkout/*', '/auth', '/auth/*', '/api/*', '/supabase-test', '/404'],
   robotsTxtOptions: {
     policies: [
       {
@@ -26,9 +26,6 @@ module.exports = {
       { loc: '/contact', changefreq: 'monthly', priority: 0.85 },
       { loc: '/blog', changefreq: 'weekly', priority: 0.85 },
       { loc: '/about', changefreq: 'monthly', priority: 0.75 },
-      { loc: '/privacy-policy', changefreq: 'yearly', priority: 0.4 },
-      { loc: '/terms-of-service', changefreq: 'yearly', priority: 0.4 },
-      { loc: '/refund-policy', changefreq: 'yearly', priority: 0.4 },
     ];
 
     return customEntries.map((entry) => ({

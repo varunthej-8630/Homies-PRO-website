@@ -4,11 +4,15 @@
   position: relative;
   background-color: var(--white);
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   height: 300svh;
 
   .text {
     text-align: center;
     width: 100%;
+    max-width: 82vw;
+    box-sizing: border-box;
     position: sticky;
     top: 0;
     display: flex;
@@ -18,8 +22,8 @@
     min-height: 100svh;
     font-size: clamp(1.15rem, 2.2vw, 2.25rem);
     line-height: 142%;
-    max-width: 82vw;
     margin: 0 auto;
+    word-break: break-word;
 
     @include mobile {
       font-size: clamp(1rem, 4.8vw, 1.4rem);

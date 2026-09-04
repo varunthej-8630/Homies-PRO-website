@@ -6,6 +6,8 @@
   padding-top: calc(var(--layout-columns-gap) * 3.5);
   padding-bottom: calc(var(--layout-columns-gap) * 4);
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .heroSection {
@@ -13,6 +15,7 @@
   flex-direction: column;
   gap: calc(var(--layout-columns-gap) * 1);
   margin-bottom: calc(var(--layout-columns-gap) * 3);
+  width: 100%;
 
   .taglineBadge {
     display: inline-flex;
@@ -24,11 +27,19 @@
     border-radius: 9999px;
     font-weight: 600;
     width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 
     @include mobile {
-      padding: 1.5vw 4vw;
+      width: auto;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.35;
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+      padding: 2vw 4.5vw;
     }
   }
 
@@ -36,6 +47,11 @@
     font-weight: 750;
     line-height: 115%;
     max-width: 85vw;
+
+    @include mobile {
+      max-width: 100%;
+      word-break: break-word;
+    }
   }
 
   .heroSubtitle {
@@ -45,6 +61,7 @@
 
     @include mobile {
       max-width: 100%;
+      word-break: break-word;
     }
   }
 }
@@ -54,6 +71,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5vw;
   margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+  width: 100%;
+  box-sizing: border-box;
 
   @include mobile {
     grid-template-columns: 1fr;
@@ -69,6 +88,7 @@
     flex-direction: column;
     gap: 1vw;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 
     @include mobile {
       border-radius: 3vw;
@@ -87,6 +107,7 @@
 
     .cardTitle {
       font-weight: 700;
+      word-break: break-word;
     }
 
     .cardValue {
@@ -94,7 +115,7 @@
       font-weight: 600;
       color: #000;
       text-decoration: none;
-      word-break: break-all;
+      word-break: break-word;
 
       &:hover {
         text-decoration: underline;
@@ -114,6 +135,11 @@
   border-radius: 1.5vw;
   padding: 3vw;
   margin-bottom: calc(var(--layout-columns-gap) * 3);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
 
   @include mobile {
     border-radius: 3vw;
@@ -123,16 +149,19 @@
   .formTitle {
     font-weight: 750;
     margin-bottom: 0.5rem;
+    word-break: break-word;
   }
 
   .formSubtitle {
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 2vw;
     max-width: 50vw;
+    line-height: 145%;
 
     @include mobile {
       max-width: 100%;
       margin-bottom: 5vw;
+      word-break: break-word;
     }
   }
 
@@ -140,10 +169,12 @@
     display: flex;
     gap: 1.5vw;
     flex-wrap: wrap;
+    align-items: center;
 
     @include mobile {
       flex-direction: column;
       gap: 3vw;
+      width: 100%;
     }
 
     .whatsappCta {
@@ -158,9 +189,12 @@
       border-radius: 9999px;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-sizing: border-box;
 
       @include mobile {
         padding: 3.5vw 6vw;
+        width: 100%;
+        text-align: center;
       }
 
       &:hover {
@@ -182,9 +216,12 @@
       border-radius: 9999px;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-sizing: border-box;
 
       @include mobile {
         padding: 3.5vw 6vw;
+        width: 100%;
+        text-align: center;
       }
 
       &:hover {

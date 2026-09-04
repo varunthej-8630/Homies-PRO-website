@@ -44,7 +44,7 @@ $layout: (
     --layout-margin: #{desktop-vw(nth(map.get($layout, 'margin'), 2))};
   }
 
-  --layout-width: calc(100vw - (2 * var(--layout-margin)));
+  --layout-width: calc(100% - (2 * var(--layout-margin)));
   --layout-column-width: calc((var(--layout-width) - ((var(--layout-columns-count) - 1) * var(--layout-columns-gap))) / var(--layout-columns-count));
 }
 

@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import styles from './final-year-projects.module.scss';
 
 const seo = {
-  title: 'Final Year Project Guidance for B.Tech & M.Tech (IoT, AI/ML, Robotics) | Homies Studio',
-  description: 'End-to-end final year project guidance for CSE, ECE, and EEE students across India. Complete hardware blueprints, working code, reports & viva prep.',
+  title: 'Final Year Project Help for B.Tech & M.Tech Students Across India | Homies Studio',
+  description: 'Get end-to-end final year project guidance in IoT, Robotics, AI/ML, Embedded Systems & more. Homies Studio helps engineering students across India complete and submit FYP remotely.',
   keywords: [
     'Final Year Projects',
     'B.Tech Final Year Projects',
@@ -17,8 +17,9 @@ const seo = {
     'Embedded Systems FYP',
     'Computer Vision Projects',
     'Deep Learning Projects',
-    'Engineering Projects India',
-    'Final Year Project Help',
+    'Engineering Projects Bangalore',
+    'Engineering Projects Hyderabad',
+    'Final Year Project Help India',
   ],
   canonical: '/final-year-projects',
 };
@@ -28,7 +29,6 @@ const fypSchema = {
   '@graph': [
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://www.homiesstudio.com/final-year-projects#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
@@ -45,22 +45,7 @@ const fypSchema = {
       ],
     },
     {
-      '@type': 'Service',
-      '@id': 'https://www.homiesstudio.com/final-year-projects#service',
-      name: 'Engineering Final Year Project Guidance',
-      provider: {
-        '@id': 'https://www.homiesstudio.com/#organization',
-      },
-      serviceType: 'Engineering Education & Project Mentorship',
-      areaServed: {
-        '@type': 'Country',
-        name: 'India',
-      },
-      description: 'End-to-end guidance for B.Tech and M.Tech engineering students in IoT, Robotics, AI/ML, Embedded Systems, Computer Vision, and Full Stack Web Development.',
-    },
-    {
       '@type': 'FAQPage',
-      '@id': 'https://www.homiesstudio.com/final-year-projects#faq',
       mainEntity: [
         {
           '@type': 'Question',
@@ -112,55 +97,46 @@ const domains = [
     title: 'Internet of Things (IoT)',
     badge: 'Hardware + Cloud',
     desc: 'Smart cities, industrial IoT, healthcare monitoring, and agriculture automation using ESP32, Raspberry Pi, LoRa, MQTT, and cloud dashboards.',
-    categorySlug: 'iot-embedded',
   },
   {
     title: 'Robotics & Automation',
     badge: 'Hardware + Firmware',
     desc: 'Autonomous rovers, robotic arms, obstacle avoidance systems, ROS integrations, and smart surveillance robots.',
-    categorySlug: 'robotics',
   },
   {
     title: 'AI & Machine Learning',
     badge: 'Python + ML',
     desc: 'Predictive analytics, NLP models, automated diagnostic tools, and deep reinforcement learning implementations.',
-    categorySlug: 'ai-ml',
   },
   {
     title: 'Embedded Systems & VLSI',
     badge: 'Firmware + Microcontrollers',
     desc: 'STM32, Arduino, ARM Cortex, FPGA designs, Verilog/VHDL simulations, and custom sensor network interfaces.',
-    categorySlug: 'vlsi-hardware',
   },
   {
     title: 'Computer Vision & Deep Learning',
     badge: 'OpenCV + PyTorch / TF',
     desc: 'Object detection (YOLO), facial recognition, anomaly detection, medical image segmentation, and real-time tracking.',
-    categorySlug: 'ai-ml',
   },
   {
     title: 'Full Stack Web Applications',
     badge: 'Next.js + Node + DB',
     desc: 'Scalable SaaS web platforms, healthcare management portals, real-time collaboration engines, and e-commerce architectures.',
-    categorySlug: 'web-dev',
   },
   {
     title: 'Python & Data Engineering',
     badge: 'Python + Big Data',
     desc: 'Automated scraping pipelines, high-speed data dashboards, algorithmic models, and ETL workflows.',
-    categorySlug: 'ai-ml',
   },
   {
     title: 'IEEE Research Implementations',
     badge: 'Research Standard',
     desc: 'Exact replication and algorithmic enhancement of the latest IEEE transaction and conference papers with complete reports.',
-    categorySlug: 'all',
   },
   {
     title: 'Cybersecurity & Blockchain',
     badge: 'Security + Web3',
     desc: 'Smart contract development, intrusion detection systems, cryptographic hashing protocols, and secure IoT networks.',
-    categorySlug: 'cybersecurity',
   },
 ];
 
@@ -192,9 +168,9 @@ export default function FinalYearProjectsPage() {
     <>
       <CustomHead {...seo} pageSchema={fypSchema} />
 
-      <div className={clsx(styles.root, 'layout-block-inner')}>
+      <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
-        <section className={styles.heroSection}>
+        <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>🎓 Pan-India Engineering Guidance · 100% Remote</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Final Year Project Guidance for Engineering Students Across India</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
@@ -213,13 +189,13 @@ export default function FinalYearProjectsPage() {
               🛒 Explore Verified Projects on Homies Mart
             </Link>
           </div>
-        </section>
+        </div>
 
         {/* Domains We Cover */}
-        <section className={styles.sectionHeader}>
+        <div className={styles.sectionHeader}>
           <h2 className={clsx('h2', styles.sectionTitle)}>Domains We Cover</h2>
           <p className={styles.sectionDesc}>Comprehensive hardware, firmware, AI, and software project mentorship tailored for CSE, ECE, EEE, and IT branches.</p>
-        </section>
+        </div>
         <div className={styles.gridCards}>
           {domains.map((item) => (
             <div key={item.title} className={styles.domainCard}>
@@ -231,10 +207,10 @@ export default function FinalYearProjectsPage() {
         </div>
 
         {/* How It Works */}
-        <section className={styles.sectionHeader}>
+        <div className={styles.sectionHeader}>
           <h2 className={clsx('h2', styles.sectionTitle)}>How It Works (4 Simple Steps)</h2>
           <p className={styles.sectionDesc}>A structured, stress-free path from project ideation to high-grade final viva submission.</p>
-        </section>
+        </div>
         <div className={styles.processGrid}>
           {steps.map((step) => (
             <div key={step.num} className={styles.processCard}>
@@ -246,21 +222,21 @@ export default function FinalYearProjectsPage() {
         </div>
 
         {/* FAQs */}
-        <section className={styles.faqSection}>
+        <div className={styles.faqSection}>
           <div className={styles.sectionHeader}>
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Everything you need to know about getting project mentorship with Homies Studio.</p>
           </div>
           <div className={styles.faqList}>
-            {fypSchema['@graph'][2].mainEntity.map((faq) => (
+            {fypSchema['@graph'][1].mainEntity.map((faq) => (
               <div key={faq.name} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.name}</h3>
+                <h4 className={styles.faqQuestion}>{faq.name}</h4>
                 <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 }

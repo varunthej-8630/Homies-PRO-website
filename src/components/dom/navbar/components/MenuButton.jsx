@@ -1,5 +1,4 @@
 import PerspectiveText from '@src/components/animationComponents/perspectiveText/Index';
-import clsx from 'clsx';
 import styles from '@src/components/dom/navbar/styles/menuButton.module.scss';
 import { useCallback } from 'react';
 import { useShallow } from 'zustand/react/shallow';
@@ -16,8 +15,8 @@ function MenuButton() {
   }, [isLoading, setIsMenuOpen, lenis]);
 
   return (
-    <button type="button" onClick={handleClick} aria-label="Open Menu" aria-expanded={false} aria-controls="menu" className={clsx('p-xs', styles.button)}>
-      <PerspectiveText label="Menu" className={clsx('p-x', styles.label)} />
+    <button type="button" onClick={handleClick} aria-label="Open Menu" aria-expanded={false} aria-controls="menu" className={styles.button}>
+      <PerspectiveText label="Menu" className={styles.label} />
     </button>
   );
 }

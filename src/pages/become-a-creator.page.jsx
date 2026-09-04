@@ -187,7 +187,7 @@ function BecomeACreatorPage() {
   return (
     <>
       <CustomHead {...seo} />
-      <div className={clsx(styles.root, 'layout-block-inner')}>
+      <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Upgrade / Application Notice */}
         {router.query.status === 'upgrade_required' && !existingApplication && (
           <div
@@ -228,7 +228,7 @@ function BecomeACreatorPage() {
         )}
 
         {/* Hero Section */}
-        <section className={styles.heroSection}>
+        <div className={styles.heroSection}>
           <div className={clsx(styles.taglineBadge, 'p-xs')}>
             <span>✦ CREATOR & BUILDER ECOSYSTEM</span>
           </div>
@@ -253,10 +253,10 @@ function BecomeACreatorPage() {
               </Link>
             )}
           </div>
-        </section>
+        </div>
 
         {/* 6-Step Visual Process */}
-        <section className={styles.stepsSection}>
+        <div className={styles.stepsSection}>
           <h2 className={clsx(styles.sectionTitle, 'h2')}>How It Works</h2>
           <div className={styles.stepsGrid}>
             {CREATOR_STEPS.map((step) => (
@@ -267,10 +267,10 @@ function BecomeACreatorPage() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
 
         {/* Interactive Earnings Calculator */}
-        <section className={styles.calculatorSection}>
+        <div className={styles.calculatorSection}>
           <div className={styles.calculatorHeader}>
             <h2 className={clsx(styles.sectionTitle, 'h2')}>Calculate Your Earning Potential</h2>
             <p className={clsx(styles.calcSubtitle, 'p')}>
@@ -318,10 +318,10 @@ function BecomeACreatorPage() {
               <p className={styles.resultDesc}>Direct to your verified UPI / Bank Account via automated monthly or on-demand instant withdrawals.</p>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Creator Perks & Standards */}
-        <section className={styles.perksSection}>
+        <div className={styles.perksSection}>
           <h2 className={clsx(styles.sectionTitle, 'h2')}>Why Create With Homies Studio?</h2>
           <div className={styles.perksGrid}>
             <div className={styles.perkCard}>
@@ -345,7 +345,7 @@ function BecomeACreatorPage() {
               <p className={clsx(styles.perkDesc, 'p-xs')}>Our moderation badge signals high credibility and IEEE-level standards, driving higher conversion and trusted purchases.</p>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Bottom CTA */}
         <div style={{ textAlign: 'center', paddingTop: '2vw' }}>
@@ -373,10 +373,9 @@ function BecomeACreatorPage() {
           <div
             style={{
               position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100vw',
-              height: '100vh',
+              inset: 0,
+              width: '100%',
+              height: '100%',
               background: 'rgba(0, 0, 0, 0.65)',
               backdropFilter: 'blur(8px)',
               zIndex: 99999,
@@ -493,7 +492,7 @@ function BecomeACreatorPage() {
             </div>
           </div>
         )}
-      </div>
+      </section>
     </>
   );
 }
