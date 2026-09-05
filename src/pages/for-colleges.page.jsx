@@ -1,3 +1,4 @@
+import Link from 'next/link';
 /* eslint-disable react/jsx-props-no-spreading */
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
@@ -139,6 +140,26 @@ export default function ForCollegesPage() {
               <p className={styles.cardDesc}>{item.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Connected Ecosystem */}
+        <div className={styles.sectionHeader}>
+          <h2 className={clsx('h2', styles.sectionTitle)}>Explore Related Resources</h2>
+          <p className={styles.sectionDesc}>Discover complementary programs for student projects, ready-made builds, and institutional collaborations.</p>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
+          <Link href="/final-year-projects" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            🎓 Student Final Year Project Guidance &rarr;
+          </Link>
+          <Link href="/mart" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            🛒 Browse Homies Mart Repository &rarr;
+          </Link>
+          <Link href="/about" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            🏢 About Homies Studio &rarr;
+          </Link>
+          <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            📞 Contact Partnership Team &rarr;
+          </Link>
         </div>
 
         {/* FAQs */}

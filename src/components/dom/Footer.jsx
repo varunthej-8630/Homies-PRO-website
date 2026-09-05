@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import footerLinks from '@src/components/dom/navbar/constants/footerLinks';
 import gsap from 'gsap';
-import menuLinks from '@src/components/dom/navbar/constants/menuLinks';
 import styles from '@src/components/dom/styles/footer.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -19,6 +18,23 @@ const Time = dynamic(() => import('@src/components/dom/Time'), { ssr: false });
 const GoTop = dynamic(() => import('@src/components/dom/GoTop'), {
   ssr: false,
 });
+
+const exploreLinks = [
+  { title: 'Final Year Projects', href: '/final-year-projects' },
+  { title: 'Homies Mart', href: '/mart' },
+  { title: 'AI Solutions', href: '/ai-solutions' },
+];
+
+const partnerLinks = [
+  { title: 'For Colleges', href: '/for-colleges' },
+  { title: 'Become a Creator', href: '/become-a-creator' },
+];
+
+const companyLinks = [
+  { title: 'About Homies', href: '/about' },
+  { title: 'Blog', href: '/blog' },
+  { title: 'Contact', href: '/contact' },
+];
 
 function Footer() {
   const isMobile = useIsMobile();
@@ -72,10 +88,20 @@ function Footer() {
 
   return (
     <section ref={footerRef} className={clsx(styles.root, 'layout-grid-inner')} role="contentinfo">
-      <div style={{ gridColumn: isMobile ? '1 / 3' : '1 / 5' }} className={styles.linksContainer}>
+      <div style={{ gridColumn: isMobile ? '1 / 4' : '1 / 5' }} className={styles.linksContainer}>
         <AppearTitle isFooter>
-          <h6 className={clsx(styles.title, 'h6')}>Sitemap</h6>
-          {menuLinks.map((link) => (
+          <h6 className={clsx(styles.title, 'h6')}>Explore</h6>
+          {exploreLinks.map((link) => (
+            <div key={link.title} className={styles.linkTextContainer}>
+              <LinkText className={styles.linkText} title={link.title} href={link.href}>
+                <span className="footer">{link.title}</span>
+              </LinkText>
+            </div>
+          ))}
+          <h6 className={clsx(styles.title, 'h6')} style={{ marginTop: isMobile ? '1.5rem' : '2vw' }}>
+            For Partners
+          </h6>
+          {partnerLinks.map((link) => (
             <div key={link.title} className={styles.linkTextContainer}>
               <LinkText className={styles.linkText} title={link.title} href={link.href}>
                 <span className="footer">{link.title}</span>
@@ -84,9 +110,19 @@ function Footer() {
           ))}
         </AppearTitle>
       </div>
-      <div style={{ gridColumn: isMobile ? '3 / 7' : '5 / 9' }} className={styles.linksContainer}>
+      <div style={{ gridColumn: isMobile ? '4 / 7' : '5 / 9' }} className={styles.linksContainer}>
         <AppearTitle isFooter>
-          <h6 className={clsx(styles.title, 'h6')}>Connect</h6>
+          <h6 className={clsx(styles.title, 'h6')}>Company</h6>
+          {companyLinks.map((link) => (
+            <div key={link.title} className={styles.linkTextContainer}>
+              <LinkText className={styles.linkText} title={link.title} href={link.href}>
+                <span className="footer">{link.title}</span>
+              </LinkText>
+            </div>
+          ))}
+          <h6 className={clsx(styles.title, 'h6')} style={{ marginTop: isMobile ? '1.5rem' : '2vw' }}>
+            Connect
+          </h6>
           {footerLinks.map((link) => (
             <div key={link.title} className={styles.linkTextContainer}>
               <LinkText target className={styles.linkText} title={link.title} href={link.href}>
@@ -104,7 +140,6 @@ function Footer() {
               <Link aria-label="Send email" scroll={false} href="mailto:info@homiesstudio.com">
                 <h4 className={clsx(styles.email, 'h4')}>info@homiesstudio.com</h4>
               </Link>
-              {/* class="link__graphic link__graphic--slide" */}
               <svg className={clsx(styles.linkGraphic)} width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                 <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
               </svg>

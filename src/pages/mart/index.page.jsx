@@ -230,6 +230,54 @@ export default function HomiesMartPage() {
             })}
           </div>
         </div>
+
+        {/* Contextual Navigation Hub */}
+        <div style={{ margin: '3.5rem 0 2rem', padding: '2rem 1.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)' }}>
+          <h3 className="h4" style={{ marginBottom: '0.6rem', fontWeight: 700 }}>
+            Looking for More Engineering Capabilities?
+          </h3>
+          <p className="p-m" style={{ maxWidth: '600px', margin: '0 auto 1.5rem', opacity: 0.8 }}>
+            Whether you need customized project mentorship, want to monetize your own software builds, or have bulk institutional requirements — we are here to support you.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+            <Link
+              href="/final-year-projects"
+              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+            >
+              🎓 Need Custom FYP Guidance? &rarr;
+            </Link>
+            <Link
+              href="/become-a-creator"
+              style={{
+                padding: '0.65rem 1.3rem',
+                borderRadius: '9999px',
+                background: 'rgba(0,0,0,0.06)',
+                color: 'inherit',
+                border: '1px solid rgba(0,0,0,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
+            >
+              🛠️ Become a Homies Creator &rarr;
+            </Link>
+            <Link
+              href="/contact"
+              style={{
+                padding: '0.65rem 1.3rem',
+                borderRadius: '9999px',
+                background: 'rgba(0,0,0,0.06)',
+                color: 'inherit',
+                border: '1px solid rgba(0,0,0,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
+            >
+              💬 Contact Homies Studio &rarr;
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Main Homies Mart Listing */}

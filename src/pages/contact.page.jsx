@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import CustomHead from '@src/components/dom/CustomHead';
+import Link from 'next/link';
 import clsx from 'clsx';
 import styles from './contact.module.scss';
 
@@ -30,24 +31,6 @@ const contactSchema = {
         },
       ],
     },
-    {
-      '@type': 'ContactPage',
-      name: 'Contact Homies Studio',
-      url: 'https://www.homiesstudio.com/contact',
-      mainEntity: {
-        '@type': 'Organization',
-        name: 'Homies Studio',
-        telephone: '+917416636417',
-        email: 'info@homiesstudio.com',
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: '+91-74166-36417',
-          contactType: 'customer service',
-          areaServed: 'IN',
-          availableLanguage: ['English', 'Telugu', 'Hindi'],
-        },
-      },
-    },
   ],
 };
 
@@ -62,8 +45,8 @@ export default function ContactPage() {
           <div className={styles.taglineBadge}>📍 Pan-India Remote Service · Fast Response</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Get In Touch With Homies Studio</h1>
           <h2 className={clsx('p-l', styles.heroSubtitle)}>
-            We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product — let&apos;s
-            talk.
+            We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product &mdash;
+            let&apos;s talk.
           </h2>
         </div>
 
@@ -92,6 +75,69 @@ export default function ContactPage() {
             <h3 className={clsx('h4', styles.cardTitle)}>Service Area</h3>
             <span className={styles.cardValue}>Pan-India (100% Remote)</span>
             <span className={styles.cardNote}>Serving Bangalore, Hyderabad, AP &amp; all states</span>
+          </div>
+        </div>
+
+        {/* Quick Direct Routing Hub */}
+        <div style={{ margin: '2.5rem 0', padding: '2rem 1.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)' }}>
+          <h3 className="h4" style={{ marginBottom: '0.6rem', fontWeight: 700 }}>
+            Looking for a Specific Service Hub?
+          </h3>
+          <p className="p-m" style={{ maxWidth: '600px', margin: '0 auto 1.5rem', opacity: 0.8 }}>
+            Navigate directly to our dedicated engineering wings for student guidance, product marketplace, startup builds, or college partnerships.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+            <Link
+              href="/final-year-projects"
+              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+            >
+              🎓 Final Year Project Guidance &rarr;
+            </Link>
+            <Link
+              href="/mart"
+              style={{
+                padding: '0.65rem 1.3rem',
+                borderRadius: '9999px',
+                background: 'rgba(0,0,0,0.06)',
+                color: 'inherit',
+                border: '1px solid rgba(0,0,0,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
+            >
+              🛒 Homies Mart Marketplace &rarr;
+            </Link>
+            <Link
+              href="/ai-solutions"
+              style={{
+                padding: '0.65rem 1.3rem',
+                borderRadius: '9999px',
+                background: 'rgba(0,0,0,0.06)',
+                color: 'inherit',
+                border: '1px solid rgba(0,0,0,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
+            >
+              ⚡ AI &amp; SaaS Solutions &rarr;
+            </Link>
+            <Link
+              href="/for-colleges"
+              style={{
+                padding: '0.65rem 1.3rem',
+                borderRadius: '9999px',
+                background: 'rgba(0,0,0,0.06)',
+                color: 'inherit',
+                border: '1px solid rgba(0,0,0,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
+            >
+              🏛️ College Partnerships &rarr;
+            </Link>
           </div>
         </div>
 

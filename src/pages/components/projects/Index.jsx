@@ -100,7 +100,7 @@ function Projects() {
           ))}
         </div>
         <div className={styles.buttonContainer}>
-          <ButtonLink href="/projects" label="EXPLORE ALL PROJECTS" />
+          <ButtonLink href="/mart" label="EXPLORE HOMIES MART" />
         </div>
       </section>
     </>

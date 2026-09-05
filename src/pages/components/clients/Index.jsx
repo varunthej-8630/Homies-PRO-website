@@ -1,6 +1,7 @@
-import AppearByWords from '@src/components/animationComponents/appearByWords/Index';
+﻿import AppearByWords from '@src/components/animationComponents/appearByWords/Index';
 import AppearTitle from '@src/components/animationComponents/appearTitle/Index';
 import Badge from '@src/pages/components/clients/components/Badge';
+import Link from 'next/link';
 import clsx from 'clsx';
 import { gsap } from 'gsap';
 import styles from '@src/pages/components/clients/styles/clients.module.scss';
@@ -34,7 +35,27 @@ function Clients() {
               },
             })
             .to(textRef, {
-              top: `${10 + 30 * index + 5.5555556 * index}vw`,
+              autoAlpha: 1,
+              stagger: 1,
+            });
+        });
+
+        badgeRefs.current.forEach((badgeRef, index) => {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: rootRef.current,
+                start: index === 0 ? `top-=${vw(30)}` : `top+=${vw(30 + 5.5555556 * index)}`,
+                end: index === 0 ? `bottom-=${vw(30 + 5.5555556 * index)}` : `bottom+=${vw(25)}`,
+                toggleActions: 'play none reverse none',
+                scrub: true,
+                scroller: document?.querySelector('main'),
+                invalidateOnRefresh: true,
+              },
+            })
+            .to(badgeRef, {
+              yPercent: -100,
+              stagger: 1,
             });
         });
       }
@@ -58,7 +79,7 @@ function Clients() {
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>STUDENTS & DEVELOPERS</AppearTitle>
+          <AppearTitle>STUDENTS &amp; DEVELOPERS</AppearTitle>
         </div>
       ) : null}
       <div
@@ -73,12 +94,20 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Discover & Build</h4>
+            <h4 className={clsx('h4', 'bold')}>
+              <Link href="/final-year-projects" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Discover &amp; Build &rarr;
+              </Link>
+            </h4>
           </AppearTitle>
           <AppearTitle>
             <div className="p-l">
               Find verified, ready-to-build projects with complete source code, IEEE-standard documentation, circuit schematics, and working demos. Accelerate your academic builds, portfolio, and
-              engineering skills.
+              engineering skills with{' '}
+              <Link href="/final-year-projects" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                Final Year Project Guidance
+              </Link>
+              .
             </div>
           </AppearTitle>
         </div>
@@ -93,16 +122,26 @@ function Clients() {
             className={styles.firstText}
           >
             <AppearTitle>
-              <h6 className="h6">STUDENTS & DEVELOPERS</h6>
+              <h6 className="h6">STUDENTS &amp; DEVELOPERS</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Discover & Build</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>
+                <Link href="/final-year-projects" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Discover &amp; Build &rarr;
+                </Link>
+              </h4>
             </AppearTitle>
             <AppearTitle>
               <div className="p-l">Find verified, ready-to-build projects with complete</div>
               <div className="p-l">source code, IEEE-standard documentation, circuit</div>
               <div className="p-l">schematics, and working demos. Accelerate your academic</div>
-              <div className="p-l">builds, portfolio, and engineering skills.</div>
+              <div className="p-l">
+                builds with{' '}
+                <Link href="/final-year-projects" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                  Final Year Projects
+                </Link>
+                .
+              </div>
             </AppearTitle>
           </div>
         </>
@@ -113,7 +152,7 @@ function Clients() {
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>CREATORS & BUILDERS</AppearTitle>
+          <AppearTitle>CREATORS &amp; BUILDERS</AppearTitle>
         </div>
       ) : null}
       <div
@@ -128,12 +167,23 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Monetize & Publish</h4>
+            <h4 className={clsx('h4', 'bold')}>
+              <Link href="/become-a-creator" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Monetize &amp; Publish &rarr;
+              </Link>
+            </h4>
           </AppearTitle>
           <AppearTitle>
             <div className="p-l">
-              Turn your finished engineering projects, ML models, and reusable software into recurring income. Publish to buyers with automated licensing, transparent 80% earnings, and instant
-              payouts.
+              Turn your finished engineering projects, ML models, and reusable software into recurring income. Publish to buyers on{' '}
+              <Link href="/mart" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                Homies Mart
+              </Link>{' '}
+              with automated licensing, transparent 80% earnings, and instant payouts. Join as a{' '}
+              <Link href="/become-a-creator" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                Homies Creator
+              </Link>
+              .
             </div>
           </AppearTitle>
         </div>
@@ -147,16 +197,31 @@ function Clients() {
             className={styles.secondText}
           >
             <AppearTitle>
-              <h6 className="h6">CREATORS & BUILDERS</h6>
+              <h6 className="h6">CREATORS &amp; BUILDERS</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Monetize & Publish</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>
+                <Link href="/become-a-creator" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Monetize &amp; Publish &rarr;
+                </Link>
+              </h4>
             </AppearTitle>
             <AppearTitle>
               <div className="p-l">Turn your finished engineering projects, ML models,</div>
-              <div className="p-l">and reusable software into recurring income. Publish</div>
-              <div className="p-l">to buyers with automated licensing, transparent 80%</div>
-              <div className="p-l">earnings, and instant payouts.</div>
+              <div className="p-l">
+                and reusable software into income on{' '}
+                <Link href="/mart" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                  Homies Mart
+                </Link>
+                .
+              </div>
+              <div className="p-l">
+                Publish to buyers with automated licensing as a{' '}
+                <Link href="/become-a-creator" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                  Homies Creator
+                </Link>
+                .
+              </div>
             </AppearTitle>
           </div>
           <div className={styles.fourthEmpty} />
@@ -167,7 +232,7 @@ function Clients() {
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>COLLEGES & INSTITUTES</AppearTitle>
+          <AppearTitle>COLLEGES &amp; INSTITUTES</AppearTitle>
         </div>
       ) : null}
       <div
@@ -182,11 +247,19 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Partner & Expand</h4>
+            <h4 className={clsx('h4', 'bold')}>
+              <Link href="/for-colleges" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Partner &amp; Expand &rarr;
+              </Link>
+            </h4>
           </AppearTitle>
           <AppearTitle>
             <div className="p-l">
-              Curated project repositories, hands-on faculty workshops, technical mentorship programs, and domain-specific engineering support delivered across campus departments.
+              Curated project repositories, hands-on faculty workshops, technical mentorship programs, and domain-specific engineering support delivered across campus departments with our{' '}
+              <Link href="/for-colleges" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                College Partnership Program
+              </Link>
+              .
             </div>
           </AppearTitle>
         </div>
@@ -201,27 +274,36 @@ function Clients() {
             className={styles.thirdText}
           >
             <AppearTitle>
-              <h6 className="h6">COLLEGES & INSTITUTES</h6>
+              <h6 className="h6">COLLEGES &amp; INSTITUTES</h6>
             </AppearTitle>
             <AppearTitle>
-              <h4 className={clsx('h4', 'bold', styles.title)}>Partner & Expand</h4>
+              <h4 className={clsx('h4', 'bold', styles.title)}>
+                <Link href="/for-colleges" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  Partner &amp; Expand &rarr;
+                </Link>
+              </h4>
             </AppearTitle>
             <AppearTitle>
               <div className="p-l">Curated project repositories, hands-on faculty</div>
-              <div className="p-l">workshops, technical mentorship programs, and</div>
-              <div className="p-l">domain-specific engineering support delivered across</div>
-              <div className="p-l">campus departments at scale.</div>
+              <div className="p-l">workshops, and technical mentorship delivered</div>
+              <div className="p-l">
+                through our{' '}
+                <Link href="/for-colleges" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                  College Partnerships
+                </Link>
+                .
+              </div>
             </AppearTitle>
           </div>
         </>
       ) : null}
 
-      {/* 4. STARTUPS & CLIENTS */}
+      {/* 4. STARTUPS & ENTERPRISES */}
       {!isMobile ? <div className={styles.sixthEmpty} /> : null}
       {isMobile ? <div className={styles.mobileEmpty} /> : null}
       {isMobile ? (
         <div className={styles.mobileCount}>
-          <AppearTitle>STARTUPS & ENTERPRISES</AppearTitle>
+          <AppearTitle>STARTUPS &amp; ENTERPRISES</AppearTitle>
         </div>
       ) : null}
       <div
@@ -236,11 +318,20 @@ function Clients() {
       {isMobile ? (
         <div className={styles.textMobile}>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold')}>Bespoke Tech Solutions</h4>
+            <h4 className={clsx('h4', 'bold')}>
+              <Link href="/ai-solutions" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Bespoke Tech Solutions &rarr;
+              </Link>
+            </h4>
           </AppearTitle>
           <AppearTitle>
             <div className="p-l">
               Source production-ready digital architectures, custom AI systems, automation suites, and full-stack software built to industrial standards with full intellectual property ownership.
+              Explore{' '}
+              <Link href="/ai-solutions" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                AI Solutions
+              </Link>
+              .
             </div>
           </AppearTitle>
         </div>
@@ -253,16 +344,25 @@ function Clients() {
           className={styles.fourthText}
         >
           <AppearTitle>
-            <h6 className="h6">STARTUPS & ENTERPRISES</h6>
+            <h6 className="h6">STARTUPS &amp; ENTERPRISES</h6>
           </AppearTitle>
           <AppearTitle>
-            <h4 className={clsx('h4', 'bold', styles.title)}>Bespoke Tech Solutions</h4>
+            <h4 className={clsx('h4', 'bold', styles.title)}>
+              <Link href="/ai-solutions" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Bespoke Tech Solutions &rarr;
+              </Link>
+            </h4>
           </AppearTitle>
           <AppearTitle>
             <div className="p-l">Source production-ready digital architectures, custom AI</div>
-            <div className="p-l">systems, automation suites, and full-stack software</div>
-            <div className="p-l">built to industrial standards with full intellectual</div>
-            <div className="p-l">property ownership.</div>
+            <div className="p-l">systems, automation suites, and full-stack software.</div>
+            <div className="p-l">
+              Discover our{' '}
+              <Link href="/ai-solutions" style={{ textDecoration: 'underline', color: 'inherit' }}>
+                AI Solutions for Startups
+              </Link>
+              .
+            </div>
           </AppearTitle>
         </div>
       ) : null}

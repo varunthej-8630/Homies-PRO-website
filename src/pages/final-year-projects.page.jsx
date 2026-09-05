@@ -221,6 +221,26 @@ export default function FinalYearProjectsPage() {
           ))}
         </div>
 
+        {/* Connected Ecosystem */}
+        <div className={styles.sectionHeader}>
+          <h2 className={clsx('h2', styles.sectionTitle)}>Connected Engineering Ecosystem</h2>
+          <p className={styles.sectionDesc}>Discover complementary services and platforms across the Homies Studio network.</p>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
+          <Link href="/mart" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            🛒 Browse Verified Projects on Homies Mart &rarr;
+          </Link>
+          <Link href="/for-colleges" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            🏛️ Explore College Partnership Program &rarr;
+          </Link>
+          <Link href="/ai-solutions" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            ⚡ Explore AI &amp; Software Solutions &rarr;
+          </Link>
+          <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            📞 Contact Homies Studio Tech Team &rarr;
+          </Link>
+        </div>
+
         {/* FAQs */}
         <div className={styles.faqSection}>
           <div className={styles.sectionHeader}>
