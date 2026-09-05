@@ -231,8 +231,12 @@ function Home() {
     <section ref={rootRef} className={clsx(styles.root)}>
       <div className={clsx(styles.topContainer, 'layout-grid-inner')}>
         <div className={styles.leftContainer}>
-          <h1 className="h2">Final Year Projects &amp;</h1>
-          <h1 className={clsx('h2', 'bold')}>AI Solutions</h1>
+          <h1 className="h2">
+            Final Year Projects &amp;
+            <span className={clsx('h2', 'bold')} style={{ display: 'block' }}>
+              AI Solutions
+            </span>
+          </h1>
           <h2 className="p-s" style={{ margin: '0.4rem 0 0', opacity: 0.85, fontWeight: 500, letterSpacing: '0.04em' }}>
             IoT · Robotics · AI/ML · Embedded Systems · Web Apps
           </h2>

@@ -2,16 +2,13 @@
 User-agent: *
 Allow: /
 Disallow: /auth/
-Disallow: /creator/dashboard
-Disallow: /buyer/dashboard
-Disallow: /admin
-Disallow: /admin/*
-Disallow: /creator/*
-Disallow: /buyer/*
-Disallow: /checkout
-Disallow: /checkout/*
-Disallow: /api/*
+Disallow: /admin/
+Disallow: /creator/
+Disallow: /buyer/
+Disallow: /checkout/
+Disallow: /api/
 Disallow: /supabase-test
+Disallow: /404
 
 # Host
 Host: https://www.homiesstudio.com

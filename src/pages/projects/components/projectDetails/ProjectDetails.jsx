@@ -40,7 +40,7 @@ function ProjectDetails({ project }) {
         {project.salesCount && <span className={clsx(styles.salesBadge, 'p-xs')}>{project.salesCount} builders downloaded</span>}
       </div>
 
-      <h3 className={clsx(styles.title, 'h3')}>{project.title}</h3>
+      <h1 className={clsx(styles.title, 'h3')}>{project.title}</h1>
 
       {project.tagline && <p className={clsx(styles.tagline, 'p-l')}>{project.tagline}</p>}
 

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './for-colleges.module.scss';
 
 const seo = {
-  title: 'Engineering College Partnership – Final Year Project Support Program | Homies Studio',
+  title: 'Engineering College Partnership — Final Year Project Support Program | Homies Studio',
   description: 'Homies Studio partners with engineering colleges across India for structured FYP mentorship, domain expertise and student project management. IoT, AI/ML, Robotics and more.',
   keywords: [
     'College Partnership Program',

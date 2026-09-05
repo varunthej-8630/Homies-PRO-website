@@ -18,7 +18,7 @@ import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder'
 import CategoryIcon from '@src/components/ui/CategoryIcon';
 
 const seo = {
-  title: 'Homies Mart – Buy & Sell Final Year Engineering Projects India | Homies Studio',
+  title: 'Homies Mart — Buy & Sell Final Year Engineering Projects India | Homies Studio',
   description: 'Browse and buy verified final year engineering projects in IoT, Robotics, AI/ML, Web Development and more. Creators can publish and sell their projects on Homies Mart across India.',
   keywords: [
     'Homies Mart',

@@ -50,9 +50,9 @@ function Clients() {
 
   return (
     <section ref={rootRef} className={clsx(styles.root, 'layout-grid-inner')}>
-      <h1 className={clsx(styles.sectionTitle, 'h1')}>
+      <h2 className={clsx(styles.sectionTitle, 'h1')}>
         <AppearByWords>Built For Different Needs</AppearByWords>
-      </h1>
+      </h2>
 
       {/* 1. STUDENTS & DEVELOPERS */}
       {isMobile ? <div className={styles.mobileEmpty} /> : null}

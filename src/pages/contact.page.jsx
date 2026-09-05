@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './contact.module.scss';
 
 const seo = {
-  title: 'Contact Homies Studio – Final Year Projects & AI Solutions | India',
+  title: 'Contact Homies Studio — Final Year Projects & AI Solutions | India',
   description: 'Contact Homies Studio for final year project guidance, college partnerships, or AI solution development. Reach us on WhatsApp, email, or through our contact form. Serving pan-India.',
   keywords: ['Contact Homies Studio', 'Homies Studio WhatsApp', 'Homies Studio Email', 'Final Year Project Support Contact', 'AI Solutions Inquiry', 'Engineering College Partnership Contact'],
   canonical: '/contact',

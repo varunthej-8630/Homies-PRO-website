@@ -8,9 +8,9 @@ function NextProject({ nextProject }) {
   return (
     <>
       <section className={clsx(styles.titleContainer, 'layout-block-inner')}>
-        <h1 className={clsx(styles.title, 'h1')}>
+        <h2 className={clsx(styles.title, 'h1')}>
           <AppearByWords>Next Project</AppearByWords>
-        </h1>
+        </h2>
       </section>
       <section className={clsx(styles.nextRoot, 'layout-block-inner')}>
         <div className={styles.innerContainer}>

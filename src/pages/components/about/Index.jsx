@@ -43,8 +43,8 @@ function About() {
     <section ref={rootRef} className={styles.root}>
       <div className={clsx(styles.nameContainer, 'layout-block-inner')}>
         <AppearTitle>
-          <h1 className={clsx('h1', 'medium')}>Hey, We&apos;re</h1>
-          <h1 className={clsx('h1', 'medium')}>Homies Studio!</h1>
+          <h2 className={clsx('h1', 'medium')}>Hey, We&apos;re</h2>
+          <h2 className={clsx('h1', 'medium')}>Homies Studio!</h2>
         </AppearTitle>
       </div>
 

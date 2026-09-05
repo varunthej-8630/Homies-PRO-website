@@ -129,7 +129,7 @@ function Loader() {
   return (
     <div id="loader" ref={root} className={styles.root}>
       <div ref={logoContainerRef} className={styles.innerContainer}>
-        <h1 className={styles.brandTitle}>HOMIES STUDIO</h1>
+        <div className={styles.brandTitle}>HOMIES STUDIO</div>
         <p className={styles.brandSubtitle}>Digital Product & Engineering Studio</p>
       </div>
     </div>
