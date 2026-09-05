@@ -6,6 +6,7 @@ import RouteGuard from '@src/components/auth/RouteGuard';
 import clsx from 'clsx';
 import { supabase } from '@src/lib/supabase/client';
 import { useAuth } from '@src/context/AuthContext';
+import ProjectCMS from '@src/components/admin/ProjectCMS';
 import styles from '../creator/dashboard.module.scss';
 
 function getStatusBadgeStyle(status) {
@@ -17,7 +18,7 @@ function getStatusBadgeStyle(status) {
 function AdminDashboardPage() {
   const { user } = useAuth();
 
-  const [activeTab, setActiveTab] = useState('applications'); // 'applications' | 'moderation' | 'enquiries' | 'overview'
+  const [activeTab, setActiveTab] = useState('projects'); // 'applications' | 'moderation' | 'enquiries' | 'overview'
   const [applications, setApplications] = useState([]);
   const [dbProjects, setDbProjects] = useState([]);
   const [enquiries, setEnquiries] = useState([]);
@@ -262,6 +263,9 @@ function AdminDashboardPage() {
         {/* Navigation Tabs */}
         <div className={styles.dashboardLayout}>
           <div className={styles.tabNavigation}>
+            <button type="button" onClick={() => setActiveTab('projects')} className={clsx(styles.tabBtn, activeTab === 'projects' && styles.activeTabBtn)}>
+              Projects CMS ({dbProjects.length})
+            </button>
             <button type="button" onClick={() => setActiveTab('applications')} className={clsx(styles.tabBtn, activeTab === 'applications' && styles.activeTabBtn)}>
               Creator Applications ({applications.length})
             </button>
@@ -277,6 +281,8 @@ function AdminDashboardPage() {
           </div>
 
           {/* TAB 1: CREATOR APPLICATIONS */}
+          {activeTab === 'projects' && <ProjectCMS onProjectUpdated={fetchPlatformData} />}
+
           {activeTab === 'applications' && (
             <div className={styles.projectsTableCard}>
               {loading && <div style={{ padding: '2rem', textAlign: 'center', color: '#888' }}>Loading creator applications from Supabase...</div>}

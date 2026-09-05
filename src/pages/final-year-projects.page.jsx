@@ -172,7 +172,7 @@ export default function FinalYearProjectsPage() {
         {/* Hero Section */}
         <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>🎓 Pan-India Engineering Guidance · 100% Remote</div>
-          <h1 className={clsx('h1', styles.heroTitle)}>Final Year Project Guidance for Engineering Students Across India</h1>
+          <h1 className={clsx('h1', styles.heroTitle)}>Final Year Projects Guidance for Engineering Students Across India</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
             From topic selection and circuit design to full code deployment, research report writing, and viva preparation. We guide B.Tech and M.Tech students in CSE, ECE, EEE, and IT pan-India.
           </p>

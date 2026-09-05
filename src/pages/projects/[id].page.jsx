@@ -8,7 +8,7 @@ import ProjectImages from '@src/pages/projects/components/projectsImages/Project
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import clsx from 'clsx';
 import { gsap } from 'gsap';
-import projects from '@src/constants/projects';
+import { getProjectBySlugOrId, getAllPublishedProjectIdentifiers, getPublishedProjects } from '@src/lib/services/projectService';
 import styles from '@src/pages/projects/project.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -16,24 +16,24 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
-function Page({ id }) {
+function Page({ project, nextProject, id }) {
   const isMobile = useIsMobile();
   const rightContainerRef = useRef();
   const leftContainerRef = useRef();
   const [isLoading, setFluidColor, lenis] = useStore(useShallow((state) => [state.isLoading, state.setFluidColor, state.lenis]));
   const windowSize = useWindowSize();
 
-  const projectIndex = useMemo(() => projects.findIndex((project) => project.id === id), [id]);
-  const currentProject = useMemo(() => projects[projectIndex], [projectIndex]);
+  const currentProject = project;
 
-  const updateCSSVariables = (project) => {
+  const updateCSSVariables = (proj) => {
+    if (!proj) return;
     gsap.set('html', {
-      '--black': project.primary,
-      '--white': project.secondary,
-      '--accentColor': project.accentColor,
-      '--fillColor': project.fillColor,
-      '--menuColor': project.menuColor,
-      '--menuFontColor': project.menuFontColor,
+      '--black': proj.primary || '#28282b',
+      '--white': proj.secondary || '#f0f4f1',
+      '--accentColor': proj.accentColor || '#f9f9f9',
+      '--fillColor': proj.fillColor || '#f2ffbd',
+      '--menuColor': proj.menuColor || '#28282b',
+      '--menuFontColor': proj.menuFontColor || '#f0f4f1',
     });
   };
 
@@ -68,7 +68,7 @@ function Page({ id }) {
   useEffect(() => {
     if (currentProject) {
       updateCSSVariables(currentProject);
-      setFluidColor(currentProject.fluidColor);
+      setFluidColor(currentProject.fluidColor || '#d7d7d4');
     }
     return () => {
       updateCSSVariables({
@@ -83,15 +83,24 @@ function Page({ id }) {
     };
   }, [currentProject, setFluidColor]);
 
-  const seo = useMemo(
-    () => ({
+  const seo = useMemo(() => {
+    if (!currentProject) return { title: 'Project Details — Homies Studio' };
+    let descText = currentProject.tagline || `Explore technical engineering details, interactive models, and deliverables for ${currentProject.title}, crafted by Homies Studio.`;
+    if (Array.isArray(currentProject.desc) && currentProject.desc.length > 0) {
+      [descText] = currentProject.desc;
+    } else if (typeof currentProject.desc === 'string') {
+      descText = currentProject.desc;
+    }
+
+    return {
       title: `${currentProject.title} — Homies Studio Project`,
-      description: currentProject.description || `Explore technical engineering details, interactive models, and deliverables for ${currentProject.title}, crafted by Homies Studio.`,
+      description: descText,
       keywords: [`${currentProject.title}`, 'HOMIES STUDIO Project', 'Engineering Deliverable', 'Full Stack Architecture', 'Homies Studio'],
-      canonical: `/projects/${currentProject.id || currentProject.slug}`,
-    }),
-    [currentProject],
-  );
+      canonical: `/projects/${id || currentProject.id || currentProject.slug}`,
+    };
+  }, [currentProject, id]);
+
+  if (!currentProject) return null;
 
   return (
     <>
@@ -104,19 +113,37 @@ function Page({ id }) {
           <ProjectImages project={currentProject} />
         </div>
       </section>
-      <NextProject nextProject={projectIndex === projects.length - 1 ? projects[0] : projects[projectIndex + 1]} />
+      {nextProject && <NextProject nextProject={nextProject} />}
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const paths = projects.map((project) => ({ params: { id: project.id } }));
-  return { paths, fallback: false };
+  const identifiers = await getAllPublishedProjectIdentifiers();
+  const paths = identifiers.map((id) => ({ params: { id } }));
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps(context) {
   const { params } = context;
-  return { props: { id: params.id } };
+  const project = await getProjectBySlugOrId(params.id);
+
+  if (!project) {
+    return { notFound: true, revalidate: 30 };
+  }
+
+  const allPublished = await getPublishedProjects();
+  const currentIndex = allPublished.findIndex((p) => p.id === project.id || p.slug === project.slug);
+  const nextProject = currentIndex >= 0 && currentIndex < allPublished.length - 1 ? allPublished[currentIndex + 1] : allPublished[0] || null;
+
+  return {
+    props: {
+      project,
+      nextProject,
+      id: params.id,
+    },
+    revalidate: 60,
+  };
 }
 
 export default Page;

@@ -35,6 +35,14 @@
     display: none;
   }
 
+  @include mobile {
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 4px 4px 14px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -46,7 +54,7 @@
     z-index: 1;
 
     @include mobile {
-      top: 4.5vw;
+      top: 18px;
     }
   }
 
@@ -62,6 +70,13 @@
     padding: 0 0.8vw;
     white-space: nowrap;
     border: none;
+    flex-shrink: 0;
+
+    @include mobile {
+      padding: 0 6px;
+      scroll-snap-align: start;
+      gap: 6px;
+    }
 
     .stepBadge,
     .stepCircle {
@@ -79,9 +94,10 @@
       transition: all 0.25s ease;
 
       @include mobile {
-        width: 8vw;
-        height: 8vw;
-        font-size: 3vw;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 0.82rem;
       }
     }
 
@@ -91,7 +107,8 @@
       color: rgba(40, 40, 43, 0.6);
 
       @include mobile {
-        font-size: 2.6vw;
+        font-size: 0.75rem;
+        letter-spacing: -0.01em;
       }
     }
 

@@ -20,9 +20,9 @@ function ProjectDetails({ project }) {
     name: 'Homies Creator Studio',
     handle: '@homies_studio',
     role: 'Verified Digital Architect',
-    rating: 4.96,
-    sales: 420,
-    responseTime: '< 2 hours',
+    rating: null,
+    sales: null,
+    responseTime: 'Within 24 hours',
     badges: ['Verified Creator', 'Fast Delivery'],
   };
 
@@ -32,12 +32,14 @@ function ProjectDetails({ project }) {
 
       <div className={styles.header}>
         {project.category && <span className={clsx(styles.categoryBadge, 'p-xs')}>{project.category}</span>}
-        {project.rating && (
+        {project.rating && project.reviewCount > 0 ? (
           <span className={clsx(styles.ratingBadge, 'p-xs')}>
-            ★ {project.rating} ({project.reviewCount || 34} reviews)
+            ★ {Number(project.rating).toFixed(1)} ({project.reviewCount} {project.reviewCount === 1 ? 'review' : 'reviews'})
           </span>
+        ) : (
+          <span className={clsx(styles.ratingBadge, 'p-xs')}>✨ New Release</span>
         )}
-        {project.salesCount && <span className={clsx(styles.salesBadge, 'p-xs')}>{project.salesCount} builders downloaded</span>}
+        {project.salesCount > 0 && <span className={clsx(styles.salesBadge, 'p-xs')}>{project.salesCount} verified builds</span>}
       </div>
 
       <h1 className={clsx(styles.title, 'h3')}>{project.title}</h1>
@@ -109,7 +111,7 @@ function ProjectDetails({ project }) {
         <div className={styles.creatorBox}>
           <div className={styles.creatorLeft}>
             <div className={styles.creatorAvatar} style={{ position: 'relative' }}>
-              {creator.avatar ? <Image src={creator.avatar} fill alt={creator.name} style={{ objectFit: 'cover' }} /> : creator.name.charAt(0)}
+              {creator.avatar ? <Image src={creator.avatar} fill alt={creator.name} style={{ objectFit: 'cover' }} /> : creator?.name ? creator.name.charAt(0) : 'H'}
             </div>
             <div className={styles.creatorMeta}>
               <div className={styles.creatorNameRow}>
@@ -126,15 +128,15 @@ function ProjectDetails({ project }) {
 
           <div className={styles.creatorStats}>
             <div className={styles.creatorStatItem}>
-              <span className={clsx(styles.statVal, 'p-l')}>★ {creator.rating || 4.9}</span>
-              <span className={styles.statLabel}>Rating</span>
+              <span className={clsx(styles.statVal, 'p-l')}>{creator.rating && creator.reviews > 0 ? `★ ${Number(creator.rating).toFixed(1)}` : 'Verified'}</span>
+              <span className={styles.statLabel}>{creator.rating && creator.reviews > 0 ? 'Rating' : 'Status'}</span>
             </div>
             <div className={styles.creatorStatItem}>
-              <span className={clsx(styles.statVal, 'p-l')}>{creator.sales || 240}+</span>
-              <span className={styles.statLabel}>Sales</span>
+              <span className={clsx(styles.statVal, 'p-l')}>{creator.sales > 0 ? `${creator.sales}+` : 'Active'}</span>
+              <span className={styles.statLabel}>{creator.sales > 0 ? 'Sales' : 'Creator'}</span>
             </div>
             <div className={styles.creatorStatItem}>
-              <span className={clsx(styles.statVal, 'p-l')}>{creator.responseTime || '< 2h'}</span>
+              <span className={clsx(styles.statVal, 'p-l')}>{creator.responseTime || 'Within 24h'}</span>
               <span className={styles.statLabel}>Response</span>
             </div>
           </div>

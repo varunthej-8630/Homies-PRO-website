@@ -48,7 +48,7 @@ function Overview() {
           <h6 className="h6">
             Homies Studio provides end-to-end{' '}
             <Link href="/final-year-projects" style={{ textDecoration: 'underline', color: 'inherit' }}>
-              Final Year Project (FYP) Guidance
+              Final Year Projects (FYP) Guidance
             </Link>{' '}
             for B.Tech and M.Tech engineering students across India &mdash; entirely remotely, pan-India. Supported domains include IoT (Internet of Things), Robotics, Embedded Systems, Artificial
             Intelligence, Machine Learning, Computer Vision, Deep Learning, and Full Stack Web Development. Students from CSE, ECE, and EEE branches are supported with project topic selection,
@@ -86,7 +86,7 @@ function Overview() {
           <h6 className="h6">
             1. Engineering students seeking{' '}
             <Link href="/final-year-projects" style={{ textDecoration: 'underline', color: 'inherit' }}>
-              Final Year Project Guidance
+              Final Year Projects Guidance
             </Link>{' '}
             (pan-India, remote)
           </h6>

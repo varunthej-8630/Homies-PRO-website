@@ -8,6 +8,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { MARKETPLACE_CATEGORIES } from '@src/constants/marketplace';
 import defaultProjects from '@src/constants/projects';
+import { getPublishedProjects } from '@src/lib/services/projectService';
 import styles from '@src/pages/projects/projects.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -35,14 +36,14 @@ const seo = {
   canonical: '/mart',
 };
 
-export default function HomiesMartPage() {
+export default function HomiesMartPage({ initialProjects = [] }) {
   const isMobile = useIsMobile();
   const windowSize = useWindowSize();
   const rootRef = useRef();
   const projectRefs = useRef([]);
   const [lenis, isLoading, creatorProjects] = useStore(useShallow((state) => [state.lenis, state.isLoading, state.creatorProjects]));
 
-  const allProjects = creatorProjects && creatorProjects.length > 0 ? creatorProjects : defaultProjects;
+  const allProjects = creatorProjects && creatorProjects.length > 0 ? creatorProjects : initialProjects && initialProjects.length > 0 ? initialProjects : defaultProjects;
 
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -311,7 +312,7 @@ export default function HomiesMartPage() {
                 <div className={styles.gridCardBody}>
                   <div className={styles.gridCardHeader}>
                     <span className={clsx(styles.gridCategory, 'p-xs')}>{project.projectType || 'Full Project'}</span>
-                    {project.rating && <span className={clsx(styles.gridRating, 'p-xs')}>★ {project.rating}</span>}
+                    {project.rating && project.reviewCount > 0 ? <span className={clsx(styles.gridRating, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span> : <span className={clsx(styles.gridRating, 'p-xs')}>New</span>}
                   </div>
 
                   <h4 className={clsx(styles.gridCardTitle, 'h5')}>{project.title}</h4>
@@ -362,7 +363,7 @@ export default function HomiesMartPage() {
                       <div className={styles.marketplaceBadgesRow}>
                         <span className={clsx(styles.badgeTag, 'p-xs')}>{project.category}</span>
                         {project.price && <span className={clsx(styles.priceHighlight, 'p-xs')}>₹{project.price.toLocaleString()}</span>}
-                        {project.rating && <span className={clsx(styles.badgeTag, 'p-xs')}>★ {project.rating}</span>}
+                        {project.rating && project.reviewCount > 0 ? <span className={clsx(styles.badgeTag, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span> : <span className={clsx(styles.badgeTag, 'p-xs')}>New</span>}
                       </div>
 
                       <h3 className={clsx(styles.text, 'h3')}>{project.title}</h3>
@@ -415,4 +416,14 @@ export default function HomiesMartPage() {
       </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const initialProjects = await getPublishedProjects();
+  return {
+    props: {
+      initialProjects,
+    },
+    revalidate: 60,
+  };
 }

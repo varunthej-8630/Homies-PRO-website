@@ -590,12 +590,14 @@ function SubmitProjectPage() {
 
     try {
       setIsSubmitting(true);
-      await persistProjectToDatabase('SUBMITTED');
-      showToast('✓ Project submitted for technical review!');
+      const isUserAdmin = isAdmin || role === 'ADMIN';
+      const targetStatus = isUserAdmin ? 'PUBLISHED' : 'SUBMITTED';
+      await persistProjectToDatabase(targetStatus);
+      showToast(isUserAdmin ? '✓ Project published directly to live website!' : '✓ Project submitted for technical review!');
 
       setTimeout(() => {
         setIsSubmitting(false);
-        router.push('/creator/dashboard');
+        router.push(isUserAdmin ? '/admin/dashboard' : '/creator/dashboard');
       }, 1500);
     } catch (err) {
       setStepError(err.message || 'Failed to submit project. Please try again.');

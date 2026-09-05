@@ -105,7 +105,7 @@ function Clients() {
               Find verified, ready-to-build projects with complete source code, IEEE-standard documentation, circuit schematics, and working demos. Accelerate your academic builds, portfolio, and
               engineering skills with{' '}
               <Link href="/final-year-projects" style={{ textDecoration: 'underline', color: 'inherit' }}>
-                Final Year Project Guidance
+                Final Year Projects Guidance
               </Link>
               .
             </div>

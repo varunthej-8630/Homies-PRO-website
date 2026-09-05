@@ -41,7 +41,7 @@ const TIMELINES_EDTECH = ['Immediate Launch', 'Within 1 Month', '1–3 Months', 
 const BUDGET_EDTECH = ['₹25,000 – ₹50,000', '₹50,000 – ₹1,00,000', '₹1,00,000 – ₹2,50,000', '₹2,50,000+'];
 
 const PROJECT_TYPES_INDIVIDUAL = [
-  'Final-Year Engineering Capstone',
+  'Final Year Engineering Capstone',
   'AI / ML & Deep Learning Model',
   'Full-Stack Web Application / SaaS',
   'Mobile Application (iOS / Android)',

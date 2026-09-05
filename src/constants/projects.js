@@ -768,6 +768,7 @@ const projects = [
     desc: [
       'Full-featured cross-platform mobile application codebase built using React Native and Flutter with real-time cloud synchronization.',
       'Includes user onboarding, biometric authentication, push notifications, offline caching with WatermelonDB / Hive, and in-app purchases.',
+      'Architected with clean separation of presentation and domain layers to enable modular feature expansion and rapid enterprise app deployment.',
     ],
     whyHomies: ['Production-tested architecture ready for instant App Store and Google Play deployment.', 'Comprehensive clean architecture separating UI, domain logic, and API networking layers.'],
     whatMakesUsSpecial: ['100% full source code ownership with comprehensive CI/CD Fastlane build scripts.', 'Modular screen templates and atomic design design token system.'],
@@ -853,6 +854,7 @@ const projects = [
     desc: [
       'Comprehensive cloud threat detection and zero-trust security monitoring engine with automated behavioral analysis.',
       'Includes real-time packet parsing, anomaly detection ML models, Wazuh / Snort SIEM integration, and Grafana security dashboard.',
+      'Engineered with low-overhead packet inspection pipelines and automated incident response scripts for production Kubernetes and cloud VM clusters.',
     ],
     whyHomies: ['Battle-tested detection rules mapped directly to MITRE ATT&CK frameworks.', 'Zero external proprietary dependencies — 100% open-source security stack with complete source code.'],
     whatMakesUsSpecial: ['Automated Terraform blueprints for one-command AWS / GCP / Azure deployment.', 'Complete IEEE paper formatting and testbed simulation logs for academic defense.'],

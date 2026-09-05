@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap && node -e \"const fs = require('fs'); let s = fs.readFileSync('public/sitemap.xml', 'utf8'); s = s.replace('<loc>https://www.homiesstudio.com</loc>', '<loc>https://www.homiesstudio.com/</loc>'); fs.writeFileSync('public/sitemap.xml', s, 'utf8');\"",
+    "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap && node -e \"const fs = require('fs'); let s = fs.readFileSync('public/sitemap.xml', 'utf8'); s = s.replace('<loc>https://www.homiesstudio.com</loc>', '<loc>https://www.homiesstudio.com/</loc>'); fs.writeFileSync('public/sitemap.xml', s, 'utf8');\"",
     "lint": "next lint"
   },
   "lint-staged": {

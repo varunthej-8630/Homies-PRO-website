@@ -15,15 +15,15 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
-function Projects() {
+function Projects({ projects: propProjects }) {
   const isMobile = useIsMobile();
   const windowSize = useWindowSize();
-  const [isLoading] = useStore(useShallow((state) => [state.isLoading]));
+  const [isLoading, creatorProjects] = useStore(useShallow((state) => [state.isLoading, state.creatorProjects]));
 
   const rootRef = useRef();
   const projectRefs = useRef([]);
 
-  const newProjects = projects;
+  const newProjects = propProjects && propProjects.length > 0 ? propProjects : creatorProjects && creatorProjects.length > 0 ? creatorProjects : projects;
 
   const setupProjectAnimations = () => {
     const ctx = gsap.context(() => {
