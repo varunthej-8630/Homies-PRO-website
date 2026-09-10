@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ButtonLink from '@src/components/animationComponents/buttonLink/Index';
 import Link from 'next/link';
 import MenuButton from '@src/components/dom/navbar/components/MenuButton';
@@ -29,7 +30,7 @@ function getDashboardLabel(role) {
 function Navbar() {
   const isMobile = useIsMobile();
   const router = useRouter();
-  const [lenis, setIsConversationOpen] = useStore(useShallow((state) => [state.lenis, state.setIsConversationOpen]));
+  const [lenis] = useStore(useShallow((state) => [state.lenis]));
   const { user, role } = useAuth();
   const logoTextRef = useRef();
 
@@ -100,7 +101,7 @@ function Navbar() {
                   <ButtonLink label={getDashboardLabel(role)} />
                 </Link>
               ) : (
-                <ButtonLink onClick={() => setIsConversationOpen(true)} label="START A CONVERSATION" />
+                <ButtonLink href="/get-started" label="START A CONVERSATION" />
               ))}
             <MenuButton />
           </div>

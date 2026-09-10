@@ -24,6 +24,7 @@ import Scrollbar from '@src/components/dom/Scrollbar';
 import Tempus from '@darkroom.engineering/tempus';
 import { View } from '@react-three/drei';
 import { gsap } from 'gsap';
+import CookieConsent from '@src/components/ui/CookieConsent';
 import styles from '@src/pages/app.module.scss';
 import useFoucFix from '@src/hooks/useFoucFix';
 import useIsMobile from '@src/hooks/useIsMobile';
@@ -160,6 +161,7 @@ function MyApp({ Component, pageProps, router }) {
             </div>
           </main>
         </div>
+        <CookieConsent />
       </div>
     </AuthProvider>
   );

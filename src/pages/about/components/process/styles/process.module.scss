@@ -102,10 +102,10 @@
       width: 50%;
       .category {
         padding: calc(var(--layout-columns-gap) * 4) 0;
-      @media (min-width: 768px) and (max-width: 1024px) {
-        padding: calc(var(--layout-columns-gap) * 2.5) 0;
-        gap: calc(var(--layout-columns-gap) * 1.2);
-      }
+        @media (min-width: 768px) and (max-width: 1024px) {
+          padding: calc(var(--layout-columns-gap) * 2.5) 0;
+          gap: calc(var(--layout-columns-gap) * 1.2);
+        }
 
         display: flex;
         flex-direction: column;

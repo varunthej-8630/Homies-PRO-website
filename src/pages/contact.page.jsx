@@ -2,6 +2,7 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
+import ContactForm from '@src/components/forms/ContactForm';
 import styles from './contact.module.scss';
 
 const seo = {
@@ -48,6 +49,17 @@ export default function ContactPage() {
             We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product &mdash;
             let&apos;s talk.
           </h2>
+        </div>
+
+        {/* Contact Form Component */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <h3 className="h3" style={{ marginBottom: '1rem', fontWeight: 750 }}>
+            Send Us a Message
+          </h3>
+          <p className="p-m" style={{ marginBottom: '1.5rem', opacity: 0.85, maxWidth: '650px' }}>
+            Fill out the form below with your inquiry details and our technical team will review and respond within 24 hours.
+          </p>
+          <ContactForm />
         </div>
 
         {/* Contact Channels Grid */}

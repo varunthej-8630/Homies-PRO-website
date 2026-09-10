@@ -17,6 +17,7 @@ import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder';
 import CategoryIcon from '@src/components/ui/CategoryIcon';
+import MartNotifyBanner from '@src/components/ui/MartNotifyBanner';
 
 const seo = {
   title: 'Homies Mart — Buy & Sell Final Year Engineering Projects India | Homies Studio',
@@ -178,6 +179,9 @@ export default function HomiesMartPage({ initialProjects = [] }) {
           </div>
         </div>
 
+        {/* Mart Opening Soon Honest State Banner */}
+        <MartNotifyBanner />
+
         {/* Mart Search & Controls */}
         <div className={styles.marketplaceControls}>
           <div className={styles.searchAndSortRow}>
@@ -303,8 +307,26 @@ export default function HomiesMartPage({ initialProjects = [] }) {
           <div className={styles.gridContainer}>
             {filteredProjects.map((project) => (
               <Link key={project.id} href={project.link || `/projects/${project.id}`} scroll={false} className={styles.gridCard}>
-                <div className={styles.gridCardMedia}>
-                  {/* Change 3c & 4: Image Placeholder Slot */}
+                <div className={styles.gridCardMedia} style={{ position: 'relative' }}>
+                  {/* Task 3 DEMO Badge */}
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: '0.6rem',
+                      left: '0.6rem',
+                      fontSize: '10px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                      background: '#262626',
+                      color: '#737373',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      fontWeight: 700,
+                      zIndex: 5,
+                    }}
+                  >
+                    DEMO
+                  </span>
                   <ProjectImagePlaceholder aspectRatio="16/9" label="Project Image" sublabel="Add Image" />
                   {project.category && <span className={clsx(styles.gridCardBadge, 'p-xs')}>{project.category}</span>}
                 </div>
@@ -312,7 +334,11 @@ export default function HomiesMartPage({ initialProjects = [] }) {
                 <div className={styles.gridCardBody}>
                   <div className={styles.gridCardHeader}>
                     <span className={clsx(styles.gridCategory, 'p-xs')}>{project.projectType || 'Full Project'}</span>
-                    {project.rating && project.reviewCount > 0 ? <span className={clsx(styles.gridRating, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span> : <span className={clsx(styles.gridRating, 'p-xs')}>New</span>}
+                    {project.rating && project.reviewCount > 0 ? (
+                      <span className={clsx(styles.gridRating, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span>
+                    ) : (
+                      <span className={clsx(styles.gridRating, 'p-xs')}>New</span>
+                    )}
                   </div>
 
                   <h4 className={clsx(styles.gridCardTitle, 'h5')}>{project.title}</h4>
@@ -361,9 +387,28 @@ export default function HomiesMartPage({ initialProjects = [] }) {
                   <div className={clsx(styles.container, 'layout-grid-inner')}>
                     <div className={styles.projectsDetails}>
                       <div className={styles.marketplaceBadgesRow}>
+                        {/* Task 3 DEMO Badge */}
+                        <span
+                          style={{
+                            fontSize: '10px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                            background: '#262626',
+                            color: '#737373',
+                            padding: '2px 8px',
+                            borderRadius: '4px',
+                            fontWeight: 700,
+                          }}
+                        >
+                          DEMO
+                        </span>
                         <span className={clsx(styles.badgeTag, 'p-xs')}>{project.category}</span>
                         {project.price && <span className={clsx(styles.priceHighlight, 'p-xs')}>₹{project.price.toLocaleString()}</span>}
-                        {project.rating && project.reviewCount > 0 ? <span className={clsx(styles.badgeTag, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span> : <span className={clsx(styles.badgeTag, 'p-xs')}>New</span>}
+                        {project.rating && project.reviewCount > 0 ? (
+                          <span className={clsx(styles.badgeTag, 'p-xs')}>★ {Number(project.rating).toFixed(1)}</span>
+                        ) : (
+                          <span className={clsx(styles.badgeTag, 'p-xs')}>New</span>
+                        )}
                       </div>
 
                       <h3 className={clsx(styles.text, 'h3')}>{project.title}</h3>

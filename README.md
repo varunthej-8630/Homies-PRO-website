@@ -1,593 +1,333 @@
-# 🌐 Homies Studio — Build, Launch & Grow Digital Products
+# 🌐 Homies Studio — Final Year Projects, Marketplace & AI Solutions
 
 > **"Build Something. Launch Something. Grow Something. Where Ideas Become Possibilities."**
 
-**Homies Studio** is a premier digital product and engineering studio empowering students, creators, startups, and businesses to build, launch, and scale exceptional digital products and engineering solutions.
+**Homies Studio** ([homiesstudio.com](https://www.homiesstudio.com)) is a premier digital engineering studio and project ecosystem empowering students, technical creators, startups, and institutions across India.
 
-The platform provides a unified hub where technical creators can package, monetize, and distribute production-grade software and engineering projects, while educational institutions, startups, individual students, and enterprises can discover verified solutions or submit custom requirements via an interactive multi-sector consultation pipeline.
-
----
-
-## Table of Contents
-
-- [1. Platform Overview](#1-platform-overview)
-- [2. Key Platform Capabilities](#2-key-platform-capabilities)
-  - [Public Experience](#public-experience)
-  - [Project Marketplace](#project-marketplace)
-- [3. User Roles & RBAC](#3-user-roles--rbac)
-- [4. Creator Studio](#4-creator-studio)
-- [5. Project Submission Wizard](#5-project-submission-wizard)
-- [6. Admin Moderation & Governance Console](#6-admin-moderation--governance-console)
-- [7. Multi-Sector "Start a Conversation" System](#7-multi-sector-start-a-conversation-system)
-- [8. WhatsApp Integration Architecture](#8-whatsapp-integration-architecture)
-- [9. Supabase Database & Backend Architecture](#9-supabase-database--backend-architecture)
-- [10. Supabase Storage Architecture & File Management](#10-supabase-storage-architecture--file-management)
-- [11. Realtime Subscriptions](#11-realtime-subscriptions)
-- [12. Authentication & Route Security](#12-authentication--route-security)
-- [13. Design System & 3-Layer Visual Engine](#13-design-system--3-layer-visual-engine)
-- [14. Technology Stack](#14-technology-stack)
-- [15. Project Structure](#15-project-structure)
-- [16. Environment Variables](#16-environment-variables)
-- [17. Local Development Setup](#17-local-development-setup)
-- [18. Database Setup & Migrations](#18-database-setup--migrations)
-- [19. Build & Production Deployment](#19-build--production-deployment)
-- [20. Troubleshooting Guide](#20-troubleshooting-guide)
-- [21. Security Posture](#21-security-posture)
-- [22. Business & Interaction Workflows](#22-business--interaction-workflows)
-- [23. Verification & Testing Checklist](#23-verification--testing-checklist)
-- [24. License](#24-license)
+The platform provides an end-to-end bridge between academic innovation, creator monetization, and commercial technology requirements through three core pillars:
+1. **Final Year Projects (FYP Guidance):** Remote, IEEE-aligned technical mentorship across IoT, Robotics, AI/ML, Embedded Systems, and Web Applications for B.Tech & M.Tech students pan-India.
+2. **Homies Mart Marketplace:** A curated marketplace where creators publish verified technical builds, blueprints, and code packages to earn an 80% royalty on every sale.
+3. **AI & SaaS Solutions:** Bespoke AI agents, autonomous workflow automations, and full-stack software development for Indian startups and modern enterprises.
 
 ---
 
-## 1. Platform Overview
+## 📑 Table of Contents
 
-Homies Studio bridges the gap between academic innovation, creator monetization, and commercial technology requirements. 
-
-- **For Creators:** A dedicated portal to package code, architecture diagrams, research thesis documentation, and video demonstrations, earning an **80% royalty split** on every verified purchase.
-- **For Buyers & Students:** Instant access to verified, deployable source code, complete with IEEE-format documentation, circuit diagrams, presentation decks, and viva preparation materials.
-- **For Institutions & Enterprises:** A direct engagement funnel for academic capstones, corporate prototyping, EdTech cohort licenses, and custom digital software development.
-
----
-
-## 2. Key Platform Capabilities
-
-### Public Experience
-- **Cinematic Homepage (`/`)**: Hero branding, interactive 3D physics meshes, fluid simulation overlay, audience category navigation, and featured engineering projects.
-- **About Homies (`/about`)**: Company vision, core technical capabilities, delivery processes, and ecosystem pillars.
-- **Become a Creator (`/become-a-creator`)**: Interactive 80/20 earnings calculator, creator journey milestones (*Build → Package → Price → Review → Publish → Earn*), and application submission.
-- **Adaptive Navigation**: Persistent navbar with dynamic action buttons (`CREATOR STUDIO`, `MY PORTAL`, `START A CONVERSATION`), fullscreen animated menu drawer with dynamic links, and global footer.
-
-### Project Marketplace (`/projects`)
-- **Dual Viewing Modes**:
-  - *Cinematic Stacking Cards*: ScrollTrigger-pinned card view for immersive browsing.
-  - *Marketplace Grid View*: Multi-column cards with responsive layout.
-- **Live Search & Taxonomy Filtering**: Real-time search across titles, descriptions, categories, creators, and technology stacks.
-- **Sorting Options**: Trending & Popular, Highest Rated, Most Purchased, Price: Low to High, Price: High to Low.
-- **Comprehensive Project Detail View (`/projects/[id]`)**:
-  - Live demo link (`🌐 LIVE DEMO ↗`) and demo video walkthrough (`▶ DEMO VIDEO ↗`).
-  - Pricing display with academic and commercial licensing tiers.
-  - Digital deliverables checklist (Source Code ZIP, Thesis PDF, PPT Deck, Circuit Diagrams).
-  - Target environment specifications (OS, software dependencies, hardware requirements).
-  - Verified creator card with rating, sales count, and response time metrics.
-  - Verified buyer reviews and feedback.
+- [1. Platform Pillars & Capabilities](#1-platform-pillars--capabilities)
+- [2. User Roles & RBAC System](#2-user-roles--rbac-system)
+- [3. Pages & Routing Architecture](#3-pages--routing-architecture)
+- [4. New Platform Features](#4-new-platform-features)
+  - [A. Real Working Contact Form & API](#a-real-working-contact-form--api)
+  - [B. Homepage Middle Content](#b-homepage-middle-content)
+  - [C. Homies Mart Honest State & Waitlist](#c-homies-mart-honest-state--waitlist)
+  - [D. Global 404 Recovery Experience](#d-global-404-recovery-experience)
+  - [E. Privacy Policy, Terms & Cookie Consent](#e-privacy-policy-terms--cookie-consent)
+  - [F. Engineering Blog Engine](#f-engineering-blog-engine)
+- [5. API Endpoints & Server-Side Pipelines](#5-api-endpoints--server-side-pipelines)
+- [6. Technology Stack](#6-technology-stack)
+- [7. Design System & 3-Layer Visual Engine](#7-design-system--3-layer-visual-engine)
+- [8. Supabase Database & Storage Architecture](#8-supabase-database--storage-architecture)
+- [9. Directory Structure](#9-directory-structure)
+- [10. Environment Variables](#10-environment-variables)
+- [11. Local Development & Deployment](#11-local-development--deployment)
+- [12. License & Attribution](#12-license--attribution)
 
 ---
 
-## 3. User Roles & RBAC
+## 1. Platform Pillars & Capabilities
 
-The platform implements Role-Based Access Control (RBAC) via Supabase Auth and PostgreSQL Row Level Security:
+```
+                       ┌──────────────────────────────────────┐
+                       │           HOMIES STUDIO              │
+                       │   homiesstudio.com · Pan-India       │
+                       └──────────────────┬───────────────────┘
+                                          │
+       ┌──────────────────────────────────┼──────────────────────────────────┐
+       ▼                                  ▼                                  ▼
+┌───────────────┐                  ┌───────────────┐                  ┌───────────────┐
+│   FOR STUDENTS│                  │  FOR CREATORS │                  │  FOR STARTUPS │
+│   FYP Guidance│                  │  Homies Mart  │                  │  AI Solutions │
+│   IoT/Robotics│                  │  80% Royalties│                  │  Agents & SaaS│
+└───────────────┘                  └───────────────┘                  └───────────────┘
+```
 
-| Role | Target Persona | Navigation Access | Key Capabilities |
+### 🎓 For Students (Final Year Project Guidance)
+- End-to-end guidance from topic selection to final viva voce defense.
+- Specialized domains: IoT & Embedded Systems, Robotics & Autonomous Navigation, AI/ML & Computer Vision, Full-Stack Web.
+- Deliverables: Functional Source Code, Circuit Schematics & Simulation Files, IEEE-format Project Reports/Theses, and Viva Prep Q&A decks.
+- 100% remote delivery covering Hyderabad, Bangalore, Andhra Pradesh, and all Indian states.
+
+### 🛒 For Creators (Homies Mart Marketplace)
+- Engineering creators package and monetize reusable builds, hardware schematics, and software starter kits.
+- Creator revenue share: **80% royalty on every verified sale**.
+- Comprehensive Creator Studio with real-time earnings tracker, balance withdrawals, and project submission wizard.
+
+### ⚡ For Startups (AI & SaaS Solutions)
+- Custom autonomous AI agents with function calling, tool execution, and long-term vector memory.
+- Production full-stack SaaS web applications, responsive PWAs, and edge-native IoT cloud telemetry pipelines.
+
+### 🏛️ For Colleges & Institutions
+- Institutional partnerships for capstone project mentorship, hackathon sponsorship, and faculty development programs.
+
+---
+
+## 2. User Roles & RBAC System
+
+Role-Based Access Control is enforced using Supabase Auth and PostgreSQL Row Level Security (RLS) policies:
+
+| Role | Access Level | Navigation Indicator | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **GUEST** | Public Visitors | Public website, `/auth/login`, `/auth/signup`, Start a Conversation | Browse marketplace, preview builds, submit multi-sector requirements |
-| **BUYER** | Students, Clients, Buyers | Header displays `MY PORTAL`, menu links to `/buyer/dashboard` | Access purchased source code, tokenized downloads, invoice history, saved wishlist |
-| **CREATOR** | Verified Engineers & Authors | Header displays `CREATOR STUDIO`, menu links to `/creator/dashboard` | Project submission wizard, live draft editing, real earnings metrics, withdrawal requests |
-| **ADMIN** | Platform Moderators & Governance | Protected `/admin/dashboard`, menu links to `ADMIN CONSOLE →` | Moderate creator applications, audit/publish project submissions, manage payouts, review enquiry leads |
+| **GUEST** | Public Visitors | Public navbar & action buttons | Browse site, preview Mart projects, read blog guides, submit contact/enquiry forms, join Mart waitlist |
+| **BUYER** | Students & Clients | Header displays `MY PORTAL` → `/buyer/dashboard` | Access purchased source code, tokenized project downloads, invoice history, saved wishlists |
+| **CREATOR** | Verified Engineers | Header displays `CREATOR STUDIO` → `/creator/dashboard` | Multi-step project submission wizard, earnings analytics (80% net cut), payout requests, draft editing |
+| **ADMIN** | Governance Leads | Protected `/admin/dashboard` | Audit & approve creator applications, publish Mart project listings, review submitted inquiries, process payouts |
 
 ---
 
-## 4. Creator Studio
+## 3. Pages & Routing Architecture
 
-Located at `/creator/dashboard`, the Creator Studio delivers a dashboard driven by Supabase data:
-
-```
-┌─────────────────┬────────────────────┬─────────────────┬─────────────────┐
-│ Total Earnings  │ Available Balance  │   Total Sales   │ Creator Rating  │
-│     ₹0          │       ₹0           │        0        │        —        │
-│ 80% Net Royalty │ Ready for Payout   │ Total Purchases │ Verified Reviews│
-└─────────────────┴────────────────────┴─────────────────┴─────────────────┘
-```
-
-- **Zero Mock Metrics**: All values reflect queries against `creator_profiles`, `projects`, `withdrawals`, `creator_earnings`, and `reviews`. When a creator has no historical transactions, clean zero-states (`₹0`, `0`, `—`) are rendered.
-- **My Projects Tab**: Displays all builds owned by the creator with cover thumbnails, status badges (`PUBLISHED`, `UNDER_REVIEW`, `DRAFT`, `CHANGES_REQUESTED`, `REJECTED`), price tags, and sales counts. Includes a zero-state CTA linking to `/creator/submit`.
-- **Wallet & Payouts Tab**: Displays available balance with a **"Request Payout →"** modal supporting instant UPI ID and Bank Transfer (NEFT/IMPS) payout requests.
-- **Performance & Inquiries Tab**: Displays direct client inquiries and pre-sales leads recorded in the `enquiries` table.
-
----
-
-## 5. Project Submission Wizard
-
-Located at `/creator/submit`, the 6-step wizard allows creators to package their builds:
-
-```
-[ Step 1: Details ] ➔ [ Step 2: Media ] ➔ [ Step 3: Deliverables ] ➔ [ Step 4: Pricing ] ➔ [ Step 5: Setup ] ➔ [ Step 6: Review ]
-```
-
-1. **Step 1 — General Information**: Title, one-line tagline, category selector, project type, difficulty level, target platform, tech stack comma-separated input, and comprehensive architecture description.
-2. **Step 2 — Media & Live Demos**:
-   - Cover image upload (JPG, PNG, WEBP up to 10MB) stored in Supabase `project-media` bucket with progress bar, preview thumbnail, and replace/remove controls.
-   - Showcase gallery screenshot uploader (multiple image attachments).
-   - Validated `Live Demo URL` and `Demo Video URL` inputs (YouTube, Loom, Google Drive).
-3. **Step 3 — Project Files & Digital Deliverables**:
-   - Primary Source Code ZIP upload stored in private, encrypted `project-deliverables` bucket.
-   - Deliverables checklist: Source Code, Installation Guide, Thesis/Research Report PDF, PPT Presentation, Circuit/Schematic Diagrams, Database Seed SQL, Pre-trained Model Weights.
-4. **Step 4 — Pricing & Commercials**: Academic price, commercial price, original benchmark price, with a live calculator previewing the **80% creator payout**.
-5. **Step 5 — Requirements & Environment**: Target operating system, software dependencies, hardware prerequisites, and step-by-step terminal installation instructions.
-6. **Step 6 — Review & Moderation Dispatch**: Final review card with terms agreement, dispatching the project to `SUBMITTED` status for administrative moderation.
-7. **Draft Persistence**: Creators can click **"Save Draft"** at any step. Draft projects persist in Supabase and can be resumed anytime via `/creator/submit?projectId=[id]`.
+| Route | File Location | Purpose & Description |
+| :--- | :--- | :--- |
+| `/` | `src/pages/index.page.jsx` | Cinematic homepage with 3D physics mesh, Three Pillars, Domain Tags, and Dual CTA blocks |
+| `/final-year-projects` | `src/pages/final-year-projects.page.jsx` | Comprehensive FYP mentorship hub with domain roadmaps, FAQs, and WhatsApp consultation |
+| `/mart` | `src/pages/mart/index.page.jsx` | Homies Mart marketplace with Opening Soon waitlist banner, category tabs, grid/cinematic views, and DEMO badges |
+| `/projects/[id]` | `src/pages/projects/[id].page.jsx` | Detailed project specification page with demo links, deliverables checklist, and licensing options |
+| `/ai-solutions` | `src/pages/ai-solutions.page.jsx` | Startup AI agent engineering, SaaS architecture, and custom development wing |
+| `/for-colleges` | `src/pages/for-colleges.page.jsx` | Institutional and college partnership engagement portal |
+| `/become-a-creator` | `src/pages/become-a-creator.page.jsx` | Creator recruitment page with 80/20 earnings calculator and application wizard |
+| `/about` | `src/pages/about/index.page.jsx` | Studio philosophy, engineering standards, team, and delivery methodology |
+| `/contact` | `src/pages/contact.page.jsx` | Working contact form (with Resend integration), direct WhatsApp channel, and email support |
+| `/blog` | `src/pages/blog.page.jsx` | Engineering perspectives, guides, and technical tutorial index |
+| `/blog/how-to-choose-your-fyp-topic` | `src/pages/blog/how-to-choose-your-fyp-topic.page.jsx` | 2026 guide for B.Tech students on selecting high-scoring, feasible capstone topics |
+| `/blog/iot-vs-robotics-for-final-year` | `src/pages/blog/iot-vs-robotics-for-final-year.page.jsx` | Side-by-side comparison of IoT vs Robotics hardware cost, complexity, and career signal |
+| `/blog/what-is-an-ai-agent` | `src/pages/blog/what-is-an-ai-agent.page.jsx` | Plain explanation of autonomous AI agents, tool use, memory, and startup ROI |
+| `/privacy-policy` | `src/pages/privacy-policy.page.jsx` | GDPR/India compliant data collection, Resend email processing, and user rights policy |
+| `/terms` | `src/pages/terms.page.jsx` | Legal service terms, IP ownership, liability limitations, and digital purchases disclaimer |
+| `/404` | `src/pages/404.page.jsx` | Dark-themed 404 recovery page with navigation pills and direct WhatsApp fallback |
+| `/buyer/dashboard` | `src/pages/buyer/dashboard.page.jsx` | Buyer order management and source code download portal |
+| `/creator/dashboard` | `src/pages/creator/dashboard.page.jsx` | Creator monetization hub, earnings dashboard, and project inventory |
+| `/creator/submit` | `src/pages/creator/submit.page.jsx` | 4-step wizard for publishing engineering builds with Supabase storage upload |
+| `/admin/dashboard` | `src/pages/admin/dashboard.page.jsx` | Platform moderation, creator verification, payout processing, and inquiry management |
 
 ---
 
-## 6. Admin Moderation & Governance Console
+## 4. New Platform Features
 
-Located at `/admin/dashboard` (protected by `RouteGuard` for `role === 'ADMIN'`):
+### A. Real Working Contact Form & API
+- **Location:** `src/components/forms/ContactForm.jsx` (`.tsx`) on `/contact`.
+- **Form Fields:** Full Name (required), Email (regex validated), Phone Number (optional), Inquiry Type (select dropdown: *Student FYP Guidance*, *College Partnership*, *AI & SaaS Solutions*, *Become a Creator*, *General*), and Message (minimum 20 characters).
+- **Interactive States:**
+  - Inline error validation triggered on field `onBlur` and form submission.
+  - Submit button loading spinner + disabled state (`"Sending…"`).
+  - Success message replacement: *"Message received. We'll reply within 24 hours."* + WhatsApp fallback link.
+  - Top error banner: *"Something went wrong. Try WhatsApp instead."*
+- **Backend API (`/api/contact`):**
+  - Server-side validation of all fields.
+  - In-memory rate limiting: **3 submissions per IP per hour**.
+  - Direct email dispatch to `info@homiesstudio.com` via **Resend API** using `process.env.RESEND_API_KEY`.
+  - Graceful development fallback when API key is unconfigured.
 
-- **Real Platform Analytics**:
-  - `Total Platform GMV`: Aggregated from completed `orders.total_amount`.
-  - `Platform Commission (20%)`: Derived net platform revenue.
-  - `Pending Moderation`: Combined count of pending creator applications and pending project submissions.
-  - `Platform Community`: Live count of registered `BUYER` and `CREATOR` accounts.
-- **Creator Applications Tab**: Review incoming creator applications with full bio, portfolio links, and skills. Includes **"Approve as Creator ✓"** (automatically upgrades user profile to `CREATOR` role) and **"Reject ✕"** actions.
-- **Project Submissions Tab**: Moderation queue displaying project titles, creator handles, tech stacks, cover thumbnails, and pricing. Actions include:
-  - **✓ Publish**: Instantly transitions status to `PUBLISHED`, making the project visible on the public marketplace.
-  - **Feedback**: Opens a modal to send structured change request notes (`CHANGES_REQUESTED`) to the creator.
-  - **Reject**: Rejects non-compliant submissions (`REJECTED`).
-- **Client Enquiries Tab**: View real-time leads from the multi-sector enquiry modal with one-click **"WhatsApp Reply ↗"** routing.
-- **Commission Rules & Payouts**: Overview of platform rules and total pending withdrawal amounts.
+### B. Homepage Middle Content
+- **Location:** `src/pages/components/home/HomeMiddleSections.jsx` on `/`.
+- **Section A — Three Pillars:** 3-column responsive card grid highlighting *Final Year Projects* (For Students), *Homies Mart* (For Creators), and *AI Solutions* (For Startups).
+- **Section B — Domain Tags:** `"What We Build"` section featuring 8 inline pill tags (*IoT & Robotics*, *AI & Machine Learning*, *Embedded Systems*, *Full Stack Web*, *Computer Vision*, *SaaS & Automation*, *Cybersecurity*, *Data Engineering*).
+- **Section C — Dual CTA Block:** Side-by-side card with desktop vertical divider connecting students to WhatsApp and startups to email.
 
----
+### C. Homies Mart Honest State & Waitlist
+- **Location:** `src/components/ui/MartNotifyBanner.jsx` on `/mart`.
+- **Opening Soon Banner:** Full-width dark card informing visitors that the first batch of projects is being verified, with an email signup input.
+- **Notify API (`/api/notify`):** Validates email, enforces a 1 request/hr rate limit, and dispatches waitlist notifications to `info@homiesstudio.com` via Resend.
+- **DEMO Badges:** Small dark badges (`bg-neutral-800 text-neutral-500`) added to every product card in both Grid and Cinematic Stack views to clearly indicate reference listings.
 
-## 7. Multi-Sector "Start a Conversation" System
+### D. Global 404 Recovery Experience
+- **Location:** `src/pages/404.page.jsx`.
+- Clean, center-aligned dark viewport with a bold `"404"` heading, descriptive subtitle, quick recovery pills (`← Back to Home`, `Explore Homies Mart`, `Contact Us`), and direct WhatsApp link.
 
-The "Start a Conversation" modal provides 5 distinct sector enquiry flows with custom field architectures:
+### E. Privacy Policy, Terms & Cookie Consent
+- **Privacy Policy (`/privacy-policy`):** Covers data collected, business usage, Resend processing, Vercel infrastructure, user rights, and contact details.
+- **Terms of Use (`/terms`):** Detailed service agreements, digital goods non-refund policies, IP rights, and governing law (India).
+- **Cookie Consent Banner (`CookieConsent.jsx`):** Fixed bottom bar checking `localStorage` key `hs_cookie_consent`, respecting `prefers-reduced-motion`, with full keyboard accessibility.
+- **Footer Integration:** Links to Privacy Policy and Terms of Use added to global site footer.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ 01 — Colleges & Universities (Institutions & Capstones)     │
-│ 02 — EdTech Institutes (Curriculum & Bulk Licensing)       │
-│ 03 — Individual Projects (Student & Developer Builds)       │
-│ 04 — Businesses & Startups (Commercial MVPs & Prototypes)   │
-│ 05 — Other (Custom Consultations)                           │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Form Fields by Sector
-
-| Sector | Dynamic Form Fields |
-| :--- | :--- |
-| **01 — Colleges & Universities** | Institution Name, Contact Person, Designation, Official Email, Phone/WhatsApp, Requirement Type (Final Year Projects, Lab Setup, Faculty Training, Research Setup), Student Count, Timeline, Budget Range, Detailed Scope. |
-| **02 — EdTech Institutes** | Institute / Platform Name, Contact Person, Designation, Business Email, Phone, Service Required (Curriculum Design, Cohort Projects, White-Label Solutions), Learner Count, Timeline, Budget, Message. |
-| **03 — Individual Projects** | Full Name, Email, Phone / WhatsApp, Project Type (AI/ML, Full-Stack, IoT, Embedded, Mobile App), Tech Domain, Academic Level (B.Tech, M.Tech, PhD, Independent), Project Stage, Deadline, Budget Range, Requirements. |
-| **04 — Businesses & Startups** | Company / Startup Name, Contact Person, Work Email, Phone, Business Stage (Idea, Seed, Growth, Enterprise), Service Required (MVP Development, UI/UX, AI Integration, Cloud Architecture), Timeline, Budget, Scope. |
-| **05 — Other** | Full Name, Email, Phone Number, Subject / Topic, Detailed Message. |
-
----
-
-## 8. WhatsApp Integration Architecture
-
-Every conversation submission executes a dual persistence and routing flow:
-
-```
-User Submits Modal Form
-         │
-         ├──► 1. POST to /api/enquiry & Supabase public.enquiries (Generates Ref ID: HS-XXXX-XXXX)
-         │
-         └──► 2. Generates URI-encoded structured payload targeting https://wa.me/917416636417
-                     │
-                     └──► Direct WhatsApp routing to Homies Studio Engineering Desk
-```
-
-### Official WhatsApp Endpoint
-- **Destination Number:** `+91 7416636417`
-- **URL Scheme:** `https://wa.me/917416636417?text=[EncodedMessage]`
+### F. Engineering Blog Engine
+- **Index (`/blog`):** Hero section with 2-column card grid, category tags, publish dates, 2-line excerpts, and `"Read →"` links.
+- **Article 1 — How to Choose Your FYP Topic:** 400+ words covering feasibility, novelty, department alignment, 2026 hot domains (AIoT, TinyML, smart agriculture), avoiding clichés, and guide validation.
+- **Article 2 — IoT vs Robotics for Final Year:** 350+ words comparing component costs, implementation risks, examiner expectations, and career leverage.
+- **Article 3 — What Is an AI Agent?:** 400+ words explaining agents vs chatbots, tool use, long-term memory, customer support ops workflow, and startup ROI.
+- **Prose Layout:** Centered `max-w-3xl` container, breadcrumbs, structured data `BlogPosting` schema, and bottom WhatsApp consultation CTA.
 
 ---
 
-## 9. Supabase Database & Backend Architecture
+## 5. API Endpoints & Server-Side Pipelines
 
-The database is built on PostgreSQL with Row Level Security (RLS) policies across 16 migrations:
-
-```
-supabase/migrations/
-├── 001_profiles.sql                             # User profiles linked to auth.users with RBAC roles
-├── 002_categories.sql                           # Marketplace taxonomies and category slugs
-├── 003_projects.sql                             # Project catalog with pricing, metadata, requirements JSONB
-├── 004_project_files_and_images.sql             # Deliverables file registry and project gallery images
-├── 005_orders_and_payments.sql                  # Buyer orders, licenses, and payment transactions
-├── 006_creator_earnings_and_withdrawals.sql     # 80/20 royalty ledger and payout withdrawal records
-├── 007_reviews_and_wishlists.sql                # Buyer verified reviews and saved wishlist items
-├── 008_moderation_and_notifications.sql         # Admin audit log and user notification triggers
-├── 009_row_level_security.sql                   # RLS policies enforcing tenant isolation
-├── 010_fix_profile_trigger.sql                  # Automated profile generation on auth.users signup
-├── 011_creator_applications_and_rbac.sql        # Creator application submissions and role transitions
-├── 012_grant_creator_applications_permissions.sql # Explicit grants for creator onboarding
-├── 013_grant_anon_and_authenticated_permissions.sql # Schema access rules for client roles
-├── 014_grant_schema_permissions.sql             # Public schema sequences and table execution grants
-├── 015_creator_storage_and_assets.sql           # Storage bucket policies for media & deliverables
-└── 016_enquiries_table.sql                      # Multi-sector enquiry lead persistence & RLS
-```
-
-### Key Database Tables
-
-| Table | Description |
-| :--- | :--- |
-| `public.profiles` | User profiles with `id` (UUID foreign key to `auth.users`), `role` (`BUYER`, `CREATOR`, `ADMIN`), `full_name`, `email`. |
-| `public.creator_profiles` | Creator metadata with `user_id`, `display_name`, `handle`, `bio`, `total_earnings`, `available_balance`, `sales_count`, `rating`, `review_count`, `is_approved`. |
-| `public.projects` | Core project metadata with `creator_id`, `category_id`, `title`, `slug`, `tagline`, `description` (JSONB), `project_type`, `difficulty`, `platform`, `tech_stack` (text array), `requirements` (JSONB containing OS, dependencies, and deliverables list), `academic_price`, `commercial_price`, `status`, `cover_image_url`, `live_demo_url`, `demo_video_url`, `views_count`, `sales_count`. |
-| `public.project_files` | Physical deliverables storage registry with `project_id`, `file_type` (`SOURCE_CODE_ZIP`, `THESIS_REPORT_PDF`, `CIRCUIT_DIAGRAM`, `PRESENTATION_PPTX`), `file_name`, `storage_path`, `file_size_bytes`, `mime_type`. |
-| `public.project_images` | Showcase screenshot gallery with `project_id`, `image_url`, `storage_path`, `sort_order`, `is_cover`. |
-| `public.orders` | Purchase orders with `buyer_id`, `invoice_number`, `total_amount`, `status` (`PENDING`, `PAID`, `CANCELLED`). |
-| `public.creator_earnings` | Royalty accounting with `creator_id`, `order_id`, `gross_amount`, `platform_fee_amount`, `net_creator_amount`, `status`. |
-| `public.withdrawals` | Payout requests with `creator_id`, `amount`, `method` (`UPI`, `BANK_TRANSFER`), `payout_details` (JSONB), `status` (`PENDING`, `COMPLETED`, `FAILED`), `requested_at`. |
-| `public.creator_applications` | Creator onboarding submissions with `user_id`, `full_name`, `email`, `handle`, `portfolio_url`, `skills`, `bio`, `status` (`PENDING`, `APPROVED`, `REJECTED`). |
-| `public.enquiries` | Multi-sector leads with `reference_id`, `name`, `email`, `phone`, `sector`, `service_type`, `institution_or_company`, `budget_range`, `timeline`, `message`, `status`. |
+| Endpoint | Method | Rate Limit | Description |
+| :--- | :--- | :--- | :--- |
+| `/api/contact` | `POST` | 3 / hour / IP | Validates contact form inquiry, formats HTML payload, and sends email to `info@homiesstudio.com` via Resend. |
+| `/api/notify` | `POST` | 1 / hour / IP | Registers email for Homies Mart launch waitlist and notifies team via Resend. |
+| `/api/enquiry` | `POST` | Dynamic | Handles multi-sector consultation submissions with reference ID generation. |
+| `/api/revalidate` | `POST` | Secret Token | Triggers Next.js On-Demand Incremental Static Regeneration (ISR) for marketplace and dynamic pages. |
 
 ---
 
-## 10. Supabase Storage Architecture & File Management
+## 6. Technology Stack
 
-The application separates public marketing visuals from protected deliverables using two distinct buckets:
-
-```
-Supabase Storage
-├── 🪣 project-media (Public Bucket)
-│   └── creators/{creatorId}/projects/{projectId}/cover/{timestamp}_{filename}
-│   └── creators/{creatorId}/projects/{projectId}/gallery/{timestamp}_{filename}
-│
-└── 🔒 project-deliverables (Private Encrypted Bucket)
-    └── creators/{creatorId}/projects/{projectId}/source/{timestamp}_{filename}.zip
-    └── creators/{creatorId}/projects/{projectId}/documents/{timestamp}_{filename}.pdf
-```
-
-### Next.js Image Optimization
-Remote image hostnames are configured in `next.config.js` via `remotePatterns`:
-```javascript
-images: {
-  remotePatterns: [
-    {
-      protocol: 'https',
-      hostname: 'qzbmctgbyinwyqxemzod.supabase.co',
-      pathname: '/storage/v1/object/public/**',
-    },
-    {
-      protocol: 'https',
-      hostname: '*.supabase.co',
-      pathname: '/storage/v1/object/public/**',
-    },
-    {
-      protocol: 'https',
-      hostname: 'images.unsplash.com',
-    },
-  ],
-}
-```
+- **Framework:** [Next.js 14](https://nextjs.org/) (Pages Router with ISR support)
+- **UI & Logic:** [React 18](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- **3D Graphics & Physics:** [Three.js](https://threejs.org/), [@react-three/fiber](https://r3f.docs.pmnd.rs/), [@react-three/drei](https://github.com/pmndrs/drei), [@react-three/rapier](https://github.com/pmndrs/react-three-rapier)
+- **Animation & Motion:** [GSAP 3](https://greensock.com/gsap/) with [ScrollTrigger](https://greensock.com/scrolltrigger/), [Lenis](https://lenis.darkroom.engineering/) smooth scrolling
+- **Styling:** Modular SCSS ([Sass](https://sass-lang.com/)), CSS Variables design system, Fluid responsive typography
+- **State Management:** [Zustand 4](https://github.com/pmndrs/zustand) with shallow selectors
+- **Backend & Database:** [Supabase](https://supabase.com/) (PostgreSQL with RLS, Auth, Realtime & Storage)
+- **Transactional Email:** [Resend API](https://resend.com/)
+- **Analytics & Hosting:** [Vercel](https://vercel.com/) with [@vercel/analytics](https://vercel.com/analytics)
+- **SEO & Social:** [next-seo](https://github.com/garmeeh/next-seo), [next-sitemap](https://github.com/iamvishnusankar/next-sitemap), Schema.org JSON-LD
 
 ---
 
-## 11. Realtime Subscriptions
+## 7. Design System & 3-Layer Visual Engine
 
-Realtime events keep creator and admin dashboards synchronized without manual page reloads:
-
-- **Creator Studio (`/creator/dashboard`)**:
-  - Listens to `creator_profiles`, `projects`, `withdrawals`, and `creator_earnings` filtered by the creator's ID.
-  - Automatically cleans up channels via `supabase.removeChannel(channel)` on component unmount.
-- **Admin Moderation Console (`/admin/dashboard`)**:
-  - Listens to `creator_applications`, `projects`, `enquiries`, `orders`, and `withdrawals`.
-  - Automatically updates review counts and KPI cards when new submissions or purchases occur.
-
----
-
-## 12. Authentication & Route Security
-
-- **Client Provider (`src/context/AuthContext.jsx`)**: Exposes `user`, `session`, `profile`, `role`, `isAdmin`, `isCreator`, `isBuyer`, `signIn`, `signUp`, and `signOut`.
-- **Route Protection (`src/components/auth/RouteGuard.jsx`)**: Restricts protected routes (`/creator/*`, `/admin/*`, `/buyer/*`) and redirects unauthorized personas to `/auth/login`.
-
----
-
-## 13. Design System & 3-Layer Visual Engine
-
-Homies Studio employs an editorial aesthetic paired with WebGL graphics:
+Homies Studio renders a specialized 3-layer visual engine in `_app.page.jsx`:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│ 3. Interactive WebGL Fluid Overlay (Cursor Physics Brush)   │
-├─────────────────────────────────────────────────────────────┤
-│ 2. DOM Content Layer (Responsive SCSS Modules + Typography) │
-├─────────────────────────────────────────────────────────────┤
-│ 1. 3D Canvas Background (React Three Fiber Geometries)      │
-└─────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│  Layer 3: DOM Content & UI Components (Z-Index: 10+)   │
+│  (Navbar, Pages, Modals, Forms, Cookie Consent, Footer)│
+├────────────────────────────────────────────────────────┤
+│  Layer 2: Noise Texture & Post-Processing Shaders      │
+│  (#layout::before CSS noise overlay, Fluid difference) │
+├────────────────────────────────────────────────────────┤
+│  Layer 1: WebGL Canvas & Background 3D Meshes (Z: 0)   │
+│  (React Three Fiber canvas, View.Port, physics items)  │
+└────────────────────────────────────────────────────────┘
 ```
 
-- **Color Tokens**: Pure monochrome palette (`--white: #ffffff`, `--black: #111111`, `--fillColor: #e5ece5`).
-- **Typography Hierarchy**:
-  - Display Titles: `Syne` (Bold, geometric)
-  - Body & Form Controls: `Epilogue` (Technical readability)
-  - Editorial Accents: `Reenie Beanie` (Handwritten annotations)
-- **Fluid & Motion**: Lenis smooth scroll combined with GSAP ScrollTrigger and WebGL GLSL shaders.
+### Color Palette Tokens (`src/styles/colors.scss`)
+- `--black`: `#28282b` (Deep obsidian dark)
+- `--white`: `#f0f4f1` (Warm off-white background)
+- `--menuColor`: `#28282b`
+- `--fillColor`: `#f2ffbd` (Electric lime/gold accent)
+- `--accentColor`: `#f9f9f9`
 
 ---
 
-## 14. Technology Stack
+## 8. Supabase Database & Storage Architecture
 
-### Core Framework & UI
-- **Next.js**: `14.0.3` (Pages Router with `*.page.jsx` extension mapping)
-- **React & React DOM**: `18.2.0`
-- **Sass (SCSS Modules)**: `1.69.4`
-- **Zustand**: `4.5.4` (State store for cart, wishlist, and modal states)
+The database is built on PostgreSQL with strict Row Level Security (RLS) across all tables:
 
-### 3D, WebGL & Animation
-- **Three.js**: `0.167.0`
-- **@react-three/fiber**: `8.16.8`
-- **@react-three/drei**: `9.108.3`
-- **@react-three/postprocessing**: `2.16.2`
-- **GSAP (GreenSock)**: `3.12.5`
-- **Lenis**: `1.1.6` (Smooth scrolling)
-- **GLSLify & Raw Loader**: Custom fragment and vertex shader compilation
+```
+┌──────────────────┐       ┌──────────────────────┐       ┌──────────────────┐
+│     profiles     │◄──────│   creator_profiles   │       │     enquiries    │
+│  (id, role, ...) │       │ (user_id, status, ..)│       │(reference_id, ..)│
+└────────┬─────────┘       └──────────┬───────────┘       └──────────────────┘
+         │                            │
+         ▼                            ▼
+┌──────────────────┐       ┌──────────────────────┐
+│  orders / items  │◄──────│       projects       │
+│(buyer_id, status)│       │ (creator_id, status) │
+└──────────────────┘       └──────────────────────┘
+```
 
-### Backend, Database & Storage
-- **@supabase/supabase-js**: `2.112.4`
-- **PostgreSQL**: Supabase cloud database with RLS policies
-
-### Tooling & Build
-- **next-sitemap**: `4.2.3`
-- **ESLint & Prettier**: Code formatting and styling standards
-- **Sharp**: `0.33.4` (Server image optimization)
+### Storage Buckets
+1. `project-covers` (Public): Image thumbnails and preview media.
+2. `project-deliverables` (Private / Authenticated): Downloadable source code ZIPs, circuit diagrams, and PDF report documentation accessible via signed URLs post-purchase.
 
 ---
 
-## 15. Project Structure
+## 9. Directory Structure
 
-```text
+```
 homies-website/
-├── public/                               # Static media, brand assets, and fonts
-│   ├── fonts/                            # Syne, Epilogue, Reenie Beanie font files
-│   ├── homies/                           # Homies Studio brand marks and logos
-│   └── project1/ ... project5/           # Marketplace project preview banners
-│
+├── public/                     # Static assets (logos, icons, noise texture, robots.txt)
 ├── src/
-│   ├── components/                       # Reusable UI, auth, and canvas modules
-│   │   ├── animationComponents/          # GSAP text reveal, perspective roll, button hover
-│   │   ├── auth/                         # RouteGuard role-based access controller
-│   │   ├── canvas/                       # React Three Fiber background and WebGL fluid simulation
-│   │   ├── dom/                          # Layout shells, conversationModal, navbar, prefooter
-│   │   │   ├── conversationModal/        # 5-sector enquiry modal with WhatsApp routing
-│   │   │   ├── navbar/                   # Responsive navigation, MenuLinks, MenuButton
-│   │   │   ├── CustomHead.jsx            # Dynamic SEO head meta manager
-│   │   │   ├── Footer.jsx                # Global responsive footer
-│   │   │   └── Layout.jsx                # Application shell wrapping Lenis & Canvas
-│   │   └── imageComponents/              # Custom SVG vectors and graphic icons
-│   │
-│   ├── constants/                        # Marketplace categories and seeded project data
-│   │   ├── marketplace.js                # Taxonomy definitions and default fee splits
-│   │   └── projects.js                   # Seed project schemas with deliverables & specs
-│   │
-│   ├── context/                          # React contexts
-│   │   └── AuthContext.jsx               # Supabase session, profile, and role provider
-│   │
-│   ├── hooks/                            # Custom utility hooks (useIsMobile, useScroll, useOpts)
+│   ├── components/
+│   │   ├── animationComponents/ # GSAP linkText, appearTitle, textOpacity, buttonLink
+│   │   ├── canvas/             # 3D fluid shaders, physics mesh, canvas background
+│   │   ├── dom/                # Navbar, Footer, CustomHead, Time, Scrollbar, Loader
+│   │   ├── forms/              # ContactForm component and SCSS modules
+│   │   └── ui/                 # CookieConsent, MartNotifyBanner, ProjectImagePlaceholder
+│   ├── constants/              # Categories, default project datasets, navigation links
+│   ├── context/                # AuthContext (Supabase authentication state)
+│   ├── hooks/                  # Custom React hooks (useIsMobile, useIsomorphicLayoutEffect)
 │   ├── lib/
-│   │   └── supabase/
-│   │       ├── client.js                 # Supabase browser client instance
-│   │       └── server.js                 # Supabase server-side helper
-│   │
-│   ├── pages/                            # Next.js Pages Router (Extension: *.page.jsx)
-│   │   ├── _app.page.jsx                 # Application root, providers, and layout wrapper
-│   │   ├── _document.page.jsx            # HTML document shell with custom fonts
-│   │   ├── 404.page.jsx                  # Custom 404 error page
-│   │   ├── index.page.jsx                # Homepage (Hero, Pillars, Featured Projects)
-│   │   ├── about/index.page.jsx          # About page (Services, Process, Capabilities)
-│   │   ├── admin/dashboard.page.jsx      # Admin Moderation Console & Platform Analytics
-│   │   ├── api/enquiry.js                # Multi-sector enquiry API endpoint
-│   │   ├── auth/login.page.jsx           # User Sign In
-│   │   ├── auth/signup.page.jsx          # User Sign Up with role onboarding
-│   │   ├── become-a-creator.page.jsx     # Creator landing & 80/20 royalty calculator
-│   │   ├── buyer/dashboard.page.jsx      # Buyer Portal & Download Center
-│   │   ├── checkout/[id].page.jsx        # Project checkout & license tier selection
-│   │   ├── creator/dashboard.page.jsx    # Creator Studio, Wallet & Inquiries
-│   │   ├── creator/submit.page.jsx       # 6-step project submission wizard
-│   │   ├── projects/index.page.jsx       # Marketplace discovery (Stacking vs Grid view)
-│   │   └── projects/[id].page.jsx        # Dynamic Project Details Page
-│   │
-│   ├── store.js                          # Zustand global client state
-│   └── styles/                           # Global SCSS architecture & Design Tokens
-│       ├── colors.scss                   # CSS variables (--white, --black, --fillColor)
-│       ├── fonts.scss                    # Font family definitions
-│       ├── fontStyle.scss                # Responsive typography classes (h1..h6, p-l)
-│       ├── functions.scss                # Breakpoint mixins (@include mobile, @include tablet)
-│       └── global.scss                   # Global resets and smooth scrolling rules
-│
+│   │   ├── supabaseClient.js   # Supabase client initialization
+│   │   └── services/           # Project, order, and creator data access services
+│   ├── pages/
+│   │   ├── api/                # API routes (contact.page.js, notify.page.js, enquiry.page.js)
+│   │   ├── blog/               # Engineering blog article pages (.page.jsx)
+│   │   ├── mart/               # Homies Mart marketplace (.page.jsx)
+│   │   ├── projects/           # Project detail routes (/projects/[id].page.jsx)
+│   │   ├── _app.page.jsx       # Root App with 3D Canvas, Lenis, and CookieConsent
+│   │   ├── _document.page.jsx  # HTML document and font headers
+│   │   ├── index.page.jsx      # Homepage
+│   │   ├── contact.page.jsx    # Contact page
+│   │   ├── privacy-policy.page.jsx # Privacy policy page
+│   │   ├── terms.page.jsx      # Terms of use page
+│   │   └── 404.page.jsx        # 404 recovery page
+│   ├── store.js                # Zustand global UI & Lenis state store
+│   └── styles/                 # Global SCSS, design tokens, layout mixins, typography
 ├── supabase/
-│   └── migrations/                       # 16 SQL migration files for tables, RLS, and storage
-│
-├── next.config.js                        # Next.js config with remotePatterns & shader rules
-├── next-sitemap.config.js                # Dynamic sitemap generator
-├── package.json                          # Scripts and dependencies
-└── README.md                             # Platform documentation
+│   └── migrations/             # SQL schema migrations (001 through 017)
+├── next.config.js              # Next.js configuration with custom pageExtensions
+├── package.json                # Project dependencies and npm scripts
+└── README.md                   # Platform documentation
 ```
 
 ---
 
-## 16. Environment Variables
+## 10. Environment Variables
 
-Create a `.env.local` file in the root directory:
+Create `.env.local` in the project root:
 
-```env
-# ==============================================================================
-# HOMIES STUDIO — ENVIRONMENT CONFIGURATION (.env.local)
-# ==============================================================================
-
-# 1. Supabase Project URL
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-
-# 2. Supabase Publishable / Anon Key (Safe for browser client)
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-supabase-anon-key
-
-# (Optional fallback key name for older client setups)
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-
-# 3. Supabase Service Role Key (SERVER-ONLY — Never expose to client)
-SUPABASE_SERVICE_ROLE_KEY=
-
-# 4. Payment Gateway (Optional)
-NEXT_PUBLIC_RAZORPAY_KEY_ID=
-RAZORPAY_KEY_ID=
-RAZORPAY_KEY_SECRET=
-RAZORPAY_WEBHOOK_SECRET=
-```
-
-> **Security Note:** Never commit `.env.local` or private service-role keys to source control.
-
----
-
-## 17. Local Development Setup
-
-### Prerequisites
-- **Node.js**: `v18.x` or `v20.x`
-- **npm**: `v9.x` or higher
-
-### Installation & Execution
 ```bash
-# 1. Clone the repository
-git clone <repository-url>
-cd homies-website
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
 
-# 2. Install dependencies
+# Resend Transactional Email API (Contact Form & Waitlist Notifications)
+RESEND_API_KEY=re_your_resend_api_key_here
+
+# Site URL Configuration
+NEXT_PUBLIC_SITE_URL=https://www.homiesstudio.com
+NEXT_PUBLIC_APP_URL=https://www.homiesstudio.com
+
+# On-Demand Revalidation Secret
+REVALIDATION_SECRET_TOKEN=your_secure_random_revalidation_token
+```
+
+---
+
+## 11. Local Development & Deployment
+
+### 1. Prerequisites
+- Node.js 18.x or 20.x
+- npm or yarn
+
+### 2. Install Dependencies
+```bash
 npm install
+```
 
-# 3. Configure environment
-cp .env.example .env.local
-# (Populate .env.local with your Supabase credentials)
-
-# 4. Start local development server
+### 3. Start Development Server
+```bash
 npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
----
-
-## 18. Database Setup & Migrations
-
-If deploying to a fresh Supabase project, execute the migrations in order:
-
+### 4. Create Production Build & Validate
 ```bash
-# Using Supabase CLI:
-supabase db push
-
-# Or run the SQL scripts sequentially in the Supabase SQL Editor:
-# supabase/migrations/001_profiles.sql through 016_enquiries_table.sql
-```
-
-### Storage Buckets Setup
-Ensure the following two buckets exist in your Supabase Storage dashboard:
-1. `project-media` — **Public bucket** (Allowed MIME types: `image/jpeg`, `image/png`, `image/webp`).
-2. `project-deliverables` — **Private bucket** (Allowed MIME types: `application/zip`, `application/pdf`, `application/octet-stream`).
-
----
-
-## 19. Build & Production Deployment
-
-### Production Build
-```bash
-# Compile and validate production bundle
 npm run build
-
-# Start production server
-npm start
 ```
+Starts Next.js compilation, generates static pages, and produces optimized JavaScript bundles.
 
-### Deployment on Vercel
-1. Connect your Git repository to Vercel.
-2. In Project Settings, add all environment variables (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`).
-3. Set the build command to `npm run build` and output directory to `.next`.
-4. Deploy.
-
----
-
-## 20. Troubleshooting Guide
-
-### 1. Next.js Remote Image Hostname Error
-- **Symptom:** `Error: Invalid src prop ... hostname "...supabase.co" is not configured under images in your next.config.js`.
-- **Solution:** Verify `next.config.js` contains your Supabase hostname in `images.remotePatterns`.
-
-### 2. Missing Deliverables Column Schema Error
-- **Symptom:** `Could not find the 'deliverables' column of 'projects' in the schema cache`.
-- **Solution:** The `projects` table stores deliverables in the `requirements` JSONB column (`requirements.deliverables`). Physical file binaries are tracked in `public.project_files`.
-
-### 3. File Upload 403 Forbidden
-- **Symptom:** Uploads to `project-media` or `project-deliverables` fail with permission errors.
-- **Solution:** Run migration `015_creator_storage_and_assets.sql` to apply storage bucket RLS policies.
-
----
-
-## 21. Security Posture
-
-- **Row Level Security (RLS):** Enabled on all tables. Creators can only modify their own projects; buyers can only view their purchased downloads; admins have moderation capabilities.
-- **Client Key Isolation:** Only the `anon` / publishable key is exposed via `NEXT_PUBLIC_`.
-- **Sanitized Uploads:** Storage paths and file names are sanitized to prevent directory traversal attacks.
-
----
-
-## 22. Business & Interaction Workflows
-
-### Client Requirement / Consultation Flow
-```text
-Visitor
-  │
-  ├──► Clicks "Start a Conversation"
-  │
-  ├──► Selects Sector (Colleges / EdTech / Individual / Business / Other)
-  │
-  ├──► Fills Dynamic Form & Submits
-  │
-  ├──► Saved to Supabase public.enquiries (Ref ID: HS-XXXX-XXXX)
-  │
-  └──► Redirects to WhatsApp (+91 7416636417) with structured payload
-```
-
-### Creator Onboarding & Monetization Flow
-```text
-Creator
-  │
-  ├──► Signs up at /auth/signup (Selects CREATOR role)
-  │
-  ├──► Submits application at /become-a-creator
-  │
-  ├──► Admin approves application at /admin/dashboard (Upgrades role to CREATOR)
-  │
-  ├──► Creator builds & submits project at /creator/submit
-  │
-  ├──► Admin audits code & publishes submission
-  │
-  └──► Project appears on /projects marketplace; sales earn 80% royalty split
+### 5. Run Production Server
+```bash
+npm run start
 ```
 
 ---
 
-## 23. Verification & Testing Checklist
+## 12. License & Attribution
 
-- [x] **Public Experience**: Home, About, Become a Creator, and Marketplace pages load cleanly.
-- [x] **Navigation**: Header dynamically hides "ADMIN CONSOLE" on public views and displays user-specific portals.
-- [x] **Authentication**: Sign in, Sign up, Session persistence, and Logout operate across page refreshes.
-- [x] **Creator Studio**: Financial KPIs reflect database values; wallet payout modal validates available balance.
-- [x] **Project Submission**: Multi-step wizard uploads cover images to `project-media` and code ZIPs to `project-deliverables`.
-- [x] **Admin Moderation**: Platform GMV analytics, creator application approvals, and project publishing controls function.
-- [x] **Start a Conversation**: All 5 sector forms persist leads to `public.enquiries` and route to WhatsApp (`+91 7416636417`).
-- [x] **Image Optimization**: Supabase storage URLs render through `next/image` without hostname runtime errors.
-- [x] **Production Compilation**: `npm run build` completes with exit code 0 across all 18 routes.
-
----
-
-## 24. License
-
-All original platform architecture, 3D shader systems, and brand designs are proprietary to **Homies Studio** © 2026. All rights reserved.
+Copyright © 2026 **Homies Studio**. All Rights Reserved.  
+Built with passion for students, builders, and startups across India.

@@ -1,6 +1,7 @@
-﻿/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-props-no-spreading */
 import Home from '@src/pages/components/home/Index';
 import About from '@src/pages/components/about/Index';
+import HomeMiddleSections from '@src/pages/components/home/HomeMiddleSections';
 import Quote from '@src/pages/components/quote/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
@@ -39,6 +40,7 @@ function Page() {
       <CustomHead {...seo} />
       <Home />
       <About />
+      <HomeMiddleSections />
       <Quote />
     </>
   );

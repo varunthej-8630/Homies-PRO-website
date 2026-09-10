@@ -251,16 +251,9 @@ function MenuLinks() {
               )}
 
               <div role="presentation" className={styles.menuListItem} style={{ marginTop: '0.4rem' }}>
-                <button
-                  type="button"
-                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0, textAlign: 'left' }}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setIsConversationOpen(true);
-                  }}
-                >
+                <Link scroll={false} href="/get-started" onClick={() => setIsMenuOpen(false)}>
                   <span>START A CONVERSATION</span>
-                </button>
+                </Link>
               </div>
 
               <div className={styles.menuListItem} style={{ marginTop: '0.4rem' }}>
@@ -272,16 +265,9 @@ function MenuLinks() {
           ) : (
             <>
               <div role="presentation" className={styles.menuListItem}>
-                <button
-                  type="button"
-                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', padding: 0, textAlign: 'left' }}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setIsConversationOpen(true);
-                  }}
-                >
+                <Link scroll={false} href="/get-started" onClick={() => setIsMenuOpen(false)}>
                   <span>START A CONVERSATION</span>
-                </button>
+                </Link>
               </div>
 
               <div className={styles.menuListItem} style={{ marginTop: '0.3rem' }}>

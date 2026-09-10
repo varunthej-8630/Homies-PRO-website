@@ -34,6 +34,8 @@ const companyLinks = [
   { title: 'About Homies', href: '/about' },
   { title: 'Blog', href: '/blog' },
   { title: 'Contact', href: '/contact' },
+  { title: 'Privacy Policy', href: '/privacy-policy' },
+  { title: 'Terms of Use', href: '/terms' },
 ];
 
 function Footer() {
@@ -112,7 +114,7 @@ function Footer() {
       </div>
       <div style={{ gridColumn: isMobile ? '4 / 7' : '5 / 9' }} className={styles.linksContainer}>
         <AppearTitle isFooter>
-          <h6 className={clsx(styles.title, 'h6')}>Company</h6>
+          <h6 className={clsx(styles.title, 'h6')}>Company &amp; Legal</h6>
           {companyLinks.map((link) => (
             <div key={link.title} className={styles.linkTextContainer}>
               <LinkText className={styles.linkText} title={link.title} href={link.href}>
