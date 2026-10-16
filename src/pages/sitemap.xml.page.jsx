@@ -5,6 +5,7 @@ const SITE_URL = 'https://www.homiesstudio.com';
 const STATIC_CANONICAL_PAGES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/mart', priority: '0.95', changefreq: 'daily' },
+  { path: '/website-development', priority: '0.95', changefreq: 'weekly' },
   { path: '/final-year-projects', priority: '0.95', changefreq: 'weekly' },
   { path: '/ai-solutions', priority: '0.9', changefreq: 'weekly' },
   { path: '/for-colleges', priority: '0.9', changefreq: 'weekly' },

@@ -22,6 +22,7 @@ function isRateLimited(ip) {
 }
 
 const ALLOWED_INQUIRY_TYPES = [
+  'Website Development',
   'Student FYP Guidance',
   'College Partnership',
   'AI & SaaS Solutions',

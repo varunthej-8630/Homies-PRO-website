@@ -23,23 +23,23 @@ const pillars = [
   },
   {
     icon: '⚡',
-    label: 'For Startups',
-    heading: 'AI Solutions',
-    body: 'Custom AI agents, SaaS platforms, and full-stack web apps for Indian startups.',
-    ctaText: 'Start a Project →',
-    ctaHref: '/ai-solutions',
+    label: 'For Businesses & Startups',
+    heading: 'Websites & AI Solutions',
+    body: 'Custom-coded websites, web applications, AI agents, and custom technical software.',
+    ctaText: 'Explore Web & AI →',
+    ctaHref: '/website-development',
   },
 ];
 
 const domainTags = [
-  'IoT & Robotics',
+  'Custom Websites',
   'AI & Machine Learning',
+  'IoT & Robotics',
   'Embedded Systems',
-  'Full Stack Web',
-  'Computer Vision',
+  'Full Stack Web Apps',
+  'E-commerce & Stores',
   'SaaS & Automation',
-  'Cybersecurity',
-  'Data Engineering',
+  'Computer Vision',
 ];
 
 export default function HomeMiddleSections() {
@@ -98,13 +98,14 @@ export default function HomeMiddleSections() {
 
           <div className={styles.ctaColumn}>
             <h3 className={styles.ctaTitle}>Startup or Business?</h3>
-            <p className={styles.ctaSubtitle}>Tell us about your product idea.</p>
-            <a
-              href="mailto:info@homiesstudio.com"
+            <p className={styles.ctaSubtitle}>Tell us about your website, software, or AI product idea.</p>
+            <Link
+              href="/get-started?sector=business"
               className={styles.emailButton}
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none' }}
             >
-              📧 Email the Team
-            </a>
+              💬 Discuss Your Project
+            </Link>
           </div>
         </div>
       </div>

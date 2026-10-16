@@ -158,6 +158,9 @@ export default function AISolutionsPage() {
           <p className={styles.sectionDesc}>Connect with our wider technical ecosystem for student projects, college partnerships, and company information.</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
+          <Link href="/website-development" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
+            💻 Custom Website Development &rarr;
+          </Link>
           <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
             🚀 Start an AI Project / Contact Us &rarr;
           </Link>

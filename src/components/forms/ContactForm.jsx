@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from './contactForm.module.scss';
 
-const INQUIRY_OPTIONS = ['Student FYP Guidance', 'College Partnership', 'AI & SaaS Solutions', 'Become a Creator', 'General'];
+const INQUIRY_OPTIONS = ['Website Development', 'Student FYP Guidance', 'College Partnership', 'AI & SaaS Solutions', 'Become a Creator', 'General'];
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

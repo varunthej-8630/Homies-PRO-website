@@ -6,11 +6,14 @@ import Quote from '@src/pages/components/quote/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'HOMIES STUDIO | Final Year Projects & AI Solutions',
-  description: 'Homies Studio transforms engineering concepts into real-world solutions, combining IoT, Robotics, AI/ML, and Embedded Systems with practical, end-to-end project development.',
+  title: 'HOMIES STUDIO | Building Ideas Into Reality — Projects, Websites & AI',
+  description:
+    'Homies Studio transforms ideas into reality. We help students bring engineering projects to life and help businesses build custom websites, applications, AI solutions, and technology.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',
+    'Website Development India',
+    'Custom Web Applications',
     'Final Year Projects',
     'FYP Guidance India',
     'IoT Projects India',

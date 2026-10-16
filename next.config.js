@@ -72,6 +72,11 @@ const nextConfig = {
       destination: '/',
       permanent: true,
     },
+    {
+      source: '/manifest.json',
+      destination: '/site.webmanifest',
+      permanent: true,
+    },
   ],
 };
 

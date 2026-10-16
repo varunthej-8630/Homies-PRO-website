@@ -232,20 +232,17 @@ function Home() {
       <div className={clsx(styles.topContainer, 'layout-grid-inner')}>
         <div className={styles.leftContainer}>
           <h1 className="h2">
-            Final Year Projects &amp;
+            Building Ideas
             <span className={clsx('h2', 'bold')} style={{ display: 'block' }}>
-              AI Solutions
+              Into Reality.
             </span>
           </h1>
           <h2 className="p-s" style={{ margin: '0.4rem 0 0', opacity: 0.85, fontWeight: 500, letterSpacing: '0.04em' }}>
-            IoT · Robotics · AI/ML · Embedded Systems · Web Apps
+            Guidance · Development · Solutions
           </h2>
         </div>
         {!isMobile && (
-          <h6 className={clsx('h6', styles.rightContainer)}>
-            Homies Studio is India&apos;s tech studio for engineering students and startups. We help B.Tech &amp; M.Tech students across India complete final year projects and help startups build
-            AI-powered products — pan-India, 100% remote.
-          </h6>
+          <h6 className={clsx('h6', styles.rightContainer)}>We help students bring project ideas to life and help businesses build websites, applications, AI solutions, and custom technology.</h6>
         )}
       </div>
 
@@ -264,10 +261,7 @@ function Home() {
       </div>
       {isMobile && (
         <div className={styles.rightContainerMobile}>
-          <h6 className="h6">
-            Homies Studio is India&apos;s tech studio for engineering students and startups. We help B.Tech &amp; M.Tech students across India complete final year projects and help startups build
-            AI-powered products — pan-India, 100% remote.
-          </h6>
+          <h6 className="h6">We help students bring project ideas to life and help businesses build websites, applications, AI solutions, and custom technology.</h6>
         </div>
       )}
 

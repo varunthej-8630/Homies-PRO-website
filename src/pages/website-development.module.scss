@@ -1,0 +1,520 @@
+@import '@src/styles/functions';
+
+.root {
+  background-color: var(--white);
+  color: var(--black);
+  padding-top: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 4);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--layout-columns-gap) * 1);
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  .taglineBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--black, #000);
+    color: var(--white, #fff);
+    padding: 0.4vw 1.2vw;
+    border-radius: 9999px;
+    font-weight: 600;
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      width: auto;
+      max-width: 100%;
+      white-space: normal;
+      text-align: center;
+      line-height: 1.35;
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+      padding: 2vw 4.5vw;
+    }
+  }
+
+  .heroTitle {
+    font-weight: 750;
+    line-height: 115%;
+    max-width: 80vw;
+
+    @include mobile {
+      max-width: 100%;
+      word-break: break-word;
+    }
+  }
+
+  .heroSubtitle {
+    color: rgba(40, 40, 43, 0.85);
+    max-width: 65vw;
+    line-height: 145%;
+    font-weight: 550;
+
+    @include mobile {
+      max-width: 100%;
+      word-break: break-word;
+    }
+  }
+
+  .heroAdditional {
+    color: rgba(40, 40, 43, 0.7);
+    max-width: 65vw;
+    line-height: 150%;
+    font-size: 1.05rem;
+
+    @include mobile {
+      max-width: 100%;
+      font-size: 0.95rem;
+    }
+  }
+
+  .ctaRow {
+    display: flex;
+    gap: 1.2vw;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1vw;
+
+    @include mobile {
+      gap: 3vw;
+      width: 100%;
+    }
+
+    .primaryBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 700;
+      padding: 0.9vw 2vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: 1px solid var(--black);
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      &:hover {
+        background: transparent;
+        color: var(--black);
+        transform: translateY(-2px);
+      }
+    }
+
+    .whatsappBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: #000;
+      font-weight: 700;
+      padding: 0.9vw 2vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      }
+    }
+
+    .secondaryBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--black);
+      font-weight: 600;
+      padding: 0.9vw 1.6vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: 1px solid rgba(40, 40, 43, 0.25);
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      &:hover {
+        border-color: var(--black);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.sectionHeader {
+  margin-bottom: calc(var(--layout-columns-gap) * 1.5);
+
+  .sectionTitle {
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .sectionDesc {
+    color: rgba(40, 40, 43, 0.75);
+    max-width: 65vw;
+    line-height: 145%;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+}
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+  }
+
+  .principleCard {
+    background: rgba(240, 244, 241, 0.6);
+    border: 1px solid rgba(40, 40, 43, 0.12);
+    border-radius: 1vw;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+    transition: all 0.3s ease;
+
+    @include mobile {
+      border-radius: 3vw;
+      padding: 5.5vw;
+      gap: 2.5vw;
+    }
+
+    &:hover {
+      border-color: rgba(40, 40, 43, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .cardNumber {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c5a359;
+    }
+
+    .cardTitle {
+      font-weight: 700;
+    }
+
+    .cardDesc {
+      color: rgba(40, 40, 43, 0.75);
+      line-height: 145%;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.buildGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+  }
+
+  .buildCard {
+    background: rgba(240, 244, 241, 0.6);
+    border: 1px solid rgba(40, 40, 43, 0.12);
+    border-radius: 1vw;
+    padding: 1.8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+    transition: all 0.3s ease;
+
+    @include mobile {
+      border-radius: 3vw;
+      padding: 5.5vw;
+      gap: 2.5vw;
+    }
+
+    &:hover {
+      border-color: rgba(40, 40, 43, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .buildIcon {
+      font-size: 1.5rem;
+    }
+
+    .cardTitle {
+      font-weight: 700;
+    }
+
+    .cardDesc {
+      color: rgba(40, 40, 43, 0.75);
+      line-height: 140%;
+      font-size: 0.92rem;
+    }
+  }
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 3.5vw;
+  }
+
+  .stepCard {
+    background: rgba(240, 244, 241, 0.5);
+    border: 1px solid rgba(40, 40, 43, 0.12);
+    border-radius: 1vw;
+    padding: 1.8vw 1.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7vw;
+
+    @include mobile {
+      border-radius: 2.5vw;
+      padding: 5vw;
+      gap: 2vw;
+    }
+
+    .stepNumber {
+      font-size: 1.1rem;
+      font-weight: 750;
+      color: #c5a359;
+      font-family: monospace;
+    }
+
+    .stepTitle {
+      font-weight: 700;
+    }
+
+    .stepDesc {
+      color: rgba(40, 40, 43, 0.75);
+      line-height: 140%;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.pricingBlock {
+  background: rgba(240, 244, 241, 0.8);
+  border: 1px solid rgba(40, 40, 43, 0.15);
+  border-radius: 1vw;
+  padding: 2.5vw 3vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    border-radius: 3vw;
+    padding: 6vw 5vw;
+  }
+
+  .pricingTitle {
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  .pricingText {
+    color: rgba(40, 40, 43, 0.8);
+    line-height: 155%;
+    font-size: 1.05rem;
+    max-width: 65vw;
+
+    @include mobile {
+      max-width: 100%;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.ctaBox {
+  background: var(--black);
+  color: var(--white);
+  border-radius: 1.2vw;
+  padding: 4vw 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2vw;
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+
+  @include mobile {
+    border-radius: 3.5vw;
+    padding: 8vw 5vw;
+    gap: 3.5vw;
+  }
+
+  .ctaTitle {
+    font-weight: 750;
+    color: var(--white);
+  }
+
+  .ctaSubtitle {
+    color: rgba(240, 244, 241, 0.8);
+    max-width: 50vw;
+    line-height: 145%;
+
+    @include mobile {
+      max-width: 100%;
+    }
+  }
+
+  .ctaBtnGroup {
+    display: flex;
+    gap: 1.2vw;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5vw;
+
+    @include mobile {
+      gap: 3vw;
+      width: 100%;
+    }
+
+    .ctaPrimary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--black);
+      font-weight: 700;
+      padding: 0.9vw 2.2vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+      }
+
+      &:hover {
+        background: #f2ffbd;
+        transform: translateY(-2px);
+      }
+    }
+
+    .ctaSecondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: #000;
+      font-weight: 700;
+      padding: 0.9vw 2vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      }
+    }
+
+    .ctaTertiary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      padding: 0.9vw 1.8vw;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: 1px solid rgba(240, 244, 241, 0.35);
+      transition: all 0.3s ease;
+
+      @include mobile {
+        padding: 3.5vw 6vw;
+        width: 100%;
+      }
+
+      &:hover {
+        border-color: var(--white);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.faqSection {
+  margin-bottom: calc(var(--layout-columns-gap) * 3);
+
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    @include mobile {
+      gap: 3vw;
+    }
+
+    .faqItem {
+      background: rgba(240, 244, 241, 0.6);
+      border: 1px solid rgba(40, 40, 43, 0.1);
+      border-radius: 0.8vw;
+      padding: 1.5vw 2vw;
+
+      @include mobile {
+        border-radius: 2vw;
+        padding: 4vw;
+      }
+
+      .faqQuestion {
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+
+      .faqAnswer {
+        color: rgba(40, 40, 43, 0.75);
+        line-height: 145%;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-﻿/** @type {import('next-sitemap').IConfig} */
+/** @type {import('next-sitemap').IConfig} */
 const siteUrl = 'https://www.homiesstudio.com';
 
 module.exports = {
@@ -59,6 +59,9 @@ module.exports = {
 
     if (path === '/') {
       priority = 1.0;
+      changefreq = 'weekly';
+    } else if (path === '/website-development') {
+      priority = 0.95;
       changefreq = 'weekly';
     } else if (path === '/final-year-projects') {
       priority = 0.95;

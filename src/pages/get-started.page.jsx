@@ -99,6 +99,20 @@ export default function GetStartedPage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (router.isReady && router.query.sector) {
+      const qSector = String(router.query.sector).toLowerCase();
+      if (qSector === 'business' || qSector === 'startup' || qSector === 'website') {
+        const prod = router.query.product === 'website' ? 'Website Development' : '';
+        setFormData((prev) => ({
+          ...prev,
+          sector: '04 — Startup or Business',
+          ...(prod ? { productType: prod } : {}),
+        }));
+      }
+    }
+  }, [router.isReady, router.query]);
+
   const isInstitutional =
     formData.sector === '02 — College or University' || formData.sector === '03 — EdTech Institute';
   const isStudent = formData.sector === '01 — Engineering Student';
@@ -855,6 +869,7 @@ export default function GetStartedPage() {
                             required
                           >
                             <option value="">Select Option</option>
+                            <option value="Website Development">Website Development</option>
                             <option value="AI Agent">AI Agent</option>
                             <option value="SaaS Platform">SaaS Platform</option>
                             <option value="Web App">Web App</option>
