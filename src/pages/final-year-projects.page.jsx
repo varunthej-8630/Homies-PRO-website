@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import styles from './final-year-projects.module.scss';
 
 const seo = {
-  title: 'Final Year Project Help for B.Tech & M.Tech Students Across India | Homies Studio',
-  description: 'Get end-to-end final year project guidance in IoT, Robotics, AI/ML, Embedded Systems & more. Homies Studio helps engineering students across India complete and submit FYP remotely.',
+  title: 'Final Year Engineering Project Guidance | Homies Studio',
+  description: 'End-to-end B.Tech and M.Tech final year project guidance in IoT, Robotics, AI/ML, and Embedded Systems. Remote mentorship and project builds across India.',
   keywords: [
     'Final Year Projects',
     'B.Tech Final Year Projects',
@@ -34,7 +34,7 @@ const fypSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
@@ -44,53 +44,31 @@ const fypSchema = {
         },
       ],
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How does Homies Studio help with final year engineering projects?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Homies Studio provides end-to-end guidance including topic selection, system architecture design, hardware/software implementation, documentation, and viva preparation for B.Tech and M.Tech students.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can students from outside Hyderabad or Bangalore get guidance?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes! Homies Studio operates 100% remotely across all states in India. We ship components where needed and provide video guidance, code reviews, and remote debugging.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Which engineering branches do you support?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We support students from Computer Science Engineering (CSE), Electronics and Communication Engineering (ECE), Electrical and Electronics Engineering (EEE), and Information Technology (IT).',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Do you provide IEEE-standard project implementations?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, we specialize in recent IEEE paper implementations across AI/ML, IoT, Cloud Computing, Cyber Security, and Embedded Robotics.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How do I get started with my final year project?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'You can contact us directly on WhatsApp at +91 74166 36417 with your branch, domain preference, or college requirements, and our technical leads will guide you immediately.',
-          },
-        },
-      ],
-    },
   ],
 };
+
+const faqs = [
+  {
+    q: 'How does Homies Studio help with final year engineering projects?',
+    a: 'Homies Studio provides end-to-end guidance including topic selection, system architecture design, hardware/software implementation, documentation, and viva preparation for B.Tech and M.Tech students.',
+  },
+  {
+    q: 'Can students from outside Hyderabad or Bangalore get guidance?',
+    a: 'Yes! Homies Studio operates remotely across all states in India. We ship components where needed and provide video guidance, code reviews, and remote debugging.',
+  },
+  {
+    q: 'Which engineering branches do you support?',
+    a: 'We support students from Computer Science Engineering (CSE), Electronics and Communication Engineering (ECE), Electrical and Electronics Engineering (EEE), and Information Technology (IT).',
+  },
+  {
+    q: 'Do you provide IEEE-standard project implementations?',
+    a: 'Yes, we specialize in recent IEEE paper implementations across AI/ML, IoT, Cloud Computing, Cyber Security, and Embedded Robotics.',
+  },
+  {
+    q: 'How do I get started with my final year project?',
+    a: 'You can contact us directly on WhatsApp at +91 74166 36417 with your branch, domain preference, or college requirements, and our technical leads will guide you immediately.',
+  },
+];
 
 const domains = [
   {
@@ -248,10 +226,10 @@ export default function FinalYearProjectsPage() {
             <p className={styles.sectionDesc}>Everything you need to know about getting project mentorship with Homies Studio.</p>
           </div>
           <div className={styles.faqList}>
-            {fypSchema['@graph'][1].mainEntity.map((faq) => (
-              <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
-                <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
+            {faqs.map((faq) => (
+              <div key={faq.q} className={styles.faqItem}>
+                <h3 className={styles.faqQuestion}>{faq.q}</h3>
+                <p className={styles.faqAnswer}>{faq.a}</p>
               </div>
             ))}
           </div>

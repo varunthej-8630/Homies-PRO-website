@@ -6,9 +6,8 @@ import Quote from '@src/pages/components/quote/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'HOMIES STUDIO | Building Ideas Into Reality — Projects, Websites & AI',
-  description:
-    'Homies Studio transforms ideas into reality. We help students bring engineering projects to life and help businesses build custom websites, applications, AI solutions, and technology.',
+  title: 'Homies Studio — Building Ideas Into Reality | Tech & Projects',
+  description: 'Homies Studio builds custom websites, web applications, and AI solutions for businesses, and guides engineering students with final year projects across India.',
   keywords: [
     'HOMIES STUDIO',
     'Homies Studio',

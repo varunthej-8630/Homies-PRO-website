@@ -221,7 +221,7 @@ export async function getPublishedProjects() {
 
         // Ensure all 7 canonical projects exist in the list even if DB only has a subset
         const seenIds = new Set(formatted.map((p) => p.id));
-        const missingDefaults = defaultProjects.filter((dp) => !seenIds.has(dp.id));
+        const missingDefaults = defaultProjects.filter((dp) => !seenIds.has(dp.id)).map(formatDbProject);
         return [...formatted, ...missingDefaults];
       }
     } catch (err) {

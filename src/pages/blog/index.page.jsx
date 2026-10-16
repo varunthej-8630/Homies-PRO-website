@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import styles from '@src/pages/blog.module.scss';
 
 const seo = {
-  title: 'Blog | Homies Studio',
-  description: 'Engineering guides, FYP tips, and AI insights for students and founders.',
+  title: 'Engineering & Tech Insights Blog | Homies Studio',
+  description: 'Practical guides on final year engineering projects, IoT, Robotics, AI agent development, and custom web engineering by Homies Studio.',
   keywords: [
     'Final Year Project Ideas',
     'CSE Project Topics 2026',
@@ -16,7 +16,7 @@ const seo = {
     'Engineering Project Guidance Blog',
     'Homies Studio Insights',
   ],
-  canonical: 'https://www.homiesstudio.com/blog',
+  canonical: '/blog',
 };
 
 const blogSchema = {
@@ -29,7 +29,7 @@ const blogSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',

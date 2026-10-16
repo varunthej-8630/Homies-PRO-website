@@ -4,35 +4,60 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 const seo = {
-  title: 'What Is an AI Agent? A Plain Explanation for Students and Founders | Homies Studio',
-  description: 'AI agents are everywhere in 2026. Here’s what they actually are, how they work, and why startups are building them.',
-  canonical: 'https://www.homiesstudio.com/blog/what-is-an-ai-agent',
+  title: 'What Is an AI Agent? Guide for Founders & Students | Homies Studio',
+  description: 'A plain-English guide to autonomous AI agents in 2026: how they work, how they differ from chatbots, and practical use cases for startups.',
+  canonical: '/blog/what-is-an-ai-agent',
   keywords: ['What is an AI Agent', 'AI Agent vs Chatbot', 'AI Agents 2026 Guide', 'Autonomous AI Systems', 'AI Agent Development India', 'Tool Use and LLM Memory'],
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: 'What Is an AI Agent? A Plain Explanation for Students and Founders',
-  description: 'AI agents are everywhere in 2026. Here’s what they actually are, how they work, and why startups are building them.',
-  datePublished: '2026-09-03T00:00:00+05:30',
-  dateModified: '2026-09-03T00:00:00+05:30',
-  author: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://www.homiesstudio.com/logo.png',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: 'https://www.homiesstudio.com/blog',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'What Is an AI Agent?',
+          item: 'https://www.homiesstudio.com/blog/what-is-an-ai-agent',
+        },
+      ],
     },
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://www.homiesstudio.com/blog/what-is-an-ai-agent',
-  },
+    {
+      '@type': 'BlogPosting',
+      '@id': 'https://www.homiesstudio.com/blog/what-is-an-ai-agent#article',
+      headline: 'What Is an AI Agent? A Plain Explanation for Students and Founders',
+      description: 'A plain-English guide to autonomous AI agents in 2026: how they work, how they differ from chatbots, and practical use cases for startups.',
+      image: 'https://www.homiesstudio.com/og.png',
+      datePublished: '2026-09-03T00:00:00+05:30',
+      dateModified: '2026-09-03T00:00:00+05:30',
+      author: {
+        '@type': 'Organization',
+        name: 'Homies Studio',
+        url: 'https://www.homiesstudio.com/',
+      },
+      publisher: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.homiesstudio.com/blog/what-is-an-ai-agent',
+      },
+    },
+  ],
 };
 
 export default function WhatIsAnAiAgentPage() {

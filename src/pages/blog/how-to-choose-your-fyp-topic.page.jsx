@@ -4,35 +4,60 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 const seo = {
-  title: 'How to Choose Your Final Year Project Topic (2026 Guide) | Homies Studio',
-  description: 'A practical guide for B.Tech students on picking a final year project topic that scores well, is achievable, and stands out at viva.',
-  canonical: 'https://www.homiesstudio.com/blog/how-to-choose-your-fyp-topic',
+  title: 'How to Choose Your Final Year Project Topic | Homies Studio',
+  description: 'A practical guide for B.Tech students on picking an achievable final year project topic that scores high marks and stands out in viva voce.',
+  canonical: '/blog/how-to-choose-your-fyp-topic',
   keywords: ['How to choose FYP topic', 'B.Tech Final Year Projects 2026', 'CSE Project Topics 2026', 'ECE Final Year Project Ideas', 'Engineering Project Selection Guide', 'Viva Voce Preparation'],
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: 'How to Choose Your Final Year Project Topic (2026 Guide)',
-  description: 'A practical guide for B.Tech students on picking a final year project topic that scores well, is achievable, and stands out at viva.',
-  datePublished: '2026-09-01T00:00:00+05:30',
-  dateModified: '2026-09-01T00:00:00+05:30',
-  author: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://www.homiesstudio.com/logo.png',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: 'https://www.homiesstudio.com/blog',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'How to Choose Your Final Year Project Topic',
+          item: 'https://www.homiesstudio.com/blog/how-to-choose-your-fyp-topic',
+        },
+      ],
     },
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://www.homiesstudio.com/blog/how-to-choose-your-fyp-topic',
-  },
+    {
+      '@type': 'BlogPosting',
+      '@id': 'https://www.homiesstudio.com/blog/how-to-choose-your-fyp-topic#article',
+      headline: 'How to Choose Your Final Year Project Topic (2026 Guide)',
+      description: 'A practical guide for B.Tech students on picking an achievable final year project topic that scores high marks and stands out in viva voce.',
+      image: 'https://www.homiesstudio.com/og.png',
+      datePublished: '2026-09-01T00:00:00+05:30',
+      dateModified: '2026-09-01T00:00:00+05:30',
+      author: {
+        '@type': 'Organization',
+        name: 'Homies Studio',
+        url: 'https://www.homiesstudio.com/',
+      },
+      publisher: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.homiesstudio.com/blog/how-to-choose-your-fyp-topic',
+      },
+    },
+  ],
 };
 
 export default function ChooseFypTopicPage() {

@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import styles from './website-development.module.scss';
 
 const seo = {
-  title: 'Custom Website Development Services | Homies Studio India',
-  description: 'Homies Studio designs and builds custom-coded websites and web applications tailored around your business, your audience, and your workflow. No generic templates.',
+  title: 'Custom Website Development Services | Homies Studio',
+  description: '100% custom-coded business websites, web applications, and digital platforms built around your workflow and brand. No generic templates.',
   keywords: [
     'Custom Website Development',
     'Custom Coded Websites India',
@@ -30,7 +30,7 @@ const pageSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
@@ -42,11 +42,10 @@ const pageSchema = {
     },
     {
       '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/website-development#service',
       name: 'Custom Website & Web Application Development',
       provider: {
-        '@type': 'Organization',
-        name: 'Homies Studio',
-        url: 'https://www.homiesstudio.com',
+        '@id': 'https://www.homiesstudio.com/#organization',
       },
       serviceType: 'Website Development',
       description: 'Custom-coded business websites, online stores, web applications, and portals built around your brand and workflow.',
@@ -55,37 +54,23 @@ const pageSchema = {
         name: 'India',
       },
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How does Homies Studio approach website development?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We design and build custom-coded websites tailored around your brand, your audience, and your workflow, rather than relying on off-the-shelf templates.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What types of websites do you build?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We build company websites, online stores, custom web applications, customer portals, booking/inquiry workflows, and AI-powered web tools.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How does pricing work for custom website projects?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Every project begins with a conversation to understand your goals, features, and timeline. We then prepare a transparent, custom quote before development starts.',
-          },
-        },
-      ],
-    },
   ],
 };
+
+const faqs = [
+  {
+    q: 'How does Homies Studio approach website development?',
+    a: 'We design and build custom-coded websites tailored around your brand, your audience, and your workflow, rather than relying on off-the-shelf templates.',
+  },
+  {
+    q: 'What types of websites do you build?',
+    a: 'We build company websites, online stores, custom web applications, customer portals, booking/inquiry workflows, and AI-powered web tools.',
+  },
+  {
+    q: 'How does pricing work for custom website projects?',
+    a: 'Every project begins with a conversation to understand your goals, features, and timeline. We then prepare a transparent, custom quote before development starts.',
+  },
+];
 
 const principles = [
   {
@@ -297,10 +282,10 @@ export default function WebsiteDevelopmentPage() {
             <p className={styles.sectionDesc}>Answers to common questions about our custom website design and engineering services.</p>
           </div>
           <div className={styles.faqList}>
-            {pageSchema['@graph'][2].mainEntity.map((faq) => (
-              <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
-                <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
+            {faqs.map((faq) => (
+              <div key={faq.q} className={styles.faqItem}>
+                <h3 className={styles.faqQuestion}>{faq.q}</h3>
+                <p className={styles.faqAnswer}>{faq.a}</p>
               </div>
             ))}
           </div>

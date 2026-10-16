@@ -93,10 +93,76 @@ function Page({ project, nextProject, id }) {
     }
 
     return {
-      title: `${currentProject.title} — Homies Studio Project`,
+      title: `${currentProject.title} — Verified Engineering Project | Homies Studio`,
       description: descText,
       keywords: [`${currentProject.title}`, 'HOMIES STUDIO Project', 'Engineering Deliverable', 'Full Stack Architecture', 'Homies Studio'],
       canonical: `/projects/${id || currentProject.id || currentProject.slug}`,
+    };
+  }, [currentProject, id]);
+
+  const projectSchema = useMemo(() => {
+    if (!currentProject) return null;
+    const projectUrl = `https://www.homiesstudio.com/projects/${id || currentProject.id || currentProject.slug}`;
+    const coverImage = currentProject.img?.startsWith('http')
+      ? currentProject.img
+      : `https://www.homiesstudio.com${currentProject.img?.startsWith('/') ? currentProject.img : `/${currentProject.img}`}`;
+
+    let descText = currentProject.tagline || `Technical engineering details and deliverables for ${currentProject.title}.`;
+    if (Array.isArray(currentProject.desc) && currentProject.desc.length > 0) {
+      [descText] = currentProject.desc;
+    } else if (typeof currentProject.desc === 'string') {
+      descText = currentProject.desc;
+    }
+
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: 'https://www.homiesstudio.com/',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Homies Mart',
+              item: 'https://www.homiesstudio.com/mart',
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: currentProject.title,
+              item: projectUrl,
+            },
+          ],
+        },
+        {
+          '@type': 'Product',
+          '@id': `${projectUrl}#product`,
+          name: currentProject.title,
+          description: descText,
+          image: coverImage,
+          category: currentProject.category || 'Engineering Projects',
+          ...(currentProject.price
+            ? {
+                offers: {
+                  '@type': 'Offer',
+                  price: Number(currentProject.price),
+                  priceCurrency: 'INR',
+                  availability: 'https://schema.org/InStock',
+                  url: projectUrl,
+                  seller: {
+                    '@id': 'https://www.homiesstudio.com/#organization',
+                  },
+                },
+              }
+            : {}),
+        },
+      ],
     };
   }, [currentProject, id]);
 
@@ -104,7 +170,7 @@ function Page({ project, nextProject, id }) {
 
   return (
     <>
-      <CustomHead {...seo} />
+      <CustomHead {...seo} pageSchema={projectSchema} />
       <section className={clsx(styles.root, 'layout-grid-inner')}>
         <div ref={leftContainerRef} className={styles.leftContainer}>
           <ProjectDetails project={currentProject} />

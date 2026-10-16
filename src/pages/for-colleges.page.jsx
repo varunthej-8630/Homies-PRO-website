@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import styles from './for-colleges.module.scss';
 
 const seo = {
-  title: 'Engineering College Partnership — Final Year Project Support Program | Homies Studio',
-  description: 'Homies Studio partners with engineering colleges across India for structured FYP mentorship, domain expertise and student project management. IoT, AI/ML, Robotics and more.',
+  title: 'Engineering College Partnerships & FYP Support | Homies Studio',
+  description: 'Partner with Homies Studio for structured final year project guidance, lab mentorship, and technical bootcamps for engineering institutions.',
   keywords: [
     'College Partnership Program',
     'Engineering College FYP Support',
@@ -30,7 +30,7 @@ const collegeSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
@@ -40,37 +40,23 @@ const collegeSchema = {
         },
       ],
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How does Homies Studio partner with engineering colleges?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We partner with departments (CSE, ECE, EEE, IT) to provide structured project supervision, industry-grade hardware/software blueprints, weekly review milestones, and evaluation support.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can Homies Studio support large student batches?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, our modular ecosystem allows us to support entire department cohorts with domain-specific tech leads, standard code templates, and progress tracking dashboards.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Do you conduct campus workshops and bootcamps?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, we conduct hands-on bootcamps in AI Agent Building, Industrial IoT, Robotics, and Full-Stack Engineering for partnered colleges.',
-          },
-        },
-      ],
-    },
   ],
 };
+
+const faqs = [
+  {
+    q: 'How does Homies Studio partner with engineering colleges?',
+    a: 'We partner with departments (CSE, ECE, EEE, IT) to provide structured project supervision, industry-grade hardware/software blueprints, weekly review milestones, and evaluation support.',
+  },
+  {
+    q: 'Can Homies Studio support large student batches?',
+    a: 'Yes, our modular ecosystem allows us to support entire department cohorts with domain-specific tech leads, standard code templates, and progress tracking dashboards.',
+  },
+  {
+    q: 'Do you conduct campus workshops and bootcamps?',
+    a: 'Yes, we conduct hands-on bootcamps in AI Agent Building, Industrial IoT, Robotics, and Full-Stack Engineering for partnered colleges.',
+  },
+];
 
 const collegeOfferings = [
   {
@@ -169,10 +155,10 @@ export default function ForCollegesPage() {
             <p className={styles.sectionDesc}>Common questions about institutional collaborations and department partnerships.</p>
           </div>
           <div className={styles.faqList}>
-            {collegeSchema['@graph'][1].mainEntity.map((faq) => (
-              <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
-                <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
+            {faqs.map((faq) => (
+              <div key={faq.q} className={styles.faqItem}>
+                <h3 className={styles.faqQuestion}>{faq.q}</h3>
+                <p className={styles.faqAnswer}>{faq.a}</p>
               </div>
             ))}
           </div>

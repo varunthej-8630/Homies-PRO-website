@@ -78,15 +78,24 @@ module.exports = {
     } else if (path === '/become-a-creator') {
       priority = 0.9;
       changefreq = 'monthly';
+    } else if (path === '/get-started') {
+      priority = 0.9;
+      changefreq = 'monthly';
     } else if (path === '/blog') {
       priority = 0.85;
       changefreq = 'weekly';
+    } else if (path.startsWith('/blog/')) {
+      priority = 0.8;
+      changefreq = 'monthly';
     } else if (path === '/contact') {
       priority = 0.85;
       changefreq = 'monthly';
     } else if (path === '/about') {
       priority = 0.75;
       changefreq = 'monthly';
+    } else if (path === '/privacy-policy' || path === '/terms') {
+      priority = 0.5;
+      changefreq = 'yearly';
     }
 
     const loc = path === '/' ? `${config.siteUrl}/` : `${config.siteUrl}${path}`;

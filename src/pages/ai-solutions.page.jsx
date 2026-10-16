@@ -6,8 +6,8 @@ import { useStore } from '@src/store';
 import styles from './ai-solutions.module.scss';
 
 const seo = {
-  title: 'AI Agents, SaaS & Web App Development for Startups | Homies Studio India',
-  description: 'Homies Studio builds custom AI agents, SaaS platforms, web apps and automation tools for startups and EdTech companies across India. End-to-end tech product development.',
+  title: 'Custom AI Solutions & Software Development | Homies Studio',
+  description: 'We design and build custom AI agents, web applications, and automation software for startups and businesses across India.',
   keywords: [
     'AI Solutions India',
     'AI Agent Development',
@@ -32,7 +32,7 @@ const aiSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
@@ -43,36 +43,36 @@ const aiSchema = {
       ],
     },
     {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What types of AI agents does Homies Studio build?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We engineer autonomous workflow agents, customer support LLM bots, document parsing agents, lead generation bots, and multi-agent systems using LangChain, CrewAI, and custom OpenAI/Gemini/Anthropic pipelines.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Do you build full SaaS MVPs for startups?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes! We handle the complete tech lifecycle from UI/UX and frontend (Next.js/React) to scalable backends (Node/Python/Supabase/Postgres), AI model integration, Stripe/Razorpay billing, and cloud deployment.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How fast can an MVP be delivered?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Our agile sprint framework typically delivers functional, production-grade MVPs in 2 to 4 weeks.',
-          },
-        },
-      ],
+      '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/ai-solutions#service',
+      name: 'Custom AI Solutions & Technical Product Engineering',
+      provider: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      serviceType: 'Artificial Intelligence & Software Engineering',
+      description: 'Custom AI agents, intelligent workflow automation, and scalable software product development for startups and modern businesses.',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
     },
   ],
 };
+
+const faqs = [
+  {
+    q: 'What types of AI agents does Homies Studio build?',
+    a: 'We engineer autonomous workflow agents, customer support LLM bots, document parsing agents, lead generation bots, and multi-agent systems using LangChain, CrewAI, and custom OpenAI/Gemini/Anthropic pipelines.',
+  },
+  {
+    q: 'Do you build full SaaS MVPs for startups?',
+    a: 'Yes! We handle the complete tech lifecycle from UI/UX and frontend (Next.js/React) to scalable backends (Node/Python/Supabase/Postgres), AI model integration, Stripe/Razorpay billing, and cloud deployment.',
+  },
+  {
+    q: 'How is project scope and timeline determined?',
+    a: 'Development phases depend on system architecture, data models, and integrations. We define the scope, deliverables, and milestone timeline with you before development starts.',
+  },
+];
 
 const services = [
   {
@@ -182,10 +182,10 @@ export default function AISolutionsPage() {
             <p className={styles.sectionDesc}>Learn more about our product development workflows, pricing models, and tech stack.</p>
           </div>
           <div className={styles.faqList}>
-            {aiSchema['@graph'][1].mainEntity.map((faq) => (
-              <div key={faq.name} className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>{faq.name}</h4>
-                <p className={styles.faqAnswer}>{faq.acceptedAnswer.text}</p>
+            {faqs.map((faq) => (
+              <div key={faq.q} className={styles.faqItem}>
+                <h3 className={styles.faqQuestion}>{faq.q}</h3>
+                <p className={styles.faqAnswer}>{faq.a}</p>
               </div>
             ))}
           </div>

@@ -7,10 +7,40 @@ import CustomHead from '@src/components/dom/CustomHead';
 import styles from './get-started.module.scss';
 
 const seo = {
-  title: 'Start a Conversation | Homies Studio',
-  description: "Tell us what you need. We'll get back to you within 24 hours.",
-  keywords: ['Homies Studio Inquiry', 'Get Started Homies Studio', 'Start Project Homies Studio'],
+  title: 'Start Your Project or FYP Guidance | Homies Studio',
+  description:
+    'Tell us about your project requirements. Connect with Homies Studio for website development, AI software, or final year engineering guidance.',
+  keywords: [
+    'Homies Studio Inquiry',
+    'Get Started Homies Studio',
+    'Start Project Homies Studio',
+    'Website Development Inquiry',
+    'Final Year Project Onboarding',
+  ],
   canonical: '/get-started',
+};
+
+const getStartedSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Get Started',
+          item: 'https://www.homiesstudio.com/get-started',
+        },
+      ],
+    },
+  ],
 };
 
 const SECTORS = [
@@ -292,7 +322,7 @@ export default function GetStartedPage() {
 
   return (
     <>
-      <CustomHead {...seo} />
+      <CustomHead {...seo} pageSchema={getStartedSchema} />
 
       <main className={styles.pageWrapper}>
         {/* Top Header Bar */}

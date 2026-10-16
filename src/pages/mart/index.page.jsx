@@ -20,8 +20,9 @@ import CategoryIcon from '@src/components/ui/CategoryIcon';
 import MartNotifyBanner from '@src/components/ui/MartNotifyBanner';
 
 const seo = {
-  title: 'Homies Mart — Buy & Sell Final Year Engineering Projects India | Homies Studio',
-  description: 'Browse and buy verified final year engineering projects in IoT, Robotics, AI/ML, Web Development and more. Creators can publish and sell their projects on Homies Mart across India.',
+  title: 'Homies Mart — Buy Verified Engineering Projects | Homies Studio',
+  description:
+    'Explore verified final year engineering projects in IoT, Robotics, AI/ML, and Web Development. Complete source code, blueprints, and documentation.',
   keywords: [
     'Homies Mart',
     'HOMIES STUDIO Mart',
@@ -35,6 +36,29 @@ const seo = {
     'B.Tech Final Year Projects',
   ],
   canonical: '/mart',
+};
+
+const martSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Homies Mart',
+          item: 'https://www.homiesstudio.com/mart',
+        },
+      ],
+    },
+  ],
 };
 
 export default function HomiesMartPage({ initialProjects = [] }) {
@@ -168,7 +192,7 @@ export default function HomiesMartPage({ initialProjects = [] }) {
 
   return (
     <>
-      <CustomHead {...seo} />
+      <CustomHead {...seo} pageSchema={martSchema} />
       <section className={clsx(styles.titleContainer, 'layout-block-inner')}>
         <div className={styles.headerTop}>
           <div>

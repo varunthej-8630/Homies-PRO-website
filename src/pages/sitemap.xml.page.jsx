@@ -10,9 +10,15 @@ const STATIC_CANONICAL_PAGES = [
   { path: '/ai-solutions', priority: '0.9', changefreq: 'weekly' },
   { path: '/for-colleges', priority: '0.9', changefreq: 'weekly' },
   { path: '/become-a-creator', priority: '0.9', changefreq: 'monthly' },
+  { path: '/get-started', priority: '0.9', changefreq: 'monthly' },
   { path: '/blog', priority: '0.85', changefreq: 'weekly' },
+  { path: '/blog/how-to-choose-your-fyp-topic', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/iot-vs-robotics-for-final-year', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog/what-is-an-ai-agent', priority: '0.8', changefreq: 'monthly' },
   { path: '/contact', priority: '0.85', changefreq: 'monthly' },
   { path: '/about', priority: '0.75', changefreq: 'monthly' },
+  { path: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
+  { path: '/terms', priority: '0.5', changefreq: 'yearly' },
 ];
 
 function generateSiteMap(projects) {
@@ -29,7 +35,7 @@ function generateSiteMap(projects) {
   }).join('\n');
 
   // Filter strictly for PUBLISHED projects
-  const publishedProjects = (projects || []).filter((p) => p.status === 'PUBLISHED');
+  const publishedProjects = (projects || []).filter((p) => (p.status ? p.status === 'PUBLISHED' : true));
 
   const projectUrls = publishedProjects
     .map((proj) => {

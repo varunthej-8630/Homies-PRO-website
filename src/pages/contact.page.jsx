@@ -6,9 +6,17 @@ import ContactForm from '@src/components/forms/ContactForm';
 import styles from './contact.module.scss';
 
 const seo = {
-  title: 'Contact Homies Studio — Final Year Projects & AI Solutions | India',
-  description: 'Contact Homies Studio for final year project guidance, college partnerships, or AI solution development. Reach us on WhatsApp, email, or through our contact form. Serving pan-India.',
-  keywords: ['Contact Homies Studio', 'Homies Studio WhatsApp', 'Homies Studio Email', 'Final Year Project Support Contact', 'AI Solutions Inquiry', 'Engineering College Partnership Contact'],
+  title: 'Contact Homies Studio — Discuss Your Project or FYP',
+  description: 'Get in touch with Homies Studio to discuss custom website development, startup software, college partnerships, or final year project guidance.',
+  keywords: [
+    'Contact Homies Studio',
+    'Homies Studio WhatsApp',
+    'Homies Studio Email',
+    'Website Development Inquiry',
+    'Final Year Project Support Contact',
+    'AI Solutions Inquiry',
+    'Engineering College Partnership Contact',
+  ],
   canonical: '/contact',
 };
 
@@ -22,7 +30,7 @@ const contactSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
@@ -45,17 +53,17 @@ export default function ContactPage() {
         <div className={styles.heroSection}>
           <div className={styles.taglineBadge}>📍 Pan-India Remote Service · Fast Response</div>
           <h1 className={clsx('h1', styles.heroTitle)}>Get In Touch With Homies Studio</h1>
-          <h2 className={clsx('p-l', styles.heroSubtitle)}>
-            We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need urgent FYP guidance, wish to partner with your institution, or want to build an AI product &mdash;
-            let&apos;s talk.
-          </h2>
+          <p className={clsx('p-l', styles.heroSubtitle)}>
+            We&apos;re Here For Students, Colleges &amp; Startups Across India. Whether you need custom website development, urgent FYP guidance, or want to build an AI product &mdash; let&apos;s
+            talk.
+          </p>
         </div>
 
         {/* Contact Form Component */}
         <div style={{ marginBottom: '2.5rem' }}>
-          <h3 className="h3" style={{ marginBottom: '1rem', fontWeight: 750 }}>
+          <h2 className="h3" style={{ marginBottom: '1rem', fontWeight: 750 }}>
             Send Us a Message
-          </h3>
+          </h2>
           <p className="p-m" style={{ marginBottom: '1.5rem', opacity: 0.85, maxWidth: '650px' }}>
             Fill out the form below with your inquiry details and our technical team will review and respond within 24 hours.
           </p>
@@ -99,6 +107,12 @@ export default function ContactPage() {
             Navigate directly to our dedicated engineering wings for student guidance, product marketplace, startup builds, or college partnerships.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+            <Link
+              href="/website-development"
+              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+            >
+              💻 Website Development &rarr;
+            </Link>
             <Link
               href="/final-year-projects"
               style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}

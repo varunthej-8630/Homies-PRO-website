@@ -20,6 +20,7 @@ const GoTop = dynamic(() => import('@src/components/dom/GoTop'), {
 });
 
 const exploreLinks = [
+  { title: 'Website Development', href: '/website-development' },
   { title: 'Final Year Projects', href: '/final-year-projects' },
   { title: 'Homies Mart', href: '/mart' },
   { title: 'AI Solutions', href: '/ai-solutions' },

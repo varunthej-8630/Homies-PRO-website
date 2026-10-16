@@ -11,8 +11,8 @@ import { useRouter } from 'next/router';
 import styles from './become-a-creator.module.scss';
 
 const seo = {
-  title: 'Apply as a Homies Creator — Publish & Sell Engineering Projects | Homies Studio',
-  description: 'Become a Homies Creator and sell your B.Tech or M.Tech engineering projects on Homies Mart. Publish your IoT, AI/ML, Robotics, or Web projects and earn from students across India.',
+  title: 'Become a Creator — Publish & Sell Projects | Homies Studio',
+  description: 'Join Homies Studio as a creator. Publish, share, and sell your verified engineering builds, source code, and project blueprints across India.',
   keywords: [
     'Apply as a Homies Creator',
     'Become a Creator',
@@ -24,6 +24,29 @@ const seo = {
     'Developer Ecosystem',
   ],
   canonical: '/become-a-creator',
+};
+
+const creatorSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Become a Creator',
+          item: 'https://www.homiesstudio.com/become-a-creator',
+        },
+      ],
+    },
+  ],
 };
 
 function getBottomCtaText(role) {
@@ -186,7 +209,7 @@ function BecomeACreatorPage() {
 
   return (
     <>
-      <CustomHead {...seo} />
+      <CustomHead {...seo} pageSchema={creatorSchema} />
       <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Upgrade / Application Notice */}
         {router.query.status === 'upgrade_required' && !existingApplication && (

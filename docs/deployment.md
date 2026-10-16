@@ -51,7 +51,7 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_live_...
 RAZORPAY_KEY_ID=rzp_live_...
 RAZORPAY_KEY_SECRET=your_live_secret
 RAZORPAY_WEBHOOK_SECRET=your_webhook_secret
-NEXT_PUBLIC_APP_URL=https://homiesstudio.com
+NEXT_PUBLIC_APP_URL=https://www.homiesstudio.com
 ```
 
 ---

@@ -5,8 +5,8 @@ import clsx from 'clsx';
 
 const seo = {
   title: 'Privacy Policy | Homies Studio',
-  description: 'Homies Studio privacy policy — how we collect, use and protect your data.',
-  canonical: 'https://www.homiesstudio.com/privacy-policy',
+  description: 'Learn how Homies Studio collects, uses, and safeguards your personal data when accessing our project mentorship, software, and marketplace services.',
+  canonical: '/privacy-policy',
 };
 
 const privacySchema = {
@@ -19,7 +19,7 @@ const privacySchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',

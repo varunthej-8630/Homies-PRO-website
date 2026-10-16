@@ -310,7 +310,7 @@ export default async function handler(req, res) {
         from: 'Homies Studio <info@homiesstudio.com>',
         to: [cleanedEmail],
         subject: "We've received your inquiry — Homies Studio",
-        text: `Hi ${applicantName},\n\nThanks for reaching out. Our team will contact you within 24 hours on WhatsApp (+91 74166 36417) or at ${cleanedEmail}.\n\n— Homies Studio Team\nhttps://homiesstudio.com`,
+        text: `Hi ${applicantName},\n\nThanks for reaching out. Our team will contact you within 24 hours on WhatsApp (+91 74166 36417) or at ${cleanedEmail}.\n\n— Homies Studio Team\nhttps://www.homiesstudio.com`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #111; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #eaeaea; border-radius: 10px;">
             <h2 style="color: #000; margin-top: 0;">We've received your inquiry.</h2>

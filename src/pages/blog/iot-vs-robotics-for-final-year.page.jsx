@@ -4,35 +4,60 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 const seo = {
-  title: 'IoT vs Robotics for Final Year Projects — Which Should You Pick? | Homies Studio',
-  description: 'Breaking down the key differences between IoT and Robotics FYP paths — cost, hardware complexity, viva performance, and career signal.',
-  canonical: 'https://www.homiesstudio.com/blog/iot-vs-robotics-for-final-year',
+  title: 'IoT vs Robotics for Final Year Projects | Homies Studio',
+  description: 'Compare IoT vs Robotics for engineering final year projects: hardware cost, circuit complexity, viva defense, and career relevance for B.Tech students.',
+  canonical: '/blog/iot-vs-robotics-for-final-year',
   keywords: ['IoT vs Robotics', 'Final Year Project Guidance', 'IoT Project Ideas ECE', 'Robotics Project Ideas B.Tech', 'Hardware Project viva', 'Embedded Systems Career'],
 };
 
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: 'IoT vs Robotics for Final Year Projects — Which Should You Pick?',
-  description: 'Breaking down the key differences between IoT and Robotics FYP paths — cost, hardware complexity, viva performance, and career signal.',
-  datePublished: '2026-09-02T00:00:00+05:30',
-  dateModified: '2026-09-02T00:00:00+05:30',
-  author: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Homies Studio',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://www.homiesstudio.com/logo.png',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.homiesstudio.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: 'https://www.homiesstudio.com/blog',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'IoT vs Robotics for Final Year Projects',
+          item: 'https://www.homiesstudio.com/blog/iot-vs-robotics-for-final-year',
+        },
+      ],
     },
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': 'https://www.homiesstudio.com/blog/iot-vs-robotics-for-final-year',
-  },
+    {
+      '@type': 'BlogPosting',
+      '@id': 'https://www.homiesstudio.com/blog/iot-vs-robotics-for-final-year#article',
+      headline: 'IoT vs Robotics for Final Year Projects — Which Should You Pick?',
+      description: 'Compare IoT vs Robotics for engineering final year projects: hardware cost, circuit complexity, viva defense, and career relevance for B.Tech students.',
+      image: 'https://www.homiesstudio.com/og.png',
+      datePublished: '2026-09-02T00:00:00+05:30',
+      dateModified: '2026-09-02T00:00:00+05:30',
+      author: {
+        '@type': 'Organization',
+        name: 'Homies Studio',
+        url: 'https://www.homiesstudio.com/',
+      },
+      publisher: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.homiesstudio.com/blog/iot-vs-robotics-for-final-year',
+      },
+    },
+  ],
 };
 
 export default function IotVsRoboticsPage() {

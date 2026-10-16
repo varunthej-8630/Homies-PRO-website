@@ -2,38 +2,33 @@ import NextHead from 'next/head';
 import { NextSeo } from 'next-seo';
 import PropTypes from 'prop-types';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://www.homiesstudio.com';
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://www.homiesstudio.com').replace(/\/+$/, '');
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og.png`;
 export const SITE_NAME = 'Homies Studio';
 export const DEFAULT_TITLE = 'HOMIES STUDIO | Final Year Projects & AI Solutions';
 export const DEFAULT_DESCRIPTION =
-  'Homies Studio transforms engineering concepts into real-world solutions, combining IoT, Robotics, AI/ML, and Embedded Systems with practical, end-to-end project development.';
+  'Homies Studio builds custom websites, applications, and AI solutions for businesses and startups, and guides engineering students with final year projects across India.';
 
 export const DEFAULT_KEYWORDS = [
-  'HOMIES STUDIO',
   'Homies Studio',
-  'Final Year Projects',
+  'HOMIES STUDIO',
+  'Custom Website Development India',
+  'Custom Web Applications',
+  'Final Year Projects India',
   'FYP Guidance India',
-  'IoT Projects India',
-  'Robotics Projects India',
-  'AI ML Projects',
-  'Embedded Systems',
-  'Computer Vision Projects',
-  'Deep Learning FYP',
-  'Engineering Projects Bangalore',
-  'Engineering Projects Hyderabad',
-  'Engineering Projects Andhra Pradesh',
-  'B.Tech Projects India',
-  'M.Tech Projects India',
-  'Final Year Project Help',
+  'AI Solutions India',
   'AI Agent Development',
   'SaaS Development India',
-  'Startup Solutions',
-  'Digital Product Studio India',
+  'IoT Projects India',
+  'Robotics Projects India',
+  'Embedded Systems FYP',
+  'Engineering Projects Bangalore',
+  'Engineering Projects Hyderabad',
+  'B.Tech Projects India',
+  'M.Tech Projects India',
+  'College Partnership Program',
   'Homies Mart',
   'Homies Creator',
-  'College Partnership Program',
-  'Pan India Engineering Projects',
 ];
 
 const getGlobalSchema = () => ({
@@ -44,7 +39,7 @@ const getGlobalSchema = () => ({
       '@id': 'https://www.homiesstudio.com/#organization',
       name: 'Homies Studio',
       alternateName: ['Homies Studio India', 'HOMIES STUDIO', 'Homies'],
-      url: 'https://www.homiesstudio.com',
+      url: 'https://www.homiesstudio.com/',
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.homiesstudio.com/logo.png',
@@ -53,7 +48,8 @@ const getGlobalSchema = () => ({
         caption: 'Homies Studio Logo',
       },
       image: 'https://www.homiesstudio.com/og.png',
-      description: 'Homies Studio transforms engineering concepts into real-world solutions, combining IoT, Robotics, AI/ML, and Embedded Systems with practical, end-to-end project development.',
+      description:
+        'Homies Studio is a technology studio that helps students bring engineering projects to life and helps businesses build custom websites, applications, AI solutions, and custom technology.',
       email: 'info@homiesstudio.com',
       telephone: '+917416636417',
       address: {
@@ -70,7 +66,6 @@ const getGlobalSchema = () => ({
           telephone: '+91-74166-36417',
           contactType: 'customer service',
           areaServed: 'IN',
-          availableLanguage: ['English', 'Telugu', 'Hindi'],
         },
         {
           '@type': 'ContactPoint',
@@ -80,15 +75,25 @@ const getGlobalSchema = () => ({
         },
       ],
       sameAs: ['https://www.linkedin.com/company/homies-studio/', 'https://github.com/Homies-Studio', 'https://wa.me/917416636417'],
-      foundingDate: '2024',
-      knowsAbout: ['Final Year Projects', 'IoT Projects', 'AI/ML Projects', 'Robotics', 'Embedded Systems', 'Engineering Education', 'AI Agent Development', 'SaaS Development'],
+      knowsAbout: [
+        'Custom Website Development',
+        'Web Applications',
+        'AI Solutions',
+        'AI Agent Development',
+        'Final Year Projects',
+        'IoT Projects',
+        'Robotics & Automation',
+        'Embedded Systems',
+        'SaaS Product Engineering',
+        'Engineering Education',
+      ],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://www.homiesstudio.com/#website',
       name: 'Homies Studio',
       url: 'https://www.homiesstudio.com/',
-      description: 'Homies Studio transforms engineering concepts into real-world solutions, combining IoT, Robotics, AI/ML, and Embedded Systems with practical, end-to-end project development.',
+      description: 'Homies Studio builds custom websites, web applications, AI solutions, and guides engineering students with final year projects across India.',
       publisher: {
         '@id': 'https://www.homiesstudio.com/#organization',
       },
@@ -103,6 +108,34 @@ const getGlobalSchema = () => ({
       },
       serviceType: 'Engineering Project Mentorship and Development',
       description: 'End-to-end engineering project guidance and development in IoT, Robotics, AI/ML, and Embedded Systems for students and institutions across India.',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/#service-web',
+      name: 'Custom Website & Web Application Development',
+      provider: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      serviceType: 'Website Development & Web Application Engineering',
+      description: '100% custom-coded business websites, web applications, customer portals, and ecommerce systems built around your workflow and brand identity.',
+      areaServed: {
+        '@type': 'Country',
+        name: 'India',
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://www.homiesstudio.com/#service-ai',
+      name: 'Custom AI Solutions & Technical Product Engineering',
+      provider: {
+        '@id': 'https://www.homiesstudio.com/#organization',
+      },
+      serviceType: 'Artificial Intelligence & Software Engineering',
+      description: 'Custom AI agents, intelligent workflow automation, and scalable software product development for startups and modern businesses.',
       areaServed: {
         '@type': 'Country',
         name: 'India',
@@ -130,17 +163,25 @@ function getRobotsDirective(noindex) {
   return 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 }
 
-function CustomHead({ title, description, keywords, canonical, ogImage, noindex, pageSchema }) {
-  let metaTitle = title ? title.trim() : DEFAULT_TITLE;
-  if (!metaTitle.toUpperCase().startsWith('HOMIES STUDIO')) {
-    metaTitle = String('HOMIES STUDIO | ').concat(metaTitle);
+export function formatMetaTitle(rawTitle) {
+  if (!rawTitle) return DEFAULT_TITLE;
+  const trimmed = rawTitle.trim();
+  if (/homies\s*studio/i.test(trimmed)) {
+    return trimmed;
   }
+  return `${trimmed} | Homies Studio`;
+}
 
+function CustomHead({ title, description, keywords, canonical, ogImage, noindex, pageSchema }) {
+  const metaTitle = formatMetaTitle(title);
   const metaDesc = description || DEFAULT_DESCRIPTION;
   const canonicalUrl = getCanonicalUrl(canonical);
   const metaOgImage = getOgImage(ogImage);
   const robotsDirective = getRobotsDirective(noindex);
   const keywordString = keywords && keywords.length ? keywords.join(', ') : DEFAULT_KEYWORDS.join(', ');
+
+  const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
   return (
     <>
@@ -190,6 +231,10 @@ function CustomHead({ title, description, keywords, canonical, ogImage, noindex,
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
+
+        {/* Search Engine Verification Tags */}
+        {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+        {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
 
         {/* Global Structured Data JSON-LD */}
         {/* eslint-disable-next-line react/no-danger */}

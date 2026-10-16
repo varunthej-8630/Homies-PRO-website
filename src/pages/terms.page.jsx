@@ -5,8 +5,8 @@ import clsx from 'clsx';
 
 const seo = {
   title: 'Terms of Use | Homies Studio',
-  description: 'Terms and conditions governing the use of Homies Studio services, final year project guidance, and Homies Mart marketplace.',
-  canonical: 'https://www.homiesstudio.com/terms',
+  description: 'Terms and conditions governing the use of Homies Studio services, final year project guidance, website development, and Homies Mart marketplace.',
+  canonical: '/terms',
 };
 
 const termsSchema = {
@@ -19,7 +19,7 @@ const termsSchema = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://www.homiesstudio.com',
+          item: 'https://www.homiesstudio.com/',
         },
         {
           '@type': 'ListItem',
