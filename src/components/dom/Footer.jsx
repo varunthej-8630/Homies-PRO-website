@@ -46,39 +46,42 @@ function Footer() {
   const windowSize = useWindowSize();
 
   useIsomorphicLayoutEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && footerRef.current) {
       const setupFooterAnimation = () => {
-        gsap.set(footerRef.current, { height: 'auto' });
+        if (!footerRef.current) return;
+        gsap.set(footerRef.current, { clearProps: 'height,minHeight,transform,yPercent' });
+
+        const isMobileOrTablet = windowSize.width < 1024;
+        const fitsInViewport = footerRef.current.scrollHeight <= windowSize.height;
+
         const allSections = document.querySelectorAll('#mainContainer section');
-        if (allSections.length > 1) {
+        if (allSections.length > 1 && !isMobileOrTablet && fitsInViewport) {
           const lastSection = allSections[allSections.length - 2];
-          if (footerRef.current.offsetHeight <= windowSize.height) {
-            gsap.set(footerRef.current, { yPercent: -50 });
-            const uncover = gsap.timeline({ paused: true });
-            gsap.set(footerRef.current, { height: '100.5svh' });
-            uncover.to(footerRef.current, {
-              yPercent: 0,
-              ease: 'none',
-            });
-            ScrollTrigger.create({
-              id: 'footerTrigger',
-              trigger: lastSection,
-              start: 'bottom bottom',
-              end: '+=100%',
-              animation: uncover,
-              scrub: true,
-              scroller: document?.querySelector('main'),
-            });
-          } else {
-            gsap.set(footerRef.current, {
-              transform: 'translate(0%, 0%)',
-              height: 'auto',
-            });
-          }
+          gsap.set(footerRef.current, { yPercent: -50, minHeight: '100svh', height: 'auto' });
+          const uncover = gsap.timeline({ paused: true });
+          uncover.to(footerRef.current, {
+            yPercent: 0,
+            ease: 'none',
+          });
+          ScrollTrigger.create({
+            id: 'footerTrigger',
+            trigger: lastSection,
+            start: 'bottom bottom',
+            end: '+=100%',
+            animation: uncover,
+            scrub: true,
+            scroller: document?.querySelector('main'),
+          });
+        } else {
+          gsap.set(footerRef.current, {
+            clearProps: 'transform,yPercent',
+            height: 'auto',
+            minHeight: 'auto',
+          });
         }
       };
 
-      setupFooterAnimation(footerRef, windowSize);
+      setupFooterAnimation();
     }
 
     return () => {
@@ -87,7 +90,7 @@ function Footer() {
         footerTrigger.kill();
       }
     };
-  }, [isLoading, windowSize.height]);
+  }, [isLoading, windowSize.height, windowSize.width]);
 
   return (
     <section ref={footerRef} className={clsx(styles.root, 'layout-grid-inner')} role="contentinfo">
@@ -143,7 +146,7 @@ function Footer() {
               <Link aria-label="Send email" scroll={false} href="mailto:info@homiesstudio.com">
                 <h4 className={clsx(styles.email, 'h4')}>info@homiesstudio.com</h4>
               </Link>
-              <svg className={clsx(styles.linkGraphic)} width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+              <svg className={clsx(styles.linkGraphic)} width="100%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
                 <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0" />
               </svg>
             </div>
@@ -153,8 +156,8 @@ function Footer() {
 
       <div className={styles.middleContainer} style={{ gridColumn: isMobile ? '1 / 7' : '1 / 9' }}>
         <AppearTitle isFooter>
-          <div className="p-x">Based in India</div>
-          <div className={clsx('p-x', styles.middleText)}>
+          <div className={styles.metaLabel}>Based in India</div>
+          <div className={styles.metaValue}>
             Current Time: <Time />
           </div>
         </AppearTitle>
@@ -162,8 +165,8 @@ function Footer() {
 
       <div className={styles.middleContainer} style={{ gridColumn: isMobile ? '1 / 7' : '9 / 13' }}>
         <AppearTitle isFooter>
-          <div className="p-x">Availability</div>
-          <div className={clsx('p-x', styles.middleText)}>Open for Projects</div>
+          <div className={styles.metaLabel}>Availability</div>
+          <div className={styles.metaValue}>Open for Projects</div>
         </AppearTitle>
       </div>
       <div
@@ -174,10 +177,10 @@ function Footer() {
         }}
       >
         <AppearTitle isFooter>
-          <div className="p-x">
+          <div className={styles.metaLabel}>
             © 2026 · H<span className={styles.goldText}>OM</span>IES STUDIO
           </div>
-          <div className={clsx('p-x', styles.middleText)}>All Rights Reserved</div>
+          <div className={styles.metaValue}>All Rights Reserved</div>
         </AppearTitle>
       </div>
 

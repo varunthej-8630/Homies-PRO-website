@@ -1,0 +1,109 @@
+/* Homies Studio — Glassmorphism & Liquid Flow Design System Tokens */
+@use 'sass:color';
+
+:root {
+  /* Translucent Obsidian Glass Surfaces */
+  --glass-bg-subtle: rgba(255, 255, 255, 0.03);
+  --glass-bg-base: rgba(18, 18, 22, 0.65);
+  --glass-bg-card: rgba(20, 20, 25, 0.58);
+  --glass-bg-card-hover: rgba(28, 28, 35, 0.78);
+  --glass-bg-pill: rgba(22, 22, 28, 0.72);
+  --glass-bg-panel: rgba(13, 13, 17, 0.86);
+  --glass-bg-light: rgba(240, 244, 241, 0.65);
+
+  /* Subtle Glass Borders */
+  --glass-border-subtle: rgba(255, 255, 255, 0.08);
+  --glass-border-base: rgba(255, 255, 255, 0.12);
+  --glass-border-highlight: rgba(255, 255, 255, 0.22);
+  --glass-border-gold: rgba(197, 163, 89, 0.35);
+  --glass-border-gold-hover: rgba(197, 163, 89, 0.6);
+
+  /* Controlled Backdrop Blur */
+  --glass-blur-sm: 8px;
+  --glass-blur-base: 16px;
+  --glass-blur-lg: 24px;
+
+  /* Specular Highlights & Liquid Shadows */
+  --glass-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glass-specular-gold: inset 0 1px 0 0 rgba(197, 163, 89, 0.25);
+  --glass-shadow-sm: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  --glass-shadow-base: 0 20px 45px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-glow: 0 25px 50px -12px rgba(197, 163, 89, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+
+  /* Signature Liquid Gold Ambient Gradients */
+  --liquid-gold-glow: radial-gradient(ellipse at 50% 0%, rgba(197, 163, 89, 0.15) 0%, transparent 70%);
+  --liquid-ambient-drift: radial-gradient(circle at 50% 50%, rgba(197, 163, 89, 0.06) 0%, rgba(240, 244, 241, 0.02) 40%, transparent 70%);
+}
+
+/* Glass Mixins for Scoped SCSS Modules */
+@mixin glass-surface($blur: 16px, $bg: var(--glass-bg-base), $border: var(--glass-border-base)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+
+  @supports not (backdrop-filter: blur(10px)) {
+    background: #121216;
+  }
+}
+
+@mixin glass-card($blur: 16px) {
+  background: linear-gradient(135deg, rgba(24, 24, 30, 0.62) 0%, rgba(14, 14, 18, 0.72) 100%);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid var(--glass-border-base);
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @supports not (backdrop-filter: blur(10px)) {
+    background: #141418;
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 25px 50px -12px rgba(197, 163, 89, 0.14), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@mixin glass-pill($blur: 14px) {
+  background: var(--glass-bg-pill);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid var(--glass-border-base);
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @supports not (backdrop-filter: blur(10px)) {
+    background: #16161c;
+  }
+}
+
+@mixin liquid-ambient-glow {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197, 163, 89, 0.55), rgba(255, 255, 255, 0.75), rgba(197, 163, 89, 0.55), transparent);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 1;
+  }
+}

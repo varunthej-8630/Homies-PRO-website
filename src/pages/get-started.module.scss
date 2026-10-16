@@ -193,35 +193,40 @@
 }
 
 .sectorCard {
-  background: #111111;
-  border: 1px solid #242424;
-  border-radius: 0.85rem;
+  background: rgba(22, 22, 28, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 1rem;
   padding: 1.35rem 1.25rem;
   cursor: pointer;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   color: inherit;
   font-family: inherit;
   box-sizing: border-box;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: #161616;
+    border-color: rgba(197, 163, 89, 0.45);
+    background: rgba(30, 30, 38, 0.78);
+    box-shadow: 0 12px 30px -8px rgba(197, 163, 89, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
   }
 
   &:focus-visible {
     outline: none;
-    border-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    border-color: #c5a359;
+    box-shadow: 0 0 0 2px rgba(197, 163, 89, 0.35);
   }
 
   &.activeSectorCard {
-    border-color: #ffffff;
-    background: #181818;
-    box-shadow: 0 0 0 1px #ffffff;
+    border-color: #c5a359;
+    background: rgba(36, 36, 46, 0.9);
+    box-shadow: 0 0 0 1px #c5a359, 0 12px 30px -8px rgba(197, 163, 89, 0.25);
 
     .cardTitle {
       color: #ffffff;
@@ -300,16 +305,18 @@
 .textInput,
 .selectInput,
 .textareaInput {
-  background: #111111;
-  border: 1px solid #282828;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  border-radius: 0.65rem;
+  border-radius: 0.75rem;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   font-family: inherit;
   box-sizing: border-box;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.32);
@@ -317,13 +324,15 @@
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   &:focus,
   &:focus-visible {
     outline: none;
-    border-color: #ffffff;
-    background: #161616;
+    border-color: #c5a359;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(197, 163, 89, 0.25);
   }
 
   &.hasError {

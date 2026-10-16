@@ -17,6 +17,7 @@ import { EffectComposer } from '@react-three/postprocessing';
 import Fluid from '@src/components/canvas/fluid/Fluid';
 import Layout from '@src/components/dom/Layout';
 import Lenis from 'lenis';
+import LiquidFlow from '@src/components/dom/liquidFlow/LiquidFlow';
 import Loader from '@src/components/dom/Loader';
 import Navbar from '@src/components/dom/navbar/Index';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -67,6 +68,9 @@ function MyApp({ Component, pageProps, router }) {
     });
 
     setLenis(lenisInstance);
+    if (typeof window !== 'undefined') {
+      window.lenis = lenisInstance;
+    }
 
     const onScroll = () => {
       ScrollTrigger.update();
@@ -101,6 +105,7 @@ function MyApp({ Component, pageProps, router }) {
         <Scrollbar />
         <Navbar />
         <ConversationModal />
+        <LiquidFlow />
         <GoldSparkles />
         <Analytics />
       </>

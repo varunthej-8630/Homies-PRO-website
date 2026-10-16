@@ -3,67 +3,101 @@
 .root {
   height: auto;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   translate: inherit !important;
   box-shadow: none;
+  background: radial-gradient(ellipse at 50% 100%, rgba(197, 163, 89, 0.06) 0%, rgba(14, 14, 18, 0.2) 50%, transparent 80%);
+  color: #f0f4f1;
+
+  padding-top: calc(var(--layout-columns-gap) * 2.5);
+  padding-bottom: calc(var(--layout-columns-gap) * 2 + 2rem);
 
   @include mobile {
     padding-top: var(--layout-columns-gap);
-    padding-bottom: var(--layout-columns-gap);
+    padding-bottom: calc(var(--layout-columns-gap) * 1.5 + 3.5rem);
   }
+
   .linksContainer {
-    padding-top: calc(var(--layout-columns-gap) * 4);
+    padding-top: calc(var(--layout-columns-gap) * 1.5);
     @include mobile {
-      padding-top: calc(var(--layout-columns-gap) * 1.5);
+      padding-top: calc(var(--layout-columns-gap) * 0.5);
     }
 
     width: 100%;
     > div {
       width: 100%;
     }
+
     .title {
-      color: var(--white);
-      padding-bottom: var(--layout-columns-gap);
+      color: #f0f4f1;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 1.1vw, 1.15rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-bottom: calc(var(--layout-columns-gap) * 0.75);
     }
 
     .linkTextContainer {
-      padding-top: calc(var(--layout-columns-gap) * 0.5);
+      padding-top: calc(var(--layout-columns-gap) * 0.45);
       @include mobile {
         padding-top: calc(var(--layout-columns-gap) * 0.25);
       }
-      .linkText {
+
+      .linkText,
+      .linkText:link,
+      .linkText:visited {
         cursor: pointer;
         overflow: unset;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         position: relative;
-        > svg {
-          height: 0.75vw;
-          width: 0.75vw;
-          top: auto;
-          overflow: unset;
-          fill: var(--white);
-          stroke: var(--white);
-          @include mobile {
-            height: 2vw;
-            width: 2vw;
-            left: -2vw;
+        color: #e4e4e7;
+        text-decoration: none;
+        transition: color 0.25s ease;
+
+        span {
+          color: #e4e4e7;
+          transition: color 0.25s ease, transform 0.4s cubic-bezier(0.4, 0, 0.1, 1) !important;
+          div {
+            color: inherit;
           }
         }
 
-        &:hover {
-          svg {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.1, 1) !important;
-            transform: translate3d(1vw, 0, 0) rotate(-150deg) !important;
+        > svg {
+          height: clamp(9px, 0.75vw, 13px);
+          width: clamp(9px, 0.75vw, 13px);
+          top: auto;
+          overflow: unset;
+          fill: #a1a1aa;
+          stroke: #a1a1aa;
+          transition: fill 0.25s ease, stroke 0.25s ease, transform 0.4s cubic-bezier(0.4, 0, 0.1, 1) !important;
+          @include mobile {
+            height: clamp(9px, 2.2vw, 12px);
+            width: clamp(9px, 2.2vw, 12px);
+            left: -1rem;
+          }
+        }
+
+        &:hover,
+        &:focus-visible {
+          color: #c5a359;
+
+          span {
+            color: #c5a359;
+            transform: translate3d(0.6vw, 0, 0);
             @include mobile {
-              transform: translate3d(2vw, 0, 0) rotate(-150deg) !important;
+              transform: translate3d(1.2rem, 0, 0);
             }
           }
 
-          span {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.1, 1) !important;
-            transform: translate3d(0.6vw, 0, 0);
+          > svg {
+            fill: #c5a359;
+            stroke: #c5a359;
+            transform: translate3d(1vw, 0, 0) rotate(-150deg) !important;
             @include mobile {
-              transform: translate3d(1.8vw, 0, 0);
+              transform: translate3d(1.4rem, 0, 0) rotate(-150deg) !important;
             }
           }
         }
@@ -72,29 +106,64 @@
   }
 
   .emailContaineer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    grid-column: 9 / 17;
+    padding-top: calc(var(--layout-columns-gap) * 1.5);
+
     @include mobile {
       grid-column: 1 / 7;
-      padding-top: var(--layout-columns-gap);
+      padding-top: calc(var(--layout-columns-gap) * 1);
     }
 
-    padding-top: calc(var(--layout-columns-gap) * 4);
-    width: min-content;
-    grid-column: 9 / 17;
     .workWithMe {
-      color: var(--white);
-    }
-    .link {
-      color: var(--white);
-      font-size: 2.5vw;
-      line-height: 4.1vw;
-      position: relative;
-      white-space: nowrap;
+      color: #f0f4f1;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      font-size: clamp(1.2rem, 2.1vw, 2.2rem);
+      margin-bottom: calc(var(--layout-columns-gap) * 0.4);
 
-      cursor: pointer;
-      .email {
-        color: var(--white);
+      @include mobile {
+        font-size: clamp(1.1rem, 5.2vw, 1.55rem);
       }
     }
+
+    .link {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      max-width: 100%;
+
+      .email {
+        color: #f0f4f1;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        font-size: clamp(1.15rem, 2.3vw, 2.4rem);
+        transition: color 0.25s ease;
+        word-break: break-word;
+
+        @include mobile {
+          font-size: clamp(1.02rem, 5vw, 1.45rem);
+        }
+      }
+
+      &:hover,
+      &:focus-visible {
+        .email {
+          color: #c5a359;
+        }
+
+        .linkGraphic {
+          transform: translate3d(-65.5%, 0, 0);
+          stroke: #c5a359;
+        }
+      }
+    }
+
     .link::before,
     .link::after {
       position: absolute !important;
@@ -104,113 +173,153 @@
       left: 0;
       pointer-events: none;
     }
-    .link::before {
-      content: '';
-      /* show by default */
-    }
-    .link:hover path {
-      // stroke-dashoffset: 0;
-      // transition-timing-function: cubic-bezier(0.8, 1, 0.7, 1);
-      // transition-duration: 0.3s;
-    }
-    .link:hover .linkGraphic {
-      transform: translate3d(-65.5%, 0, 0);
-    }
+
     .linkGraphic {
       position: absolute !important;
       left: 0;
       pointer-events: none;
       fill: none;
-      stroke: var(--white);
-      bottom: 0;
-      stroke-width: 0.03em;
-      transition: transform 0.7s;
-      transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+      stroke: #c5a359;
+      bottom: -3px;
+      stroke-width: 0.04em;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      transition: transform 0.7s cubic-bezier(0, 0.25, 0.5, 1), stroke 0.25s ease;
     }
   }
 
-  .middleText {
-    padding-top: calc(var(--layout-columns-gap) * 0.5);
-  }
   .middleContainer {
+    padding-top: calc(var(--layout-columns-gap) * 2);
+    box-sizing: border-box;
+
     @include mobile {
       grid-column: 1 / 7 !important;
-      padding-top: var(--layout-columns-gap);
+      padding-top: calc(var(--layout-columns-gap) * 0.6);
+      text-align: left !important;
     }
 
-    > span > span > span {
-      display: flex;
-      flex-direction: column;
+    .metaLabel {
+      color: #e4e4e7;
+      font-size: clamp(0.78rem, 0.88vw, 0.95rem);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+
+      .goldText {
+        color: #c5a359 !important;
+        font-weight: inherit;
+      }
     }
-  }
-  div {
-    color: var(--white);
+
+    .metaValue {
+      color: #a1a1aa;
+      font-size: clamp(0.74rem, 0.82vw, 0.88rem);
+      font-weight: 500;
+      line-height: 1.4;
+      padding-top: calc(var(--layout-columns-gap) * 0.2);
+
+      span {
+        color: inherit;
+      }
+    }
   }
 
   .brandTitle {
+    grid-column: 1 / 14;
+    align-self: flex-end;
+    font-size: clamp(3rem, 11.5vw, 10.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    color: #f0f4f1;
+    font-weight: 800;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    margin: 0;
+    padding-top: calc(var(--layout-columns-gap) * 1.5);
+    box-sizing: border-box;
+
     @include mobile {
       grid-column: 1 / 6;
-      font-size: 22.2vw;
-      line-height: 17.428vw;
+      font-size: clamp(2rem, 14.5vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      padding-top: calc(var(--layout-columns-gap) * 0.9);
     }
-    align-self: flex-end;
-    grid-column: 1 / 13;
 
-    font-size: 15.2vw;
-    line-height: 12.628vw;
-    transform: translate(-0.3vw, 2.1vw);
-    color: var(--white);
     > span {
-      display: inherit;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: clip;
     }
 
     .goldText {
       color: #c5a359 !important;
     }
   }
+
   .goToTop {
     position: relative;
+    align-self: flex-end;
+    justify-self: flex-end;
+    grid-column: 14 / 17;
+    margin-bottom: 0.25rem;
 
     @include mobile {
       grid-column: 6 / 7;
+      margin-bottom: 0.25rem;
     }
-    align-self: flex-end;
-    justify-self: flex-end;
-    grid-column: 13 / 17;
   }
 }
 .circleButton {
   z-index: 2;
   box-shadow:
-    0 0.32vw 0.52vw #0000000a,
-    0 0.12vw 0.22vw #0000000a;
-  @include mobile {
-    width: 10vw;
-    height: 10vw;
-  }
-  width: 4vw;
-  height: 4vw;
-  background-color: var(--white);
+    0 8px 24px -4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(240, 244, 241, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 50%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(44px, 3.8vw, 56px);
+  height: clamp(44px, 3.8vw, 56px);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include mobile {
+    width: clamp(42px, 11vw, 48px);
+    height: clamp(42px, 11vw, 48px);
+  }
+
+  &:hover {
+    border-color: #c5a359;
+    box-shadow:
+      0 12px 30px -4px rgba(197, 163, 89, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
 
   .arrowClassic {
     z-index: 2;
-    @include mobile {
-      width: 4vw;
-      height: 4vw;
-      top: 3.05vw;
-      left: 3.05vw;
-    }
     position: absolute;
-    top: 1.25vw;
-    left: 1.25vw;
-    height: 1.5vw;
-    width: 1.5vw;
+    top: 50%;
+    left: 50%;
+    height: clamp(14px, 1.3vw, 18px);
+    width: clamp(14px, 1.3vw, 18px);
+    margin-top: calc(clamp(14px, 1.3vw, 18px) * -0.5);
+    margin-left: calc(clamp(14px, 1.3vw, 18px) * -0.5);
     fill: var(--black);
     stroke: var(--black);
-    transform: translateY(0vw) rotate(180deg);
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
   }
 
   .ball {

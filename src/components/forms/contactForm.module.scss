@@ -1,14 +1,23 @@
 @import '@src/styles/functions';
 
 .formContainer {
-  background: #0e0e10;
+  background: linear-gradient(135deg, rgba(20, 20, 26, 0.72) 0%, rgba(12, 12, 16, 0.84) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   padding: 2.5rem;
   margin-bottom: calc(var(--layout-columns-gap) * 3);
   box-sizing: border-box;
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
   color: #fff;
   width: 100%;
+
+  @supports not (backdrop-filter: blur(10px)) {
+    background: #111115;
+  }
 
   @include mobile {
     border-radius: 1rem;
@@ -81,39 +90,42 @@
 .fieldInput,
 .fieldSelect,
 .fieldTextarea {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border-radius: 0.65rem;
-  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f0f4f1;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1.1rem;
   font-size: 0.95rem;
   font-family: inherit;
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
   box-sizing: border-box;
   width: 100%;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.38);
   }
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.05);
   }
 
   &:focus,
   &:focus-visible {
     outline: none;
-    border-color: rgba(255, 255, 255, 0.85);
+    border-color: #c5a359;
     background: rgba(255, 255, 255, 0.07);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(197, 163, 89, 0.22);
   }
 
   &.inputError {
     border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.05);
+    background: rgba(239, 68, 68, 0.06);
 
     &:focus {
       box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);

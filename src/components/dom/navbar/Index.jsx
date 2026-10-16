@@ -32,29 +32,60 @@ function Navbar() {
   const router = useRouter();
   const [lenis] = useStore(useShallow((state) => [state.lenis]));
   const { user, role } = useAuth();
+  const headerRef = useRef();
   const logoTextRef = useRef();
 
   const isDarkHero = router.pathname === '/about';
 
   useIsomorphicLayoutEffect(() => {
-    if (!isDarkHero) {
-      if (logoTextRef.current) {
-        gsap.set(logoTextRef.current, { color: '#28282b' });
-      }
-      return undefined;
-    }
-
+    const scroller = document?.querySelector('main') || window;
     const ctx = gsap.context(() => {
-      gsap.set(logoTextRef.current, { color: '#f0f4f1' });
+      if (!isDarkHero) {
+        if (logoTextRef.current) {
+          gsap.set(logoTextRef.current, { color: '#28282b' });
+        }
+      } else {
+        gsap.set(logoTextRef.current, { color: '#f0f4f1' });
 
-      ScrollTrigger.create({
-        trigger: 'main section:nth-of-type(1)',
-        start: 'bottom 15%',
-        scroller: document?.querySelector('main'),
-        onEnter: () => gsap.to(logoTextRef.current, { color: '#28282b', duration: 0.35 }),
-        onLeaveBack: () => gsap.to(logoTextRef.current, { color: '#f0f4f1', duration: 0.35 }),
-        invalidateOnRefresh: true,
-      });
+        ScrollTrigger.create({
+          trigger: 'main section:nth-of-type(1)',
+          start: 'bottom 15%',
+          scroller,
+          onEnter: () => gsap.to(logoTextRef.current, { color: '#28282b', duration: 0.35 }),
+          onLeaveBack: () => gsap.to(logoTextRef.current, { color: '#f0f4f1', duration: 0.35 }),
+          invalidateOnRefresh: true,
+        });
+      }
+
+      // Smoothly hide header when reaching the footer to prevent overlapping content or duplicate logo
+      const footerEl = document.querySelector('footer');
+      if (footerEl && headerRef.current) {
+        ScrollTrigger.create({
+          id: 'navbarFooterHide',
+          trigger: footerEl,
+          start: 'top 85%',
+          scroller,
+          onEnter: () => {
+            gsap.to(headerRef.current, {
+              yPercent: -120,
+              opacity: 0,
+              duration: 0.35,
+              ease: 'power2.inOut',
+              pointerEvents: 'none',
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(headerRef.current, {
+              yPercent: 0,
+              opacity: 1,
+              duration: 0.35,
+              ease: 'power2.inOut',
+              clearProps: 'pointerEvents',
+            });
+          },
+          invalidateOnRefresh: true,
+        });
+      }
     });
 
     return () => ctx.kill();
@@ -86,7 +117,7 @@ function Navbar() {
     <>
       <MenuLinks />
 
-      <header className={styles.root} role="banner">
+      <header ref={headerRef} className={styles.root} role="banner">
         <div className={styles.innerHeader}>
           <Link onClick={goToTop} aria-label="Go home" scroll={false} href="/" className={styles.logoLink}>
             <h4 ref={logoTextRef} className={clsx('bold', 'h4', styles.logoText)}>
