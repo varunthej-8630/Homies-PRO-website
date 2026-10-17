@@ -6,6 +6,8 @@ import { useMemo, useRef } from 'react';
 import fragmentShader from '@src/components/canvas/background/shaders/fragmentShader';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 import vertexShader from '@src/components/canvas/background/shaders/vertexShader';
+import { useShallow } from 'zustand/react/shallow';
+import { useStore } from '@src/store';
 
 const OFFSET_STEP = 0.00005;
 const OFFSET_MAX = 5.0;
@@ -22,6 +24,7 @@ function updateOffset(uniform, isIncreasing, step, min, max) {
 }
 
 function Background() {
+  const [isMenuOpen] = useStore(useShallow((state) => [state.isMenuOpen]));
   const ref = useRef();
   const windowSize = useWindowSize();
   const { viewport } = useThree();
@@ -52,6 +55,7 @@ function Background() {
   );
 
   useFrame((state, delta) => {
+    if (isMenuOpen) return;
     if (ref.current && ref.current.material && ref.current.material.uniforms) {
       const materialUniforms = ref.current.material.uniforms;
       materialUniforms.uTime.value += delta * 0.001;

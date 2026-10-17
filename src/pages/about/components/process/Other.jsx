@@ -16,7 +16,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 import { useWindowSize } from '@darkroom.engineering/hamo';
 
-const colors = ['#444444', '#f2ffbd'];
+const colors = ['#444444', '#c5a359'];
 
 const areEqual = () => true;
 

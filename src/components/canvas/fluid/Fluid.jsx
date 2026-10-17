@@ -8,8 +8,11 @@ import useFBOs from '@src/components/canvas/fluid/hooks/useFBOs';
 import useMaterials from '@src/components/canvas/fluid/hooks/useMaterials';
 import useOpts from '@src/components/canvas/fluid/hooks/useOpts';
 import usePointerEvents from '@src/components/canvas/fluid/hooks/usePointerEvents';
+import { useShallow } from 'zustand/react/shallow';
+import { useStore } from '@src/store';
 
 function Fluid({ mainRef, fluidColor }) {
+  const [isMenuOpen] = useStore(useShallow((state) => [state.isMenuOpen]));
   const OPTS = useOpts();
   const { force, radius, curl, swirl, intensity, backgroundColor, showBackground, pressure, densityDissipation, velocityDissipation } = OPTS;
   const size = useThree((three) => three.size);
@@ -79,7 +82,7 @@ function Fluid({ mainRef, fluidColor }) {
   );
 
   useFrame(() => {
-    if (!meshRef.current || !postRef.current) return;
+    if (!meshRef.current || !postRef.current || isMenuOpen) return;
 
     while (splatStack.current.length > 0) {
       const { mouseX, mouseY, velocityX, velocityY } = splatStack.current.pop();

@@ -17,6 +17,7 @@ function MenuLinks() {
   const [isMenuOpen, setIsMenuOpen, lenis, isLoading, setIsConversationOpen] = useStore((state) => [state.isMenuOpen, state.setIsMenuOpen, state.lenis, state.isLoading, state.setIsConversationOpen]);
   const { user, profile, role, signOut } = useAuth();
   const menuRef = useRef();
+  const closeButtonRef = useRef();
   const menuLinksItemsRef = useRef([]);
   const router = useRouter();
 
@@ -41,14 +42,16 @@ function MenuLinks() {
       paused: true,
       defaults: { duration: 0.8, ease: 'power3.inOut' },
       onReverseComplete: () => {
+        document.body.style.overflow = '';
         if (lenis) lenis.start();
-        gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,left,pointerEvents' });
-        if (header) gsap.set(header, { clearProps: 'left,top,scale,autoAlpha' });
-        if (layout) gsap.set(layout, { clearProps: 'opacity,height' });
+        gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,pointerEvents' });
+        if (header) gsap.set(header, { clearProps: 'transform,scale,autoAlpha' });
+        if (layout) gsap.set(layout, { clearProps: 'opacity' });
+        if (menuRef.current) gsap.set(menuRef.current, { autoAlpha: 0, pointerEvents: 'none' });
       },
     });
 
-    tl.to(menuRef.current, { autoAlpha: 1, stagger: 0.01, pointerEvents: 'auto' }, 0)
+    tl.to(menuRef.current, { autoAlpha: 1, pointerEvents: 'auto', duration: 0.4 }, 0)
       .to(fluidCanvas, { duration: 0, opacity: 0 }, 0)
       .to(menuLinksItemsRef.current, { x: 0, stagger: 0.016, pointerEvents: 'auto' }, 0)
       .to(
@@ -58,18 +61,17 @@ function MenuLinks() {
           border: '2px solid #f0f4f1',
           scale: 0.9,
           pointerEvents: 'none',
-          left: '-40vw',
+          x: '-40vw',
         },
         0,
       )
-      .to(layout, { opacity: isMobile ? 0.05 : 0.3, height: '90svh' }, 0)
-      .to(scrollbar, { opacity: 0, right: '46vw', scale: 0.9 }, 0)
+      .to(layout, { opacity: isMobile ? 0.05 : 0.3 }, 0)
+      .to(scrollbar, { opacity: 0, x: '-46vw', scale: 0.9 }, 0)
       .to(
         header,
         {
           autoAlpha: 0,
-          left: '-40vw',
-          top: isMobile ? '6vw' : '3vw',
+          x: '-40vw',
           scale: 0.9,
           overwrite: true,
         },
@@ -94,26 +96,45 @@ function MenuLinks() {
     const tl = timelineRef.current;
     if (!tl) return;
     if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      if (lenis) lenis.stop();
       tl.play();
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 50);
     } else {
+      document.body.style.overflow = '';
       tl.reverse();
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, lenis]);
+
+  // Accessibility: close on Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        e.preventDefault();
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen, setIsMenuOpen]);
 
   // Ensure menu is fully closed and layout restored on route change
   useEffect(() => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
+    document.body.style.overflow = '';
     const tl = timelineRef.current;
     if (tl) {
       tl.progress(0).pause();
     }
     const header = document?.querySelector('header');
     const layout = document?.getElementById('layout');
-    gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,left,pointerEvents' });
-    if (header) gsap.set(header, { clearProps: 'left,top,scale,autoAlpha' });
-    if (layout) gsap.set(layout, { clearProps: 'opacity,height' });
+    gsap.set('main', { clearProps: 'transform,border,borderRadius,scale,pointerEvents' });
+    if (header) gsap.set(header, { clearProps: 'transform,scale,autoAlpha' });
+    if (layout) gsap.set(layout, { clearProps: 'opacity' });
     if (menuRef.current) {
       gsap.set(menuRef.current, { autoAlpha: 0, pointerEvents: 'none' });
     }
@@ -199,11 +220,18 @@ function MenuLinks() {
     ));
 
   return (
-    <nav id="menu" ref={menuRef} className={styles.menu}>
+    <nav id="menu" ref={menuRef} className={styles.menu} aria-label="Sitemap navigation">
+      <button
+        ref={closeButtonRef}
+        type="button"
+        className={styles.menuClose}
+        onClick={() => setIsMenuOpen(false)}
+        aria-label="Close menu"
+      >
+        <p aria-hidden="true">✕</p>
+      </button>
+
       <div className={clsx(styles.menuWrapper, 'layout-block-inner')}>
-        <button type="button" className={styles.menuClose} onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-          <p>✕</p>
-        </button>
         <div
           ref={(el) => {
             menuLinksItemsRef.current[0] = el;

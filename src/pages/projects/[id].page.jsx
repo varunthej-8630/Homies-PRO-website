@@ -31,7 +31,7 @@ function Page({ project, nextProject, id }) {
       '--black': proj.primary || '#28282b',
       '--white': proj.secondary || '#f0f4f1',
       '--accentColor': proj.accentColor || '#f9f9f9',
-      '--fillColor': proj.fillColor || '#f2ffbd',
+      '--fillColor': proj.fillColor || '#c5a359',
       '--menuColor': proj.menuColor || '#28282b',
       '--menuFontColor': proj.menuFontColor || '#f0f4f1',
     });
@@ -75,7 +75,7 @@ function Page({ project, nextProject, id }) {
         primary: '#28282b',
         secondary: '#f0f4f1',
         accentColor: '#f9f9f9',
-        fillColor: '#f2ffbd',
+        fillColor: '#c5a359',
         menuColor: '#28282b',
         menuFontColor: '#f0f4f1',
       });

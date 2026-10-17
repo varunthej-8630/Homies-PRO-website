@@ -1,27 +1,35 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useShallow } from 'zustand/react/shallow';
+import { useStore } from '@src/store';
 
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isMenuOpen] = useStore(useShallow((state) => [state.isMenuOpen]));
 
   useEffect(() => {
+    let handleMotionChange;
+    let motionQuery;
     try {
       const consent = localStorage.getItem('hs_cookie_consent');
       if (consent !== 'accepted') {
         setShowBanner(true);
       }
 
-      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       setReducedMotion(motionQuery.matches);
 
-      const handleMotionChange = (e) => setReducedMotion(e.matches);
+      handleMotionChange = (e) => setReducedMotion(e.matches);
       motionQuery.addEventListener?.('change', handleMotionChange);
-      return () => motionQuery.removeEventListener?.('change', handleMotionChange);
     } catch (e) {
       // If localStorage is unavailable, do not block UI
     }
+    return () => {
+      if (motionQuery && handleMotionChange) {
+        motionQuery.removeEventListener?.('change', handleMotionChange);
+      }
+    };
   }, []);
 
   const handleAccept = () => {
@@ -42,17 +50,17 @@ export default function CookieConsent() {
       style={{
         position: 'fixed',
         bottom: '1.25rem',
-        left: '50%',
+        left: isMenuOpen ? 'calc(28vw)' : '50%',
         transform: 'translateX(-50%)',
         width: 'calc(100% - 2.5rem)',
-        maxWidth: '840px',
-        backgroundColor: 'rgba(16, 16, 22, 0.84)',
+        maxWidth: isMenuOpen ? 'min(50vw, 680px)' : '840px',
+        backgroundColor: 'rgba(16, 16, 22, 0.88)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.14)',
         borderRadius: '1.25rem',
         padding: '1.2rem 1.6rem',
-        zIndex: 99999,
+        zIndex: isMenuOpen ? 900 : 99999,
         boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 0 35px -5px rgba(197, 163, 89, 0.12)',
         display: 'flex',
         alignItems: 'center',
@@ -60,7 +68,7 @@ export default function CookieConsent() {
         flexWrap: 'wrap',
         gap: '1rem',
         color: '#fff',
-        transition: reducedMotion ? 'none' : 'opacity 0.3s ease, transform 0.3s ease',
+        transition: reducedMotion ? 'none' : 'opacity 0.3s ease, transform 0.35s ease, left 0.35s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.35s ease',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: '1 1 320px' }}>
@@ -86,6 +94,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={handleAccept}
+          className="cookieAcceptBtn"
           style={{
             background: '#fff',
             color: '#000',
@@ -95,7 +104,7 @@ export default function CookieConsent() {
             fontSize: '0.9rem',
             fontWeight: 700,
             cursor: 'pointer',
-            transition: 'all 0.2s ease',
+            transition: 'transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease',
           }}
         >
           Accept

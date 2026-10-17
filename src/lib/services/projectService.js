@@ -167,7 +167,7 @@ export function formatDbProject(raw) {
     primary: raw.primary || '#28282b',
     secondary: raw.secondary || '#f0f4f1',
     accentColor: raw.accentColor || '#f9f9f9',
-    fillColor: raw.fillColor || '#f2ffbd',
+    fillColor: raw.fillColor || '#c5a359',
     menuColor: raw.menuColor || '#28282b',
     menuFontColor: raw.menuFontColor || '#f0f4f1',
     fluidColor: raw.fluidColor || '#d7d7d4',

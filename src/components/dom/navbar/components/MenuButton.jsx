@@ -5,18 +5,22 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 
 function MenuButton() {
-  const [setIsMenuOpen, lenis, isLoading] = useStore(useShallow((state) => [state.setIsMenuOpen, state.lenis, state.isLoading]));
+  const [isMenuOpen, setIsMenuOpen, lenis, isLoading] = useStore(useShallow((state) => [state.isMenuOpen, state.setIsMenuOpen, state.lenis, state.isLoading]));
 
   const handleClick = useCallback(() => {
     if (!isLoading) {
-      setIsMenuOpen(true);
-      lenis.stop();
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      } else {
+        setIsMenuOpen(true);
+        lenis?.stop();
+      }
     }
-  }, [isLoading, setIsMenuOpen, lenis]);
+  }, [isLoading, isMenuOpen, setIsMenuOpen, lenis]);
 
   return (
-    <button type="button" onClick={handleClick} aria-label="Open Menu" aria-expanded={false} aria-controls="menu" className={styles.button}>
-      <PerspectiveText label="Menu" className={styles.label} />
+    <button type="button" onClick={handleClick} aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'} aria-expanded={isMenuOpen} aria-controls="menu" className={styles.button}>
+      <PerspectiveText label={isMenuOpen ? 'Close' : 'Menu'} className={styles.label} />
     </button>
   );
 }

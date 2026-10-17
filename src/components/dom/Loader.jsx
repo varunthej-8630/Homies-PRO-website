@@ -126,6 +126,10 @@ function Loader() {
     };
   }, [introOut, router.asPath, setIsAbout, setIsLoading, setIntroOut]);
 
+  if (introOut) {
+    return null;
+  }
+
   return (
     <div id="loader" ref={root} className={styles.root}>
       <div ref={logoContainerRef} className={styles.innerContainer}>

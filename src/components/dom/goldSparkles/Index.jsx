@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { useShallow } from 'zustand/react/shallow';
+import { useStore } from '@src/store';
 import styles from './styles/goldSparkles.module.scss';
 
 const GOLD_PALETTE = [
@@ -36,6 +38,12 @@ function drawStar(ctx, x, y, size, opacity, colorPrefix) {
 
 export default function GoldSparkles() {
   const canvasRef = useRef(null);
+  const [isMenuOpen] = useStore(useShallow((state) => [state.isMenuOpen]));
+  const isMenuOpenRef = useRef(isMenuOpen);
+
+  useEffect(() => {
+    isMenuOpenRef.current = isMenuOpen;
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -130,7 +138,7 @@ export default function GoldSparkles() {
     let lastTime = performance.now();
 
     const render = (time) => {
-      if (!isTabVisible) return;
+      if (!isTabVisible || isMenuOpenRef.current) return;
 
       const delta = time - lastTime;
       lastTime = time;
@@ -186,7 +194,7 @@ export default function GoldSparkles() {
 
     const handleVisibilityChange = () => {
       isTabVisible = !document.hidden;
-      if (isTabVisible && !prefersReducedMotion) {
+      if (isTabVisible && !prefersReducedMotion && !isMenuOpenRef.current) {
         lastTime = performance.now();
         animationFrameId = requestAnimationFrame(render);
       }
@@ -196,7 +204,7 @@ export default function GoldSparkles() {
 
     if (prefersReducedMotion) {
       render(performance.now());
-    } else {
+    } else if (!isMenuOpenRef.current) {
       animationFrameId = requestAnimationFrame(render);
     }
 
@@ -208,7 +216,7 @@ export default function GoldSparkles() {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
+  }, [isMenuOpen]);
 
   return (
     <div className={styles.canvasWrapper} aria-hidden="true">

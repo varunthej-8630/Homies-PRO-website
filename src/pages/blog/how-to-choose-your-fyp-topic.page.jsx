@@ -89,8 +89,9 @@ export default function ChooseFypTopicPage() {
                   fontWeight: 700,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
-                  background: 'rgba(242, 255, 189, 0.12)',
-                  color: '#f2ffbd',
+                  background: 'rgba(197, 163, 89, 0.15)',
+                  color: '#c5a359',
+                  border: '1px solid rgba(197, 163, 89, 0.3)',
                   padding: '0.3rem 0.8rem',
                   borderRadius: '9999px',
                 }}

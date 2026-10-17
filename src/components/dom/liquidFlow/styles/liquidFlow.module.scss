@@ -11,6 +11,12 @@
   opacity: 0.85;
 }
 
+.rootPaused {
+  .orb {
+    animation-play-state: paused !important;
+  }
+}
+
 .orb {
   position: absolute;
   border-radius: 50%;

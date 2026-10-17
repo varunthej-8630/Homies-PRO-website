@@ -43,10 +43,12 @@
 }
 
 :root {
-  --font-primary: 'Neue Haas Grotesk Display Pro';
+  --font-primary: 'Neue Haas Grotesk Display Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
   --font-handwriting: 'Caveat', 'Nanum Pen Script', cursive;
 }
 
 body {
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

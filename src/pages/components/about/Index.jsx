@@ -1,4 +1,4 @@
-﻿import AppearTitle from '@src/components/animationComponents/appearTitle/Index';
+import AppearTitle from '@src/components/animationComponents/appearTitle/Index';
 import ButtonLink from '@src/components/animationComponents/buttonLink/Index';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -15,10 +15,10 @@ function About() {
 
   const setupScrollAnimation = () => {
     const ctx = gsap.context(() => {
-      gsap.set(animatedImageRef.current, { top: !isMobile ? '-20vw' : '0' });
+      gsap.set(animatedImageRef.current, { y: !isMobile ? '-6vw' : '0' });
       if (!isMobile) {
         gsap.to(animatedImageRef.current, {
-          top: '20vw',
+          y: '6vw',
           ease: 'none',
           scrollTrigger: {
             trigger: rootRef.current,

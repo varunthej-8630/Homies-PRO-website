@@ -59,7 +59,8 @@ export default function MartNotifyBanner() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.4rem',
-            background: 'rgba(255,255,255,0.08)',
+            background: 'rgba(197, 163, 89, 0.12)',
+            border: '1px solid rgba(197, 163, 89, 0.25)',
             padding: '0.25rem 0.75rem',
             borderRadius: '9999px',
             fontSize: '0.78rem',
@@ -67,7 +68,7 @@ export default function MartNotifyBanner() {
             textTransform: 'uppercase',
             letterSpacing: '0.08em',
             marginBottom: '0.8rem',
-            color: '#f2ffbd',
+            color: '#c5a359',
           }}
         >
           🚀 Launching Soon
