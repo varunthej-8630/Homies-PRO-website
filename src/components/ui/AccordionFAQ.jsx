@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './accordionFaq.module.scss';
 
-export default function AccordionFAQ({ items = [] }) {
+export default function AccordionFAQ({ items = [], theme = 'light' }) {
   const [openIndexes, setOpenIndexes] = useState(new Set([0])); // First item open by default
 
   const toggleIndex = (index) => {
@@ -19,7 +19,7 @@ export default function AccordionFAQ({ items = [] }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={styles.faqAccordion} role="region" aria-label="Frequently Asked Questions">
+    <div className={`${styles.faqAccordion} ${theme === 'dark' ? styles.themeDark : ''}`} role="region" aria-label="Frequently Asked Questions">
       {items.map((item, index) => {
         const isOpen = openIndexes.has(index);
         const headingId = `faq-head-${index}`;
@@ -27,7 +27,7 @@ export default function AccordionFAQ({ items = [] }) {
 
         return (
           <div key={item.q} className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ''}`}>
-            <h3 style={{ margin: 0, padding: 0 }}>
+            <h3 className={styles.faqHeading}>
               <button type="button" id={headingId} aria-expanded={isOpen} aria-controls={panelId} onClick={() => toggleIndex(index)} className={styles.faqQuestionBtn}>
                 <span className={styles.questionText}>{item.q}</span>
                 <span className={styles.chevron} aria-hidden="true">
@@ -39,6 +39,7 @@ export default function AccordionFAQ({ items = [] }) {
             </h3>
             <div id={panelId} role="region" aria-labelledby={headingId} hidden={!isOpen} className={styles.faqAnswerWrapper}>
               <div className={styles.faqAnswerContent}>
+                <div className={styles.faqAnswerDivider} aria-hidden="true" />
                 <p className={styles.faqAnswerText}>{item.a}</p>
               </div>
             </div>

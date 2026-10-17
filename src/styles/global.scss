@@ -154,6 +154,17 @@ main > div > section:nth-last-child(1) {
   width: 100%;
 }
 
+@media (max-width: 640px) {
+  .floatingContactBtn {
+    bottom: 1.25rem !important;
+    left: 1rem !important;
+  }
+  .backToTopBtn {
+    bottom: 1.25rem !important;
+    right: 1rem !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

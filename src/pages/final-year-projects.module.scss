@@ -407,37 +407,11 @@
 }
 
 .faqSection {
-  margin-bottom: calc(var(--layout-columns-gap) * 3);
+  margin-bottom: calc(var(--layout-columns-gap) * 3.5);
+  padding-bottom: 2.5rem;
 
-  .faqList {
-    display: flex;
-    flex-direction: column;
-    gap: 1vw;
-
-    @include mobile {
-      gap: 3vw;
-    }
-
-    .faqItem {
-      background: rgba(240, 244, 241, 0.6);
-      border: 1px solid rgba(40, 40, 43, 0.1);
-      border-radius: 0.8vw;
-      padding: 1.5vw 2vw;
-
-      @include mobile {
-        border-radius: 2vw;
-        padding: 4vw;
-      }
-
-      .faqQuestion {
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .faqAnswer {
-        color: rgba(40, 40, 43, 0.8);
-        line-height: 145%;
-      }
-    }
+  @include mobile {
+    margin-bottom: calc(var(--layout-columns-gap) * 4);
+    padding-bottom: 5.5rem; // Reserve clearance so floating buttons never cover FAQ cards
   }
 }
