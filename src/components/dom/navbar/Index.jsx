@@ -9,6 +9,7 @@ import styles from '@src/components/dom/navbar/styles/index.module.scss';
 import { useAuth } from '@src/context/AuthContext';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import useIsMobile from '@src/hooks/useIsMobile';
+import useScroll from '@src/hooks/useScroll';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import { useRouter } from 'next/router';
 import { useShallow } from 'zustand/react/shallow';
@@ -29,9 +30,10 @@ function getDashboardLabel(role) {
 function Navbar() {
   const isMobile = useIsMobile();
   const router = useRouter();
-  const [lenis] = useStore(useShallow((state) => [state.lenis]));
+  const [lenis, isMenuOpen] = useStore(useShallow((state) => [state.lenis, state.isMenuOpen]));
   const { user, role } = useAuth();
   const headerRef = useRef();
+  const isHiddenRef = useRef(false);
 
   const isInitialDark = router.pathname === '/about' || router.pathname === '/get-started';
   const [logoVariant, setLogoVariant] = useState(isInitialDark ? 'dark' : 'light');
@@ -39,7 +41,59 @@ function Navbar() {
   useEffect(() => {
     const isDark = router.pathname === '/about' || router.pathname === '/get-started';
     setLogoVariant(isDark ? 'dark' : 'light');
+    if (headerRef.current) {
+      gsap.to(headerRef.current, {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.2,
+        ease: 'power2.out',
+        overwrite: 'auto',
+      });
+      isHiddenRef.current = false;
+    }
   }, [router.pathname]);
+
+  // Mobile scroll behavior: hide header on scroll down so it never covers section headings/subtitles
+  useScroll(
+    ({ scroll, direction, velocity }) => {
+      if (!isMobile || isMenuOpen || !headerRef.current) return;
+
+      if (scroll < 80) {
+        if (isHiddenRef.current) {
+          gsap.to(headerRef.current, {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.28,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+          isHiddenRef.current = false;
+        }
+        return;
+      }
+
+      if (direction === 1 && Math.abs(velocity) > 0.15 && !isHiddenRef.current) {
+        gsap.to(headerRef.current, {
+          yPercent: -120,
+          opacity: 0,
+          duration: 0.28,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+        isHiddenRef.current = true;
+      } else if (direction === -1 && isHiddenRef.current) {
+        gsap.to(headerRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.28,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+        isHiddenRef.current = false;
+      }
+    },
+    [isMobile, isMenuOpen],
+  );
 
   useIsomorphicLayoutEffect(() => {
     const scroller = document?.querySelector('main') || window;

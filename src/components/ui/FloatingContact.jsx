@@ -8,11 +8,13 @@ export default function FloatingContact() {
   const [visible, setVisible] = useState(false);
   const [isMenuOpen, isConversationOpen, setIsConversationOpen] = useStore(useShallow((state) => [state.isMenuOpen, state.isConversationOpen, state.setIsConversationOpen]));
 
-  useScroll(({ scroll }) => {
+  useScroll(({ scroll, limit }) => {
     // Only show after user has engaged with the page (scrolled > 400px)
-    if (scroll > 400 && !visible) {
+    // and hide when approaching the bottom so it never covers content or footer
+    const nearBottom = limit && scroll > limit - 220;
+    if (scroll > 400 && !nearBottom && !visible) {
       setVisible(true);
-    } else if (scroll <= 400 && visible) {
+    } else if ((scroll <= 400 || nearBottom) && visible) {
       setVisible(false);
     }
   });

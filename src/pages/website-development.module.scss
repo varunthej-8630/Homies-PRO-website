@@ -679,11 +679,13 @@
 }
 
 .faqSection {
+  scroll-margin-top: clamp(80px, 12vh, 120px);
   margin-bottom: calc(var(--layout-columns-gap) * 3.5);
   padding-bottom: 2.5rem;
 
   @include mobile {
+    scroll-margin-top: 85px;
     margin-bottom: calc(var(--layout-columns-gap) * 4);
-    padding-bottom: 5.5rem; // Reserve clearance so floating buttons never cover FAQ cards
+    padding-bottom: 6rem; // Reserve clearance so floating buttons never cover FAQ cards
   }
 }

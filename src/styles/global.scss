@@ -156,12 +156,17 @@ main > div > section:nth-last-child(1) {
 
 @media (max-width: 640px) {
   .floatingContactBtn {
-    bottom: 1.25rem !important;
-    left: 1rem !important;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    left: calc(1rem + env(safe-area-inset-left, 0px)) !important;
+    padding: 0 0.95rem !important;
+    height: 40px !important;
+    font-size: 0.82rem !important;
   }
   .backToTopBtn {
-    bottom: 1.25rem !important;
-    right: 1rem !important;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(1rem + env(safe-area-inset-right, 0px)) !important;
+    width: 42px !important;
+    height: 42px !important;
   }
 }
 

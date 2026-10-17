@@ -29,11 +29,15 @@ export default function AccordionFAQ({ items = [], theme = 'light' }) {
           <div key={item.q} className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ''}`}>
             <h3 className={styles.faqHeading}>
               <button type="button" id={headingId} aria-expanded={isOpen} aria-controls={panelId} onClick={() => toggleIndex(index)} className={styles.faqQuestionBtn}>
-                <span className={styles.questionText}>{item.q}</span>
-                <span className={styles.chevron} aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+                <span className={styles.questionCol}>
+                  <span className={styles.questionText}>{item.q}</span>
+                </span>
+                <span className={styles.chevronCol}>
+                  <span className={styles.chevronBadge} aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </span>
                 </span>
               </button>
             </h3>
