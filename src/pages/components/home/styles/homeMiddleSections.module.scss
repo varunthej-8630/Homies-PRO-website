@@ -1,4 +1,5 @@
 @import '@src/styles/functions';
+@import '@src/styles/buttons';
 
 .root {
   position: relative;
@@ -73,6 +74,12 @@
     background: #121216;
   }
 
+  @media (prefers-reduced-transparency: reduce) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #141418 !important;
+  }
+
   @include mobile {
     border-radius: 1rem;
     padding: 1.75rem 1.5rem;
@@ -102,9 +109,11 @@
   }
 
   .pillarIcon {
-    font-size: 2.25rem;
-    line-height: 1;
-    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    color: #c5a359;
   }
 
   .pillarLabel {
@@ -226,6 +235,12 @@
     background: #111115;
   }
 
+  @media (prefers-reduced-transparency: reduce) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #121216 !important;
+  }
+
   @include mobile {
     border-radius: 1rem;
     padding: 2rem 1.5rem;
@@ -277,19 +292,11 @@
 }
 
 .whatsappButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: #25d366;
-  color: #000000;
-  font-weight: 700;
-  font-size: 0.92rem;
-  padding: 0.85rem 1.8rem;
-  border-radius: 9999px;
-  text-decoration: none;
+  @include btn-whatsapp;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.12);
+  border-color: rgba(37, 211, 102, 0.35);
   align-self: flex-start;
-  transition: all 0.25s ease;
 
   @include mobile {
     width: 100%;
@@ -297,56 +304,18 @@
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-  }
-
-  &:active {
-    transform: scale(0.97);
-    transition: transform 90ms cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  &:focus-visible {
-    outline: 2px solid #25d366;
-    outline-offset: 3px;
+    background: rgba(37, 211, 102, 0.22);
+    border-color: rgba(37, 211, 102, 0.6);
+    color: #4ade80;
   }
 }
 
 .emailButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  font-weight: 700;
-  font-size: 0.92rem;
-  padding: 0.85rem 1.8rem;
-  border-radius: 9999px;
-  text-decoration: none;
+  @include btn-secondary(true);
   align-self: flex-start;
-  transition: all 0.25s ease;
 
   @include mobile {
     width: 100%;
     align-self: stretch;
-  }
-
-  &:hover {
-    background: #ffffff;
-    color: #000000;
-    transform: translateY(-2px);
-    border-color: #ffffff;
-  }
-
-  &:active {
-    transform: scale(0.97);
-    transition: transform 90ms cubic-bezier(0.16, 1, 0.3, 1) !important;
-  }
-
-  &:focus-visible {
-    outline: 2px solid #c5a359;
-    outline-offset: 3px;
   }
 }

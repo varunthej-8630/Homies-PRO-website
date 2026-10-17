@@ -290,6 +290,12 @@
     font-size: 0.8vw;
     color: rgba(40, 40, 43, 0.65);
 
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
     @include mobile {
       flex-direction: column;
       gap: 1vw;

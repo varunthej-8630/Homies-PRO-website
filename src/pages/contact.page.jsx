@@ -3,6 +3,7 @@ import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
 import ContactForm from '@src/components/forms/ContactForm';
+import { WhatsAppIcon, MailIcon, GlobeIcon, CodeIcon, GraduationCapIcon, ShoppingBagIcon, ZapIcon, BuildingIcon } from '@src/components/ui/Icons';
 import styles from './contact.module.scss';
 
 const seo = {
@@ -73,7 +74,9 @@ export default function ContactPage() {
         {/* Contact Channels Grid */}
         <div className={styles.contactGrid}>
           <div className={styles.contactCard}>
-            <span className={styles.cardIcon}>💬</span>
+            <span className={styles.cardIcon}>
+              <WhatsAppIcon size={28} color="#128c44" />
+            </span>
             <h3 className={clsx('h4', styles.cardTitle)}>WhatsApp (Fastest)</h3>
             <a href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20I%20would%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer" className={styles.cardValue}>
               +91 74166 36417
@@ -82,7 +85,9 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.contactCard}>
-            <span className={styles.cardIcon}>✉️</span>
+            <span className={styles.cardIcon}>
+              <MailIcon size={28} color="#c5a359" />
+            </span>
             <h3 className={clsx('h4', styles.cardTitle)}>Official Email</h3>
             <a href="mailto:info@homiesstudio.com" className={styles.cardValue}>
               info@homiesstudio.com
@@ -91,7 +96,9 @@ export default function ContactPage() {
           </div>
 
           <div className={styles.contactCard}>
-            <span className={styles.cardIcon}>🇮🇳</span>
+            <span className={styles.cardIcon}>
+              <GlobeIcon size={28} color="#c5a359" />
+            </span>
             <h3 className={clsx('h4', styles.cardTitle)}>Service Area</h3>
             <span className={styles.cardValue}>Pan-India (100% Remote)</span>
             <span className={styles.cardNote}>Serving Bangalore, Hyderabad, AP &amp; all states</span>
@@ -99,70 +106,108 @@ export default function ContactPage() {
         </div>
 
         {/* Quick Direct Routing Hub */}
-        <div style={{ margin: '2.5rem 0', padding: '2rem 1.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)' }}>
+        <div style={{ margin: '2.5rem 0', padding: '2.25rem 1.75rem', background: 'rgba(0,0,0,0.03)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)' }}>
           <h3 className="h4" style={{ marginBottom: '0.6rem', fontWeight: 700 }}>
             Looking for a Specific Service Hub?
           </h3>
           <p className="p-m" style={{ maxWidth: '600px', margin: '0 auto 1.5rem', opacity: 0.8 }}>
             Navigate directly to our dedicated engineering wings for student guidance, product marketplace, startup builds, or college partnerships.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
             <Link
               href="/website-development"
-              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
+                borderRadius: '9999px',
+                background: '#111115',
+                color: '#f0f4f1',
+                border: '1px solid rgba(255,255,255,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
             >
-              💻 Website Development &rarr;
+              <CodeIcon size={16} color="#c5a359" /> Website Development →
             </Link>
             <Link
               href="/final-year-projects"
-              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
+                borderRadius: '9999px',
+                background: '#111115',
+                color: '#f0f4f1',
+                border: '1px solid rgba(255,255,255,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
             >
-              🎓 Final Year Project Guidance &rarr;
+              <GraduationCapIcon size={16} color="#c5a359" /> Final Year Project Guidance →
             </Link>
             <Link
               href="/mart"
               style={{
-                padding: '0.65rem 1.3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
-                background: 'rgba(0,0,0,0.06)',
+                background: 'rgba(0,0,0,0.05)',
                 color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.15)',
+                border: '1px solid rgba(0,0,0,0.14)',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: '0.9rem',
               }}
             >
-              🛒 Homies Mart Marketplace &rarr;
+              <ShoppingBagIcon size={16} color="currentColor" /> Homies Mart Marketplace →
             </Link>
             <Link
               href="/ai-solutions"
               style={{
-                padding: '0.65rem 1.3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
-                background: 'rgba(0,0,0,0.06)',
+                background: 'rgba(0,0,0,0.05)',
                 color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.15)',
+                border: '1px solid rgba(0,0,0,0.14)',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: '0.9rem',
               }}
             >
-              ⚡ AI &amp; SaaS Solutions &rarr;
+              <ZapIcon size={16} color="currentColor" /> AI &amp; SaaS Solutions →
             </Link>
             <Link
               href="/for-colleges"
               style={{
-                padding: '0.65rem 1.3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
-                background: 'rgba(0,0,0,0.06)',
+                background: 'rgba(0,0,0,0.05)',
                 color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.15)',
+                border: '1px solid rgba(0,0,0,0.14)',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: '0.9rem',
               }}
             >
-              🏛️ College Partnerships &rarr;
+              <BuildingIcon size={16} color="currentColor" /> College Partnerships →
             </Link>
           </div>
         </div>
@@ -173,10 +218,10 @@ export default function ContactPage() {
           <p className={clsx('p-m', styles.formSubtitle)}>Tell us about your requirements on WhatsApp or send us an email. Our technical team is ready to assist you right away.</p>
           <div className={styles.directCtaRow}>
             <a href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className={styles.whatsappCta}>
-              💬 Message on WhatsApp Now
+              <WhatsAppIcon size={18} /> Message on WhatsApp Now
             </a>
             <a href="mailto:info@homiesstudio.com" className={styles.emailCta}>
-              ✉️ Send Email Inquiry
+              <MailIcon size={18} /> Send Email Inquiry
             </a>
           </div>
         </div>

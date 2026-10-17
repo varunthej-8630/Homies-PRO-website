@@ -7,6 +7,7 @@ import RouteGuard from '@src/components/auth/RouteGuard';
 import clsx from 'clsx';
 import { supabase } from '@src/lib/supabase/client';
 import { useAuth } from '@src/context/AuthContext';
+import { PackageIcon, WhatsAppIcon } from '@src/components/ui/Icons';
 import styles from './dashboard.module.scss';
 
 function getProjectStatusClass(status, stylesObj) {
@@ -272,7 +273,7 @@ function CreatorDashboardPage() {
 
               {!loading && projects.length === 0 && (
                 <div style={{ padding: '4rem 2rem', textAlign: 'center', color: '#666', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
-                  <div style={{ fontSize: '2.5rem' }}>📦</div>
+                  <PackageIcon size={40} color="#c5a359" />
                   <h4 className="h4">No projects yet</h4>
                   <p className="p-xs" style={{ color: '#888', maxWidth: '400px' }}>
                     Start by submitting your first project. Upload source code, architecture documentation, and live preview to monetize on the marketplace.
@@ -303,7 +304,9 @@ function CreatorDashboardPage() {
                         {p.cover_image_url && (p.cover_image_url.startsWith('http') || p.cover_image_url.startsWith('/')) ? (
                           <Image src={p.cover_image_url} fill sizes="80px" style={{ objectFit: 'cover' }} alt={p.title} />
                         ) : (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>📦</div>
+                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6' }}>
+                            <PackageIcon size={22} color="#9ca3af" />
+                          </div>
                         )}
                       </div>
                       <div className={styles.projectItemText}>
@@ -405,8 +408,8 @@ function CreatorDashboardPage() {
               </p>
 
               {creatorInquiries.length === 0 ? (
-                <div style={{ padding: '3rem 1rem', textAlign: 'center', color: '#666', border: '1px dashed rgba(0,0,0,0.1)', borderRadius: '8px' }}>
-                  <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>💬</div>
+                <div style={{ padding: '3rem 1rem', textAlign: 'center', color: '#666', border: '1px dashed rgba(0,0,0,0.1)', borderRadius: '8px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <WhatsAppIcon size={28} color="#c5a359" style={{ marginBottom: '0.5rem' }} />
                   <p className="p" style={{ fontWeight: 600 }}>
                     No inquiries yet
                   </p>

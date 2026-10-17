@@ -1,0 +1,146 @@
+/* Homies Studio — Standardized Button System Tokens & Mixins */
+@import '@src/styles/functions.scss';
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  min-height: var(--btn-height);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  font-family: inherit;
+  text-decoration: none;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 180ms ease,
+              border-color 180ms ease,
+              color 180ms ease,
+              box-shadow 180ms ease;
+
+  @include mobile {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.75rem 1.25rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #c5a359;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &:hover, &:active {
+      transform: none;
+    }
+  }
+}
+
+/* Primary Button (Obsidian Fill, Crisp White Text, Specular Highlight) */
+@mixin btn-primary {
+  @include btn-base;
+  background: #111115;
+  color: #f0f4f1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+
+  &:hover {
+    background: #1c1c22;
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  }
+}
+
+/* Secondary Button (Restrained Outlined Glass Surface) */
+@mixin btn-secondary($is-dark: false) {
+  @include btn-base;
+  @if $is-dark {
+    background: rgba(255, 255, 255, 0.05);
+    color: #f0f4f1;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.32);
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+  } @else {
+    background: rgba(0, 0, 0, 0.03);
+    color: #18181b;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.07);
+      border-color: rgba(0, 0, 0, 0.32);
+      color: #000000;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+/* Accent Button (Restrained Champagne Gold) */
+@mixin btn-accent {
+  @include btn-base;
+  background: #c5a359;
+  color: #0e0e12;
+  font-weight: 650;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(197, 163, 89, 0.28), inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+
+  &:hover {
+    background: #d4b56e;
+    color: #000000;
+    box-shadow: 0 8px 24px rgba(197, 163, 89, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Refined WhatsApp Brand Button (Controlled Green Identity, No Neon Glare) */
+@mixin btn-whatsapp {
+  @include btn-base;
+  background: rgba(18, 140, 68, 0.12);
+  color: #128c44;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 14px rgba(18, 140, 68, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  svg {
+    fill: #25d366;
+    flex-shrink: 0;
+    transition: transform 180ms ease;
+  }
+
+  &:hover {
+    background: rgba(18, 140, 68, 0.2);
+    border-color: rgba(37, 211, 102, 0.55);
+    color: #0d6e35;
+    box-shadow: 0 6px 20px rgba(18, 140, 68, 0.22);
+
+    svg {
+      transform: scale(1.08);
+    }
+  }
+}
+

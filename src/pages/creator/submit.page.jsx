@@ -1360,7 +1360,7 @@ function SubmitProjectPage() {
                     disabled={isSubmitting}
                     style={{ background: '#166534', color: '#ffffff', border: 'none', padding: '0.7vw 2vw', borderRadius: '9999px', cursor: 'pointer', fontWeight: 700 }}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit for Technical Review 🚀'}
+                    {isSubmitting ? 'Submitting...' : 'Submit for Technical Review →'}
                   </button>
                 )}
               </div>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
 import AccordionFAQ from '@src/components/ui/AccordionFAQ';
+import { LandmarkIcon, MailIcon, WhatsAppIcon, GraduationCapIcon, ShoppingBagIcon, BuildingIcon } from '@src/components/ui/Icons';
 import styles from './for-colleges.module.scss';
 
 const seo = {
@@ -94,7 +95,10 @@ export default function ForCollegesPage() {
       <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className={styles.taglineBadge}>🏛️ Institutional Partnership Program · Pan-India</div>
+          <div className={styles.taglineBadge}>
+            <LandmarkIcon size={14} color="#c5a359" />
+            <span>Institutional Partnership Program · Pan-India</span>
+          </div>
           <h1 className={clsx('h1', styles.heroTitle)}>Partner With Homies Studio — Final Year Project Support for Your College</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
             Empower your engineering students with industry-standard project mentorship, specialized tech leads, and structured execution milestones. We partner with universities and colleges across
@@ -102,15 +106,17 @@ export default function ForCollegesPage() {
           </p>
           <div className={styles.ctaRow}>
             <a href="mailto:info@homiesstudio.com?subject=College%20Partnership%20Inquiry%20-%20Homies%20Studio" className={styles.primaryBtn}>
-              ✉️ Email Partnership Team
+              <MailIcon size={18} />
+              <span>Email Partnership Team</span>
             </a>
             <a
               href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20we%20would%20like%20to%20discuss%20a%20College%20Partnership."
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.secondaryBtn}
+              className={styles.whatsappBtn}
             >
-              💬 Connect on WhatsApp (+91 74166 36417)
+              <WhatsAppIcon size={18} />
+              <span>Connect on WhatsApp (+91 74166 36417)</span>
             </a>
           </div>
         </div>
@@ -135,17 +141,21 @@ export default function ForCollegesPage() {
           <p className={styles.sectionDesc}>Discover complementary programs for student projects, ready-made builds, and institutional collaborations.</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
-          <Link href="/final-year-projects" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🎓 Student Final Year Projects Guidance &rarr;
+          <Link href="/final-year-projects" className={styles.ecosystemLink}>
+            <GraduationCapIcon size={16} color="#c5a359" />
+            <span>Student Final Year Projects Guidance &rarr;</span>
           </Link>
-          <Link href="/mart" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🛒 Browse Homies Mart Repository &rarr;
+          <Link href="/mart" className={styles.ecosystemLink}>
+            <ShoppingBagIcon size={16} color="#c5a359" />
+            <span>Browse Homies Mart Repository &rarr;</span>
           </Link>
-          <Link href="/about" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏢 About Homies Studio &rarr;
+          <Link href="/about" className={styles.ecosystemLink}>
+            <BuildingIcon size={16} color="#c5a359" />
+            <span>About Homies Studio &rarr;</span>
           </Link>
-          <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            📞 Contact Partnership Team &rarr;
+          <Link href="/contact" className={styles.ecosystemLink}>
+            <MailIcon size={16} color="#c5a359" />
+            <span>Contact Partnership Team &rarr;</span>
           </Link>
         </div>
 

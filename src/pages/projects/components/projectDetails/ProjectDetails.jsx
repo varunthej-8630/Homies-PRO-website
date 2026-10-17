@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
+import { GlobeIcon, ExternalLinkIcon, ShareIcon, ShieldCheckIcon, ZapIcon, WhatsAppIcon, PackageIcon, CheckIcon, SparkleIcon } from '@src/components/ui/Icons';
 import styles from '@src/pages/projects/components/projectDetails/styles/projectDetails.module.scss';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
@@ -38,7 +39,7 @@ function ProjectDetails({ project }) {
             ★ {Number(project.rating).toFixed(1)} ({project.reviewCount} {project.reviewCount === 1 ? 'review' : 'reviews'})
           </span>
         ) : (
-          <span className={clsx(styles.ratingBadge, 'p-xs')}>✨ New Release</span>
+          <span className={clsx(styles.ratingBadge, 'p-xs')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}><SparkleIcon size={12} color="#c5a359" /> New Release</span>
         )}
         {project.salesCount > 0 && <span className={clsx(styles.salesBadge, 'p-xs')}>{project.salesCount} verified builds</span>}
       </div>
@@ -82,13 +83,15 @@ function ProjectDetails({ project }) {
 
             {(project.liveDemoUrl || project.liveLink) && (
               <a href={project.liveDemoUrl || project.liveLink} target="_blank" rel="noopener noreferrer" className={styles.demoLinkButton}>
-                <span>🌐 LIVE DEMO ↗</span>
+                <GlobeIcon size={15} style={{ marginRight: '0.4rem' }} />
+                <span>LIVE DEMO ↗</span>
               </a>
             )}
 
             {project.demoVideoUrl && (
               <a href={project.demoVideoUrl} target="_blank" rel="noopener noreferrer" className={styles.demoLinkButton}>
-                <span>▶ DEMO VIDEO ↗</span>
+                <ExternalLinkIcon size={15} style={{ marginRight: '0.4rem' }} />
+                <span>DEMO VIDEO ↗</span>
               </a>
             )}
 
@@ -110,17 +113,17 @@ function ProjectDetails({ project }) {
                   setTimeout(() => setCopied(false), 2000);
                 }
               }}
-              style={{ width: 'auto', padding: '0.8vw 1.2vw' }}
+              style={{ width: 'auto', padding: '0.8vw 1.2vw', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
               aria-label="Copy project share link"
             >
-              <span>{copied ? '✓ Copied!' : '🔗 Share Link'}</span>
+              {copied ? <span>✓ Copied!</span> : <><ShareIcon size={15} /> <span>Share Link</span></>}
             </button>
           </div>
 
           <div className={styles.guaranteeRow}>
-            <span>🛡️ 100% Working Code Guarantee</span>
-            <span>⚡ Automated Delivery & Expiring Tokens</span>
-            <span>💬 Direct Creator Support</span>
+            <span><ShieldCheckIcon size={14} color="#c5a359" /> 100% Working Code Guarantee</span>
+            <span><ZapIcon size={14} color="#c5a359" /> Automated Delivery & Expiring Tokens</span>
+            <span><WhatsAppIcon size={14} color="#c5a359" /> Direct Creator Support</span>
           </div>
         </div>
 
@@ -177,7 +180,7 @@ function ProjectDetails({ project }) {
               ? project.deliverableFiles.map((file, idx) => (
                   <div key={idx} className={styles.fileRow}>
                     <div className={styles.fileNameWithIcon}>
-                      <span>📦</span>
+                      <PackageIcon size={16} color="#c5a359" />
                       <span className="p-xs">{file.name}</span>
                     </div>
                     <span className={clsx(styles.fileSizeBadge, 'p-xs')}>{file.size}</span>
@@ -186,7 +189,7 @@ function ProjectDetails({ project }) {
               : project.deliverables?.map((deliv, idx) => (
                   <div key={idx} className={styles.fileRow}>
                     <div className={styles.fileNameWithIcon}>
-                      <span>✓</span>
+                      <CheckIcon size={14} color="#c5a359" />
                       <span className="p-xs">{deliv}</span>
                     </div>
                     <span className={clsx(styles.fileSizeBadge, 'p-xs')}>Included</span>

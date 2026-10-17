@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useScroll from '@src/hooks/useScroll';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
+import { SparkleIcon } from '@src/components/ui/Icons';
 
 export default function FloatingContact() {
   const [visible, setVisible] = useState(false);
@@ -57,9 +58,7 @@ export default function FloatingContact() {
         e.currentTarget.style.backgroundColor = 'rgba(20, 20, 26, 0.88)';
       }}
     >
-      <span style={{ color: '#c5a359', fontSize: '1rem' }} aria-hidden="true">
-        💬
-      </span>
+      <SparkleIcon size={16} color="#c5a359" />
       <span>Let&apos;s Talk</span>
     </button>
   );

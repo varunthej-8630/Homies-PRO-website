@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { supabase } from '@src/lib/supabase/client';
 import { useAuth } from '@src/context/AuthContext';
 import ProjectCMS from '@src/components/admin/ProjectCMS';
+import { PackageIcon, WhatsAppIcon } from '@src/components/ui/Icons';
 import styles from '../creator/dashboard.module.scss';
 
 function getStatusBadgeStyle(status) {
@@ -390,8 +391,8 @@ function AdminDashboardPage() {
               {loading && <div style={{ padding: '2rem', textAlign: 'center', color: '#888' }}>Loading project submissions from Supabase...</div>}
 
               {!loading && dbProjects.length === 0 && (
-                <div style={{ padding: '3.5rem 2rem', textAlign: 'center', color: '#666' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📦</div>
+                <div style={{ padding: '3.5rem 2rem', textAlign: 'center', color: '#666', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <PackageIcon size={36} color="#c5a359" style={{ marginBottom: '0.5rem' }} />
                   <h4 className="h4">No project submissions yet</h4>
                   <p className="p-xs" style={{ color: '#888', marginTop: '0.3rem' }}>
                     When creators upload and submit engineering builds, they will appear here for code & documentation audit.
@@ -407,7 +408,9 @@ function AdminDashboardPage() {
                         {item.cover_image_url && (item.cover_image_url.startsWith('http') || item.cover_image_url.startsWith('/')) ? (
                           <Image src={item.cover_image_url} fill sizes="80px" style={{ objectFit: 'cover' }} alt={item.title} />
                         ) : (
-                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6', fontSize: '1.4rem' }}>📦</div>
+                          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f3f4f6' }}>
+                            <PackageIcon size={22} color="#9ca3af" />
+                          </div>
                         )}
                       </div>
                       <div className={styles.projectItemText}>
@@ -482,8 +485,8 @@ function AdminDashboardPage() {
               {loading && <div style={{ padding: '2rem', textAlign: 'center', color: '#888' }}>Loading customer enquiries from Supabase...</div>}
 
               {!loading && enquiries.length === 0 && (
-                <div style={{ padding: '3.5rem 2rem', textAlign: 'center', color: '#666' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>💬</div>
+                <div style={{ padding: '3.5rem 2rem', textAlign: 'center', color: '#666', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <WhatsAppIcon size={36} color="#c5a359" style={{ marginBottom: '0.5rem' }} />
                   <h4 className="h4">No enquiries yet</h4>
                   <p className="p-xs" style={{ color: '#888', marginTop: '0.3rem' }}>
                     When colleges, startups, or students submit the &quot;Start a Conversation&quot; form, leads will be recorded here.

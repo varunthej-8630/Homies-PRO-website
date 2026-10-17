@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import defaultProjects from '@src/constants/projects';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
+import { ShieldCheckIcon, PackageIcon, WhatsAppIcon } from '@src/components/ui/Icons';
 import styles from './dashboard.module.scss';
 
 function BuyerDashboardPage() {
@@ -71,7 +72,9 @@ function BuyerDashboardPage() {
                       </p>
                     </div>
 
-                    <span className={styles.tokenBadge}>🛡️ Token Active: exp_48h_verified</span>
+                    <span className={styles.tokenBadge} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <ShieldCheckIcon size={14} color="#16a34a" /> Token Active: exp_48h_verified
+                    </span>
                   </div>
 
                   <div className={styles.filesGrid}>
@@ -79,7 +82,7 @@ function BuyerDashboardPage() {
                       p.deliverableFiles.map((file, idx) => (
                         <div key={`file-${idx}`} className={styles.fileDownloadRow}>
                           <div className={styles.fileMeta}>
-                            <span>📦</span>
+                            <PackageIcon size={16} color="#c5a359" />
                             <div>
                               <div className="p-xs">{file.name}</div>
                               <div style={{ fontSize: '0.75rem', color: '#888' }}>{file.size}</div>
@@ -104,9 +107,20 @@ function BuyerDashboardPage() {
                     <button
                       type="button"
                       onClick={() => setIsConversationOpen(true)}
-                      style={{ background: 'none', border: 'none', textDecoration: 'underline', color: 'inherit', cursor: 'pointer', font: 'inherit', fontSize: '0.85rem' }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        textDecoration: 'underline',
+                        color: 'inherit',
+                        cursor: 'pointer',
+                        font: 'inherit',
+                        fontSize: '0.85rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                      }}
                     >
-                      💬 Message Creator for Setup Support
+                      <WhatsAppIcon size={14} color="#128c44" /> Message Creator for Setup Support
                     </button>
                     <span>•</span>
                     <Link href={p.link} style={{ fontSize: '0.85rem', color: 'inherit', textDecoration: 'underline' }}>

@@ -2,6 +2,7 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
+import { GraduationCapIcon, ShoppingBagIcon, ZapIcon } from '@src/components/ui/Icons';
 import styles from '@src/pages/blog.module.scss';
 
 const seo = {
@@ -107,17 +108,34 @@ export default function BlogPage() {
           <p className="p-m" style={{ maxWidth: '600px', margin: '0 auto 1.5rem', color: 'rgba(255,255,255,0.75)' }}>
             Explore our project mentorship programs, buy verified code packages on Homies Mart, or engineer custom AI software.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
             <Link
               href="/final-year-projects"
-              style={{ padding: '0.75rem 1.5rem', borderRadius: '9999px', background: '#fff', color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem' }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
+                borderRadius: '9999px',
+                background: '#111115',
+                color: '#f0f4f1',
+                border: '1px solid rgba(255,255,255,0.15)',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+              }}
             >
-              🎓 Final Year Project Guidance &rarr;
+              <GraduationCapIcon size={16} color="#c5a359" /> Final Year Project Guidance →
             </Link>
             <Link
               href="/mart"
               style={{
-                padding: '0.75rem 1.5rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
                 background: 'rgba(255,255,255,0.06)',
                 color: '#fff',
@@ -127,12 +145,16 @@ export default function BlogPage() {
                 fontSize: '0.9rem',
               }}
             >
-              🛒 Browse Homies Mart &rarr;
+              <ShoppingBagIcon size={16} color="currentColor" /> Browse Homies Mart →
             </Link>
             <Link
               href="/ai-solutions"
               style={{
-                padding: '0.75rem 1.5rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
                 background: 'rgba(255,255,255,0.06)',
                 color: '#fff',
@@ -142,7 +164,7 @@ export default function BlogPage() {
                 fontSize: '0.9rem',
               }}
             >
-              ⚡ Custom AI Solutions &rarr;
+              <ZapIcon size={16} color="currentColor" /> Custom AI Solutions →
             </Link>
           </div>
         </div>

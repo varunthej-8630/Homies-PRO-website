@@ -1,4 +1,5 @@
 @import '@src/styles/functions';
+@import '@src/styles/buttons';
 
 .root {
   background-color: var(--white);
@@ -93,6 +94,16 @@
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-sizing: border-box;
 
+    @supports not (backdrop-filter: blur(10px)) {
+      background: #ffffff;
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: #ffffff !important;
+    }
+
     @include mobile {
       border-radius: 1rem;
       padding: 1.6rem 1.4rem;
@@ -106,7 +117,10 @@
     }
 
     .cardIcon {
-      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 0.25rem;
     }
 
     .cardTitle {
@@ -151,6 +165,16 @@
   height: auto;
   min-height: auto;
 
+  @supports not (backdrop-filter: blur(10px)) {
+    background: #111115;
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #121216 !important;
+  }
+
   @include mobile {
     border-radius: 1rem;
     padding: 2rem 1.5rem;
@@ -177,90 +201,31 @@
 
   .directCtaRow {
     display: flex;
-    gap: 1.5vw;
+    gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
 
     @include mobile {
       flex-direction: column;
-      gap: 3vw;
+      gap: 0.75rem;
       width: 100%;
     }
 
     .whatsappCta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: #25d366;
-      color: #000;
-      font-weight: 700;
-      padding: 1vw 2.5vw;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition:
-        transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 180ms ease;
-      box-sizing: border-box;
-
-      @include mobile {
-        padding: 3.5vw 6vw;
-        width: 100%;
-        text-align: center;
-      }
+      @include btn-whatsapp;
+      color: #25d366;
+      background: rgba(37, 211, 102, 0.12);
+      border-color: rgba(37, 211, 102, 0.35);
 
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      }
-
-      &:active {
-        transform: scale(0.97);
-      }
-
-      &:focus-visible {
-        outline: 2px solid #c5a359;
-        outline-offset: 3px;
+        background: rgba(37, 211, 102, 0.22);
+        border-color: rgba(37, 211, 102, 0.6);
+        color: #4ade80;
       }
     }
 
     .emailCta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      font-weight: 700;
-      padding: 1vw 2.5vw;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition:
-        transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 180ms ease,
-        color 180ms ease;
-      box-sizing: border-box;
-
-      @include mobile {
-        padding: 3.5vw 6vw;
-        width: 100%;
-        text-align: center;
-      }
-
-      &:hover {
-        background: #fff;
-        color: #000;
-      }
-
-      &:active {
-        transform: scale(0.97);
-      }
-
-      &:focus-visible {
-        outline: 2px solid #c5a359;
-        outline-offset: 3px;
-      }
+      @include btn-secondary(true);
     }
   }
 }

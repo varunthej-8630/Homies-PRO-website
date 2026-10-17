@@ -7,6 +7,31 @@
 @import '@src/styles/utils.scss';
 @import '@src/styles/fontStyle.scss';
 @import '@src/styles/scroll.scss';
+@import '@src/styles/buttons.scss';
+
+:root {
+  --btn-height: 44px;
+  --btn-radius: 9999px;
+  --btn-font-size: 0.92rem;
+  --btn-font-weight: 600;
+  --btn-gap: 0.5rem;
+}
+
+.btnRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0.5rem;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+}
 
 html {
   font-weight: 450;

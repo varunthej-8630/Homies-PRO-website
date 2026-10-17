@@ -6,6 +6,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { useAuth } from '@src/context/AuthContext';
 import { useRouter } from 'next/router';
+import { EyeIcon, EyeOffIcon } from '@src/components/ui/Icons';
 import styles from './auth.module.scss';
 
 export default function LoginPage() {
@@ -132,7 +133,7 @@ export default function LoginPage() {
                     fontSize: '1rem',
                   }}
                 >
-                  {showPassword ? '🙈' : '👁️'}
+                  {showPassword ? <EyeOffIcon size={16} /> : <EyeIcon size={16} />}
                 </button>
               </div>
             </div>

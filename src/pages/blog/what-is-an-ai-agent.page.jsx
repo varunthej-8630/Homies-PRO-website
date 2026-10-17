@@ -2,6 +2,7 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
+import { WhatsAppIcon, MailIcon } from '@src/components/ui/Icons';
 import ReadingProgress from '@src/components/ui/ReadingProgress';
 
 const seo = {
@@ -193,16 +194,18 @@ export default function WhatIsAnAiAgentPage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  background: '#25d366',
-                  color: '#000',
-                  fontWeight: 700,
+                  background: 'rgba(37, 211, 102, 0.12)',
+                  border: '1px solid rgba(37, 211, 102, 0.35)',
+                  color: '#25d366',
+                  fontWeight: 650,
                   fontSize: '0.92rem',
-                  padding: '0.8rem 1.8rem',
+                  minHeight: '44px',
+                  padding: '0.65rem 1.4rem',
                   borderRadius: '9999px',
                   textDecoration: 'none',
                 }}
               >
-                💬 Chat on WhatsApp
+                <WhatsAppIcon size={18} /> Chat on WhatsApp
               </a>
               <a
                 href="mailto:info@homiesstudio.com?subject=AI%20Agent%20Project%20Inquiry"
@@ -210,17 +213,18 @@ export default function WhatIsAnAiAgentPage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  background: 'transparent',
-                  color: '#fff',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
-                  fontWeight: 700,
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  color: '#f0f4f1',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  fontWeight: 650,
                   fontSize: '0.92rem',
-                  padding: '0.8rem 1.8rem',
+                  minHeight: '44px',
+                  padding: '0.65rem 1.4rem',
                   borderRadius: '9999px',
                   textDecoration: 'none',
                 }}
               >
-                ✉️ Email the Team
+                <MailIcon size={18} /> Email the Team
               </a>
             </div>
           </div>

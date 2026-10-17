@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import CustomHead from '@src/components/dom/CustomHead';
 import Logo from '@src/components/ui/Logo';
+import { WhatsAppIcon } from '@src/components/ui/Icons';
 import styles from './get-started.module.scss';
 
 const seo = {
@@ -356,7 +357,7 @@ export default function GetStartedPage() {
                 rel="noopener noreferrer"
                 className={styles.whatsappSuccessBtn}
               >
-                💬 Chat with us now on WhatsApp
+                <WhatsAppIcon size={18} /> Chat with us now on WhatsApp
               </a>
               <Link href="/" className={styles.homeSuccessBtn}>
                 ← Back to Homies Studio

@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import { RocketIcon } from '@src/components/ui/Icons';
 
 export default function MartNotifyBanner() {
   const [email, setEmail] = useState('');
@@ -71,7 +72,7 @@ export default function MartNotifyBanner() {
             color: '#c5a359',
           }}
         >
-          🚀 Launching Soon
+          <RocketIcon size={14} color="#c5a359" /> Launching Soon
         </div>
         <h2 style={{ fontSize: '1.75rem', fontWeight: 750, lineHeight: 1.2, margin: '0 0 0.5rem', color: '#fff' }}>Homies Mart is opening soon.</h2>
         <p style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.75)', lineHeight: 1.5, margin: '0 0 1.5rem' }}>

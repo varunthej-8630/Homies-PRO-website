@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
 import AccordionFAQ from '@src/components/ui/AccordionFAQ';
+import { GlobeIcon, ShoppingBagIcon, ZapIcon, CalendarIcon, BotIcon, CodeIcon, WhatsAppIcon, GraduationCapIcon, LandmarkIcon, BuildingIcon } from '@src/components/ui/Icons';
 import styles from './website-development.module.scss';
 
 const seo = {
@@ -98,27 +99,27 @@ const principles = [
 
 const capabilities = [
   {
-    icon: '🌐',
+    icon: <GlobeIcon size={22} color="#c5a359" />,
     title: 'Business & Company Websites',
     desc: 'Clean, professional digital presences designed to clearly communicate what your business does and convert visitors into clients.',
   },
   {
-    icon: '🛍️',
+    icon: <ShoppingBagIcon size={22} color="#c5a359" />,
     title: 'E-commerce & Online Stores',
     desc: 'Direct-to-consumer catalogs, cart flows, secure payment gateway integrations, and order management tailored to your products.',
   },
   {
-    icon: '⚡',
+    icon: <ZapIcon size={22} color="#c5a359" />,
     title: 'Web Applications & Portals',
     desc: 'Interactive customer portals, dashboards, internal business tools, and data-driven platforms engineered with modern frameworks.',
   },
   {
-    icon: '📅',
+    icon: <CalendarIcon size={22} color="#c5a359" />,
     title: 'Booking & Enquiry Workflows',
     desc: 'Structured intake forms, calendar schedulers, automated notifications, and lead management built into your daily operations.',
   },
   {
-    icon: '🤖',
+    icon: <BotIcon size={22} color="#c5a359" />,
     title: 'AI-Powered Websites & Tools',
     desc: 'Custom software, intelligent assistants, document parsing, and dynamic features integrated seamlessly into your web experience.',
   },
@@ -155,7 +156,10 @@ export default function WebsiteDevelopmentPage() {
       <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Section 1 — Hero */}
         <div className={styles.heroSection}>
-          <div className={styles.taglineBadge}>💻 Custom Website Development · Homies Studio</div>
+          <div className={styles.taglineBadge}>
+            <CodeIcon size={14} color="#c5a359" />
+            <span>Custom Website Development · Homies Studio</span>
+          </div>
           <h1 className={clsx('h1', styles.heroTitle)}>Your business deserves more than a template.</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>We design and build custom-coded websites around your business, your customers, and the way you work.</p>
           <p className={styles.heroAdditional}>From business websites and online stores to web applications and custom business tools, every project starts with your requirements.</p>
@@ -169,7 +173,8 @@ export default function WebsiteDevelopmentPage() {
               rel="noopener noreferrer"
               className={styles.whatsappBtn}
             >
-              💬 Chat on WhatsApp
+              <WhatsAppIcon size={18} />
+              <span>Chat on WhatsApp</span>
             </a>
             <Link href="/contact" className={styles.secondaryBtn}>
               General Contact &rarr;
@@ -248,7 +253,8 @@ export default function WebsiteDevelopmentPage() {
               rel="noopener noreferrer"
               className={styles.ctaSecondary}
             >
-              💬 WhatsApp Tech Leads
+              <WhatsAppIcon size={18} />
+              <span>WhatsApp Tech Leads</span>
             </a>
             <Link href="/contact" className={styles.ctaTertiary}>
               General Contact Form &rarr;
@@ -263,16 +269,20 @@ export default function WebsiteDevelopmentPage() {
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
           <Link href="/ai-solutions" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            ⚡ AI Solutions &amp; Product Engineering &rarr;
+            <ZapIcon size={16} color="#c5a359" />
+            <span>AI Solutions &amp; Product Engineering &rarr;</span>
           </Link>
           <Link href="/final-year-projects" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🎓 Final Year Engineering Projects &rarr;
+            <GraduationCapIcon size={16} color="#c5a359" />
+            <span>Final Year Engineering Projects &rarr;</span>
           </Link>
           <Link href="/for-colleges" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏛️ Institutional Partnerships for Colleges &rarr;
+            <LandmarkIcon size={16} color="#c5a359" />
+            <span>Institutional Partnerships for Colleges &rarr;</span>
           </Link>
           <Link href="/about" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏢 About Homies Studio &rarr;
+            <BuildingIcon size={16} color="#c5a359" />
+            <span>About Homies Studio &rarr;</span>
           </Link>
         </div>
 

@@ -2,11 +2,12 @@
 import React from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
+import { GraduationCapIcon, ToolIcon, ZapIcon, WhatsAppIcon, SparkleIcon } from '@src/components/ui/Icons';
 import styles from './styles/homeMiddleSections.module.scss';
 
 const pillars = [
   {
-    icon: '🎓',
+    icon: <GraduationCapIcon size={32} color="#c5a359" />,
     label: 'For Students',
     heading: 'Final Year Projects',
     body: 'End-to-end FYP guidance in IoT, Robotics, AI/ML, and Embedded Systems. Remote, pan-India.',
@@ -14,7 +15,7 @@ const pillars = [
     ctaHref: '/final-year-projects',
   },
   {
-    icon: '🛠️',
+    icon: <ToolIcon size={32} color="#c5a359" />,
     label: 'For Creators',
     heading: 'Homies Mart',
     body: 'Publish your engineering builds and earn 80% on every sale to students across India.',
@@ -22,7 +23,7 @@ const pillars = [
     ctaHref: '/become-a-creator',
   },
   {
-    icon: '⚡',
+    icon: <ZapIcon size={32} color="#c5a359" />,
     label: 'For Businesses & Startups',
     heading: 'Websites & AI Solutions',
     body: 'Custom-coded websites, web applications, AI agents, and custom technical software.',
@@ -90,7 +91,7 @@ export default function HomeMiddleSections() {
               rel="noopener noreferrer"
               className={styles.whatsappButton}
             >
-              💬 Chat on WhatsApp
+              <WhatsAppIcon size={18} /> Chat on WhatsApp
             </a>
           </div>
 
@@ -102,9 +103,8 @@ export default function HomeMiddleSections() {
             <Link
               href="/get-started?sector=business"
               className={styles.emailButton}
-              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none' }}
             >
-              💬 Discuss Your Project
+              <SparkleIcon size={18} color="#c5a359" /> Discuss Your Project
             </Link>
           </div>
         </div>

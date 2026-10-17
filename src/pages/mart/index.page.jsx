@@ -18,6 +18,7 @@ import { useWindowSize } from '@darkroom.engineering/hamo';
 import ProjectImagePlaceholder from '@src/components/ui/ProjectImagePlaceholder';
 import CategoryIcon from '@src/components/ui/CategoryIcon';
 import MartNotifyBanner from '@src/components/ui/MartNotifyBanner';
+import { SearchIcon, GraduationCapIcon, ToolIcon, MailIcon } from '@src/components/ui/Icons';
 
 const seo = {
   title: 'Homies Mart — Buy Verified Engineering Projects | Homies Studio',
@@ -210,7 +211,7 @@ export default function HomiesMartPage({ initialProjects = [] }) {
         <div className={styles.marketplaceControls}>
           <div className={styles.searchAndSortRow}>
             <div className={styles.searchBox}>
-              <span className={styles.searchIcon}>🔍</span>
+              <span className={styles.searchIcon}><SearchIcon size={16} /></span>
               <input
                 type="text"
                 placeholder="Search Homies Mart by tech stack, problem, or domain (e.g. Next.js, PyTorch, ESP32, Verilog)..."
@@ -261,49 +262,57 @@ export default function HomiesMartPage({ initialProjects = [] }) {
         </div>
 
         {/* Contextual Navigation Hub */}
-        <div style={{ margin: '3.5rem 0 2rem', padding: '2rem 1.5rem', background: 'rgba(0,0,0,0.03)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.08)' }}>
+        <div style={{ margin: '3.5rem 0 2rem', padding: '2.25rem 1.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '16px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.08)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
           <h3 className="h4" style={{ marginBottom: '0.6rem', fontWeight: 700 }}>
             Looking for More Engineering Capabilities?
           </h3>
           <p className="p-m" style={{ maxWidth: '600px', margin: '0 auto 1.5rem', opacity: 0.8 }}>
             Whether you need customized project mentorship, want to monetize your own software builds, or have bulk institutional requirements — we are here to support you.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', justifyContent: 'center' }}>
             <Link
               href="/final-year-projects"
-              style={{ padding: '0.65rem 1.3rem', borderRadius: '9999px', background: '#000', color: '#fff', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', minHeight: '44px', padding: '0.65rem 1.4rem', borderRadius: '9999px', background: '#111115', color: '#f0f4f1', border: '1px solid rgba(255,255,255,0.15)', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}
             >
-              🎓 Need Custom FYP Guidance? &rarr;
+              <GraduationCapIcon size={18} color="#c5a359" /> Need Custom FYP Guidance? →
             </Link>
             <Link
               href="/become-a-creator"
               style={{
-                padding: '0.65rem 1.3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
-                background: 'rgba(0,0,0,0.06)',
-                color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.15)',
+                background: 'rgba(255,255,255,0.04)',
+                color: '#f0f4f1',
+                border: '1px solid rgba(255,255,255,0.14)',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: '0.9rem',
               }}
             >
-              🛠️ Become a Homies Creator &rarr;
+              <ToolIcon size={18} color="currentColor" /> Become a Homies Creator →
             </Link>
             <Link
               href="/contact"
               style={{
-                padding: '0.65rem 1.3rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minHeight: '44px',
+                padding: '0.65rem 1.4rem',
                 borderRadius: '9999px',
-                background: 'rgba(0,0,0,0.06)',
-                color: 'inherit',
-                border: '1px solid rgba(0,0,0,0.15)',
+                background: 'rgba(255,255,255,0.04)',
+                color: '#f0f4f1',
+                border: '1px solid rgba(255,255,255,0.14)',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: '0.9rem',
               }}
             >
-              💬 Contact Homies Studio &rarr;
+              <MailIcon size={18} color="currentColor" /> Contact Homies Studio →
             </Link>
           </div>
         </div>

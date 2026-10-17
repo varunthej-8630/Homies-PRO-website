@@ -243,33 +243,37 @@ function MenuLinks() {
 
   return (
     <nav id="menu" ref={menuRef} className={styles.menu} aria-label="Sitemap navigation">
-      <div className={styles.menuHeader}>
-        <Link
-          href="/"
-          onClick={() => setIsMenuOpen(false)}
-          aria-label="HOMIES STUDIO homepage"
-          className={styles.menuLogoLink}
-        >
-          <Logo variant="dark" size="sm" />
-        </Link>
-      </div>
+      {/* Top Header & Search Bar with Deliberate Responsive Layout */}
+      <div className={styles.menuTopBar}>
+        <div className={styles.menuTopHeader}>
+          <Link
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="HOMIES STUDIO homepage"
+            className={styles.menuLogoLink}
+          >
+            <Logo variant="dark" size="sm" />
+          </Link>
 
-      <button
-        ref={closeButtonRef}
-        type="button"
-        className={styles.menuClose}
-        onClick={() => setIsMenuOpen(false)}
-        aria-label="Close menu"
-      >
-        <p aria-hidden="true">✕</p>
-      </button>
+          <button
+            ref={closeButtonRef}
+            type="button"
+            className={styles.menuClose}
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <span aria-hidden="true">✕</span>
+          </button>
+        </div>
 
-      <div className={clsx(styles.menuWrapper, 'layout-block-inner')}>
         {/* Instant Site Search Bar */}
-        <div style={{ width: '100%', marginBottom: '1.75rem' }}>
-          <div style={{ position: 'relative', width: '100%', maxWidth: '440px' }}>
-            <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5, fontSize: '0.9rem' }} aria-hidden="true">
-              🔍
+        <div className={styles.menuSearchWrapper}>
+          <div className={styles.menuSearchBox}>
+            <span className={styles.menuSearchIcon} aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
             </span>
             <input
               type="text"
@@ -278,49 +282,23 @@ function MenuLinks() {
               placeholder="Search services, pages, articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '0.75rem 1rem 0.75rem 2.6rem',
-                borderRadius: '0.75rem',
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#fff',
-                fontSize: '0.95rem',
-                outline: 'none',
-                boxSizing: 'border-box',
-                transition: 'border-color 0.2s ease, background 0.2s ease',
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#c5a359';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.09)';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-              }}
+              className={styles.menuSearchInput}
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 aria-label="Clear search"
-                style={{
-                  position: 'absolute',
-                  right: '0.75rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'none',
-                  border: 'none',
-                  color: 'rgba(255, 255, 255, 0.5)',
-                  cursor: 'pointer',
-                  fontSize: '0.85rem',
-                }}
+                className={styles.menuSearchClear}
               >
                 ✕
               </button>
             )}
           </div>
         </div>
+      </div>
+
+      <div className={clsx(styles.menuWrapper, 'layout-block-inner')}>
 
         {searchQuery.trim() ? (
           <div style={{ width: '100%', minHeight: '300px' }}>

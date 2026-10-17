@@ -4,6 +4,7 @@ import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
 import { useStore } from '@src/store';
 import AccordionFAQ from '@src/components/ui/AccordionFAQ';
+import { ZapIcon, RocketIcon, WhatsAppIcon, CodeIcon, BuildingIcon, GraduationCapIcon, LandmarkIcon } from '@src/components/ui/Icons';
 import styles from './ai-solutions.module.scss';
 
 const seo = {
@@ -118,22 +119,27 @@ export default function AISolutionsPage() {
       <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className={styles.taglineBadge}>⚡ B2B AI &amp; Product Engineering · Pan-India</div>
+          <div className={styles.taglineBadge}>
+            <ZapIcon size={14} color="#c5a359" />
+            <span>B2B AI &amp; Product Engineering · Pan-India</span>
+          </div>
           <h1 className={clsx('h1', styles.heroTitle)}>AI Solutions &amp; Product Development for Indian Startups</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
             From custom autonomous AI agents and intelligent workflows to full-stack SaaS platforms and scalable web products. We turn your product vision into production-ready software.
           </p>
           <div className={styles.ctaRow}>
             <button type="button" className={styles.primaryBtn} onClick={() => setIsConversationOpen(true)}>
-              🚀 Start a Conversation
+              <RocketIcon size={18} />
+              <span>Start a Conversation</span>
             </button>
             <a
               href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20we%20want%20to%20discuss%20an%20AI%20%2F%20SaaS%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.secondaryBtn}
+              className={styles.whatsappBtn}
             >
-              💬 WhatsApp Tech Leads
+              <WhatsAppIcon size={18} />
+              <span>WhatsApp Tech Leads</span>
             </a>
           </div>
         </div>
@@ -159,20 +165,25 @@ export default function AISolutionsPage() {
           <p className={styles.sectionDesc}>Connect with our wider technical ecosystem for student projects, college partnerships, and company information.</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
-          <Link href="/website-development" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            💻 Custom Website Development &rarr;
+          <Link href="/website-development" className={styles.ecosystemLink}>
+            <CodeIcon size={16} color="#c5a359" />
+            <span>Custom Website Development &rarr;</span>
           </Link>
-          <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🚀 Start an AI Project / Contact Us &rarr;
+          <Link href="/contact" className={styles.ecosystemLink}>
+            <RocketIcon size={16} color="#c5a359" />
+            <span>Start an AI Project / Contact Us &rarr;</span>
           </Link>
-          <Link href="/about" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏢 Learn About Homies Studio &rarr;
+          <Link href="/about" className={styles.ecosystemLink}>
+            <BuildingIcon size={16} color="#c5a359" />
+            <span>Learn About Homies Studio &rarr;</span>
           </Link>
-          <Link href="/final-year-projects" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🎓 Explore Engineering Project Support &rarr;
+          <Link href="/final-year-projects" className={styles.ecosystemLink}>
+            <GraduationCapIcon size={16} color="#c5a359" />
+            <span>Explore Engineering Project Support &rarr;</span>
           </Link>
-          <Link href="/for-colleges" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏛️ Explore College Partnerships &rarr;
+          <Link href="/for-colleges" className={styles.ecosystemLink}>
+            <LandmarkIcon size={16} color="#c5a359" />
+            <span>Explore College Partnerships &rarr;</span>
           </Link>
         </div>
 

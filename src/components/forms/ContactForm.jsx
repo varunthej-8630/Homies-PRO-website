@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState } from 'react';
+import { WhatsAppIcon } from '@src/components/ui/Icons';
 import styles from './contactForm.module.scss';
 
 const INQUIRY_OPTIONS = ['Website Development', 'Student FYP Guidance', 'College Partnership', 'AI & SaaS Solutions', 'Become a Creator', 'General'];
@@ -126,7 +127,7 @@ export default function ContactForm() {
           rel="noopener noreferrer"
           className={styles.whatsappFallbackButton}
         >
-          💬 Continue on WhatsApp
+          <WhatsAppIcon size={18} /> Continue on WhatsApp
         </a>
       </div>
     );

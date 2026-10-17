@@ -3,6 +3,7 @@ import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
 import AccordionFAQ from '@src/components/ui/AccordionFAQ';
+import { GraduationCapIcon, WhatsAppIcon, ShoppingBagIcon, LandmarkIcon, ZapIcon, MailIcon } from '@src/components/ui/Icons';
 import styles from './final-year-projects.module.scss';
 
 const seo = {
@@ -150,7 +151,10 @@ export default function FinalYearProjectsPage() {
       <section className={clsx(styles.root, 'layout-block-inner')}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className={styles.taglineBadge}>🎓 Pan-India Engineering Guidance · 100% Remote</div>
+          <div className={styles.taglineBadge}>
+            <GraduationCapIcon size={14} color="#c5a359" />
+            <span>Pan-India Engineering Guidance · 100% Remote</span>
+          </div>
           <h1 className={clsx('h1', styles.heroTitle)}>Final Year Projects Guidance for Engineering Students Across India</h1>
           <p className={clsx('p-l', styles.heroSubtitle)}>
             From topic selection and circuit design to full code deployment, research report writing, and viva preparation. We guide B.Tech and M.Tech students in CSE, ECE, EEE, and IT pan-India.
@@ -160,12 +164,14 @@ export default function FinalYearProjectsPage() {
               href="https://wa.me/917416636417?text=Hi%20Homies%20Studio%2C%20I%20need%20guidance%20for%20my%20Final%20Year%20Project."
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.primaryBtn}
+              className={styles.whatsappBtn}
             >
-              💬 Get Instant FYP Guidance on WhatsApp
+              <WhatsAppIcon size={18} />
+              <span>Get Instant FYP Guidance on WhatsApp</span>
             </a>
-            <Link href="/mart" className={styles.secondaryBtn}>
-              🛒 Explore Verified Projects on Homies Mart
+            <Link href="/mart" className={styles.primaryBtn}>
+              <ShoppingBagIcon size={18} color="#c5a359" />
+              <span>Explore Verified Projects on Homies Mart</span>
             </Link>
           </div>
         </div>
@@ -206,17 +212,21 @@ export default function FinalYearProjectsPage() {
           <p className={styles.sectionDesc}>Discover complementary services and platforms across the Homies Studio network.</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', margin: '1.5rem 0 3.5rem' }}>
-          <Link href="/mart" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🛒 Browse Verified Projects on Homies Mart &rarr;
+          <Link href="/mart" className={styles.ecosystemLink}>
+            <ShoppingBagIcon size={16} color="#c5a359" />
+            <span>Browse Verified Projects on Homies Mart &rarr;</span>
           </Link>
-          <Link href="/for-colleges" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            🏛️ Explore College Partnership Program &rarr;
+          <Link href="/for-colleges" className={styles.ecosystemLink}>
+            <LandmarkIcon size={16} color="#c5a359" />
+            <span>Explore College Partnership Program &rarr;</span>
           </Link>
-          <Link href="/ai-solutions" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            ⚡ Explore AI &amp; Software Solutions &rarr;
+          <Link href="/ai-solutions" className={styles.ecosystemLink}>
+            <ZapIcon size={16} color="#c5a359" />
+            <span>Explore AI &amp; Software Solutions &rarr;</span>
           </Link>
-          <Link href="/contact" className={styles.secondaryBtn} style={{ padding: '0.8rem 1.6rem', fontSize: '0.95rem' }}>
-            📞 Contact Homies Studio Tech Team &rarr;
+          <Link href="/contact" className={styles.ecosystemLink}>
+            <MailIcon size={16} color="#c5a359" />
+            <span>Contact Homies Studio Tech Team &rarr;</span>
           </Link>
         </div>
 

@@ -79,30 +79,98 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: #25d366;
-      color: #000;
-      font-weight: 700;
-      padding: 0.9vw 2vw;
+      gap: 0.5rem;
+      background: var(--black, #111115);
+      color: var(--white, #f0f4f1);
+      font-weight: 650;
+      min-height: 44px;
+      padding: 0.7rem 1.6rem;
       border-radius: 9999px;
       text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+      cursor: pointer;
       transition:
         transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease,
         box-shadow 180ms ease;
 
       @include mobile {
-        padding: 3.5vw 6vw;
+        padding: 0.85rem 1.4rem;
         width: 100%;
         text-align: center;
         box-sizing: border-box;
       }
 
       &:hover {
+        background: #1c1c22;
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.25);
         transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       }
 
       &:active {
-        transform: scale(0.97);
+        transform: scale(0.98);
+      }
+
+      &:focus-visible {
+        outline: 2px solid #c5a359;
+        outline-offset: 3px;
+      }
+    }
+
+    .whatsappBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      background: rgba(18, 140, 68, 0.12);
+      color: #128c44;
+      font-weight: 650;
+      min-height: 44px;
+      padding: 0.7rem 1.6rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(18, 140, 68, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+      transition:
+        transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+
+      @include mobile {
+        padding: 0.85rem 1.4rem;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      svg {
+        fill: #25d366;
+        flex-shrink: 0;
+        transition: transform 180ms ease;
+      }
+
+      &:hover {
+        background: rgba(18, 140, 68, 0.2);
+        border-color: rgba(37, 211, 102, 0.55);
+        color: #0d6e35;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(18, 140, 68, 0.18);
+
+        svg {
+          transform: scale(1.08);
+        }
+      }
+
+      &:active {
+        transform: scale(0.98);
       }
 
       &:focus-visible {
@@ -115,34 +183,39 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--black);
-      color: var(--white);
-      font-weight: 700;
-      padding: 0.9vw 2vw;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--black, #18181b);
+      font-weight: 600;
+      min-height: 44px;
+      padding: 0.7rem 1.6rem;
       border-radius: 9999px;
       text-decoration: none;
-      border: 1px solid var(--black);
+      border: 1px solid rgba(40, 40, 43, 0.2);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       transition:
         transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 180ms ease,
         background-color 180ms ease,
-        color 180ms ease,
-        border-color 180ms ease;
+        color 180ms ease;
 
       @include mobile {
-        padding: 3.5vw 6vw;
+        padding: 0.85rem 1.4rem;
         width: 100%;
         text-align: center;
         box-sizing: border-box;
       }
 
       &:hover {
-        background: transparent;
-        color: var(--black);
+        background: rgba(0, 0, 0, 0.07);
+        border-color: var(--black, #18181b);
+        color: #000000;
         transform: translateY(-2px);
       }
 
       &:active {
-        transform: scale(0.97);
+        transform: scale(0.98);
       }
 
       &:focus-visible {
@@ -150,6 +223,45 @@
         outline-offset: 3px;
       }
     }
+  }
+}
+
+.ecosystemLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(40, 40, 43, 0.12);
+  color: var(--black, #18181b);
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0.65rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @include mobile {
+    width: 100%;
+    padding: 0.8rem 1.25rem;
+    box-sizing: border-box;
+  }
+
+  &:hover {
+    border-color: rgba(197, 163, 89, 0.5);
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 163, 89, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #c5a359;
+    outline-offset: 3px;
   }
 }
 
@@ -184,17 +296,27 @@
   }
 
   .featureCard {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(40, 40, 43, 0.12);
+    background: rgba(255, 255, 255, 0.76);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(40, 40, 43, 0.1);
     border-radius: 1.25rem;
     padding: 1.8vw;
     display: flex;
     flex-direction: column;
     gap: 0.8vw;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @supports not (backdrop-filter: blur(10px)) {
+      background: #ffffff;
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      background: #ffffff;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
 
     @include mobile {
       border-radius: 1rem;
@@ -203,8 +325,8 @@
     }
 
     &:hover {
-      border-color: rgba(197, 163, 89, 0.5);
-      box-shadow: 0 15px 35px -10px rgba(197, 163, 89, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+      border-color: rgba(197, 163, 89, 0.45);
+      box-shadow: 0 16px 36px -8px rgba(197, 163, 89, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 1);
       transform: translateY(-4px);
     }
 

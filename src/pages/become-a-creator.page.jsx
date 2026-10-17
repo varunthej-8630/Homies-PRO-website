@@ -8,6 +8,7 @@ import { CREATOR_STEPS } from '@src/constants/marketplace';
 import { supabase } from '@src/lib/supabase/client';
 import { useAuth } from '@src/context/AuthContext';
 import { useRouter } from 'next/router';
+import { LockIcon, ZapIcon, SparkleIcon, ShieldCheckIcon } from '@src/components/ui/Icons';
 import styles from './become-a-creator.module.scss';
 
 const seo = {
@@ -348,22 +349,30 @@ function BecomeACreatorPage() {
           <h2 className={clsx(styles.sectionTitle, 'h2')}>Why Create With Homies Studio?</h2>
           <div className={styles.perksGrid}>
             <div className={styles.perkCard}>
-              <span className={styles.perkIcon}>🔒</span>
+              <span className={styles.perkIcon}>
+                <LockIcon size={24} color="#c5a359" />
+              </span>
               <h5 className={clsx(styles.perkTitle, 'h5')}>Protected Digital Delivery</h5>
               <p className={clsx(styles.perkDesc, 'p-xs')}>Private file storage with expiring secure download tokens. Your raw source code is never exposed publicly.</p>
             </div>
             <div className={styles.perkCard}>
-              <span className={styles.perkIcon}>⚡</span>
+              <span className={styles.perkIcon}>
+                <ZapIcon size={24} color="#c5a359" />
+              </span>
               <h5 className={clsx(styles.perkTitle, 'h5')}>Fast Payouts</h5>
               <p className={clsx(styles.perkDesc, 'p-xs')}>Withdraw earnings directly to your Indian Bank Account via IMPS/NEFT or instant UPI transfers with zero hidden deductions.</p>
             </div>
             <div className={styles.perkCard}>
-              <span className={styles.perkIcon}>💬</span>
+              <span className={styles.perkIcon}>
+                <SparkleIcon size={24} color="#c5a359" />
+              </span>
               <h5 className={clsx(styles.perkTitle, 'h5')}>Direct Buyer Chat</h5>
               <p className={clsx(styles.perkDesc, 'p-xs')}>Communicate with prospective buyers, clarify installation queries, and receive direct custom consulting requests.</p>
             </div>
             <div className={styles.perkCard}>
-              <span className={styles.perkIcon}>🛡️</span>
+              <span className={styles.perkIcon}>
+                <ShieldCheckIcon size={24} color="#c5a359" />
+              </span>
               <h5 className={clsx(styles.perkTitle, 'h5')}>Quality Verification</h5>
               <p className={clsx(styles.perkDesc, 'p-xs')}>Our moderation badge signals high credibility and IEEE-level standards, driving higher conversion and trusted purchases.</p>
             </div>
