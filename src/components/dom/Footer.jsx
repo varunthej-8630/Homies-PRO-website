@@ -1,6 +1,7 @@
 import AppearTitle from '@src/components/animationComponents/appearTitle/Index';
 import Link from 'next/link';
 import LinkText from '@src/components/animationComponents/linkText/Index';
+import Logo from '@src/components/ui/Logo';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import clsx from 'clsx';
 import dynamic from 'next/dynamic';
@@ -185,9 +186,7 @@ function Footer() {
       </div>
 
       <div className={styles.brandTitle}>
-        <span>
-          H<span className={styles.goldText}>OM</span>IES
-        </span>
+        <Logo variant="dark" size="footer" as="div" />
       </div>
       <div className={styles.goToTop}>
         <GoTop />

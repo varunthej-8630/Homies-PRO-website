@@ -2,6 +2,7 @@ import Link from 'next/link';
 /* eslint-disable react/jsx-props-no-spreading */
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
+import AccordionFAQ from '@src/components/ui/AccordionFAQ';
 import styles from './for-colleges.module.scss';
 
 const seo = {
@@ -154,14 +155,7 @@ export default function ForCollegesPage() {
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Common questions about institutional collaborations and department partnerships.</p>
           </div>
-          <div className={styles.faqList}>
-            {faqs.map((faq) => (
-              <div key={faq.q} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.q}</h3>
-                <p className={styles.faqAnswer}>{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <AccordionFAQ items={faqs} />
         </div>
       </section>
     </>

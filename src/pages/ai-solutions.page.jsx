@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
 import { useStore } from '@src/store';
+import AccordionFAQ from '@src/components/ui/AccordionFAQ';
 import styles from './ai-solutions.module.scss';
 
 const seo = {
@@ -181,14 +182,7 @@ export default function AISolutionsPage() {
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Learn more about our product development workflows, pricing models, and tech stack.</p>
           </div>
-          <div className={styles.faqList}>
-            {faqs.map((faq) => (
-              <div key={faq.q} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.q}</h3>
-                <p className={styles.faqAnswer}>{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <AccordionFAQ items={faqs} />
         </div>
       </section>
     </>

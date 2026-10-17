@@ -55,14 +55,16 @@ export default function LiquidFlow() {
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    const lerp = (start, end, factor) => start + (end - start) * factor;
-
     const loop = () => {
       if (isVisible && !isMenuOpenRef.current && cursorRef.current) {
-        currentPos.current.x = lerp(currentPos.current.x, targetPos.current.x, 0.08);
-        currentPos.current.y = lerp(currentPos.current.y, targetPos.current.y, 0.08);
+        const dx = targetPos.current.x - currentPos.current.x;
+        const dy = targetPos.current.y - currentPos.current.y;
 
-        cursorRef.current.style.transform = `translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0)`;
+        if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+          currentPos.current.x += dx * 0.08;
+          currentPos.current.y += dy * 0.08;
+          cursorRef.current.style.transform = `translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0)`;
+        }
       }
       rafId.current = requestAnimationFrame(loop);
     };

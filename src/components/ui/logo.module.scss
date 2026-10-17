@@ -1,0 +1,155 @@
+@import '@src/styles/functions';
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: 'Neue Haas Grotesk Display Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  .baseChar {
+    color: inherit;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .goldChar {
+    color: #c5a359 !important;
+    transition: none;
+  }
+
+  .space {
+    display: inline;
+    font-size: 0.9em;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Variants
+   ───────────────────────────────────────────────────────────── */
+
+/* Light-background variant: Deep charcoal lettering with champagne gold */
+.variant_light {
+  color: #111115;
+
+  .baseChar {
+    color: #111115;
+  }
+
+  .goldChar {
+    color: #c5a359 !important;
+  }
+}
+
+/* Dark-background variant: Crisp warm-white lettering with champagne gold */
+.variant_dark {
+  color: #f5f5f7;
+
+  .baseChar {
+    color: #f5f5f7;
+  }
+
+  .goldChar {
+    color: #c5a359 !important;
+  }
+}
+
+/* Image / Canvas / Busy background variant: Crisp white with subtle protective shadow */
+.variant_image,
+.variant_overlay {
+  color: #ffffff;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    0 3px 12px rgba(0, 0, 0, 0.35);
+
+  .baseChar {
+    color: #ffffff;
+  }
+
+  .goldChar {
+    color: #d4b46b !important;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.6),
+      0 3px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Fallback solid high-contrast variant */
+.variant_solid {
+  color: #000000;
+
+  .baseChar {
+    color: #000000;
+  }
+
+  .goldChar {
+    color: #c5a359 !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Sizes
+   ───────────────────────────────────────────────────────────── */
+.size_sm {
+  font-size: clamp(0.85rem, 1vw, 1rem);
+}
+
+.size_md {
+  font-size: clamp(1.15rem, 1.45vw, 1.45rem);
+
+  @include mobile {
+    font-size: clamp(1.08rem, 4.8vw, 1.35rem);
+  }
+}
+
+.size_lg {
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+
+  @include mobile {
+    font-size: clamp(1.25rem, 5.5vw, 1.55rem);
+  }
+}
+
+.size_xl {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+
+  @include mobile {
+    font-size: clamp(1.45rem, 6.5vw, 2rem);
+  }
+}
+
+.size_hero {
+  font-size: clamp(2.5rem, 5.2vw, 5.2rem);
+  letter-spacing: -0.03em;
+
+  @include mobile {
+    font-size: 9.4vw;
+  }
+}
+
+.size_footer {
+  font-size: clamp(1.6rem, 8.8vw, 8.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  max-width: 100%;
+  overflow: hidden;
+
+  @include mobile {
+    font-size: clamp(1.35rem, 8.8vw, 2.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+}

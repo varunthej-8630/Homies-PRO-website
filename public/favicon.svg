@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#0e0e12" />
+  <text x="32" y="44" font-family="'Neue Haas Grotesk Display Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" text-anchor="middle" letter-spacing="-0.05em">
+    <tspan fill="#f5f5f7">H</tspan><tspan fill="#c5a359">O</tspan>
+  </text>
+</svg>

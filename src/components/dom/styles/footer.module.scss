@@ -228,14 +228,9 @@
   .brandTitle {
     grid-column: 1 / 14;
     align-self: flex-end;
-    font-size: clamp(3rem, 11.5vw, 10.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
-    color: #f0f4f1;
-    font-weight: 800;
+    width: 100%;
     max-width: 100%;
     overflow: hidden;
-    white-space: nowrap;
     user-select: none;
     margin: 0;
     padding-top: calc(var(--layout-columns-gap) * 1.5);
@@ -243,21 +238,7 @@
 
     @include mobile {
       grid-column: 1 / 6;
-      font-size: clamp(2rem, 14.5vw, 3.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
       padding-top: calc(var(--layout-columns-gap) * 0.9);
-    }
-
-    > span {
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      text-overflow: clip;
-    }
-
-    .goldText {
-      color: #c5a359 !important;
     }
   }
 

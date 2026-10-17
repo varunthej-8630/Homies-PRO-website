@@ -41,6 +41,15 @@ export default function CookieConsent() {
     setShowBanner(false);
   };
 
+  const handleDecline = () => {
+    try {
+      localStorage.setItem('hs_cookie_consent', 'declined');
+    } catch (e) {
+      // Ignore localStorage write error
+    }
+    setShowBanner(false);
+  };
+
   if (!showBanner) return null;
 
   return (
@@ -93,6 +102,31 @@ export default function CookieConsent() {
         </Link>
         <button
           type="button"
+          onClick={handleDecline}
+          style={{
+            background: 'transparent',
+            color: 'rgba(255, 255, 255, 0.75)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '9999px',
+            padding: '0.6rem 1.1rem',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'border-color 180ms ease, color 180ms ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+            e.currentTarget.style.color = '#fff';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            e.currentTarget.style.color = 'rgba(255, 255, 255, 0.75)';
+          }}
+        >
+          Necessary Only
+        </button>
+        <button
+          type="button"
           onClick={handleAccept}
           className="cookieAcceptBtn"
           style={{
@@ -107,7 +141,7 @@ export default function CookieConsent() {
             transition: 'transform 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease',
           }}
         >
-          Accept
+          Accept All
         </button>
       </div>
     </div>

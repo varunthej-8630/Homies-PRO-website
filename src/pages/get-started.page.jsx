@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import CustomHead from '@src/components/dom/CustomHead';
+import Logo from '@src/components/ui/Logo';
 import styles from './get-started.module.scss';
 
 const seo = {
@@ -327,8 +328,8 @@ export default function GetStartedPage() {
       <main className={styles.pageWrapper}>
         {/* Top Header Bar */}
         <header className={styles.topBar}>
-          <Link href="/" className={styles.brandLink}>
-            H<span className={styles.goldAccent}>OM</span>IES STUDIO
+          <Link href="/" className={styles.brandLink} aria-label="HOMIES STUDIO homepage">
+            <Logo variant="dark" size="md" />
           </Link>
           <button
             type="button"

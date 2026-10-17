@@ -11,6 +11,9 @@ try {
 const nextConfig = {
   pageExtensions: ['page.jsx', 'page.js'],
   reactStrictMode: false,
+  experimental: {
+    cpus: 1,
+  },
 
   images: {
     remotePatterns: [

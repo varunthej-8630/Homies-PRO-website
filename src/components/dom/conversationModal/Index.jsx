@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { supabase } from '@src/lib/supabase/client';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
+import { getStoredUTM } from '@src/utils/utm';
 import styles from './styles/conversationModal.module.scss';
 
 const SECTORS = [
@@ -279,6 +280,7 @@ function ConversationModal() {
               businessType: formData.businessType || null,
               projectStage: formData.projectStage || null,
               subject: formData.subject || null,
+              utm: getStoredUTM(),
             },
             status: 'NEW',
           })
@@ -350,7 +352,9 @@ function ConversationModal() {
         {/* Header */}
         <div className={styles.modalHeader}>
           <div>
-            <span className={styles.brandSubtitle}>HOMIES STUDIO · PARTNERSHIP & BUILDS</span>
+            <span className={styles.brandSubtitle}>
+              H<span style={{ color: '#c5a359' }}>OM</span>IES STUDIO · PARTNERSHIP & BUILDS
+            </span>
             <h3 className={clsx(styles.modalTitle, 'h3')}>Start a Conversation</h3>
           </div>
           <button type="button" className={styles.closeBtn} onClick={handleClose} aria-label="Close modal">

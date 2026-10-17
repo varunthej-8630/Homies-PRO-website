@@ -137,8 +137,18 @@ export default function GoldSparkles() {
     let isTabVisible = true;
     let lastTime = performance.now();
 
+    let frameSkip = 0;
     const render = (time) => {
       if (!isTabVisible || isMenuOpenRef.current) return;
+
+      // Throttle particle rendering during active scroll to preserve 60 FPS
+      if (typeof window !== 'undefined' && window.lenis?.isScrolling) {
+        frameSkip = (frameSkip + 1) % 2;
+        if (frameSkip !== 0) {
+          animationFrameId = requestAnimationFrame(render);
+          return;
+        }
+      }
 
       const delta = time - lastTime;
       lastTime = time;

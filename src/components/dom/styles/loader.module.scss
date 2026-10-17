@@ -34,17 +34,8 @@
     }
 
     .brandTitle {
-      font-family: var(--font-primary), sans-serif;
-      font-size: clamp(2.6rem, 5.2vw, 5.2rem);
-      font-weight: 850;
-      letter-spacing: -0.025em;
-      color: #020002;
-      line-height: 1;
       margin: 0;
-
-      @include mobile {
-        font-size: 9.6vw;
-      }
+      line-height: 1;
     }
 
     .brandSubtitle {

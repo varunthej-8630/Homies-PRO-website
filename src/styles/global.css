@@ -58,3 +58,81 @@ main,
 header {
   will-change: transform, opacity;
 }
+
+/* Skip-to-content link for keyboard accessibility */
+.skipToContentLink {
+  position: fixed;
+  top: -100px;
+  left: 1.5rem;
+  background: #c5a359;
+  color: #0d0d11;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  z-index: 999999;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skipToContentLink:focus,
+.skipToContentLink:focus-visible {
+  top: 1.5rem;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 12pt !important;
+  }
+
+  header,
+  nav,
+  #menu,
+  #scrollbar,
+  #fluidCanvas,
+  canvas,
+  .cookieAcceptBtn,
+  [role="region"][aria-label="Cookie Consent Banner"],
+  .skipToContentLink,
+  button,
+  .circleButton,
+  .backToTopBtn,
+  .floatingContactBtn {
+    display: none !important;
+  }
+
+  main {
+    position: static !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    color: #111111 !important;
+  }
+
+  #mainContainer,
+  #layout {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  a {
+    color: #111111 !important;
+    text-decoration: underline !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-after: avoid;
+  }
+
+  article, section {
+    page-break-inside: auto;
+  }
+}
+

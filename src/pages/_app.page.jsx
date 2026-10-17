@@ -26,12 +26,15 @@ import Tempus from '@darkroom.engineering/tempus';
 import { View } from '@react-three/drei';
 import { gsap } from 'gsap';
 import CookieConsent from '@src/components/ui/CookieConsent';
+import BackToTop from '@src/components/ui/BackToTop';
+import FloatingContact from '@src/components/ui/FloatingContact';
 import styles from '@src/pages/app.module.scss';
 import useFoucFix from '@src/hooks/useFoucFix';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
+import { captureUTMParameters } from '@src/utils/utm';
 
 if (typeof window !== 'undefined') {
   gsap.defaults({ ease: 'none' });
@@ -57,6 +60,10 @@ function MyApp({ Component, pageProps, router }) {
   const layoutRef = useRef();
 
   useFoucFix();
+
+  useIsomorphicLayoutEffect(() => {
+    captureUTMParameters();
+  }, [router?.asPath]);
 
   useIsomorphicLayoutEffect(() => {
     const lenisInstance = new Lenis({
@@ -107,6 +114,8 @@ function MyApp({ Component, pageProps, router }) {
         <ConversationModal />
         <LiquidFlow />
         <GoldSparkles />
+        <BackToTop />
+        <FloatingContact />
         <Analytics />
       </>
     ),
@@ -134,6 +143,9 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <AuthProvider>
       <div className={styles.root}>
+        <a href="#mainContainer" className="skipToContentLink">
+          Skip to main content
+        </a>
         {domElements}
         <div ref={layoutRef} id="layout" className={styles.layout}>
           {canvasElements}

@@ -81,20 +81,40 @@ function Fluid({ mainRef, fluidColor }) {
     [materials],
   );
 
+  const activeFrames = useRef(0);
+
   useFrame(() => {
     if (!meshRef.current || !postRef.current || isMenuOpen) return;
 
-    while (splatStack.current.length > 0) {
-      const { mouseX, mouseY, velocityX, velocityY } = splatStack.current.pop();
+    // Check prefers-reduced-motion
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
 
-      setShaderMaterial('splat');
-      setUniforms('splat', 'uTarget', FBOs.velocity.read.texture);
-      setUniformVector2('splat', 'uPointer', mouseX, mouseY);
-      setUniformVector3('splat', 'uColor', velocityX, velocityY, 10.0);
-      setUniforms('splat', 'uRadius', radius / 100.0);
-      setRenderTarget('velocity');
-      setUniforms('splat', 'uTarget', FBOs.density.read.texture);
-      setRenderTarget('density');
+    if (splatStack.current.length > 0) {
+      activeFrames.current = 45; // Run simulation for 45 frames to let fluid dissipate
+      while (splatStack.current.length > 0) {
+        const { mouseX, mouseY, velocityX, velocityY } = splatStack.current.pop();
+
+        setShaderMaterial('splat');
+        setUniforms('splat', 'uTarget', FBOs.velocity.read.texture);
+        setUniformVector2('splat', 'uPointer', mouseX, mouseY);
+        setUniformVector3('splat', 'uColor', velocityX, velocityY, 10.0);
+        setUniforms('splat', 'uRadius', radius / 100.0);
+        setRenderTarget('velocity');
+        setUniforms('splat', 'uTarget', FBOs.density.read.texture);
+        setRenderTarget('density');
+      }
+    } else if (activeFrames.current > 0) {
+      activeFrames.current -= 1;
+    } else {
+      // Idle and dissipated: skip all 10 GPU passes
+      return;
+    }
+
+    // Skip heavy multi-pass simulation during active smooth scrolling
+    if (typeof window !== 'undefined' && window.lenis?.isScrolling) {
+      return;
     }
 
     const shaderUpdates = [

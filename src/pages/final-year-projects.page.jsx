@@ -2,6 +2,7 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
+import AccordionFAQ from '@src/components/ui/AccordionFAQ';
 import styles from './final-year-projects.module.scss';
 
 const seo = {
@@ -225,14 +226,7 @@ export default function FinalYearProjectsPage() {
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Everything you need to know about getting project mentorship with Homies Studio.</p>
           </div>
-          <div className={styles.faqList}>
-            {faqs.map((faq) => (
-              <div key={faq.q} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.q}</h3>
-                <p className={styles.faqAnswer}>{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <AccordionFAQ items={faqs} />
         </div>
       </section>
     </>

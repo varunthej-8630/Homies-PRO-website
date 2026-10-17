@@ -44,7 +44,7 @@ const domainTags = [
 
 export default function HomeMiddleSections() {
   return (
-    <div className={clsx(styles.root, 'layout-block-inner')}>
+    <div id="homeMiddleSections" className={clsx(styles.root, 'layout-block-inner')} data-header-contrast="dark">
       {/* SECTION A — Three Pillars */}
       <div className={styles.pillarsSection}>
         <div className={styles.pillarsGrid}>

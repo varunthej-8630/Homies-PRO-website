@@ -2,6 +2,7 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Link from 'next/link';
 import clsx from 'clsx';
+import ReadingProgress from '@src/components/ui/ReadingProgress';
 
 const seo = {
   title: 'What Is an AI Agent? Guide for Founders & Students | Homies Studio',
@@ -64,6 +65,7 @@ export default function WhatIsAnAiAgentPage() {
   return (
     <>
       <CustomHead {...seo} pageSchema={articleSchema} />
+      <ReadingProgress />
 
       <article className={clsx('layout-block-inner')} style={{ color: '#fff', paddingTop: 'calc(var(--layout-columns-gap) * 3)', paddingBottom: 'calc(var(--layout-columns-gap) * 4)' }}>
         <div style={{ maxWidth: '780px', margin: '0 auto', boxSizing: 'border-box' }}>
@@ -98,7 +100,9 @@ export default function WhatIsAnAiAgentPage() {
               >
                 AI Explained
               </span>
-              <span style={{ fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.5)' }}>September 2026 · 6 min read</span>
+              <span style={{ fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.6)' }}>
+                <time dateTime="2026-09-03">September 3, 2026</time> · 6 min read · Last updated: September 2026
+              </span>
             </div>
 
             <h1 className="h1" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 800, lineHeight: 1.2, color: '#fff', marginBottom: '1rem' }}>

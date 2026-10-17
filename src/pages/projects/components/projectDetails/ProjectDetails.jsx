@@ -16,6 +16,7 @@ function ProjectDetails({ project }) {
 
   const isPurchased = purchasedProjectIds.includes(project.id);
   const isWishlisted = wishlist.includes(project.id);
+  const [copied, setCopied] = useState(false);
   const creator = project.creator || {
     name: 'Homies Creator Studio',
     handle: '@homies_studio',
@@ -97,6 +98,22 @@ function ProjectDetails({ project }) {
 
             <button type="button" className={styles.talkCreatorButton} onClick={() => toggleWishlist(project.id)} style={{ width: 'auto', padding: '0.8vw 1.2vw' }} aria-label="Save to Wishlist">
               <span>{isWishlisted ? '♥ Saved' : '♡ Wishlist'}</span>
+            </button>
+
+            <button
+              type="button"
+              className={styles.talkCreatorButton}
+              onClick={() => {
+                if (typeof window !== 'undefined' && navigator.clipboard) {
+                  navigator.clipboard.writeText(window.location.href);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }
+              }}
+              style={{ width: 'auto', padding: '0.8vw 1.2vw' }}
+              aria-label="Copy project share link"
+            >
+              <span>{copied ? '✓ Copied!' : '🔗 Share Link'}</span>
             </button>
           </div>
 

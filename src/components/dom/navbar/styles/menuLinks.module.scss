@@ -25,6 +25,41 @@
   }
 }
 
+.menuHeader {
+  position: absolute;
+  top: var(--layout-columns-gap);
+  left: var(--layout-margin);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  height: 2.8vw;
+  min-height: 42px;
+  pointer-events: auto;
+
+  @include mobile {
+    height: 9vw;
+    min-height: 40px;
+  }
+
+  .menuLogoLink {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #c5a359;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+}
+
 .menuClose {
   position: absolute;
   top: var(--layout-columns-gap);

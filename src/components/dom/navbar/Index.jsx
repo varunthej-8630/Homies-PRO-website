@@ -1,14 +1,13 @@
-/* eslint-disable */
 import ButtonLink from '@src/components/animationComponents/buttonLink/Index';
 import Link from 'next/link';
 import MenuButton from '@src/components/dom/navbar/components/MenuButton';
 import MenuLinks from '@src/components/dom/navbar/components/MenuLinks';
-import clsx from 'clsx';
+import Logo from '@src/components/ui/Logo';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from '@src/components/dom/navbar/styles/index.module.scss';
 import { useAuth } from '@src/context/AuthContext';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import { useRouter } from 'next/router';
@@ -33,26 +32,41 @@ function Navbar() {
   const [lenis] = useStore(useShallow((state) => [state.lenis]));
   const { user, role } = useAuth();
   const headerRef = useRef();
-  const logoTextRef = useRef();
 
-  const isDarkHero = router.pathname === '/about';
+  const isInitialDark = router.pathname === '/about' || router.pathname === '/get-started';
+  const [logoVariant, setLogoVariant] = useState(isInitialDark ? 'dark' : 'light');
+
+  useEffect(() => {
+    const isDark = router.pathname === '/about' || router.pathname === '/get-started';
+    setLogoVariant(isDark ? 'dark' : 'light');
+  }, [router.pathname]);
 
   useIsomorphicLayoutEffect(() => {
     const scroller = document?.querySelector('main') || window;
     const ctx = gsap.context(() => {
-      if (!isDarkHero) {
-        if (logoTextRef.current) {
-          gsap.set(logoTextRef.current, { color: '#28282b' });
-        }
-      } else {
-        gsap.set(logoTextRef.current, { color: '#f0f4f1' });
-
+      if (router.pathname === '/about') {
         ScrollTrigger.create({
+          id: 'aboutHeroLogoContrast',
           trigger: 'main section:nth-of-type(1)',
-          start: 'bottom 15%',
+          start: 'bottom 70px',
           scroller,
-          onEnter: () => gsap.to(logoTextRef.current, { color: '#28282b', duration: 0.35 }),
-          onLeaveBack: () => gsap.to(logoTextRef.current, { color: '#f0f4f1', duration: 0.35 }),
+          onEnter: () => setLogoVariant('light'),
+          onLeaveBack: () => setLogoVariant('dark'),
+          invalidateOnRefresh: true,
+        });
+      }
+
+      if (router.pathname === '/') {
+        ScrollTrigger.create({
+          id: 'homeMiddleSectionContrast',
+          trigger: '#homeMiddleSections',
+          start: 'top 70px',
+          end: 'bottom 70px',
+          scroller,
+          onEnter: () => setLogoVariant('dark'),
+          onLeave: () => setLogoVariant('light'),
+          onEnterBack: () => setLogoVariant('dark'),
+          onLeaveBack: () => setLogoVariant('light'),
           invalidateOnRefresh: true,
         });
       }
@@ -89,7 +103,7 @@ function Navbar() {
     });
 
     return () => ctx.kill();
-  }, [isDarkHero, router.pathname]);
+  }, [router.pathname]);
 
   const scrollToPosition = useCallback(
     (position, duration = 1.5) => {
@@ -119,10 +133,8 @@ function Navbar() {
 
       <header ref={headerRef} className={styles.root} role="banner">
         <div className={styles.innerHeader}>
-          <Link onClick={goToTop} aria-label="Go home" scroll={false} href="/" className={styles.logoLink}>
-            <h4 ref={logoTextRef} className={clsx('bold', 'h4', styles.logoText)}>
-              H<span className={styles.goldText}>OM</span>IES STUDIO
-            </h4>
+          <Link onClick={goToTop} aria-label="HOMIES STUDIO homepage" scroll={false} href="/" className={styles.logoLink}>
+            <Logo variant={logoVariant} size="md" as="span" />
           </Link>
 
           <div className={styles.rightContainer}>

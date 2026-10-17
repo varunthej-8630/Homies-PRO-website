@@ -4,7 +4,7 @@ import styles from '@src/pages/about/components/hero/styles/hero.module.scss';
 
 function Hero() {
   return (
-    <section className={clsx(styles.root, 'layout-block-inner')}>
+    <section className={clsx(styles.root, 'layout-block-inner')} data-header-contrast="dark">
       <header className={styles.titleContainer}>
         <AppearTitle>
           <h1 className={clsx(styles.title, 'h2')}>Building ideas, academic requirements, and real-world problems into working technology.</h1>

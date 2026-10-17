@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import CustomHead from '@src/components/dom/CustomHead';
 import clsx from 'clsx';
+import AccordionFAQ from '@src/components/ui/AccordionFAQ';
 import styles from './website-development.module.scss';
 
 const seo = {
@@ -281,14 +282,7 @@ export default function WebsiteDevelopmentPage() {
             <h2 className={clsx('h2', styles.sectionTitle)}>Frequently Asked Questions</h2>
             <p className={styles.sectionDesc}>Answers to common questions about our custom website design and engineering services.</p>
           </div>
-          <div className={styles.faqList}>
-            {faqs.map((faq) => (
-              <div key={faq.q} className={styles.faqItem}>
-                <h3 className={styles.faqQuestion}>{faq.q}</h3>
-                <p className={styles.faqAnswer}>{faq.a}</p>
-              </div>
-            ))}
-          </div>
+          <AccordionFAQ items={faqs} />
         </div>
       </section>
     </>

@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import gsap from 'gsap';
+import Logo from '@src/components/ui/Logo';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from '@src/components/dom/styles/loader.module.scss';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -133,7 +134,7 @@ function Loader() {
   return (
     <div id="loader" ref={root} className={styles.root}>
       <div ref={logoContainerRef} className={styles.innerContainer}>
-        <div className={styles.brandTitle}>HOMIES STUDIO</div>
+        <Logo variant="light" size="hero" as="h1" className={styles.brandTitle} />
         <p className={styles.brandSubtitle}>Digital Product & Engineering Studio</p>
       </div>
     </div>

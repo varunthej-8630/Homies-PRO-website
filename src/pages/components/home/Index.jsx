@@ -4,6 +4,7 @@ import FloatingMeshes from '@src/pages/components/home/components/floatingMeshes
 import InfiniteText from '@src/components/animationComponents/infiniteText/Index';
 import clsx from 'clsx';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import styles from '@src/pages/components/home/styles/home.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -173,12 +174,27 @@ function Home() {
   );
 
   useIsomorphicLayoutEffect(() => {
+    const scroller = document?.querySelector('main') || window;
     const ctx = gsap.context(() => {
       if (timelineRef.current) {
         timelineRef.current.kill();
       }
 
       timelineRef.current = animateRectangles(performMoves(initialPositions, gridWidth, gridHeight));
+
+      if (rootRef.current) {
+        ScrollTrigger.create({
+          trigger: rootRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scroller,
+          onEnter: () => timelineRef.current?.resume(),
+          onLeave: () => timelineRef.current?.pause(),
+          onEnterBack: () => timelineRef.current?.resume(),
+          onLeaveBack: () => timelineRef.current?.pause(),
+          invalidateOnRefresh: true,
+        });
+      }
     });
 
     return () => {
